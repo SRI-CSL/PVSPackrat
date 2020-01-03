@@ -1,0 +1,488 @@
+%%% ADT file generated from delta
+
+pre_Dt_adt[V_T: TYPE+, V_N_b: {k: nat | k > 0}]: THEORY
+ BEGIN
+  ASSUMING
+   V_T_TCC1: ASSUMPTION EXISTS (x: V_T): TRUE;
+  ENDASSUMING
+
+  pre_Dt: TYPE
+
+  ε?, any?, terminal?, nonTerminal?, seq?, prior?, star?, notP?: [pre_Dt ->
+                                                                  boolean]
+
+  a: [(terminal?) -> V_T]
+
+  A: [(nonTerminal?) -> below(V_N_b)]
+
+  e1: [{x: pre_Dt | seq?(x) OR prior?(x)} -> pre_Dt]
+
+  e2: [{x: pre_Dt | seq?(x) OR prior?(x)} -> pre_Dt]
+
+  e: [{x: pre_Dt | star?(x) OR notP?(x)} -> pre_Dt]
+
+  ε: (ε?)
+
+  any: (any?)
+
+  terminal: [V_T -> (terminal?)]
+
+  nonTerminal: [below(V_N_b) -> (nonTerminal?)]
+
+  seq: [[pre_Dt, pre_Dt] -> (seq?)]
+
+  prior: [[pre_Dt, pre_Dt] -> (prior?)]
+
+  star: [pre_Dt -> (star?)]
+
+  notP: [pre_Dt -> (notP?)]
+
+  pre_Dt_ord: [pre_Dt -> upto(7)]
+
+  pre_Dt_ord_defaxiom: AXIOM
+         (pre_Dt_ord(ε) = 0) AND (pre_Dt_ord(any) = 1)
+     AND (FORALL (a: V_T): pre_Dt_ord(terminal(a)) = 2)
+     AND (FORALL (A: below(V_N_b)): pre_Dt_ord(nonTerminal(A)) = 3)
+     AND (FORALL (e1: pre_Dt, e2: pre_Dt): pre_Dt_ord(seq(e1, e2)) = 4)
+     AND (FORALL (e1: pre_Dt, e2: pre_Dt): pre_Dt_ord(prior(e1, e2)) = 5)
+     AND (FORALL (e: pre_Dt): pre_Dt_ord(star(e)) = 6)
+     AND FORALL (e: pre_Dt): pre_Dt_ord(notP(e)) = 7;
+
+  ord(x: pre_Dt): upto(7) =
+      CASES x
+        OF ε: 0,
+           any: 1,
+           terminal(terminal1_var): 2,
+           nonTerminal(nonTerminal1_var): 3,
+           seq(seq1_var, seq2_var): 4,
+           prior(prior1_var, prior2_var): 5,
+           star(star1_var): 6,
+           notP(notP1_var): 7
+        ENDCASES
+
+  pre_Dt_ε_extensionality: AXIOM
+    FORALL (ε?_var: (ε?), ε?_var2: (ε?)): ε?_var = ε?_var2;
+
+  pre_Dt_any_extensionality: AXIOM
+    FORALL (any?_var: (any?), any?_var2: (any?)): any?_var = any?_var2;
+
+  pre_Dt_terminal_extensionality: AXIOM
+    FORALL (terminal?_var: (terminal?), terminal?_var2: (terminal?)):
+      a(terminal?_var) = a(terminal?_var2) IMPLIES
+       terminal?_var = terminal?_var2;
+
+  pre_Dt_terminal_eta: AXIOM
+    FORALL (terminal?_var: (terminal?)):
+      terminal(a(terminal?_var)) = terminal?_var;
+
+  pre_Dt_nonTerminal_extensionality: AXIOM
+    FORALL (nonTerminal?_var: (nonTerminal?),
+            nonTerminal?_var2: (nonTerminal?)):
+      A(nonTerminal?_var) = A(nonTerminal?_var2) IMPLIES
+       nonTerminal?_var = nonTerminal?_var2;
+
+  pre_Dt_nonTerminal_eta: AXIOM
+    FORALL (nonTerminal?_var: (nonTerminal?)):
+      nonTerminal(A(nonTerminal?_var)) = nonTerminal?_var;
+
+  pre_Dt_seq_extensionality: AXIOM
+    FORALL (seq?_var: (seq?), seq?_var2: (seq?)):
+      e1(seq?_var) = e1(seq?_var2) AND e2(seq?_var) = e2(seq?_var2) IMPLIES
+       seq?_var = seq?_var2;
+
+  pre_Dt_seq_eta: AXIOM
+    FORALL (seq?_var: (seq?)): seq(e1(seq?_var), e2(seq?_var)) = seq?_var;
+
+  pre_Dt_prior_extensionality: AXIOM
+    FORALL (prior?_var: (prior?), prior?_var2: (prior?)):
+      e1(prior?_var) = e1(prior?_var2) AND e2(prior?_var) = e2(prior?_var2)
+       IMPLIES prior?_var = prior?_var2;
+
+  pre_Dt_prior_eta: AXIOM
+    FORALL (prior?_var: (prior?)):
+      prior(e1(prior?_var), e2(prior?_var)) = prior?_var;
+
+  pre_Dt_star_extensionality: AXIOM
+    FORALL (star?_var: (star?), star?_var2: (star?)):
+      e(star?_var) = e(star?_var2) IMPLIES star?_var = star?_var2;
+
+  pre_Dt_star_eta: AXIOM
+    FORALL (star?_var: (star?)): star(e(star?_var)) = star?_var;
+
+  pre_Dt_notP_extensionality: AXIOM
+    FORALL (notP?_var: (notP?), notP?_var2: (notP?)):
+      e(notP?_var) = e(notP?_var2) IMPLIES notP?_var = notP?_var2;
+
+  pre_Dt_notP_eta: AXIOM
+    FORALL (notP?_var: (notP?)): notP(e(notP?_var)) = notP?_var;
+
+  pre_Dt_a_terminal: AXIOM
+    FORALL (terminal1_var: V_T): a(terminal(terminal1_var)) = terminal1_var;
+
+  pre_Dt_A_nonTerminal: AXIOM
+    FORALL (nonTerminal1_var: below(V_N_b)):
+      A(nonTerminal(nonTerminal1_var)) = nonTerminal1_var;
+
+  pre_Dt_e1_seq: AXIOM
+    FORALL (seq1_var: pre_Dt, seq2_var: pre_Dt):
+      e1(seq(seq1_var, seq2_var)) = seq1_var;
+
+  pre_Dt_e2_seq: AXIOM
+    FORALL (seq1_var: pre_Dt, seq2_var: pre_Dt):
+      e2(seq(seq1_var, seq2_var)) = seq2_var;
+
+  pre_Dt_e1_prior: AXIOM
+    FORALL (prior1_var: pre_Dt, prior2_var: pre_Dt):
+      e1(prior(prior1_var, prior2_var)) = prior1_var;
+
+  pre_Dt_e2_prior: AXIOM
+    FORALL (prior1_var: pre_Dt, prior2_var: pre_Dt):
+      e2(prior(prior1_var, prior2_var)) = prior2_var;
+
+  pre_Dt_e_star: AXIOM
+    FORALL (star1_var: pre_Dt): e(star(star1_var)) = star1_var;
+
+  pre_Dt_e_notP: AXIOM
+    FORALL (notP1_var: pre_Dt): e(notP(notP1_var)) = notP1_var;
+
+  pre_Dt_inclusive: AXIOM
+    FORALL (pre_Dt_var: pre_Dt):
+           ε?(pre_Dt_var) OR any?(pre_Dt_var) OR terminal?(pre_Dt_var)
+       OR nonTerminal?(pre_Dt_var) OR seq?(pre_Dt_var) OR prior?(pre_Dt_var)
+       OR star?(pre_Dt_var) OR notP?(pre_Dt_var);
+
+  pre_Dt_induction: AXIOM
+    FORALL (p: [pre_Dt -> boolean]):
+      (     p(ε) AND p(any)
+        AND (FORALL (terminal1_var: V_T): p(terminal(terminal1_var)))
+        AND (FORALL (nonTerminal1_var: below(V_N_b)):
+               p(nonTerminal(nonTerminal1_var)))
+        AND (FORALL (seq1_var: pre_Dt, seq2_var: pre_Dt):
+               p(seq1_var) AND p(seq2_var) IMPLIES
+                p(seq(seq1_var, seq2_var)))
+        AND (FORALL (prior1_var: pre_Dt, prior2_var: pre_Dt):
+               p(prior1_var) AND p(prior2_var) IMPLIES
+                p(prior(prior1_var, prior2_var)))
+        AND (FORALL (star1_var: pre_Dt):
+               p(star1_var) IMPLIES p(star(star1_var)))
+        AND FORALL (notP1_var: pre_Dt):
+              p(notP1_var) IMPLIES p(notP(notP1_var)))
+       IMPLIES FORALL (pre_Dt_var: pre_Dt): p(pre_Dt_var);
+
+  every(p: PRED[V_T])(a1: pre_Dt):  boolean =
+      CASES a1
+        OF ε: TRUE,
+           any: TRUE,
+           terminal(terminal1_var): p(terminal1_var),
+           nonTerminal(nonTerminal1_var): TRUE,
+           seq(seq1_var, seq2_var):
+             every(p)(seq1_var) AND every(p)(seq2_var),
+           prior(prior1_var, prior2_var):
+             every(p)(prior1_var) AND every(p)(prior2_var),
+           star(star1_var): every(p)(star1_var),
+           notP(notP1_var): every(p)(notP1_var)
+        ENDCASES;
+
+  every(p: PRED[V_T], a1: pre_Dt):  boolean =
+      CASES a1
+        OF ε: TRUE,
+           any: TRUE,
+           terminal(terminal1_var): p(terminal1_var),
+           nonTerminal(nonTerminal1_var): TRUE,
+           seq(seq1_var, seq2_var):
+             every(p, seq1_var) AND every(p, seq2_var),
+           prior(prior1_var, prior2_var):
+             every(p, prior1_var) AND every(p, prior2_var),
+           star(star1_var): every(p, star1_var),
+           notP(notP1_var): every(p, notP1_var)
+        ENDCASES;
+
+  some(p: PRED[V_T])(a1: pre_Dt):  boolean =
+      CASES a1
+        OF ε: FALSE,
+           any: FALSE,
+           terminal(terminal1_var): p(terminal1_var),
+           nonTerminal(nonTerminal1_var): FALSE,
+           seq(seq1_var, seq2_var): some(p)(seq1_var) OR some(p)(seq2_var),
+           prior(prior1_var, prior2_var):
+             some(p)(prior1_var) OR some(p)(prior2_var),
+           star(star1_var): some(p)(star1_var),
+           notP(notP1_var): some(p)(notP1_var)
+        ENDCASES;
+
+  some(p: PRED[V_T], a1: pre_Dt):  boolean =
+      CASES a1
+        OF ε: FALSE,
+           any: FALSE,
+           terminal(terminal1_var): p(terminal1_var),
+           nonTerminal(nonTerminal1_var): FALSE,
+           seq(seq1_var, seq2_var): some(p, seq1_var) OR some(p, seq2_var),
+           prior(prior1_var, prior2_var):
+             some(p, prior1_var) OR some(p, prior2_var),
+           star(star1_var): some(p, star1_var),
+           notP(notP1_var): some(p, notP1_var)
+        ENDCASES;
+
+  subterm(x: pre_Dt, y: pre_Dt):  boolean =
+      x = y OR
+       CASES y
+         OF ε: FALSE,
+            any: FALSE,
+            terminal(terminal1_var): FALSE,
+            nonTerminal(nonTerminal1_var): FALSE,
+            seq(seq1_var, seq2_var):
+              subterm(x, seq1_var) OR subterm(x, seq2_var),
+            prior(prior1_var, prior2_var):
+              subterm(x, prior1_var) OR subterm(x, prior2_var),
+            star(star1_var): subterm(x, star1_var),
+            notP(notP1_var): subterm(x, notP1_var)
+         ENDCASES;
+
+  <<:  (strict_well_founded?[pre_Dt]) =
+      LAMBDA (x, y: pre_Dt):
+        CASES y
+          OF ε: FALSE,
+             any: FALSE,
+             terminal(terminal1_var): FALSE,
+             nonTerminal(nonTerminal1_var): FALSE,
+             seq(seq1_var, seq2_var):
+               (x = seq1_var OR x << seq1_var) OR
+                (x = seq2_var OR x << seq2_var),
+             prior(prior1_var, prior2_var):
+               (x = prior1_var OR x << prior1_var) OR
+                (x = prior2_var OR x << prior2_var),
+             star(star1_var): (x = star1_var OR x << star1_var),
+             notP(notP1_var): (x = notP1_var OR x << notP1_var)
+          ENDCASES;
+
+  pre_Dt_well_founded: AXIOM strict_well_founded?[pre_Dt](<<);
+
+  reduce_nat(ε?_fun: nat, any?_fun: nat, terminal?_fun: [V_T -> nat],
+             nonTerminal?_fun: [below(V_N_b) -> nat],
+             seq?_fun: [[nat, nat] -> nat],
+             prior?_fun: [[nat, nat] -> nat], star?_fun: [nat -> nat],
+             notP?_fun: [nat -> nat]):
+        [pre_Dt -> nat] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt):
+        LET red: [pre_Dt -> nat] =
+              reduce_nat(ε?_fun, any?_fun, terminal?_fun, nonTerminal?_fun,
+                         seq?_fun, prior?_fun, star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun,
+               any: any?_fun,
+               terminal(terminal1_var): terminal?_fun(terminal1_var),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var)),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var)),
+               star(star1_var): star?_fun(red(star1_var)),
+               notP(notP1_var): notP?_fun(red(notP1_var))
+            ENDCASES;
+
+  REDUCE_nat(ε?_fun: [pre_Dt -> nat], any?_fun: [pre_Dt -> nat],
+             terminal?_fun: [[V_T, pre_Dt] -> nat],
+             nonTerminal?_fun: [[below(V_N_b), pre_Dt] -> nat],
+             seq?_fun: [[nat, nat, pre_Dt] -> nat],
+             prior?_fun: [[nat, nat, pre_Dt] -> nat],
+             star?_fun: [[nat, pre_Dt] -> nat],
+             notP?_fun: [[nat, pre_Dt] -> nat]):
+        [pre_Dt -> nat] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt):
+        LET red: [pre_Dt -> nat] =
+              REDUCE_nat(ε?_fun, any?_fun, terminal?_fun, nonTerminal?_fun,
+                         seq?_fun, prior?_fun, star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun(pre_Dt_adtvar),
+               any: any?_fun(pre_Dt_adtvar),
+               terminal(terminal1_var):
+                 terminal?_fun(terminal1_var, pre_Dt_adtvar),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var, pre_Dt_adtvar),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var), pre_Dt_adtvar),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var),
+                            pre_Dt_adtvar),
+               star(star1_var): star?_fun(red(star1_var), pre_Dt_adtvar),
+               notP(notP1_var): notP?_fun(red(notP1_var), pre_Dt_adtvar)
+            ENDCASES;
+
+  reduce_ordinal(ε?_fun: ordinal, any?_fun: ordinal,
+                 terminal?_fun: [V_T -> ordinal],
+                 nonTerminal?_fun: [below(V_N_b) -> ordinal],
+                 seq?_fun: [[ordinal, ordinal] -> ordinal],
+                 prior?_fun: [[ordinal, ordinal] -> ordinal],
+                 star?_fun: [ordinal -> ordinal],
+                 notP?_fun: [ordinal -> ordinal]):
+        [pre_Dt -> ordinal] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt):
+        LET red: [pre_Dt -> ordinal] =
+              reduce_ordinal(ε?_fun, any?_fun, terminal?_fun,
+                             nonTerminal?_fun, seq?_fun, prior?_fun,
+                             star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun,
+               any: any?_fun,
+               terminal(terminal1_var): terminal?_fun(terminal1_var),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var)),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var)),
+               star(star1_var): star?_fun(red(star1_var)),
+               notP(notP1_var): notP?_fun(red(notP1_var))
+            ENDCASES;
+
+  REDUCE_ordinal(ε?_fun: [pre_Dt -> ordinal],
+                 any?_fun: [pre_Dt -> ordinal],
+                 terminal?_fun: [[V_T, pre_Dt] -> ordinal],
+                 nonTerminal?_fun: [[below(V_N_b), pre_Dt] -> ordinal],
+                 seq?_fun: [[ordinal, ordinal, pre_Dt] -> ordinal],
+                 prior?_fun: [[ordinal, ordinal, pre_Dt] -> ordinal],
+                 star?_fun: [[ordinal, pre_Dt] -> ordinal],
+                 notP?_fun: [[ordinal, pre_Dt] -> ordinal]):
+        [pre_Dt -> ordinal] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt):
+        LET red: [pre_Dt -> ordinal] =
+              REDUCE_ordinal(ε?_fun, any?_fun, terminal?_fun,
+                             nonTerminal?_fun, seq?_fun, prior?_fun,
+                             star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun(pre_Dt_adtvar),
+               any: any?_fun(pre_Dt_adtvar),
+               terminal(terminal1_var):
+                 terminal?_fun(terminal1_var, pre_Dt_adtvar),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var, pre_Dt_adtvar),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var), pre_Dt_adtvar),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var),
+                            pre_Dt_adtvar),
+               star(star1_var): star?_fun(red(star1_var), pre_Dt_adtvar),
+               notP(notP1_var): notP?_fun(red(notP1_var), pre_Dt_adtvar)
+            ENDCASES;
+ END pre_Dt_adt
+
+pre_Dt_adt_map[V_T: TYPE+, V_N_b: {k: nat | k > 0}, V_T1: TYPE+]: THEORY
+ BEGIN
+  ASSUMING
+   V_T_TCC1: ASSUMPTION EXISTS (x: V_T): TRUE;
+
+   V_T1_TCC1: ASSUMPTION EXISTS (x: V_T1): TRUE;
+  ENDASSUMING
+
+  IMPORTING pre_Dt_adt
+
+  map(f: [V_T -> V_T1])(a1: pre_Dt[V_T, V_N_b]):  pre_Dt[V_T1, V_N_b] =
+      CASES a1
+        OF ε: ε,
+           any: any,
+           terminal(terminal1_var): terminal(f(terminal1_var)),
+           nonTerminal(nonTerminal1_var): nonTerminal(nonTerminal1_var),
+           seq(seq1_var, seq2_var):
+             seq(map(f)(seq1_var), map(f)(seq2_var)),
+           prior(prior1_var, prior2_var):
+             prior(map(f)(prior1_var), map(f)(prior2_var)),
+           star(star1_var): star(map(f)(star1_var)),
+           notP(notP1_var): notP(map(f)(notP1_var))
+        ENDCASES;
+
+  map(f: [V_T -> V_T1], a1: pre_Dt[V_T, V_N_b]):  pre_Dt[V_T1, V_N_b] =
+      CASES a1
+        OF ε: ε,
+           any: any,
+           terminal(terminal1_var): terminal(f(terminal1_var)),
+           nonTerminal(nonTerminal1_var): nonTerminal(nonTerminal1_var),
+           seq(seq1_var, seq2_var):
+             seq(map(f, seq1_var), map(f, seq2_var)),
+           prior(prior1_var, prior2_var):
+             prior(map(f, prior1_var), map(f, prior2_var)),
+           star(star1_var): star(map(f, star1_var)),
+           notP(notP1_var): notP(map(f, notP1_var))
+        ENDCASES;
+
+  every(R: [[V_T, V_T1] -> boolean])
+       (x: pre_Dt[V_T, V_N_b], y: pre_Dt[V_T1, V_N_b]):
+        boolean =
+           (ε?(x) AND ε?(y)) OR (any?(x) AND any?(y))
+       OR (terminal?(x) AND terminal?(y) AND R(a(x), a(y)))
+       OR (nonTerminal?(x) AND nonTerminal?(y) AND A(x) = A(y))
+       OR (seq?(x) AND
+            seq?(y) AND every(R)(e1(x), e1(y)) AND every(R)(e2(x), e2(y)))
+       OR (prior?(x) AND
+            prior?(y) AND every(R)(e1(x), e1(y)) AND every(R)(e2(x), e2(y)))
+       OR (star?(x) AND star?(y) AND every(R)(e(x), e(y)))
+       OR (notP?(x) AND notP?(y) AND every(R)(e(x), e(y)));
+ END pre_Dt_adt_map
+
+pre_Dt_adt_reduce[V_T: TYPE+, V_N_b: {k: nat | k > 0}, range: TYPE]: THEORY
+ BEGIN
+  ASSUMING
+   V_T_TCC1: ASSUMPTION EXISTS (x: V_T): TRUE;
+  ENDASSUMING
+
+  IMPORTING pre_Dt_adt[V_T, V_N_b]
+
+  reduce(ε?_fun: range, any?_fun: range, terminal?_fun: [V_T -> range],
+         nonTerminal?_fun: [below(V_N_b) -> range],
+         seq?_fun: [[range, range] -> range],
+         prior?_fun: [[range, range] -> range],
+         star?_fun: [range -> range], notP?_fun: [range -> range]):
+        [pre_Dt[V_T, V_N_b] -> range] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt[V_T, V_N_b]):
+        LET red: [pre_Dt[V_T, V_N_b] -> range] =
+              reduce(ε?_fun, any?_fun, terminal?_fun, nonTerminal?_fun,
+                     seq?_fun, prior?_fun, star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun,
+               any: any?_fun,
+               terminal(terminal1_var): terminal?_fun(terminal1_var),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var)),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var)),
+               star(star1_var): star?_fun(red(star1_var)),
+               notP(notP1_var): notP?_fun(red(notP1_var))
+            ENDCASES;
+
+  REDUCE(ε?_fun: [pre_Dt[V_T, V_N_b] -> range],
+         any?_fun: [pre_Dt[V_T, V_N_b] -> range],
+         terminal?_fun: [[V_T, pre_Dt[V_T, V_N_b]] -> range],
+         nonTerminal?_fun: [[below(V_N_b), pre_Dt[V_T, V_N_b]] -> range],
+         seq?_fun: [[range, range, pre_Dt[V_T, V_N_b]] -> range],
+         prior?_fun: [[range, range, pre_Dt[V_T, V_N_b]] -> range],
+         star?_fun: [[range, pre_Dt[V_T, V_N_b]] -> range],
+         notP?_fun: [[range, pre_Dt[V_T, V_N_b]] -> range]):
+        [pre_Dt[V_T, V_N_b] -> range] =
+      LAMBDA (pre_Dt_adtvar: pre_Dt[V_T, V_N_b]):
+        LET red: [pre_Dt[V_T, V_N_b] -> range] =
+              REDUCE(ε?_fun, any?_fun, terminal?_fun, nonTerminal?_fun,
+                     seq?_fun, prior?_fun, star?_fun, notP?_fun)
+          IN
+          CASES pre_Dt_adtvar
+            OF ε: ε?_fun(pre_Dt_adtvar),
+               any: any?_fun(pre_Dt_adtvar),
+               terminal(terminal1_var):
+                 terminal?_fun(terminal1_var, pre_Dt_adtvar),
+               nonTerminal(nonTerminal1_var):
+                 nonTerminal?_fun(nonTerminal1_var, pre_Dt_adtvar),
+               seq(seq1_var, seq2_var):
+                 seq?_fun(red(seq1_var), red(seq2_var), pre_Dt_adtvar),
+               prior(prior1_var, prior2_var):
+                 prior?_fun(red(prior1_var), red(prior2_var),
+                            pre_Dt_adtvar),
+               star(star1_var): star?_fun(red(star1_var), pre_Dt_adtvar),
+               notP(notP1_var): notP?_fun(red(notP1_var), pre_Dt_adtvar)
+            ENDCASES;
+ END pre_Dt_adt_reduce

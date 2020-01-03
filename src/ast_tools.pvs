@@ -1,0 +1,30 @@
+% ————————————————————————————–
+% ast_tools.pvs
+%  |– ast_tools THEORY
+%     Provides tools to manipulate ast trees.
+% ————————————————————————————–
+
+
+ast_tools [
+     V_T   : TYPE+,
+     <=    : (total_order?[V_T]),
+     V_N_b : posnat,
+     bound : nat,
+     V_S   : TYPE ]:
+     THEORY
+  BEGIN
+    IMPORTING ast_props[V_T, <=, V_N_b, bound, V_S]
+
+    T, T1, T2: VAR ast
+    G, G', G1, G2: VAR Δ
+    inp, inp1, inp2: VAR input
+    P_exp: VAR WF_nT
+
+    extract_prior(T) : recursive ast =
+        Cases T of
+            prior(s, e, T1, T2): if (fail?(T1)) then T2 else T1 endif
+            ELSE fail(s(T), e(T)) 
+        endcases
+        measure astMeasure(T)
+
+END ast_tools

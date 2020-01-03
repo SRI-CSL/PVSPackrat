@@ -1,0 +1,40 @@
+% ————————————————————————————–
+% array.pvs
+%    |– Auxiliary file to define the sum of an array of booleans
+%       Only the last two lemmas are used outside of this file
+% ————————————————————————————–
+
+array_sum[V_N_b : posnat] : THEORY
+BEGIN
+
+  IMPORTING nTpred_order[V_N_b]
+  i,j,A,B : VAR V_N
+  Pf,P0,Ps : VAR nTpred
+  P, P' : VAR nTprop
+	result : TYPE = upto(V_N_b)
+
+	aux(i, (res : upto(V_N_b - i - 1)), Pf) : RECURSIVE result=
+	 LET res = (IF (Pf(i)) THEN res+1 ELSE res ENDIF) IN
+    	   IF (i = 0) THEN
+	      res
+	   ELSE
+	      aux(i-1, res, Pf)
+	   ENDIF
+	   MEASURE i
+
+	array_sum(Pf) : result = aux(V_N_b -1, 0, Pf)
+	array_sum(P) : upto(3*V_N_b) = aux(V_N_b -1, 0, P`1) + aux(V_N_b -1, 0, P`2) + aux(V_N_b -1, 0, P`3)
+
+
+	aux_gr   : LEMMA ∀ Pf, i, (res1, res2 : upto(V_N_b - 1 -i)): (res1 <= res2) ⇒ (aux(i, res1, Pf) <= aux(i, res2, Pf))
+	aux_gr2  : LEMMA ∀ Pf, P0, i, (res : upto(V_N_b - 1 -i)) : (Pf <= P0) ⇒ (aux(i, res , Pf) <= aux(i, res, P0))
+	aux_gr3  : LEMMA ∀ Pf, i, (res : upto(V_N_b -1 -i)), (k : upto(V_N_b - 1 -i -res)) : aux(i, res+k, Pf) = aux(i, res, Pf) + k
+	aux_gr4  : LEMMA ∀ Pf, i, (k : below(V_N_b -i)), (res : upto(V_N_b -1 -i-k)) : aux(i, res, Pf) <= aux(i+k, res, Pf)
+	aux_inj : LEMMA ∀ Pf, P0 : ((Pf <= P0) ∧ (aux(V_N_b - 1, 0, Pf) = aux(V_N_b - 1, 0, P0))) ⇒ (Pf = P0)
+
+    
+	sum_growing : LEMMA ∀ P, P' : (P <= P') ⇒ (array_sum(P) <= array_sum(P'))
+	sum_inj     : LEMMA ∀ P, P' : (P <= P') ∧ (array_sum(P) = array_sum(P')) ⇒ (P = P')
+
+END array_sum
+

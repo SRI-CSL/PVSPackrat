@@ -1,0 +1,192 @@
+(json_grammar
+ (isTotalOrder 0
+  (isTotalOrder-1 nil 3786305884
+   ("" (expand "total_order?")
+    (("" (expand "partial_order?")
+      (("" (expand "preorder?")
+        (("" (expand "reflexive?")
+          (("" (expand "transitive?")
+            (("" (expand "antisymmetric?")
+              (("" (expand "dichotomous?")
+                (("" (expand "<=")
+                  (("" (split)
+                    (("1" (skeep) (("1" (assert) nil nil)) nil)
+                     ("2" (skeep)
+                      (("2" (decompose-equality 1) nil nil)) nil)
+                     ("3" (skeep) (("3" (assert) nil nil)) nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   nil shostak))
+ (IMP_peg_extented_TCC1 0
+  (IMP_peg_extented_TCC2-1 nil 3786305814
+   ("" (lemma "isTotalOrder") (("" (propax) nil nil)) nil) nil nil
+   (IMP_peg_extented subtype "json_grammar.<="
+    "(orders[V_T].total_order?)")))
+ (IMP_peg_extented_TCC2 0
+  (IMP_peg_extented_TCC3-1 nil 3786305814 ("" (subtype-tcc) nil nil)
+   nil nil (IMP_peg_extented subtype "json_grammar.V_N_b" "posnat")))
+ (ws_TCC1 0
+  (ws_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (ws subtype "0" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (begin_array_TCC1 0
+  (begin_array_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (begin_array subtype "1"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (begin_object_TCC1 0
+  (begin_object_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil
+   nil
+   (begin_object subtype "2"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (end_array_TCC1 0
+  (end_array_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (end_array subtype "3" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (end_object_TCC1 0
+  (end_object_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (end_object subtype "4"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (name_separator_TCC1 0
+  (name_separator_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil
+   nil
+   (name_separator subtype "5"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (value_separator_TCC1 0
+  (value_separator_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil
+   nil
+   (value_separator subtype "6"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_false_TCC1 0
+  (J_false_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_false subtype "7" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_null_TCC1 0
+  (J_null_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_null subtype "8" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_true_TCC1 0
+  (J_true_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_true subtype "9" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_object_TCC1 0
+  (J_object_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_object subtype "10" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (member_TCC1 0
+  (member_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (member subtype "11" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_array_TCC1 0
+  (J_array_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_array subtype "12" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (value_TCC1 0
+  (value_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (value subtype "30" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_number_TCC1 0
+  (J_number_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_number subtype "13" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (decimal_point_TCC1 0
+  (decimal_point_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil
+   nil
+   (decimal_point subtype "14"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (digit1_9_TCC1 0
+  (digit1_9_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (digit1_9 subtype "15" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (digit_TCC1 0
+  (digit_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (digit subtype "16" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (e_TCC1 0
+  (e_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (e subtype "17" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (exp_TCC1 0
+  (exp_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (exp subtype "18" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (frac_TCC1 0
+  (frac_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (frac subtype "19" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_int_TCC1 0
+  (J_int_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_int subtype "20" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_minus_TCC1 0
+  (J_minus_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_minus subtype "21" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_plus_TCC1 0
+  (J_plus_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_plus subtype "22" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (zero_TCC1 0
+  (zero_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (zero subtype "23" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (quotation_mark_TCC1 0
+  (quotation_mark_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil
+   nil
+   (quotation_mark subtype "24"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (unescaped_TCC1 0
+  (unescaped_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (unescaped subtype "25"
+    "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_char_TCC1 0
+  (J_char_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_char subtype "26" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (hexdig_TCC1 0
+  (hexdig_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (hexdig subtype "27" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (J_string_TCC1 0
+  (J_string_TCC1-1 nil 3786305814 ("" (subtype-tcc) nil nil) nil nil
+   (J_string subtype "28" "naturalnumbers.below(json_grammar.V_N_b)")))
+ (correct_grammar 0
+  (correct_grammar-1 nil 3786306599
+   ("" (expand "strong_WF")
+    (("" (expand "P_0c?")
+      (("" (skeep)
+        (("" (case "A=0")
+          (("1" (postpone) nil nil) ("2" (postpone) nil nil)) nil))
+        nil))
+      nil))
+    nil)
+   nil shostak)))
+(json_object)
+(json_parser
+ (IMP_semantic_parser_TCC1 0
+  (IMP_semantic_parser_TCC2-1 nil 3786377705
+   ("" (lemma "isTotalOrder") (("" (propax) nil nil)) nil)
+   ((isTotalOrder formula-decl nil json_grammar nil)) nil
+   (IMP_semantic_parser subtype "json_grammar.<="
+    "(orders[V_T].total_order?)")))
+ (IMP_semantic_parser_TCC2 0
+  (IMP_semantic_parser_TCC3-1 nil 3786377705 ("" (subtype-tcc) nil nil)
+   ((V_N_b const-decl "nat" json_grammar nil)) nil
+   (IMP_semantic_parser subtype "json_grammar.V_N_b"
+    "{k: naturalnumbers.nat | reals.>(k, 0)}")))
+ (extract_number_TCC1 0
+  (extract_number_TCC1-1 nil 3786428596
+   ("" (skeep) (("" (ground) nil nil)) nil)
+   ((real_gt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil))
+   nil
+   (extract_number disjointness "TABLE
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+  |[ json_parser.x = 48 | json_parser.x = 49 | json_parser.x = 50 | json_parser.x = 51 | json_parser.x = 52 | json_parser.x = 53 | json_parser.x = 54 | json_parser.x = 55 | json_parser.x = 56 | json_parser.x = 57 | booleans.∨(reals.<(json_parser.x, 48), reals.>(json_parser.x, 57)) ]|
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+  | 0                   | 1                  | 2                  | 3                  | 4                  | 5                  | 6                  | 7                  | 8                  | 9                  | 0                                                                  ||
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+ENDTABLE" "nil")))
+ (extract_number_TCC2 0
+  (extract_number_TCC2-1 nil 3786428596
+   ("" (skeep) (("" (assert) nil nil)) nil)
+   ((real_gt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil))
+   nil
+   (extract_number coverage "TABLE
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+  |[ json_parser.x = 48 | json_parser.x = 49 | json_parser.x = 50 | json_parser.x = 51 | json_parser.x = 52 | json_parser.x = 53 | json_parser.x = 54 | json_parser.x = 55 | json_parser.x = 56 | json_parser.x = 57 | booleans.∨(reals.<(json_parser.x, 48), reals.>(json_parser.x, 57)) ]|
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+  | 0                   | 1                  | 2                  | 3                  | 4                  | 5                  | 6                  | 7                  | 8                  | 9                  | 0                                                                  ||
+  %---------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------------------------------------------------++
+ENDTABLE" "nil"))))
+

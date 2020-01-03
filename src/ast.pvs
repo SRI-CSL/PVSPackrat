@@ -1,0 +1,148 @@
+% ————————————————————————————–
+% ast.pvs
+%  |– ast THEORY
+%     Refines the raw pre_ast type with a notion of success/failure
+%     (called meaning) and a notion of wellformedness.
+%     Shows the fact that wellformed trees have a meaning.
+%     Defines the proper ast type (output type of the parser)
+% ————————————————————————————–
+
+
+ast [
+     V_T   : TYPE+,
+     <=    : (total_order?[V_T]),
+     V_N_b : posnat,
+     bound : nat,
+     V_S   : TYPE ]:
+     THEORY
+  BEGIN
+  
+  IMPORTING pre_ast[V_T, <=, V_N_b, bound, V_S]
+  T : VAR pre_ast
+  in_range(a,b : V_T)(x : V_T) : bool = (a <= x) ∧ (x <= b)
+
+  astType : TYPE = {success, failure, undefined}
+  
+  % Recursively computes the type of a pre_ast tree
+  astType?(T) : Recursive astType =
+   CASES T OF
+      fail(s, e) : failure,
+      ε(s, e) : COND
+         s = e -> success,
+	     else  -> undefined ENDCOND,
+      any(s, e, x) : COND
+         s+1 = e       -> success,
+         s = e = bound -> failure, % Condition for an end of stream character could be added here
+		 else          -> undefined ENDCOND,
+      terminal(s, e, a, x) : COND
+         s+1 = e ∧ a  = x -> success,
+		 s+1 = e ∧ a /= x -> failure,
+		 s = e = bound      -> failure,
+	     else               -> undefined ENDCOND,
+      range(s, e, a, b, x): COND
+         s+1 = e ∧ in_range(a,b)(x)         -> success,
+		 s+1 = e ∧ (NOT (in_range(a,b)(x))) -> failure,
+		 s = e = bound                        -> failure,
+		 else                                 -> undefined ENDCOND,
+      nonTerminal(s, e, A, T) : astType?(T),
+      semantic(s, e, A, S) : IF s <= e then success else undefined endif,
+      seq(s, e, T1, T2) : let tT1 = astType?(T1), tT2 = astType?(T2) IN COND
+	     tT1 = success ∧ tT2 = success                    -> success,
+		 tT1 = failure ∨ (tT1 = success ∧ tT2 = failure) -> failure,
+		 else                                               -> undefined ENDCOND,
+      prior(s, e, T1, T2) : let tT1 = astType?(T1), tT2 = astType?(T2) IN COND
+  	     tT1 = success ∨ (tT1 = failure ∧ tT2 = success) -> success,
+		 tT1 = failure ∧ tT2 = failure                    -> failure,
+		 else                                               -> undefined ENDCOND,
+      star(s, e, T0, Ts) : let tT0 = astType?(T0), tTs = astType?(Ts) IN COND
+		 tT0 = failure                   -> success,
+		 tT0 = success ∧ tTs = success -> success,
+		 else                            -> undefined ENDCOND,
+      plus(s, e, T0, Ts) : let tT0 = astType?(T0), tTs = astType?(Ts) IN COND
+		 tT0 = failure                   -> failure,
+		 tT0 = success ∧ tTs = failure -> success,
+		 tT0 = success ∧ tTs = success -> success,
+		 else                            -> undefined ENDCOND,
+      opt(s, e, T0) : IF (astType?(T0) /= undefined) then success else undefined endif,
+      notP(s, e, T) : let tT = astType?(T) IN COND
+         tT = success -> failure,
+         tT = failure -> success,
+		 else         -> undefined ENDCOND,
+      andP(s, e, T) : astType?(T)
+      else undefined
+    ENDCASES
+  MEASURE astMeasure
+
+
+  astMeaningful?(T) : bool = ( astType?(T) = success) ∨ (astType?(T) = failure)
+  astMeaningful : TYPE = (astMeaningful?)
+
+
+  % Checks that a tree verifies a certain number of conditions
+  % These conditions ensure that the tree represent a possible computational
+  % path of the parser
+  astWellformed?(T) : Recursive bool =
+   CASES T OF
+      ε                (s, e) : astMeaningful?(T),
+      any           (s, e, x) : astMeaningful?(T),
+      terminal   (s, e, x, y) : astMeaningful?(T),
+      range   (s, e, a, b, x) : astMeaningful?(T),
+      nonTerminal(s, e, A, T) : (s(T) = s)
+                                ∧ (e(T) = e)
+  				                ∧ astWellformed?(T),
+      semantic   (s, e, A, S) : astMeaningful?(T),
+      seq      (s, e, T1, T2) : (s(T1) = s)
+                                ∧ (e(T1) = s(T2))
+                                ∧ (e(T2) = e)
+  				                ∧ astWellformed?(T1)
+				                ∧ (skip?(T2) ⇒ e(T2) = s(T2) = e(T1))
+  				                ∧ (astType?(T1) = failure ⇔ skip?(T2))
+  				                ∧ (astType?(T1) = success ⇔ astWellformed?(T2)),
+      prior    (s, e, T1, T2) : (s(T1) = s)
+                                ∧ (s(T2) = s)
+  				                ∧ astWellformed?(T1)
+  				                ∧ ((astType?(T1) = failure) ⇒ (astWellformed?(T2) ∧ (e = e(T2))))
+			                    ∧ ((astType?(T1) = success) ⇒ (skip?(T2) ∧ (e(T2) = s) ∧ (e = e(T1)))),
+      star     (s, e, T0, Ts) : (s(T0) = s)
+                                ∧ (e(T0) = s(Ts))
+  				                ∧ astWellformed?(T0)
+  				                ∧ (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts))))
+				                ∧ (astType?(T0) = failure ⇒ (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
+      plus     (s, e, T0, Ts) : (s(T0) = s)
+                                ∧ (e(T0) = s(Ts))
+  				                ∧ astWellformed?(T0)
+  				                ∧ (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts))))
+				                ∧ (astType?(T0) = failure ⇒ (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
+      opt          (s, e, T0) : (s(T0) = s)
+                                ∧ astWellformed?(T0)
+				                ∧ (astType?(T0) = success ⇒ (e = e(T0)))
+				                ∧ (astType?(T0) = failure ⇒ (e = s)),
+      notP          (s, e, T) : (s = e)
+                                ∧ (s(T) = s)
+  				                ∧ astWellformed?(T),
+      andP          (s, e, T) : (s = e)
+                                ∧ (s(T) = s)
+				                ∧ astWellformed?(T),
+      skip          (s, e, G) : false,
+      fail          (s, e)    : (s <= e)
+    ENDCASES
+  MEASURE astMeasure
+
+  % Exmaple lemmas of properties of a wellformed tree
+  Star_cannot_fail : LEMMA ∀ T : star?(T) ⇒ astType?(T) /= failure
+  Skip_is_badly_formed : LEMMA ∀ T : skip?(T) ⇒ NOT astWellformed?(T)
+  
+
+  % Important properties of a meaningful tree		      
+  Wellformedness_is_meaningfulness : LEMMA ∀ T : astWellformed?(T) ⇒ astMeaningful?(T)
+  Consumption_growth : LEMMA ∀ T : astWellformed?(T) ⇒ s(T) <= e(T)
+  Wellformed_theorem : THEOREM ∀ T : astWellformed?(T) ⇒ ((s(T) <= e(T)) ∧ ((astType?(T) = failure) ∨ (astType?(T) = success)))
+
+  % Type definition
+  ast : TYPE = {T : pre_ast | astWellformed?(T)}
+
+
+END ast
+
+
+

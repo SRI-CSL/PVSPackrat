@@ -1,0 +1,283 @@
+% ————————————————————————————–
+% delta.pvs
+%  |– peg THEORY
+%     Defines the peg operators with a datatype. 
+%     Adds a measure and a few trivial properties on subterms
+%
+%  |– wf_peg THEORY
+%     Defines the well formed peg grammars over the peg datatype.
+%     The first part of the theory focuses on computing properties
+%     of a grammar node, based on previous knowledge.
+%     Then the process for getting a fix point of properties is 
+%     defined and use to get a constructive definition of
+%     a well-formed grammar
+%
+%  |– peg_extended THEORY
+%     Provides some tools to create real grammars, such as extensions
+%     of the prior and seq operators to more than 2 sub nodes.
+% ————————————————————————————–
+
+
+% Grammar rules
+peg[
+    V_T: TYPE+, 
+    <=: (total_order?[V_T]), 
+    V_N_b : posnat
+    ]: THEORY
+BEGIN
+  peg: DATATYPE
+    BEGIN
+      ε                             : ε?
+      any                           : any?
+      terminal(a : V_T)             : terminal?
+      range(a : V_T, b : V_T)       : range?
+      nonTerminal(A : below(V_N_b)) : nonTerminal?
+      seq(e1, e2 : peg)             : seq?
+      prior(e1, e2 : peg)           : prior?
+      star(e : peg)                 : star?
+      plus(e : peg)                 : plus?
+      opt(e : peg)                  : opt?
+      notP(e : peg)                 : notP?
+      andP(e : peg)                 : andP?
+    END peg
+
+    a, b : VAR V_T
+    A : VAR below(V_N_b)
+    i, j : VAR nat
+    e, e1, e2, G : VAR peg
+    
+    inc(i) : nat =  i+1
+    sum(i,j) : nat = i+j+1
+
+    % Measure of the number of nodes in the grammar tree
+    pegMeasure(e : peg) : nat = 
+        reduce_nat(0, 0, 
+                   λ(a) : 0, 
+                   λ(a,b) : 0, 
+                   λ(A) : 0, 
+                   sum, sum, inc, inc, inc, inc, inc)(e)
+
+    % Simple properties over subterms
+    subterm_lq: LEMMA ∀ e1, e2 : subterm(e1, e2) ⇒ pegMeasure(e1) <= pegMeasure(e2)
+    subterm_eq: LEMMA ∀ e1, e2 : (subterm(e1, e2) ∧ pegMeasure(e1) = pegMeasure(e2)) ⇒ (e1 = e2) 
+    subterm_transitivity: LEMMA ∀ e, e1, e2 : subterm(e, e1) ∧ subterm(e1, e2) ⇒ subterm(e, e2)
+
+END peg
+
+
+wf_peg [
+    V_T   : TYPE+,
+    <=    : (total_order?[V_T]),
+    V_N_b : posnat
+    ]:THEORY
+BEGIN    
+    IMPORTING peg
+    IMPORTING array_sum[V_N_b]
+
+    Δ        : TYPE = peg[V_T, <=, V_N_b]
+    nTpred   : TYPE = pred[V_N]
+    interp   : TYPE = [V_N -> Δ]
+    
+    e, e1, e2, G : VAR Δ
+    a            : VAR V_T
+    A, B, i, j   : VAR V_N
+    P_exp        : VAR interp
+    P, P'        : VAR nTprop
+    Pf,P0,Ps,WF  : VAR nTpred
+    
+    all_false : nTpred = λ(A) : false
+    all_true  : nTpred = λ(A) : true
+    ;⊥ : bool = false
+    ;⊤ : bool = true
+
+    % Recursively computes the grammar properties of a peg object
+    % based on a current set of known properties for non terminals
+    g_props(G, P) : RECURSIVE [bool, bool, bool] =
+     CASES G of
+        ε              : (false, true, false),
+	    any            : (true, false, true),
+	    terminal(a)    : (true, false, true),
+	    range(a,b)     : (true, false, true),
+	    nonTerminal(A) : (P`1(A), P`2(A), P`3(A)),
+	    seq(e1, e2)    : LET (e1_f, e1_0, e1_s) = g_props(e1, P) IN
+		                 LET (e2_f, e2_0, e2_s) = g_props(e2, P) IN
+		                 (e1_f ∨ ((e1_0 ∨ e1_s) ∧ e2_f),
+		                  e1_0 ∧ e2_0,
+		                 (e1_s ∧ (e2_0 ∨ e2_s)) ∨ (e1_0 ∧ e2_s)),
+	    prior(e1, e2)  : LET (e1_f, e1_0, e1_s) = g_props(e1, P) IN  
+		                 LET (e2_f, e2_0, e2_s) = g_props(e2, P) IN
+		                 (e1_f ∧ e2_f,     
+		                 e1_0 ∨ (e1_f ∧ e2_0), 
+		                 e1_s ∨ (e1_f ∧ e2_s)),
+	    star(e)        : LET (e_f, e_0, e_s) = g_props(e, P) IN
+	                     (false, e_f, e_s),
+	    plus(e)        : LET (e_f, e_0, e_s) = g_props(e, P) IN
+	                     (e_f, e_0 ∧ e_f, e_s),
+	    opt(e)         : LET (e_f, e_0, e_s) = g_props(e, P) IN
+	                     (false, e_f ∨ e_0, e_s),
+	    notP(e)        : LET (e_f, e_0, e_s) = g_props(e, P) IN
+	                     (e_s ∨ e_0, e_f, false),
+	    andP(e)        : LET (e_f, e_0, e_s) = g_props(e, P) IN
+	                     (e_f, e_s ∨ e_0, false)
+      ENDCASES
+      MEASURE pegMeasure(G)
+
+    % g is growing
+    g_props_growth: LEMMA ∀ G, P, P' : (P <= P') ⇒ (g_props(G, P) <= g_props(G, P'))
+
+    % Once we are able to compute properties based on current knowledge,
+    % we can define the coherent properties as the ones being less or 
+    % equal to what can be calculated based on them
+    coherent_properties(P_exp)(P) : bool = 
+        ∀ A : (P`1(A), P`2(A), P`3(A)) <= g_props(P_exp(A), P)
+    C(P_exp) : TYPE = (coherent_properties(P_exp))
+    
+
+    ρ(P_exp, A, (P : C(P_exp))) : C(P_exp) = 
+        let (A_f, A_0, A_s) = g_props(P_exp(A), P) in
+            (P`1 WITH [(A) := A_f], 
+             P`2 WITH [(A) := A_0], 
+             P`3 WITH [(A) := A_s])
+    
+    % ρ is growing
+    ρ_growth : LEMMA ∀ P_exp, A, (P : C(P_exp)) : P <= ρ(P_exp, A, P)
+    ρ_growth2: LEMMA ∀ P_exp, A, (P, P' : C(P_exp)): (P <= P') ⇒ (ρ(P_exp, A, P) <= ρ(P_exp, A, P')) 
+
+    
+    % Recomputes properties of non terminal, increasing knowledge
+    recompute_nonTerminals_properties(P_exp, A, (P : C(P_exp))): 
+    recursive C(P_exp) =
+      if (A = V_N_b - 1) then ρ(P_exp, A, P)
+      else recompute_nonTerminals_properties(P_exp, A+1, ρ(P_exp, A, P))
+      endif
+    measure (V_N_b - A)
+
+    r(P_exp, A, (P: C(P_exp))) : C(P_exp) = recompute_nonTerminals_properties(P_exp, A, P)
+
+    lemma_3_2_1 : LEMMA ∀(P_exp, (P: C(P_exp)), A): P <= r(P_exp, A, P)
+    lemma_3_2_2 : LEMMA ∀(P_exp, (P, P' : C(P_exp)), A): (P <= P') ⇒ (r(P_exp, A, P) <= r(P_exp, A, P'))
+    lemma_3_2_3 : LEMMA ∀(P_exp, (P : C(P_exp)), (A: below(V_N_b -1))): r(P_exp, A+1, P) <= r(P_exp, A, P)
+
+
+    fix_point(P_exp)(P : C(P_exp)) : bool = r(P_exp, 0, P) = P
+    F(P_exp) : TYPE = (fix_point(P_exp))
+
+    fix_point_lemma : LEMMA ∀ P_exp, (P : F(P_exp)), A : r(P_exp, A, P) <= P
+    fix_point_theorem : THEOREM ∀ P_exp, (P : F(P_exp)), A : P = ρ(P_exp, A, P)
+
+    % Increase knowledge until no new properties are found.
+    compute_properties(P_exp, (P : C(P_exp)), 
+                       (currentState : {k : upto(3*V_N_b) | k = array_sum(P)})) :
+    recursive F(P_exp) =
+      let nP = r(P_exp, 0, P) in
+      let newState = array_sum(nP) in
+          if (newState = currentState) then nP
+          else compute_properties(P_exp, nP, newState) 
+          endif
+    measure (3*V_N_b - currentState)
+
+
+    strong: bool = true
+    complete: bool = false
+    δ : VAR bool
+    
+    g_wf(G, (A : upto(V_N_b)), (P_0 : [Δ -> bool]), δ) : RECURSIVE bool =
+      CASES G of
+        ε: true, any: true, terminal(a): true,range(a,b): true,
+    	nonTerminal(B) : δ ⇒ (B < A),
+    	seq(e1, e2)    : g_wf(e1, A, P_0, δ) ∧ g_wf(e2, A, P_0, P_0(e1) ∧ δ),
+    	prior(e1, e2)  : g_wf(e1, A, P_0, δ) ∧ g_wf(e2, A, P_0, δ),
+    	star(e)        : g_wf(e , A, P_0, δ) ∧ (¬P_0(e)),
+	    plus(e)        : g_wf(e , A, P_0, δ) ∧ (¬P_0(e)),
+	    opt(e)         : g_wf(e , A, P_0, δ), 
+    	notP(e)        : g_wf(e , A, P_0, δ),
+	    andP(e)        : g_wf(e , A, P_0, δ) 
+      ENDCASES
+      MEASURE lex2(A, pegMeasure(G))
+    
+
+    nT_properties(P_exp) : F(P_exp) = compute_properties(P_exp, (all_false, all_false, all_false), 0)
+    P_fc?(P_exp) : [Δ -> bool] = λ G : LET nTP =  nT_properties(P_exp) IN g_props(G, nTP)`1
+    P_0c?(P_exp) : [Δ -> bool] = λ G : LET nTP =  nT_properties(P_exp) IN g_props(G, nTP)`2
+    P_sc?(P_exp) : [Δ -> bool] = λ G : LET nTP =  nT_properties(P_exp) IN g_props(G, nTP)`3
+
+    strong_WF(P_exp)   : bool = ∀ A : g_wf(P_exp(A), A, P_0c?(P_exp), strong)
+    complete_WF(P_exp) : bool = ∀ A : g_wf(P_exp(A), A, P_0c?(P_exp), complete)
+
+    % Definition of a well-formed grammar
+    WF_nT : TYPE = (strong_WF)
+    strong_is_complete_WF : LEMMA ∀ (P_exp : WF_nT) : complete_WF(P_exp)
+    complete_WF_theorem : THEOREM ∀ (P_exp : WF_nT, A, G) : subterm(G, P_exp(A)) IMPLIES g_wf(G, A, P_0c?(P_exp), false)
+
+    % Example of properties of a wellformed grammar
+    Star_cannot_be_P0 : LEMMA ∀ (P_exp : WF_nT), G, A : subterm(G, P_exp(A)) ∧ star?(G) ⇒ NOT P_0c?(P_exp)(e(G))
+    
+
+
+END wf_peg
+
+
+
+% Grammar rules
+peg_extented[
+    V_T: TYPE+, 
+    <=: (total_order?[V_T]), 
+    V_N_b : posnat
+    ]: THEORY
+BEGIN
+    IMPORTING wf_peg[V_T, <=, V_N_b]
+    l : VAR list[Δ]
+    e1, e2, e3, e4, e5 : VAR Δ
+
+
+    fold_left(l : list[Δ], acc : Δ, op : [[Δ,Δ] -> Δ]) : recursive Δ = 
+        Cases l of
+            null : acc,
+            cons(e, l'): fold_left(l', op(acc, e), op)
+        endcases
+        measure length(l)
+
+    seq_list(l : list[Δ]) : Δ = Cases l of
+            null : ε,
+            cons(e, l'): fold_left(l', e, seq)
+        endcases
+
+    prior_list(l : list[Δ]) : Δ = Cases l of
+            null : ε,
+            cons(e, l'): fold_left(l', e, prior)
+        endcases
+
+    prior3(e1, e2, e3) : Δ = prior(e1, prior(e2, e3))
+    prior4(e1, e2, e3, e4) : Δ = prior(e1, prior(e2, prior(e3, e4)))
+    prior7(e1, e2, e3, e4, e5, e6, e7 : Δ) : Δ = prior(e1, 
+                                                 prior(e2, 
+                                                 prior(e3, 
+                                                 prior(e4, 
+                                                 prior(e5, 
+                                                 prior(e6, 
+                                                       e7)))))) 
+
+    prior9(e1, e2, e3, e4, e5, e6, e7, e8, e9 : Δ) : Δ = prior(e1, 
+                                                         prior(e2, 
+                                                         prior(e3, 
+                                                         prior(e4, 
+                                                         prior(e5, 
+                                                         prior(e6, 
+                                                         prior(e7, 
+                                                         prior(e8, 
+                                                               e9)))))))) 
+    seq3(e1, e2, e3) : Δ = seq(e1, seq(e2, e3))
+    seq4(e1, e2, e3, e4) : Δ = seq(e1, seq(e2, seq(e3, e4)))
+
+    string_aux(i : nat, s : finite_sequence[V_T]) : recursive Δ = 
+        if (i = (s`length - 1)) then terminal(s`seq(i))
+        else (
+             if (i < (s`length)) then seq(terminal(s`seq(i)), string_aux(i+1, s))
+             else ε
+             endif
+        ) endif
+        measure max((s`length - i), 0)
+    string(s : finite_sequence[V_T]) : Δ = string_aux(0, s)
+ 
+
+END peg_extented

@@ -1,0 +1,124 @@
+% ————————————————————————————–
+% parser_props.pvs
+%  |– parser_props THEORY
+%     Prove properties over the reference parser.
+% ————————————————————————————–
+
+parser_props [
+      V_T   : TYPE+,
+      <=    : (total_order?[V_T]),
+      V_N_b : posnat,
+      bound : posnat,
+      V_S   : TYPE
+      ]: THEORY
+      BEGIN
+
+  IMPORTING peg_parser[V_T, <=, V_N_b, bound, V_S]
+
+  ;⊥ : astType = failure
+  ;⊤ : astType = success
+  
+    % Equivalence with Bryan Ford's axioms:
+    parsing_correctness_ε:
+        LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(ε, A, P_0c?(P_exp), strong)})) :
+        subterm(ε, P_exp(A)) ⇒ 
+        LET T = parsing(P_exp, A, ε, inp, s, s_T) IN 
+            (astType?(T) = ⊤ ∧ e(T) = s)
+
+    parsing_correctness_any:
+        LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(any, A, P_0c?(P_exp), strong)})) :
+        subterm(any, P_exp(A)) ⇒
+        LET T = parsing(P_exp, A, any, inp, s, s_T) IN 
+            ((s = bound) ⇒ astType?(T) = ⊥) ∧
+            ((s < bound) ⇒ ((astType?(T) = ⊤) ∧ (e(T) = s+1)))
+
+    parsing_correctness_terminal:
+        LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N), 
+                     (a : V_T), 
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(terminal(a), A, P_0c?(P_exp), strong)})) :
+        subterm(terminal(a), P_exp(A)) ⇒
+        LET T = parsing(P_exp, A, terminal(a), inp, s, s_T) IN 
+            ((s = bound) ⇒ astType?(T) = ⊥) ∧
+            ((s < bound ∧ inp(s)  = a) ⇒ ((astType?(T) = ⊤) ∧ (e(T) = s+1))) ∧
+            ((s < bound ∧ inp(s) /= a) ⇒ astType?(T) = ⊥)
+
+    parsing_correctness_nonTerminal:
+        LEMMA FORALL (P_exp : WF_nT, 
+                     (A,B : V_N),  
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(nonTerminal(B), A, P_0c?(P_exp), strong)})) :
+        subterm(nonTerminal(B), P_exp(A)) ⇒
+        LET T = parsing(P_exp, A, nonTerminal(B), inp, s, s_T) IN 
+        LET T_B = parsing(P_exp, B, P_exp(B),       inp, s, s) IN
+            (astType?(T) = astType?(T_B) ∧ e(T) = e(T_B))    
+
+    parsing_correctness_seq: 
+	    LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (e1,e2 : {G : Δ | subterm(G, P_exp(A))}),
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(seq(e1,e2), A, P_0c?(P_exp), strong)})) :
+        subterm(seq(e1,e2), P_exp(A)) ⇒
+        LET T1 = parsing(P_exp, A, e1,         inp, s,     s_T) IN 
+        LET T  = parsing(P_exp, A, seq(e1,e2), inp, s,     s_T) IN 
+            ((astType?(T1) = ⊥) ⇒ (astType?(T) = ⊥)) ∧
+            ((astType?(T1) = ⊤) ⇒ (
+        LET T2 = parsing(P_exp, A, e2,         inp, e(T1), s_T) IN
+             astType?(T) = astType?(T2) ∧ e(T) = e(T2)))
+
+    parsing_correctness_prior: 
+	    LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (e1,e2 : {G : Δ | subterm(G, P_exp(A))}),
+                     (inp : input), 
+                     (s : upto(bound)), 
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(prior(e1,e2), A, P_0c?(P_exp), strong)})) :
+        subterm(prior(e1, e2), P_exp(A)) ⇒
+        LET T1 = parsing(P_exp, A, e1,           inp, s, s_T) IN 
+        LET T2 = parsing(P_exp, A, e2,           inp, s, s_T) IN 
+        LET T  = parsing(P_exp, A, prior(e1,e2), inp, s, s_T) IN
+            ((astType?(T1) = ⊤) ⇒ (astType?(T) = ⊤ ∧ e(T) = e(T1))) ∧
+            ((astType?(T1) = ⊥) ⇒ (astType?(T) = astType?(T2) ∧ e(T) = e(T2)))
+
+    parsing_correctness_star:
+	    LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (e : {G : Δ | subterm(G, P_exp(A))}),
+                     (inp : input),
+                     (s : upto(bound)),
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(star(e), A, P_0c?(P_exp), strong)})) :
+        subterm(star(e), P_exp(A)) ⇒
+        LET T0 = parsing(P_exp, A, e,       inp, s,     s_T) IN 
+        LET Ts = parsing(P_exp, A, star(e), inp, e(T0), s_T) IN 
+        LET T  = parsing(P_exp, A, star(e), inp, s,     s_T) IN
+            ((astType?(T0) = ⊤ ∧ astType?(Ts) = ⊤) ⇒ (astType?(T) = ⊤ ∧ e(T) = e(Ts))) ∧
+            ((astType?(T0) = ⊥) ⇒ (astType?(T) = ⊤ ∧ e(T) = s))
+
+    parsing_correctness_notP:
+	    LEMMA FORALL (P_exp : WF_nT, 
+                     (A : V_N),
+                     (e : {G : Δ | subterm(G, P_exp(A))}),
+                     (inp : input),
+                     (s : upto(bound)),
+                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(notP(e), A, P_0c?(P_exp), strong)})) :
+        subterm(notP(e), P_exp(A)) ⇒
+        LET T_n = parsing(P_exp, A, e,       inp, s, s_T) IN 
+        LET T   = parsing(P_exp, A, notP(e), inp, s, s_T) IN
+            (astType?(T_n) = ⊥ ⇒ (astType?(T) = ⊤ ∧ e(T) = s)) ∧
+            (astType?(T_n) = ⊤ ⇒ (astType?(T) = ⊥))
+        
+    
+END parser_props

@@ -1,0 +1,105 @@
+% ————————————————————————————–
+% parser.pvs
+%  |– peg_parser THEORY
+%     Defines a reference peg parser. The output type is made to ensure
+%     certain properties of the parser (and to prove termination). Most of 
+%     the complexity of the proving effort is in the TCCs.
+% ————————————————————————————–
+
+peg_parser [
+      V_T   : TYPE+,
+      <=    : (total_order?[V_T]),
+      V_N_b : posnat,
+      bound : posnat,
+      V_S   : TYPE
+      ]: THEORY
+      BEGIN
+
+  IMPORTING lex4
+  IMPORTING ast_props[V_T, <=, V_N_b, bound, V_S]
+  
+
+  A, B : VAR below(V_N_b)
+
+  % Output type : bounds the tree and the grammar
+  output(P_exp: WF_nT, A: below(V_N_b),    % Current non Terminal
+         G: {e : Δ | subterm(e, P_exp(A))},% Grammar node
+         inp: input,                       % Input string of token
+	     s: inp_bound,                   % Starting index
+          % Starting index at the beginning of the parsing of the current non terminal
+	     s_T: {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : TYPE =
+	     {T : ast | (s(T) = s) ∧ % The start is the starting index
+                    (star?(G) ⇒ star?(T)) ∧ % If the grammar node is a star, so is the ast
+                    (plus?(G) ⇒ plus?(T)) ∧ % If the grammar node is a plus, so is the ast
+                    (NOT skip?(T)) ∧  % The parsing cannot produce a skip
+                    (trueToGrammar(T, G, P_exp)) ∧ % The parsing is true to the grammar
+                    (trueToInput(T, inp)) ∧ % The parsing is true to the input
+                    (((astType?(T) = success) ∧ (e(T) = s)) ⇒ P_0c?(P_exp)(G)) ∧ % If the parsing succeeds without consuming something, G is of type P_0
+					(((astType?(T) = success) ∧ (e(T) > s)) ⇒ P_sc?(P_exp)(G)) ∧ % If the parsing succeeds consuming something, G is of type P_s
+					 ((astType?(T) = failure) ⇒ P_fc?(P_exp)(G))}                % If the parsing fails, G is of type P_f
+
+
+
+  % Actual peg parser
+  parsing( P_exp : WF_nT,
+	       A     : below(V_N_b),                  % Current non Terminal
+           G     : {e : Δ | subterm(e, P_exp(A))},% Grammar node
+           inp   : input,                         % Input array
+	       s     : inp_bound,                       % Starting index 
+           % Starting index at the beginning of the parsing of the current non terminal :
+	       s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) :
+    RECURSIVE output(P_exp, A, G, inp, s, s_T) =
+    CASES G OF
+        ε: ε(s,s),
+        any: any(s, min(s+1, bound), inp(s)),
+        terminal(a): terminal(s, min(s+1, bound), a, inp(s)),
+        range(a, b): range(s, min(s+1, bound), a, b, inp(s)),
+        nonTerminal(B): let T_B = parsing(P_exp, B, P_exp(B), inp, s, s) in nonTerminal(s, e(T_B), B, T_B),
+        seq(e1, e2): 
+            let T1  = parsing(P_exp, A, e1, inp, s, s_T) in
+                if (astType?(T1) = failure) then seq(s, e(T1), T1, skip(e(T1), e(T1), e2))
+		        else 
+                    let T2 = parsing(P_exp, A, e2, inp, e(T1), s_T) in
+				    seq(s, e(T2), T1, T2) 
+                endif,
+        prior(e1, e2):
+            let T1 = parsing(P_exp, A, e1, inp, s, s_T) in
+	            if (astType?(T1) = success) then prior(s, e(T1), T1, skip(s, s, e2))
+		        else 
+                    let T2 = parsing(P_exp, A, e2, inp, s, s_T) in
+					prior(s, e(T2), T1, T2) 
+                endif,
+        star(e): 
+            let T0 = parsing(P_exp, A, e, inp, s, s_T) in
+                if (astType?(T0) = failure) then star(s, s, T0, skip(e(T0), e(T0), star(e)))
+		        else 
+                    let Ts = parsing(P_exp, A, star(e), inp, e(T0), s_T) IN
+                    star(s, e(Ts), T0, Ts) 
+                endif,
+        plus(e): 
+            let T0  = parsing(P_exp, A, e, inp, s, s_T) IN
+    	        if (astType?(T0) = failure) then plus(s, s, T0, skip(e(T0), e(T0), plus(e)))
+		        else 
+                    let Ts = parsing(P_exp, A, plus(e), inp, e(T0), s_T) IN
+					plus(s, e(Ts), T0, Ts) 
+                endif,
+        opt(e): 
+            let T = parsing(P_exp, A, e, inp, s, s_T) IN
+                if (astType?(T) = failure)  THEN opt(s, s, T)
+			    else opt(s, e(T), T) 
+                endif,
+        notP(e): let T = parsing(P_exp, A, e, inp, s, s_T) IN notP(s, s, T),
+        andP(e): let T = parsing(P_exp, A, e, inp, s, s_T) IN andP(s, s, T)
+    ENDCASES
+    MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
+
+    % Reference parser produces parseTree (without fail or semantic nodes)
+    reference_parser_theorem : THEOREM ∀ (
+           P_exp : WF_nT, A: below(V_N_b), G: {e : Δ | subterm(e, P_exp(A))}, inp: input, s: inp_bound, s_T: {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : parseTree?(parsing(P_exp, A, G, inp, s, s_T))
+
+    % The output ast is true to the input grammar:
+    reference_parser_grammar : THEOREM ∀ (
+           P_exp : WF_nT, A: below(V_N_b), G: {e : Δ | subterm(e, P_exp(A))}, inp: input, s: inp_bound, s_T: {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : trueToGrammar(parsing(P_exp, A, G, inp, s, s_T), G, P_exp)
+
+END peg_parser
+

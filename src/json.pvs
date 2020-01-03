@@ -1,0 +1,163 @@
+json_grammar : THEORY BEGIN
+   V_T : TYPE = char
+   V_N_b : nat = 40
+
+   ;<= (c1:char, c2:char) : bool = code(c1) <= code(c2)
+   isTotalOrder: LEMMA total_order?(<=)
+
+   IMPORTING peg_extented[V_T, <=, V_N_b]
+
+   ws : Δ = nonTerminal(0)
+   begin_array     : Δ = nonTerminal(1)
+   begin_object    : Δ = nonTerminal(2) % {
+   end_array       : Δ = nonTerminal(3) % ]
+   end_object      : Δ = nonTerminal(4) % }
+   name_separator  : Δ = nonTerminal(5) % :
+   value_separator : Δ = nonTerminal(6) % ,
+   J_false : Δ = nonTerminal(7)
+   J_null  : Δ = nonTerminal(8)
+   J_true  : Δ = nonTerminal(9)
+   J_object: Δ = nonTerminal(10)
+   member  : Δ = nonTerminal(11)
+   J_array : Δ = nonTerminal(12)
+   value   : Δ = nonTerminal(30)
+   
+   % Json number
+   J_number: Δ = nonTerminal(23)
+   decimal_point : Δ = nonTerminal(14)
+   digit1_9 : Δ = nonTerminal(15)
+   digit    : Δ = nonTerminal(16)
+   e        : Δ = nonTerminal(17)
+   exp      : Δ = nonTerminal(18)
+   frac     : Δ = nonTerminal(19)
+   J_int    : Δ = nonTerminal(20)
+   J_minus  : Δ = nonTerminal(21)
+   J_plus   : Δ = nonTerminal(22)
+   zero     : Δ = nonTerminal(13)
+   
+   % Json strings
+   quotation_mark : Δ = nonTerminal(24)
+   unescaped      : Δ = nonTerminal(25)
+   escape         : Δ = terminal(char(92))
+   J_char         : Δ = nonTerminal(26)
+   hexdig         : Δ = nonTerminal(27)
+   hexdig4        : Δ = seq(terminal(char(117)), seq4(hexdig, hexdig, hexdig, hexdig))
+   J_string       : Δ = nonTerminal(28)
+
+
+   P_exp(x:below(V_N_b)) : Δ =  COND
+      x = 0 -> star(prior4(terminal(char(32)), terminal(char(9)), terminal(char(10)), terminal(char(13)))),
+      x = 1 -> seq3(ws, terminal(char(91)),  ws), % [
+      x = 2 -> seq3(ws, terminal(char(123)), ws), % {
+      x = 3 -> seq3(ws, terminal(char(93)),  ws), % ]
+      x = 4 -> seq3(ws, terminal(char(125)), ws), % }
+      x = 5 -> seq3(ws, terminal(char(58)),  ws), % :
+      x = 6 -> seq3(ws, terminal(char(44)),  ws), % ,
+      x = 7 -> string("false"), % false
+      x = 8 -> string("null"),  % null
+      x = 9 -> string("true"),  % true
+       % Json object: 
+       % object = begin-object [ member *(value-separator member)] end-array
+       % member = string name-separator value
+      x = 10-> seq3(begin_object, opt(seq(member, star(seq(value_separator, member)))), end_object),
+      x = 11-> seq3(J_string, name_separator, value),
+       % Json Array: 
+       % array = begin-array [ value *(value-separator value)] end-array 
+      x = 12-> seq3(begin_array, opt(seq(value, star(seq(value_separator, value)))), end_array),
+       % Json number: 
+       % number = [minus] int [frac] [exp]
+      x = 13-> terminal(char(48)), % zero
+      x = 14-> terminal(char(46)), % .
+      x = 15-> range(char(49), char(57)), % 1-9
+      x = 16-> range(char(48), char(57)), % 0-9
+      x = 17-> prior(terminal(char(101)), terminal(char(69))), % e E
+      x = 18-> seq3(e, opt(prior(J_minus, J_plus)), plus(digit)), % exp
+      x = 19-> seq(decimal_point, plus(digit)), % frac
+      x = 20-> prior(zero, seq(digit1_9, star(digit))), % int
+      x = 21-> terminal(char(45)), % minus
+      x = 22-> terminal(char(43)), % plus
+      x = 23-> seq4(opt(J_minus), J_int, opt(frac), opt(exp)),
+       % Json string:
+      x = 24-> terminal(char(34)), % quotation mark
+      x = 25-> prior3(range(char(32), char(33)), range(char(35), char(91)), range(char(93), char(127))),
+      x = 26-> prior(unescaped, seq(escape, prior9(terminal(char(34)), terminal(char(92)), terminal(char(47)), terminal(char(98)), terminal(char(102)), terminal(char(110)), terminal(char(114)), terminal(char(116)), hexdig4))),
+      x = 27-> prior3(range(char(48), char(57)), range(char(65), char(70)), range(char(97), char(102))),
+      x = 28-> seq3(quotation_mark, star(J_char), quotation_mark),
+       % Json text
+      x = 29-> seq3(ws, value, ws),
+       % Json value
+      x = 30-> prior7(J_false, J_null, J_true, J_object, J_array, J_number, J_string),
+      else  -> ε
+      endcond
+
+   correct_grammar : THEOREM strong_WF(P_exp)
+END json_grammar
+
+
+json_object : THEORY
+BEGIN
+
+    JSON: DATATYPE
+    BEGIN
+        JSON_array (arr : finite_sequence[JSON]): JSON_array?
+        JSON_object(obj : finite_sequence[[string, JSON]]): JSON_object?
+        JSON_string(str : string): JSON_string?
+        JSON_number(minus : bool, nbr: int, frac: int, exp: int): JSON_number?
+        JSON_false: JSON_false?
+        JSON_null : JSON_null?
+        JSON_true : JSON_true?
+    END JSON
+
+END json_object
+
+json_parser : Theory
+Begin
+    IMPORTING json_object
+    IMPORTING json_grammar
+
+    V_S : TYPE = JSON
+    IMPORTING semantic_parser[V_T, <=, V_N_b, 1000, V_S]
+    IMPORTING ast_tools[V_T, <=, V_N_b, 1000, V_S]
+
+    ;⊥ : JSON
+
+    charToInt(x : int): int = TABLE
+    |[x=48|x=49|x=50|x=51|x=52|x=53|x=54|x=55|x=56|x=57|(x<48)∨(x>57)]| 
+    |   0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |      0      || ENDTABLE
+
+    astToInt(T: ast): int
+
+    extractJsonNumber(T: ast): JSON =
+        % seq(minus, seq(int, seq(frac, exp)))
+        IF (seq?(T) ∧ seq?(T2(T)) ∧ seq?(T2(T2(T))) ∧ opt?(T1(T)) ∧ opt?(T1(T2(T2(T)))) ∧ opt?(T2(T2(T2(T))))) then (
+           let minus   = ¬ fail?(T(T1(T)))in
+           let int     = astToInt(T1(T2(T))) in 
+           let fracAST = T1(T2(T2(T))) in
+           let frac    = if fail?(T(fracAST)) then 0 else astToInt(T(fracAST)) endif in 
+           let expAST  = T2(T2(T2(T))) in
+           let exp     = if fail?(T(expAST))  then 1 else astToInt(T(expAST)) endif in
+           JSON_number(minus, int, frac, exp) )
+        else
+           ⊥
+        endif
+    
+    extractJsonString(T: ast): JSON
+    extractJsonArray(T: ast): JSON
+    extractJsonObject(T: ast): JSON   
+
+
+    P_inp : [V_N, semanticTree -> V_S] = λ(A : V_N, T: semanticTree) : cond
+        A = 7  -> JSON_false,
+        A = 8  -> JSON_null,
+        A = 9  -> JSON_true,
+        A = 23 -> extractJsonNumber(T),
+        A = 28 -> extractJsonString(T),
+        A = 12 -> extractJsonArray(T),
+        A = 10 -> extractJsonObject(T),
+        A = 29 -> T1(T2(T)),
+        A = 30 -> extract_prior(T),
+        else  -> ⊥
+        endcond
+
+    
+end json_parser

@@ -1,0 +1,77 @@
+% ————————————————————————————–
+% ast_props.pvs
+%  |– ast_props THEORY
+%     Provides tools to reconstruct grammar or input from 
+%     wellformed trees. It can later on be used to prove 
+%     correctness of a parser.
+% ————————————————————————————–
+
+
+ast_props [
+     V_T   : TYPE+,
+     <=    : (total_order?[V_T]),
+     V_N_b : posnat,
+     bound : nat,
+     V_S   : TYPE ]:
+     THEORY
+  BEGIN
+    IMPORTING ast[V_T, <=, V_N_b, bound, V_S]
+
+    T, T1, T2: VAR pre_ast
+    G, G', G1, G2: VAR Δ
+    inp_bound : TYPE = upto(bound)
+    input : TYPE = [inp_bound -> V_T]
+    inp, inp1, inp2: VAR input
+    P_exp: VAR WF_nT
+    
+    trueToGrammar(T, G, P_exp) : RECURSIVE bool = 
+        CASES T OF
+            ε(s, e): ε?(G),
+            any(s, e, x): any?(G),
+            terminal(s, e, x, y): (terminal(x) = G),
+            range(s, e, a, b, x): (range(a, b) = G),
+            nonTerminal(s, e, A, T): (nonTerminal(A) = G) ∧ (trueToGrammar(T, P_exp(A), P_exp)),
+            seq(s, e, T1, T2): seq?(G) ∧ (trueToGrammar(T1, e1(G), P_exp) ∧ trueToGrammar(T2, e2(G), P_exp)),
+            prior(s, e, T1, T2): prior?(G) ∧ (trueToGrammar(T1, e1(G), P_exp) ∧ trueToGrammar(T2, e2(G), P_exp)),
+            star(s, e, T0, Ts): star?(G) ∧ (trueToGrammar(T0, e(G), P_exp) ∧ trueToGrammar(Ts, G, P_exp)),
+            plus(s, e, T0, Ts): plus?(G) ∧ (trueToGrammar(T0, e(G), P_exp) ∧ trueToGrammar(Ts, G, P_exp)),
+            opt(s, e, T0): opt?(G) ∧ trueToGrammar(T0, e(G), P_exp),
+            notP(s, e, T): notP?(G) ∧ trueToGrammar(T, e(G), P_exp),
+            andP(s, e, T): andP?(G) ∧ trueToGrammar(T, e(G), P_exp),
+            skip(s, e, G'): (G' = G)
+            ELSE false
+        ENDCASES
+    MEASURE astMeasure(T)
+    
+    % Grammar uniqueness:
+    unique_grammar: LEMMA ∀(T, G1, G2, P_exp): (trueToGrammar(T, G1, P_exp) ∧ trueToGrammar(T, G2, P_exp)) ⇒ (G1 = G2)
+
+    trueToInput(T, inp) : Recursive bool = 
+        CASES T OF
+            ε(s, e): true,
+            any(s, e, x): (inp(s) = x),
+            terminal(s, e, x, y): (inp(s) = y),
+            range(s, e, a, b, x): (inp(s) = x),
+            nonTerminal(s, e, A, T): trueToInput(T, inp),
+            seq(s, e, T1, T2): trueToInput(T1, inp) ∧ trueToInput(T2, inp),
+            prior(s, e, T1, T2): trueToInput(T1, inp) ∧ trueToInput(T2, inp),
+            star(s, e, T0, Ts): trueToInput(T0, inp) ∧ trueToInput(Ts, inp),
+            plus(s, e, T0, Ts): trueToInput(T0, inp) ∧ trueToInput(Ts, inp),
+            opt(s, e, T0): trueToInput(T0, inp),
+            notP(s, e, T): trueToInput(T, inp),
+            andP(s, e, T): trueToInput(T, inp),
+            skip(s, e, G): true
+            ELSE false
+        ENDCASES
+    MEASURE astMeasure(T)
+
+    % Input uniqueness:
+    unique_input: LEMMA ∀((T: ast), inp1, inp2): (trueToInput(T, inp1) ∧ trueToInput(T, inp2)) ⇒ (∀ (i:below(e(T))): (i >= s(T)) ⇒ inp1(i) = inp2(i))
+
+    % Main uniqueness theorem: 
+    unique_tree: LEMMA ∀((T1, T2 : ast), inp, G, P_exp): (trueToInput(T1, inp) ∧ trueToInput(T2, inp) ∧ trueToGrammar(T1, G, P_exp) ∧ trueToGrammar(T2, G, P_exp) ∧ s(T1) = s(T2)) ⇒ T1 = T2
+
+END ast_props
+
+
+
