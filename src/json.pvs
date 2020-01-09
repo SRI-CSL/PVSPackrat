@@ -154,8 +154,8 @@ Begin
         A = 28 -> extractJsonString(T),
         A = 12 -> extractJsonArray(T),
         A = 10 -> extractJsonObject(T),
-        A = 29 -> T1(T2(T)),
-        A = 30 -> extract_prior(T),
+        %A = 29 -> T1(T2(T)),
+        %A = 30 -> extract_prior(T),
         else  -> ⊥
         endcond
 
