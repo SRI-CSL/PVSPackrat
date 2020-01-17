@@ -101,5 +101,6 @@ peg_parser [
     reference_parser_grammar : THEOREM ∀ (
            P_exp : WF_nT, A: below(V_N_b), G: {e : Δ | subterm(e, P_exp(A))}, inp: input, s: inp_bound, s_T: {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : trueToGrammar(parsing(P_exp, A, G, inp, s, s_T), G, P_exp)
 
+
 END peg_parser
 

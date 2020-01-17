@@ -62,8 +62,18 @@ arith_expr : THEORY BEGIN
   div_op : operation = λ(a1, a2) : div(a1, a2)
   sub_op : operation = λ(a1, a2) : sub(a1, a2)
 
-  left_assoc_op(t : ast, res : arith_expr, op : operation) : RECURSIVE arith_expr = 
-    IF (plus?(t) ∧ ¬fail?(T0(t)) ∧ seq?(T0(t)) ∧ semantic?(T2(T0(t)))) THEN left_assoc_op(Ts(t), op(res, S(T2(T0(t)))), op)
+  left_assoc_op(t : ast, res : arith_expr) : RECURSIVE arith_expr = 
+    % t = plus(seq(prior(op1, op2), T2(T0(t))), Ts(t))
+    IF (plus?(t) ∧ ¬fail?(T0(t)) ∧ seq?(T0(t)) ∧ semantic?(T2(T0(t)))) THEN 
+       let op = T1(T0(t)) in
+       let op_code = if fail?(T1(op)) then x(T2(op)) else x(T1(op)) endif in
+       Cond
+          op_code = 45 -> left_assoc_op(Ts(t), sub(res, S(T2(T0(t))))),
+          op_code = 43 -> left_assoc_op(Ts(t), add(res, S(T2(T0(t))))),
+          op_code = 42 -> left_assoc_op(Ts(t), mult(res, S(T2(T0(t))))),
+          op_code = 47 -> left_assoc_op(Ts(t), div(res, S(T2(T0(t))))),
+          else -> v(-4)
+       endcond         
     ELSE res ENDIF
   MEASURE astMeasure(t)
 
@@ -74,47 +84,68 @@ END arith_expr
 
 test_ascii : THEORY BEGIN
   IMPORTING arith_expr
+  IMPORTING peg_extented[V_T, <=, V_N_b]
   V_T : TYPE = below(256)
   V_N_b : nat = 10
   V_N : TYPE = below(V_N_b)
   V_S : TYPE = arith_expr
 
 
-  parantheses : int = 1
+  number :      Δ = nonTerminal(0)
+  digit :       Δ = range(48, 57) % [0-9]
+  nzdigit :     Δ = range(49, 57) % [1-9]
+  minus :       Δ = terminal(45) % '-'
+  plus :        Δ = terminal(43) % '+'
+
+
+  paranthesed : Δ = nonTerminal(1)
+  l_paranthesis:Δ = terminal(40) % '('
+  r_paranthesis:Δ = terminal(41) % ')'
+
+  value :       Δ = nonTerminal(2)
+
+  product :     Δ = nonTerminal(3) 
+  times :       Δ = terminal(42) % '*'
+  slash :       Δ = terminal(47) % '/'
+
+  sum_term :    Δ = nonTerminal(4)
+
+  sum :         Δ = nonTerminal(5)
+
+  expression :  Δ = nonTerminal(6)
+
+  entry :       Δ = nonTerminal(7)
+  entry_v : V_N = 7
+
   
   P_exp : [V_N -> Δ] = λ(A : V_N):
     COND
-      A = 0 -> seq(prior(seq(terminal(45), range(49, 57)), range(49,57)), star(range(49,57))),% Number
-      A = 1 -> seq(terminal(40), seq(nonTerminal(8), terminal(41))),       % Paranthesed expression
-      A = 2 -> prior(nonTerminal(1), nonTerminal(0)),
-      A = 3 -> seq(nonTerminal(2), plus(seq(terminal(42), nonTerminal(2)))),   % Multiplication
-      A = 4 -> seq(nonTerminal(2), plus(seq(terminal(47), nonTerminal(2)))),   % Division
-      A = 5 -> prior(nonTerminal(4), prior(nonTerminal(3), nonTerminal(2))),   % Term for addition/substraction
-      A = 6 -> seq(nonTerminal(5), plus(seq(terminal(43), nonTerminal(5)))),   % Addition
-      A = 7 -> seq(nonTerminal(5), plus(seq(terminal(45), nonTerminal(5)))),   % Substraction  
-      A = 8 -> prior(nonTerminal(7), % sub
-               prior(nonTerminal(6), % add
-               prior(nonTerminal(4), % div
-               prior(nonTerminal(3), % mult
-               prior(nonTerminal(1), % parantheses
-                     nonTerminal(0)))))), % number
-      A = 9 -> nonTerminal(8),
+      % Number
+      A = 0 -> seq(prior(seq(minus, nzdigit), nzdigit), star(digit)),
+      % Paranthesed expression
+      A = 1 -> seq3(l_paranthesis, expression, r_paranthesis),
+      % Value
+      A = 2 -> prior(number, paranthesed),
+      % Product
+      A = 3 -> seq(value, plus(seq(prior(times, slash), value))),
+      % Term for sum
+      A = 4 -> prior(product, value),
+      % Sum
+      A = 5 -> seq(sum_term, plus(seq(prior(plus, minus), sum_term))),
+      % Expression
+      A = 6 -> prior3(sum, product, value),
+      % Entry point
+      A = 7 -> expression,
       ELSE  -> ε
     ENDCOND
   
   choose_prior(t : ast) : RECURSIVE arith_expr = 
-  IF (semantic?(t)) then S(t) 
-  ELSE (
-       IF prior?(t) THEN (
-          IF (¬fail?(T1(t))) THEN 
-             choose_prior(T1(t)) 
-          ELSE 
-             choose_prior(T2(t)) 
-          ENDIF ) 
-       ELSE 
-          v(-1) 
-       ENDIF)
-  ENDIF
+      COND 
+      semantic?(t) -> S(t),
+      prior?(t) ∧ ¬fail?(T1(t)) -> choose_prior(T1(t)),
+      prior?(t) ∧  fail?(T1(t)) -> choose_prior(T2(t)),
+      else -> v(-2)
+      endcond
   MEASURE astMeasure(t) 
 
   P_inp : [V_N, semanticTree -> V_S] = λ(A: V_N, T: semanticTree) :
@@ -122,19 +153,20 @@ test_ascii : THEORY BEGIN
       A = 0 -> numeric_seq_to_integer(T),
       A = 1 -> IF (seq?(T) ∧ seq?(T2(T)) ∧ semantic?(T1(T2(T)))) THEN S(T1(T2(T))) ELSE incorrect ENDIF,
       A = 2 -> choose_prior(T),
-      A = 3 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN left_assoc_op(T2(T), S(T1(T)), mult_op) ELSE incorrect ENDIF,
-      A = 4 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN left_assoc_op(T2(T), S(T1(T)), div_op) ELSE incorrect ENDIF,
-      A = 5 -> choose_prior(T),
-      A = 6 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN left_assoc_op(T2(T), S(T1(T)), add_op) ELSE incorrect ENDIF,
-      A = 7 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN left_assoc_op(T2(T), S(T1(T)), sub_op) ELSE incorrect ENDIF,
-      A = 8 -> choose_prior(T),
-      ELSE  -> incorrect
+      A = 3 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN 
+                   left_assoc_op(T2(T), S(T1(T))) 
+               ELSE 
+                   v(-3)
+               ENDIF,
+      A = 4 -> choose_prior(T),
+      A = 5 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN 
+                   left_assoc_op(T2(T), S(T1(T))) ELSE v(-5) ENDIF,
+      A = 6 -> choose_prior(T),
+      ELSE  -> v(-1)
     ENDCOND
 
-  entry : V_N = 9
-  entry_g : Δ = P_exp(entry)
-  parser_semantic : [input -> ast] = λ(inp : input) : (sempp(P_exp, P_inp, entry, entry_g, inp, 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
-  parser_ref :      [input -> ast] = λ(inp : input) : parsing(P_exp, entry, entry_g, inp, 0, 0)
+  parser_semantic : [input -> ast] = λ(inp : input) : (sempp(P_exp, P_inp, entry_v, P_exp(entry_v), inp, 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
+  parser_ref :      [input -> ast] = λ(inp : input) : parsing(P_exp, entry_v, P_exp(entry_v), inp, 0, 0)
   res_sem(inp: input) : V_S = S(parser_semantic(inp))
 
 
@@ -153,6 +185,13 @@ x = 2 -> 50,
 x = 3 -> 42,
 x = 4 -> 53,
 ELSE -> 0 ENDCOND
+
+% "1+2+3+4+5+6+7-8"
+inp4 : input = LAMBDA (x: below(1000)) : COND x = 0 -> 49, x = 1 -> 43, x = 2 -> 50, x = 3 -> 43, x = 4 -> 51, x = 5 -> 43, x = 6 -> 52, x = 7 -> 43, x = 8 -> 53, x = 9 -> 43, x = 10 -> 54, x = 11 -> 43, x = 12 -> 55, x = 13 -> 45, x = 14 -> 56, ELSE -> 0 ENDCOND
+
+     strToInp(s: string) : input = λ(x : below(1000)) :
+                 if (x < s`length) then code(s`seq(x))
+                 else 0 endif
 
 
 

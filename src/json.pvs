@@ -125,13 +125,22 @@ Begin
     |[x=48|x=49|x=50|x=51|x=52|x=53|x=54|x=55|x=56|x=57|(x<48)∨(x>57)]| 
     |   0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |      0      || ENDTABLE
 
-    astToInt(T: ast): int
+    astToInt_aux(T: ast, res: int): recursive int =
+       Cond 
+          (plus?(T) ∨ star?(T)) ∧ (nonTerminal?(T0(T)) ∧ range?(T(T0(T)))) -> astToInt_aux(Ts(T), 10*res + charToInt(code(x(T(T0(T)))))),
+          (star?(T) ∧ (fail?(T0(T)))) ∨ (fail?(T)) -> res,
+          else -> 0
+       endcond
+    measure astMeasure(T)
+
+    astToInt(T: ast) : int = astToInt_aux(T, 0)
 
     extractJsonNumber(T: ast): JSON =
         % seq(minus, seq(int, seq(frac, exp)))
         IF (seq?(T) ∧ seq?(T2(T)) ∧ seq?(T2(T2(T))) ∧ opt?(T1(T)) ∧ opt?(T1(T2(T2(T)))) ∧ opt?(T2(T2(T2(T))))) then (
            let minus   = ¬ fail?(T(T1(T)))in
-           let int     = astToInt(T1(T2(T))) in 
+           let intAST  = T1(T2(T)) in
+           let int = (if not fail?(T1(intAST)) then 0 else astToInt(T2(intAST)) endif) in 
            let fracAST = T1(T2(T2(T))) in
            let frac    = if fail?(T(fracAST)) then 0 else astToInt(T(fracAST)) endif in 
            let expAST  = T2(T2(T2(T))) in
