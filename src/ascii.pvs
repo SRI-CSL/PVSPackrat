@@ -14,8 +14,8 @@ arith_expr : THEORY BEGIN
   END arith_expr
   V_S : TYPE = arith_expr
   IMPORTING semantic_parser[V_T, <=, V_N_b, 100, V_S]
-  
-  ascii_to_integer(chr : below(256)): int = 
+
+  ascii_to_integer(chr : below(256)): int =
     COND
     chr = 48 -> 0,
     chr = 49 -> 1,
@@ -30,31 +30,31 @@ arith_expr : THEORY BEGIN
     ELSE     -> 0
     ENDCOND
 
-  numeric_to_integer(t : ast): int = 
+  numeric_to_integer(t : ast): int =
     IF (range?(t)) THEN ascii_to_integer(x(t)) ELSE 0 ENDIF
-  
-  first_digit(t : pre_ast): int = 
-   CASES t OF 
-         prior(s, e, t1, t2) : 
-            IF (fail?(t1) ∧ range?(t2)) THEN 
-                ascii_to_integer(x(t2)) ELSE 
-                (IF (seq?(t1) ∧ terminal?(T1(t1)) ∧ range?(T2(t1))) THEN 
+
+  first_digit(t : pre_ast): int =
+   CASES t OF
+         prior(s, e, t1, t2) :
+            IF (fail?(t1) ∧ range?(t2)) THEN
+                ascii_to_integer(x(t2)) ELSE
+                (IF (seq?(t1) ∧ terminal?(T1(t1)) ∧ range?(T2(t1))) THEN
                    -1*ascii_to_integer(x(T2(t1))) ELSE 0 ENDIF) ENDIF
          ELSE 0
    ENDCASES
-  
+
   aux(res : int, ts : pre_ast) : Recursive arith_expr =
     CASES ts OF star(s, e, t1, t2) : if (skip?(t2)) THEN v(res) ELSE aux(10*res + numeric_to_integer(t1), t2) ENDIF
     ELSE v(-1000)
-    ENDCASES 
+    ENDCASES
   MEASURE astMeasure(ts)
 
-  numeric_seq_to_integer(t : pre_ast) : arith_expr = 
+  numeric_seq_to_integer(t : pre_ast) : arith_expr =
     CASES t OF
       seq(e, s, t1, t2) : aux(first_digit(t1), t2)
       ELSE incorrect
     ENDCASES
-  
+
   operation : TYPE =  [arith_expr, arith_expr -> arith_expr]
   a1, a2 : VAR arith_expr
   mult_op : operation = λ(a1, a2) : mult(a1, a2)
@@ -62,9 +62,9 @@ arith_expr : THEORY BEGIN
   div_op : operation = λ(a1, a2) : div(a1, a2)
   sub_op : operation = λ(a1, a2) : sub(a1, a2)
 
-  left_assoc_op(t : ast, res : arith_expr) : RECURSIVE arith_expr = 
+  left_assoc_op(t : ast, res : arith_expr) : RECURSIVE arith_expr =
     % t = plus(seq(prior(op1, op2), T2(T0(t))), Ts(t))
-    IF (plus?(t) ∧ ¬fail?(T0(t)) ∧ seq?(T0(t)) ∧ semantic?(T2(T0(t)))) THEN 
+    IF (plus?(t) ∧ ¬fail?(T0(t)) ∧ seq?(T0(t)) ∧ semantic?(T2(T0(t)))) THEN
        let op = T1(T0(t)) in
        let op_code = if fail?(T1(op)) then x(T2(op)) else x(T1(op)) endif in
        Cond
@@ -73,11 +73,11 @@ arith_expr : THEORY BEGIN
           op_code = 42 -> left_assoc_op(Ts(t), mult(res, S(T2(T0(t))))),
           op_code = 47 -> left_assoc_op(Ts(t), div(res, S(T2(T0(t))))),
           else -> v(-4)
-       endcond         
+       endcond
     ELSE res ENDIF
   MEASURE astMeasure(t)
 
-           
+
 
 END arith_expr
 
@@ -104,7 +104,7 @@ test_ascii : THEORY BEGIN
 
   value :       Δ = nonTerminal(2)
 
-  product :     Δ = nonTerminal(3) 
+  product :     Δ = nonTerminal(3)
   times :       Δ = terminal(42) % '*'
   slash :       Δ = terminal(47) % '/'
 
@@ -117,7 +117,7 @@ test_ascii : THEORY BEGIN
   entry :       Δ = nonTerminal(7)
   entry_v : V_N = 7
 
-  
+
   P_exp : [V_N -> Δ] = λ(A : V_N):
     COND
       % Number
@@ -138,28 +138,28 @@ test_ascii : THEORY BEGIN
       A = 7 -> expression,
       ELSE  -> ε
     ENDCOND
-  
-  choose_prior(t : ast) : RECURSIVE arith_expr = 
-      COND 
+
+  choose_prior(t : ast) : RECURSIVE arith_expr =
+      COND
       semantic?(t) -> S(t),
       prior?(t) ∧ ¬fail?(T1(t)) -> choose_prior(T1(t)),
       prior?(t) ∧  fail?(T1(t)) -> choose_prior(T2(t)),
       else -> v(-2)
       endcond
-  MEASURE astMeasure(t) 
+  MEASURE astMeasure(t)
 
   P_inp : [V_N, semanticTree -> V_S] = λ(A: V_N, T: semanticTree) :
     COND
       A = 0 -> numeric_seq_to_integer(T),
       A = 1 -> IF (seq?(T) ∧ seq?(T2(T)) ∧ semantic?(T1(T2(T)))) THEN S(T1(T2(T))) ELSE incorrect ENDIF,
       A = 2 -> choose_prior(T),
-      A = 3 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN 
-                   left_assoc_op(T2(T), S(T1(T))) 
-               ELSE 
+      A = 3 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN
+                   left_assoc_op(T2(T), S(T1(T)))
+               ELSE
                    v(-3)
                ENDIF,
       A = 4 -> choose_prior(T),
-      A = 5 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN 
+      A = 5 -> IF (seq?(T) ∧ semantic?(T1(T)) ∧ plus?(T2(T))) THEN
                    left_assoc_op(T2(T), S(T1(T))) ELSE v(-5) ENDIF,
       A = 6 -> choose_prior(T),
       ELSE  -> v(-1)
@@ -170,28 +170,33 @@ test_ascii : THEORY BEGIN
   res_sem(inp: input) : V_S = S(parser_semantic(inp))
 
 
-inp1(x : below(1000)) : V_T = COND 
-x = 0 -> 49,
-ELSE -> 0 ENDCOND
-inp2(x : below(1000)) : V_T = COND 
-x = 0 -> 49,
-x = 1 -> 43,
-x = 2 -> 50,
-ELSE -> 0 ENDCOND
-inp3(x : below(1000)) : V_T = COND 
-x = 0 -> 49,
-x = 1 -> 43,
-x = 2 -> 50,
-x = 3 -> 42,
-x = 4 -> 53,
-ELSE -> 0 ENDCOND
+  inp1(x : below(1000)) : V_T = COND
+    x = 0 -> 49,
+    ELSE -> 0
+  ENDCOND
+
+  inp2(x : below(1000)) : V_T = COND
+    x = 0 -> 49,
+    x = 1 -> 43,
+    x = 2 -> 50,
+    ELSE -> 0
+  ENDCOND
+
+  inp3(x : below(1000)) : V_T = COND
+    x = 0 -> 49,
+    x = 1 -> 43,
+    x = 2 -> 50,
+    x = 3 -> 42,
+    x = 4 -> 53,
+    ELSE -> 0
+  ENDCOND
 
 % "1+2+3+4+5+6+7-8"
 inp4 : input = LAMBDA (x: below(1000)) : COND x = 0 -> 49, x = 1 -> 43, x = 2 -> 50, x = 3 -> 43, x = 4 -> 51, x = 5 -> 43, x = 6 -> 52, x = 7 -> 43, x = 8 -> 53, x = 9 -> 43, x = 10 -> 54, x = 11 -> 43, x = 12 -> 55, x = 13 -> 45, x = 14 -> 56, ELSE -> 0 ENDCOND
 
-     strToInp(s: string) : input = λ(x : below(1000)) :
-                 if (x < s`length) then code(s`seq(x))
-                 else 0 endif
+strToInp(s: string) : input = λ(x : below(1000)) :
+if (x < s`length) then code(s`seq(x))
+else 0 endif
 
 
 

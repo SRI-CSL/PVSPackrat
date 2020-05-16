@@ -1,0 +1,99 @@
+% ————————————————————————————–
+% packrat_parser.pvs
+%  |– packrat_parser THEORY
+%     Defines a packrat peg parser. The output type is made to ensure
+%     equivalence with the reference parser, which gives all the properties
+%     of the reference parser (soundness, completeness, etc.)
+% ————————————————————————————–
+
+
+
+packrat_parser [
+      V_T : TYPE+,
+      <=    : (total_order?[V_T]),
+      V_N_b : {k : nat | k > 0},
+      bound : posnat,
+      V_S   : TYPE
+      ]: THEORY
+  BEGIN
+
+  IMPORTING peg_parser[V_T, <=, V_N_b, bound, V_S]
+  
+  % Datatype used for memoïzation of partial parses
+  saved_result: DATATYPE
+    BEGIN
+      unknown : unknown?
+      known(T : ast) : known?
+    END saved_result
+    
+  % Results type : ensures that every partial parse correspond to the reference parser
+  results(P_exp : WF_nT,
+  	      inp   : input) : TYPE =
+	   	        {r : [V_N -> [inp_bound -> saved_result]] | FORALL (A : V_N, s : upto(bound)) : 
+	             known?(r(A)(s)) ⇒ T(r(A)(s)) = parsing(P_exp, A, P_exp(A), inp, s, s)}
+
+  % Code for the packrat peg parser
+  packrat_parser(
+  	   P_exp : WF_nT,
+  	   A     : below(V_N_b),                   % Current non Terminal
+       G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
+       inp   : input,                          % Input string
+  	   s     : upto(bound),                        % Starting index
+  	   s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)},
+  	   res   : results(P_exp, inp)) :
+      % The output type is much simpler than the one of the reference parser
+  	  RECURSIVE [{T : pre_ast | T = parsing(P_exp, A, G, inp, s, s_T)}, results(P_exp, inp)] =
+    CASES G OF
+        ε: (ε(s,s), res),
+        any: (any(s,min(s+1, bound), inp(s)), res),
+        terminal(a): (terminal(s, min(s+1, bound), a, inp(s)), res),
+        range(a, b): (range(s, min(s+1, bound), a, b, inp(s)), res),
+        nonTerminal(B): (
+            CASES res(B)(s) OF
+                known(T_B): (nonTerminal(s, e(T_B), B, T_B), res),
+                unknown: let (T_B, resB) = packrat_parser(P_exp, B, P_exp(B), inp, s, s, res) in
+    			    (nonTerminal(s, e(T_B), B, T_B), resB WITH [B := resB(B) WITH [s := known(T_B)]])
+            ENDCASES),
+        seq(e1, e2): 
+            let (T1, res1)  = packrat_parser(P_exp, A, e1, inp, s, s_T, res) in
+    	        if (astType?(T1) = failure) then (seq(s, e(T1), T1, skip(e(T1), e(T1), e2)), res1)
+    		    else 
+                    let (T2, res2) = packrat_parser(P_exp, A, e2, inp, e(T1), s_T, res1) in
+    			        (seq(s, e(T2), T1, T2), res2)
+                endif,
+        prior(e1, e2):
+            let (T1, res1) = packrat_parser(P_exp, A, e1, inp, s, s_T, res) in
+    	      	if (astType?(T1) = success) then (prior(s, e(T1), T1, skip(s, s, e2)), res1)
+    		    else 
+                    let (T2, res2) = packrat_parser(P_exp, A, e2, inp, s, s_T, res1) in
+    				    (prior(s, e(T2), T1, T2), res2)
+                endif,
+        star(e):
+            let (T0, res0) = packrat_parser(P_exp, A, e, inp, s, s_T, res) in
+                if (astType?(T0) = failure) then (star(s, s, T0, skip(e(T0), e(T0), star(e))), res0)
+    		    else
+                    let (Ts, ress) = packrat_parser(P_exp, A, star(e), inp, e(T0), s_T, res0) in
+                        (star(s, e(Ts), T0, Ts), ress)
+                endif,
+        plus(e): 
+            let (T0, res0) = packrat_parser(P_exp, A, e, inp, s, s_T, res) in
+    	        if (astType?(T0) = failure) then (plus(s, s, T0, skip(e(T0), e(T0), plus(e))), res0)
+		        else 
+                    let (Ts, resp) = packrat_parser(P_exp, A, plus(e), inp, e(T0), s_T, res0) in
+				        (plus(s, e(Ts), T0, Ts), resp)
+                endif,
+        opt(e):
+            let (T, reso)  = packrat_parser(P_exp, A, e, inp, s, s_T, res) in
+                if (astType?(T) = failure) then (opt(s, s, T), reso)
+			    else (opt(s, e(T), T), reso) 
+                endif,
+        notP(e):
+            let (T, resn) = packrat_parser(P_exp, A, e, inp, s, s_T, res) in 
+                (notP(s, s, T), resn),
+        andP(e):
+            let (T, resa) = packrat_parser(P_exp, A, e, inp, s, s_T, res) in 
+                (andP(s, s, T), resa)
+    ENDCASES 
+    MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
+  
+END packrat_parser
