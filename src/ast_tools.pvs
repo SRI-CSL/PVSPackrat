@@ -22,8 +22,8 @@ ast_tools [
 
     extract_prior(T) : recursive ast =
         Cases T of
-            prior(s, e, T1, T2): if (fail?(T1)) then T2 else T1 endif
-            ELSE fail(s(T), e(T))
+            prior(s, e, T1, T2): if (fail?(T1)) then extract_prior(T2) else T1 endif
+            ELSE T
         endcases
         measure astMeasure(T)
 

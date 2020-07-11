@@ -119,7 +119,7 @@ BEGIN
         JSON_false: JSON_false?
         JSON_null : JSON_null?
         JSON_true : JSON_true?
-	JSON_error : JSON_error?
+	JSON_error(code: int) : JSON_error?
     END JSON
 
 END json_object
@@ -133,7 +133,7 @@ Begin
     IMPORTING semantic_parser[V_T, <=, V_N_b, 1000, V_S]
     IMPORTING ast_tools[V_T, <=, V_N_b, 1000, V_S]
 
-    ;⊥ : JSON = JSON_error
+    ;⊥ : JSON = JSON_error(0)
 
     charToInt(x : int): int = TABLE
     |[x=48|x=49|x=50|x=51|x=52|x=53|x=54|x=55|x=56|x=57|(x<48)∨(x>57)]|
@@ -156,7 +156,7 @@ Begin
     extractJsonString(T: pre_ast): JSON = JSON_string("json-string")
     extractJsonArray(T: pre_ast):  JSON = JSON_array(add(JSON_true,add(JSON_false, empty_seq)))
     extractJsonObject(T: pre_ast): JSON = JSON_object(add(("obj",JSON_true), empty_seq))
-    extractSemantic(T: pre_ast): JSON = if (semantic?(T)) then S(T) else ⊥ endif
+    extractSemantic(T: pre_ast): JSON = if (semantic?(T)) then S(T) else JSON_error(30) endif
 
 
     P_inp : [V_N, semanticTree -> V_S] = λ(A : V_N, T: semanticTree) : cond
@@ -168,12 +168,17 @@ Begin
         A = 12 -> extractJsonArray(T),
         A = 10 -> extractJsonObject(T),
 
-        A = 29 -> (if seq?(T) ∧ seq?(T2(T)) then extractSemantic(T1(T2(T))) else ⊥ endif ),
+        A = 29 -> (if seq?(T) ∧ seq?(T2(T)) then extractSemantic(T1(T2(T))) else JSON_error(29) endif ),
 	A = 30 -> extractSemantic(extract_prior(T)),
-        else  -> ⊥
+        else  -> JSON_error(1)
         endcond
 
 
-    parser : [input -> ast] = λ(inp: input): (sempp(P_exp, P_inp, entry, P_exp(entry), inp, 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
+     strToInp(s: string) : input = λ(x : below(1000)) :
+      if (x < s`length) then s`seq(x)
+      else char(0) endif
+
+    parser : [string -> V_S] = λ(str: string): P_inp(entry, sempp(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
+
 
 end json_parser
