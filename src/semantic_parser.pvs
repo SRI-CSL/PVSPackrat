@@ -24,18 +24,18 @@ semantic_parser [
       unknown : unknown?
       known(T : (valuedTree?)) : known?
     END saved_result
-  
+
   % Type to store results of partial parsing. Maintains equivalence with reference parser
   results(P_exp : WF_nT,
           P_inp : semantic_interp,
-  	      inp   : input) : TYPE = 
+  	      inp   : input) : TYPE =
   	   	  { res : [[V_N, inp_bound] -> saved_result] |
 		    FORALL (A : V_N, s : upto(bound)) :
 		       LET T_p = parsing(P_exp, A, P_exp(A), inp, s, s) IN
   		       known?(res(A,s)) ⇒ ((astType?(T_p) = failure ⇔ T(res(A,s)) = fail    (s(T_p), e(T_p)))
 		                          ∧(astType?(T_p) = success ⇔ T(res(A,s)) = semantic(s(T_p), e(T_p), A, P_inp(A, s_inp(P_inp, T_p)))))}
 
-  
+
   % Semantic packrat parser - equivalent with reference parser modulo semantic interpretation
   sempp(P_exp : WF_nT,
   	    P_inp : semantic_interp,
@@ -49,28 +49,28 @@ semantic_parser [
       RECURSIVE [{T : pre_ast | T = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))},
 	             results(P_exp, P_inp, inp)] =
           CASES G OF
-              ε: (s_inp(P_inp, ε(s,s)), res), 
+              ε: (s_inp(P_inp, ε(s,s)), res),
               any: (s_inp(P_inp, any(s, min(bound, s+1), inp(s))), res),
               terminal(a): (s_inp(P_inp, terminal(s,  min(bound, s+1), a, inp(s))), res),
               range(a, b): (s_inp(P_inp, range(s, min(bound, s+1), a, b, inp(s))), res),
               nonTerminal(B):
                   if known?(res(B,s)) then (T(res(B, s)), res) % Memoïzed result
      			  else % Need for a new partial parse
-  			          let (T_B, resB) = sempp(P_exp, P_inp, B, P_exp(B), inp, s, s, res) in COND
-  			              astType?(T_B) = failure -> (fail(s, e(T_B)), resB WITH [(B,s) := known(fail(s, e(T_B)))]),
-  				          astType?(T_B) = success -> 
+  			     let (T_B, resB) = sempp(P_exp, P_inp, B, P_exp(B), inp, s, s, res) in COND
+  			       astType?(T_B) = failure -> (fail(s, e(T_B)), resB WITH [(B,s) := known(fail(s, e(T_B)))]),
+      		               astType?(T_B) = success ->
     			              let sem_T = semantic(s, e(T_B), B, P_inp(B, T_B)) in
                               (sem_T, resB WITH [(B,s) := known(sem_T)])
   			          ENDCOND
   			      endif,
-              seq(e1, e2): 
+              seq(e1, e2):
                   let (T1, res1)  = sempp(P_exp, P_inp, A, e1, inp, s, s_T, res) in
     	    	      if (astType?(T1) = failure) then (fail(s, e(T1)), res1)
     		          else
-    			          let (T2, res2) = sempp(P_exp, P_inp, A, e2, inp, e(T1), s_T, res1) in 
+    			          let (T2, res2) = sempp(P_exp, P_inp, A, e2, inp, e(T1), s_T, res1) in
     			          (semppCompact(seq(s, e(T2), T1, T2), G), res2)
     			      endif,
-              prior(e1, e2): 
+              prior(e1, e2):
                   let (T1, res1)  = sempp(P_exp, P_inp, A, e1, inp, s, s_T, res) IN
     	    	      if (astType?(T1) = success) then (prior(s, e(T1), T1, skip(s, s, e2)), res1)
     		          else
@@ -82,24 +82,24 @@ semantic_parser [
                       if (astType?(T0) = failure) THEN (star(s, s, T0, skip(e(T0), e(T0), star(e))), res0)
     		          else
                           let (Ts, ress) = sempp(P_exp, P_inp, A, star(e), inp, e(T0), s_T, res0) IN
-                          (star(s, e(Ts), T0, Ts), ress) 
+                          (star(s, e(Ts), T0, Ts), ress)
                       endif,
               plus(e):
                   let (T0, res0) = sempp(P_exp, P_inp, A, e, inp, s, s_T, res) IN
     	    	      if (astType?(T0) = failure) THEN (fail(s, s), res0)
-    		          else 
+    		          else
                           let (Ts, resp) = sempp(P_exp, P_inp, A, plus(e), inp, e(T0), s_T, res0) IN
-    				      (plus(s, e(Ts), T0, Ts), resp) 
+    				      (plus(s, e(Ts), T0, Ts), resp)
                       endif,
               opt(e):
                   let (T, reso)  = sempp(P_exp, P_inp, A, e, inp, s, s_T, res) IN
                       if (astType?(T) = failure)  THEN (opt(s, s, T), reso)
-     			      else (opt(s, e(T), T), reso) 
+     			      else (opt(s, e(T), T), reso)
                       endif,
-              notP(e): 
+              notP(e):
                   let (T, resn) = sempp(P_exp, P_inp, A, e, inp, s, s_T, res) IN
                       (semppCompact(notP(s, s, T), G), resn),
-              andP(e): 
+              andP(e):
                   let (T, resa) = sempp(P_exp, P_inp, A, e, inp, s, s_T, res) IN
                       (semppCompact(andP(s, s, T), G), resa)
     ENDCASES

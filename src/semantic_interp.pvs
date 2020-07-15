@@ -1,7 +1,7 @@
 % ————————————————————————————–
 % semantic_interp.pvs
 %  |– semantic_interp THEORY
-%     Defines the concept of interpreting the semantic value of a 
+%     Defines the concept of interpreting the semantic value of a
 %     tree. The idea is to use a function that takes trees without
 %     nonTerminal nodes (base trees) and recursively call it
 %     to replace all nonTerminal trees by their semantic values,
@@ -23,36 +23,30 @@ semantic_interp [
   valuedTree?(T : pre_ast) : bool = semantic?(T) ∨ fail?(T)
 
   % Function that transforms a tree into its semantic interpretation, recursively
-  s_inp( P_inp : semantic_interp,
-		 T     : pre_ast) : RECURSIVE 
-      {T' : semanticTree | (( skip?(T) ⇔ skip?(T') )
-	                       ∧( star?(T) ⇔ star?(T') )
-	  				       ∧((astType?(T) = failure) ⇔ fail?(T') )
-						   ∧((plus?(T) ⇒ (plus?(T') ∨ fail?(T')))))
-                           ∧(s(T') = s(T))
-                           ∧(e(T') = e(T))
-                           ∧(astWellformed?(T) ⇒ (astWellformed?(T') ∧ (astType?(T') = astType?(T))))
-                           } =
-    IF (astType?(T) = failure) THEN fail(s(T), e(T)) ELSE
-    CASES T OF
-      ε                (s, e) : T,
-      any           (s, e, x) : T,
-      terminal   (s, e, x, y) : T,
-      range   (s, e, a, b, x) : T,
-      nonTerminal(s, e, A, T) : semantic(s, e, A, P_inp(A, s_inp(P_inp, T))),
-      semantic   (s, e, A, S) : T,
-      seq      (s, e, T1, T2) : seq  (s, e, s_inp(P_inp, T1), s_inp(P_inp, T2)),
-      prior    (s, e, T1, T2) : prior(s, e, s_inp(P_inp, T1), s_inp(P_inp, T2)),
-      star     (s, e, T0, Ts) : star (s, e, s_inp(P_inp, T0), s_inp(P_inp, Ts)),
-      plus     (s, e, T0, Ts) : plus (s, e, s_inp(P_inp, T0), s_inp(P_inp, Ts)),
-      opt          (s, e, T0) : opt  (s, e, s_inp(P_inp, T0)),
-      notP          (s, e, T) : notP (s, e, s_inp(P_inp, T)),
-      andP          (s, e, T) : andP (s, e, s_inp(P_inp, T)),
-      skip          (s, e, G) : T
-    ENDCASES
+  s_inp(P_inp: semantic_interp, T: pre_ast): RECURSIVE
+        {T': semanticTree |
+           ((skip?(T) ⇔ skip?(T')) ∧ (star?(T) ⇔ star?(T')) ∧ ((astType?(T) = failure) ⇔ fail?(T')) ∧ ((plus?(T) ⇒ (plus?(T') ∨ fail?(T'))))) ∧
+            (s(T') = s(T)) ∧ (e(T') = e(T)) ∧ (astWellformed?(T) ⇒ (astWellformed?(T') ∧ (astType?(T') = astType?(T))))} =
+    IF (astType?(T) = failure) THEN fail(s(T), e(T))
+    ELSE CASES T
+           OF ε(s, e): T,
+              any(s, e, x): T,
+              terminal(s, e, x, y): T,
+              range(s, e, a, b, x): T,
+              nonTerminal(s, e, A, T): semantic(s, e, A, P_inp(A, s_inp(P_inp, T))),
+              semantic(s, e, A, S): T,
+              seq(s, e, T1, T2): seq(s, e, s_inp(P_inp, T1), s_inp(P_inp, T2)),
+              prior(s, e, T1, T2): prior(s, e, s_inp(P_inp, T1), s_inp(P_inp, T2)),
+              star(s, e, T0, Ts): star(s, e, s_inp(P_inp, T0), s_inp(P_inp, Ts)),
+              plus(s, e, T0, Ts): plus(s, e, s_inp(P_inp, T0), s_inp(P_inp, Ts)),
+              opt(s, e, T0): opt(s, e, s_inp(P_inp, T0)),
+              notP(s, e, T): notP(s, e, s_inp(P_inp, T)),
+              andP(s, e, T): andP(s, e, s_inp(P_inp, T)),
+              skip(s, e, G): T
+           ENDCASES
     ENDIF
-  MEASURE astMeasure(T)
- 
+     MEASURE astMeasure(T)
+
 
   % Usefull lemmas about semantic interpretation : it maintains most properties
   semantic_interp_bounds  : LEMMA ∀ (T : ast, P_inp : semantic_interp) : (s(T) = s(s_inp(P_inp, T))) ∧ (e(T) = e(s_inp(P_inp, T)))

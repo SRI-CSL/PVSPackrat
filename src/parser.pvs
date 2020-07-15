@@ -29,9 +29,11 @@ peg_parser [
           % Starting index at the beginning of the parsing of the current non terminal
 	     s_T: {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : TYPE =
 	     {T : ast | (s(T) = s) ∧ % The start is the starting index
+	     % >>>> SHOULD BE REMOVED, implied by True to grammar
                     (star?(G) ⇒ star?(T)) ∧ % If the grammar node is a star, so is the ast
                     (plus?(G) ⇒ plus?(T)) ∧ % If the grammar node is a plus, so is the ast
                     (NOT skip?(T)) ∧  % The parsing cannot produce a skip
+               % <<<< END
                     (trueToGrammar(T, G, P_exp)) ∧ % The parsing is true to the grammar
                     (trueToInput(T, inp)) ∧ % The parsing is true to the input
                     (((astType?(T) = success) ∧ (e(T) = s)) ⇒ P_0c?(P_exp)(G)) ∧ % If the parsing succeeds without consuming something, G is of type P_0
