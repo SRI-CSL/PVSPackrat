@@ -86,7 +86,7 @@ semantic_tlparser [
 		   (λ status1, T1, (res : results(P_exp, P_inp, inp)) :
 		     % After the parse of e1
 		     if (status1 = failure)
-		     then cont(failure, fail(s, e(T1), res))
+		     then cont(failure, fail(s, e(T1)), res)
 		     else semtlpp(P_exp, P_inp, A, e2, inp, e(T1), s_T, res,
 		       (λ status2, T2, (res : results(P_exp, P_inp, inp)) :
 		         % After the parse of e2
