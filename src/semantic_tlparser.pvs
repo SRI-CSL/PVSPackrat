@@ -104,7 +104,9 @@ semantic_tlparser [
 		     if (status1 = failure)
 		     then cont(failure, fail(s, e(T1)), res)
 		     else semtlpp(P_exp, P_inp, A, e2, inp, e(T1), s_T, res,
-		       (λ status2, T2, (res : results(P_exp, P_inp, inp)) :
+		       (λ (status2: astTypeOf(parsing(P_exp, A, e2, inp, e(T1), s_T))),
+		          (T2: sem_result(P_inp, P_exp, A, e2, inp, e(T1), s_T)),
+		          (res : results(P_exp, P_inp, inp)) :
 		         % After the parse of e2
 		         if (status2 = failure) then cont(failure, fail(s, e(T2)), res)
 		         else cont (success, seq(s, e(T2), T1, T2), res)
@@ -112,12 +114,16 @@ semantic_tlparser [
 		     endif)),
               prior(e1, e2):
                    semtlpp(P_exp, P_inp, A, e1, inp, s, s_T, res,
-		   (λ status1, T1, (res : results(P_exp, P_inp, inp)) :
+		   (λ (status1: astTypeOf(parsing(P_exp, A, e1, inp, s, s_T))),
+		      (T1: sem_result(P_inp, P_exp, A, e1, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     % After the parse of e1
 		     if (status1 = success)
 		     then cont(success, prior(s, e(T1), T1, skip(s, s, e2)), res)
 		     else semtlpp(P_exp, P_inp, A, e2, inp, s, s_T, res,
-		       (λ status2, T2, (res : results(P_exp, P_inp, inp)) :
+		       (λ (status2: astTypeOf(parsing(P_exp, A, e2, inp, s, s_T))),
+		          (T2: sem_result(P_inp, P_exp, A, e2, inp, s, s_T)),
+		          (res : results(P_exp, P_inp, inp)) :
 		         % After the parse of e2
 		         if (status2 = success) then cont(success, prior(s, e(T2), T1, T2), res)
 		         else cont (failure, fail(s, e(T2)), res)
@@ -125,48 +131,101 @@ semantic_tlparser [
 		     endif)),
               star(e):
 	           semtlpp(P_exp, P_inp, A, e, inp, s, s_T, res,
-		   (λ status1, T0, (res : results(P_exp, P_inp, inp)) :
+		   (λ (status0: astTypeOf(parsing(P_exp, A, e, inp, s, s_T))),
+		      (T0: sem_result(P_inp, P_exp, A, e, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     % After the parse of e
-		     if (status1 = failure)
+		     if (status0 = failure)
 		     then cont(success, star(s, s, T0, skip(e(T0), e(T0), star(e))), res)
 		     else semtlpp(P_exp, P_inp, A, star(e), inp, e(T0), s_T, res,
-		       (λ status2, Ts, (res : results(P_exp, P_inp, inp)) :
+		       (λ (status2: astTypeOf(parsing(P_exp, A, star(e), inp, e(T0), s_T))),
+		          (Ts: sem_result(P_inp, P_exp, A, star(e), inp, e(T0), s_T)),
+		          (res : results(P_exp, P_inp, inp)) :
 		         % After the recursive parse of e*
 			 cont(success, star(s, e(Ts), T0, Ts), res)))
 	             endif)),
 	      plus(e):
 	           semtlpp(P_exp, P_inp, A, e, inp, s, s_T, res,
-		   (λ status1, T0, (res : results(P_exp, P_inp, inp)) :
+		   (λ (status0: astTypeOf(parsing(P_exp, A, e, inp, s, s_T))),
+		      (T0: sem_result(P_inp, P_exp, A, e, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     % After the parse of e
-		     if (status1 = failure)
+		     if (status0 = failure)
 		     then cont(failure, fail(s, s), res)
-		     else semtlpp(P_exp, P_inp, A, star(e), inp, e(T0), s_T, res,
-		       (λ status2, Ts, (res : results(P_exp, P_inp, inp)) :
+		     else semtlpp(P_exp, P_inp, A, plus(e), inp, e(T0), s_T, res,
+		       (λ (status2: astTypeOf(parsing(P_exp, A, plus(e), inp, e(T0), s_T))),
+		          (Ts: sem_result(P_inp, P_exp, A, plus(e), inp, e(T0), s_T)),
+		          (res : results(P_exp, P_inp, inp)) :
 		         % After the recursive parse of e+
 			 cont(success, plus(s, e(Ts), T0, Ts), res)))
 	             endif)),
               opt(e):
 	           semtlpp(P_exp, P_inp, A, e, inp, s, s_T, res,
-		   (λ status, T,  (res : results(P_exp, P_inp, inp)) :
+		   (λ (status: astTypeOf(parsing(P_exp, A, e, inp, s, s_T))),
+		      (T: sem_result(P_inp, P_exp, A, e, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     if (status = failure)
-		     then cont(failure, fail(s, s), res)
-		     else (cont(success, opt(s, e(T), T), res))
+		     then cont(success, opt(s, s, T), res)
+		     else cont(success, opt(s, e(T), T), res)
 		     endif)),
               notP(e):
 	           semtlpp(P_exp, P_inp, A, e, inp, s, s_T, res,
-		   (λ status, T, (res : results(P_exp, P_inp, inp)) :
+		   (λ (status: astTypeOf(parsing(P_exp, A, e, inp, s, s_T))),
+		      (T: sem_result(P_inp, P_exp, A, e, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     if (status = failure)
 		     then cont(success, notP(s, s, T), res)
 		     else cont(failure, fail(s, s), res)
 		     endif)),
               andP(e):
 	           semtlpp(P_exp, P_inp, A, e, inp, s, s_T, res,
-		   (λ status, T,  (res : results(P_exp, P_inp, inp)) :
+		   (λ (status: astTypeOf(parsing(P_exp, A, e, inp, s, s_T))),
+		      (T: sem_result(P_inp, P_exp, A, e, inp, s, s_T)),
+		      (res : results(P_exp, P_inp, inp)) :
 		     if (status = success)
 		     then cont(success, andP(s, s, T), res)
 		     else cont(failure, fail(s, s), res)
 		     endif))
     ENDCASES
     MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
+
+    % semtlpp_induction
+
+    memoïzed_does_not_change : THEOREM
+        ∀  (P_exp : WF_nT),
+  	   (P_inp : semantic_interp),
+  	   (A     : below(V_N_b)),                   % Current non Terminal
+           (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
+           (inp   : input),                          % Input array
+  	   (s     : upto(bound)),                      % Starting index
+  	   (s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}),
+	   (cont  : [
+	             [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+		      results(P_exp, P_inp, inp)]
+		     ->
+		     [astType, pre_ast]
+		    ]),
+  	   (res1, res2 : results(P_exp, P_inp, inp)) :
+	   semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res1, cont) =
+	   semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res2, cont)
+
+    semantic_tlparser_correct :
+      THEOREM
+        ∀  (P_exp : WF_nT),
+  	   (P_inp : semantic_interp),
+  	   (A     : below(V_N_b)),                   % Current non Terminal
+           (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
+           (inp   : input),                          % Input array
+  	   (s     : upto(bound)),                      % Starting index
+  	   (s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}),
+  	   (res   : results(P_exp, P_inp, inp)) :
+		    semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res,
+		    % Identity continuation
+		    (λ (x : [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+		      results(P_exp, P_inp, inp)])
+		     : (x`1, x`2)))`2 = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))
+
 
 END semantic_tlparser
