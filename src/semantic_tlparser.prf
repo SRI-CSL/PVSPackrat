@@ -53,20 +53,63 @@
    (sem_result subtype "semantic_tlparser.A"
     "naturalnumbers.upto(semantic_tlparser.V_N_b)")))
  (semtlpp_TCC1 0
+  (semtlpp_TCC1-1 nil 3804853796 ("" (subtype-tcc) nil nil) nil nil
+   (semtlpp subtype "semantic_tlparser.P_exp(semantic_tlparser.A)"
+    "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
+ (semtlpp_TCC2 0
+  (semtlpp_TCC11-1 nil 3804395188
+   ("" (skeep)
+    (("" (typepred "P_exp")
+      (("" (expand "strong_WF")
+        (("" (inst -1 "B") (("" (assert) nil nil)) nil)) nil))
+      nil))
+    nil)
+   ((WF_nT type-eq-decl nil wf_peg nil)
+    (strong_WF const-decl "bool" wf_peg nil)
+    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_tlparser nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (V_T formal-nonempty-type-decl nil semantic_tlparser nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_tlparser nil)
+    (> const-decl "bool" reals nil) (< const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil))
+   nil
+   (semtlpp subtype "semantic_tlparser.s"
+    "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.P_exp(semantic_tlparser.A), semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
+ (semtlpp_TCC3 0
   (semtlpp_TCC2-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((int_minus_int_is_int application-judgement "int" integers nil))
    nil
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.s_T)"
     "nat")))
- (semtlpp_TCC2 0
+ (semtlpp_TCC4 0
   (semtlpp_TCC3-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((int_minus_int_is_int application-judgement "int" integers nil))
    nil
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.s)"
     "nat")))
- (semtlpp_TCC3 0
+ (semtlpp_TCC5 0
   (semtlpp_TCC4-1 nil 3804395188
    ("" (skeep)
     (("" (assert)
@@ -182,7 +225,7 @@
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.z`7)"
     "nat")))
- (semtlpp_TCC4 0
+ (semtlpp_TCC6 0
   (semtlpp_TCC5-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((real_ge_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
@@ -191,19 +234,19 @@
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.z`6)"
     "nat")))
- (semtlpp_TCC5 0
+ (semtlpp_TCC7 0
   (semtlpp_TCC6-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((int_minus_int_is_int application-judgement "int" integers nil))
    nil
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.s_T)"
     "nat")))
- (semtlpp_TCC6 0
+ (semtlpp_TCC8 0
   (semtlpp_TCC7-1 nil 3804395188 ("" (subtype-tcc) nil nil) nil nil
    (semtlpp subtype
     "(number_fields.-)(semantic_tlparser.bound, semantic_tlparser.s)"
     "nat")))
- (semtlpp_TCC7 0
+ (semtlpp_TCC9 0
   (semtlpp_TCC15-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -223,7 +266,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC8 0
+ (semtlpp_TCC10 0
   (semtlpp_TCC18-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -257,7 +300,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].ε(semantic_tlparser.s, semantic_tlparser.s)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC9 0
+ (semtlpp_TCC11 0
   (semtlpp_TCC20-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -284,7 +327,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC10 0
+ (semtlpp_TCC12 0
   (semtlpp_TCC23-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -321,7 +364,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC11 0
+ (semtlpp_TCC13 0
   (semtlpp_TCC26-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -345,7 +388,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC12 0
+ (semtlpp_TCC14 0
   (semtlpp_TCC8-1 nil 3804395188
    ("" (skeep) (("" (assert) nil nil)) nil)
    ((real_le_is_total_order name-judgement "(total_order?[real])"
@@ -357,7 +400,7 @@
    nil
    (semtlpp subtype "(number_fields.+)(semantic_tlparser.s, 1)"
     "below[V_T, <=, V_N_b, bound, V_S]")))
- (semtlpp_TCC13 0
+ (semtlpp_TCC15 0
   (semtlpp_TCC28-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -394,7 +437,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].any(semantic_tlparser.s, (number_fields.+)(semantic_tlparser.s, 1), semantic_tlparser.inp(semantic_tlparser.s))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC14 0
+ (semtlpp_TCC16 0
   (semtlpp_TCC30-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -420,7 +463,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC15 0
+ (semtlpp_TCC17 0
   (semtlpp_TCC32-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -459,7 +502,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].terminal(semantic_tlparser.s, (number_fields.+)(semantic_tlparser.s, 1), semantic_tlparser.a, semantic_tlparser.a)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC16 0
+ (semtlpp_TCC18 0
   (semtlpp_TCC36-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -496,7 +539,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC17 0
+ (semtlpp_TCC19 0
   (semtlpp_TCC40-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -551,7 +594,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, real_defs.min((number_fields.+)(semantic_tlparser.s, 1), semantic_tlparser.bound))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC18 0
+ (semtlpp_TCC20 0
   (semtlpp_TCC41-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -577,7 +620,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC19 0
+ (semtlpp_TCC21 0
   (semtlpp_TCC43-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -616,7 +659,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].range(semantic_tlparser.s, (number_fields.+)(semantic_tlparser.s, 1), semantic_tlparser.a, semantic_tlparser.b, semantic_tlparser.inp(semantic_tlparser.s))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC20 0
+ (semtlpp_TCC22 0
   (semtlpp_TCC45-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -657,7 +700,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC21 0
+ (semtlpp_TCC23 0
   (semtlpp_TCC49-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -724,7 +767,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, real_defs.min((number_fields.+)(semantic_tlparser.s, 1), semantic_tlparser.bound))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC22 0
+ (semtlpp_TCC24 0
   (semtlpp_TCC54-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -850,6 +893,9 @@
     (failure adt-constructor-decl "(failure?)" ast nil)
     (P_fc? const-decl "[Δ -> bool]" wf_peg nil)
     (output type-eq-decl nil peg_parser nil)
+    (T_ref skolem-const-decl
+     "output[V_T, <=, V_N_b, bound, V_S](P_exp, B, P_exp(B), inp, s, s_T)"
+     semantic_tlparser nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
     (Wellformed_theorem formula-decl nil ast nil)
@@ -890,7 +936,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.status"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC23 0
+ (semtlpp_TCC25 0
   (semtlpp_TCC12-1 nil 3804395188
    ("" (skeep)
     (("" (replace -1 * LR)
@@ -1056,31 +1102,96 @@
    nil
    (semtlpp subtype "semantic_tlparser.T_B"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC24 0
+ (semtlpp_TCC26 0
   (semtlpp_TCC10-1 nil 3804395188
    ("" (assert) (("" (expand "subterm") (("" (propax) nil nil)) nil))
     nil)
    ((subterm adt-def-decl "boolean" peg nil)) nil
    (semtlpp subtype "semantic_tlparser.P_exp(semantic_tlparser.B)"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.B))}")))
- (semtlpp_TCC25 0
-  (semtlpp_TCC11-1 nil 3804395188
-   ("" (skeep)
-    (("" (typepred "P_exp")
-      (("" (expand "strong_WF")
-        (("" (inst -1 "B") (("" (assert) nil nil)) nil)) nil))
-      nil))
-    nil)
-   ((WF_nT type-eq-decl nil wf_peg nil)
+ (semtlpp_TCC27 0
+  (semtlpp_TCC27-1 nil 3804853796 ("" (subtype-tcc) nil nil)
+   ((NOT const-decl "[bool -> bool]" booleans nil)
+    (< const-decl "bool" reals nil)
+    (V_N type-eq-decl nil nTpred_order nil) (peg type-decl nil peg nil)
+    (interp type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
-    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_tlparser nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (V_T formal-nonempty-type-decl nil semantic_tlparser nil)
-    (V_N type-eq-decl nil nTpred_order nil)
+    (WF_nT type-eq-decl nil wf_peg nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (subterm adt-def-decl "boolean" peg nil)
+    (<= const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (bound formal-const-decl "posnat" semantic_tlparser nil)
+    (upto nonempty-type-eq-decl nil naturalnumbers nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (P_0c? const-decl "[Δ -> bool]" wf_peg nil)
+    (saved_result type-decl nil semantic_tlparser nil)
+    (known? adt-recognizer-decl "[saved_result -> boolean]"
+     semantic_tlparser nil)
+    (V_S formal-type-decl nil semantic_tlparser nil)
+    (inp_bound type-eq-decl nil ast_props nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (astType type-decl nil ast nil) (pre_ast type-decl nil pre_ast nil)
+    (astType? def-decl "astType" ast nil)
+    (input type-eq-decl nil ast_props nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (ast type-eq-decl nil ast nil) (below type-eq-decl nil pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (trueToGrammar def-decl "bool" ast_props nil)
+    (trueToInput def-decl "bool" ast_props nil)
+    (success? adt-recognizer-decl "[astType -> boolean]" ast nil)
+    (success adt-constructor-decl "(success?)" ast nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (P_sc? const-decl "[Δ -> bool]" wf_peg nil)
+    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
+    (failure adt-constructor-decl "(failure?)" ast nil)
+    (P_fc? const-decl "[Δ -> bool]" wf_peg nil)
+    (output type-eq-decl nil peg_parser nil)
+    (parsing def-decl "output(P_exp, A, G, inp, s, s_T)" peg_parser
+     nil)
+    (valuedTree? const-decl "bool" semantic_interp nil)
+    (T adt-accessor-decl "[(known?) -> (valuedTree?)]"
+     semantic_tlparser nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (fail adt-constructor-decl "[[below, below] -> (fail?)]" pre_ast
+     nil)
+    (semantic? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (semantic adt-constructor-decl
+     "[[below, below, V_N[V_N_b], V_S] -> (semantic?)]" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
+    (semanticTree type-eq-decl nil pre_ast nil)
+    (semantic_interp type-eq-decl nil semantic_interp nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (s_inp def-decl "{T': semanticTree |
+   ((skip?(T) ⇔ skip?(T')) ∧
+     (star?(T) ⇔ star?(T')) ∧
+      ((astType?(T) = failure) ⇔ fail?(T')) ∧
+       ((plus?(T) ⇒ (plus?(T') ∨ fail?(T')))))
+    ∧
+    (s(T') = s(T)) ∧
+     (e(T') = e(T)) ∧
+      (astWellformed?(T) ⇒
+        (astWellformed?(T') ∧ (astType?(T') = astType?(T))))}"
+     semantic_interp nil)
+    (status adt-accessor-decl
+            "[(known?) -> astType[V_T, <=, V_N_b, bound, V_S]]"
+            semantic_tlparser nil)
+    (results type-eq-decl nil semantic_tlparser nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
     (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_tlparser nil)
-    (> const-decl "bool" reals nil) (< const-decl "bool" reals nil)
+    (> const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
     (>= const-decl "bool" reals nil)
     (int nonempty-type-eq-decl nil integers nil)
@@ -1093,16 +1204,18 @@
     (number_field_pred const-decl "[number -> boolean]" number_fields
      nil)
     (number nonempty-type-decl nil numbers nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_tlparser nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
-    (below type-eq-decl nil naturalnumbers nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil))
+    (V_T formal-nonempty-type-decl nil semantic_tlparser nil)
+    (strong const-decl "bool" wf_peg nil)
+    (int_minus_int_is_int application-judgement "int" integers nil))
    nil
    (semtlpp subtype "semantic_tlparser.s"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.P_exp(semantic_tlparser.B), semantic_tlparser.B, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC26 0
+ (semtlpp_TCC28 0
   (semtlpp_TCC56-1 nil 3804395188
    ("" (skeep)
     (("" (typepred "T_B")
@@ -1196,7 +1309,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T_B"
     "semanticTree[V_T, <=, V_N_b, bound, V_S]")))
- (semtlpp_TCC27 0
+ (semtlpp_TCC29 0
   (semtlpp_TCC58-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -1306,7 +1419,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC28 0
+ (semtlpp_TCC30 0
   (semtlpp_TCC13-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -1402,7 +1515,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.sem_T"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC29 0
+ (semtlpp_TCC31 0
   (semtlpp_TCC61-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((V_S formal-type-decl nil semantic_tlparser nil)
     (bound formal-const-decl "posnat" semantic_tlparser nil)
@@ -1433,7 +1546,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.sem_T"
     "(semantic_interp[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].valuedTree?)")))
- (semtlpp_TCC30 0
+ (semtlpp_TCC32 0
   (semtlpp_TCC14-1 nil 3804395188
    ("" (skeep*)
     (("" (lift-if -5)
@@ -1620,7 +1733,7 @@
    (semtlpp subtype
     "semantic_tlparser.res WITH [(semantic_tlparser.B, semantic_tlparser.s) := semantic_tlparser.known(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, semantic_tlparser.sem_T)]"
     "semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)")))
- (semtlpp_TCC31 0
+ (semtlpp_TCC33 0
   (semtlpp_TCC66-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -1732,7 +1845,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC32 0
+ (semtlpp_TCC34 0
   (semtlpp_TCC16-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -1851,7 +1964,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.fail_T"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC33 0
+ (semtlpp_TCC35 0
   (semtlpp_TCC68-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((V_S formal-type-decl nil semantic_tlparser nil)
     (bound formal-const-decl "posnat" semantic_tlparser nil)
@@ -1882,7 +1995,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.fail_T"
     "(semantic_interp[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].valuedTree?)")))
- (semtlpp_TCC34 0
+ (semtlpp_TCC36 0
   (semtlpp_TCC17-1 nil 3804395188
    ("" (skeep*)
     (("" (lift-if -4)
@@ -2037,7 +2150,7 @@
    (semtlpp subtype
     "semantic_tlparser.res WITH [(semantic_tlparser.B, semantic_tlparser.s) := semantic_tlparser.known(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, semantic_tlparser.fail_T)]"
     "semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)")))
- (semtlpp_TCC35 0
+ (semtlpp_TCC37 0
   (semtlpp_TCC19-1 nil 3804395188
    ("" (assert)
     (("" (skeep*)
@@ -2102,7 +2215,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.B, semantic_tlparser.P_exp(semantic_tlparser.B), semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.res, (LAMBDA (status: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.B, semantic_tlparser.P_exp(semantic_tlparser.B), semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s))), (T_B: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.B, semantic_tlparser.P_exp(semantic_tlparser.B), semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success) THEN LET sem_T = pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].semantic(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T_B), semantic_tlparser.B, semantic_tlparser.P_inp(semantic_tlparser.B, T_B)) IN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, semantic_tlparser.sem_T, res WITH [(semantic_tlparser.B, semantic_tlparser.s) := semantic_tlparser.known(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, semantic_tlparser.sem_T)]) ELSE LET fail_T = pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T_B)) IN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, semantic_tlparser.fail_T, res WITH [(semantic_tlparser.B, semantic_tlparser.s) := semantic_tlparser.known(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, semantic_tlparser.fail_T)]) ENDIF))"
     "nil")))
- (semtlpp_TCC36 0
+ (semtlpp_TCC38 0
   (semtlpp_TCC21-1 nil 3804395188
    ("" (skeep*)
     (("" (ground)
@@ -2158,7 +2271,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e1"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC37 0
+ (semtlpp_TCC39 0
   (semtlpp_TCC22-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -2214,7 +2327,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e1, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC38 0
+ (semtlpp_TCC40 0
   (semtlpp_TCC75-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -2235,7 +2348,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC39 0
+ (semtlpp_TCC41 0
   (semtlpp_TCC77-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -2344,7 +2457,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC40 0
+ (semtlpp_TCC42 0
   (semtlpp_TCC24-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -2394,7 +2507,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e2"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC41 0
+ (semtlpp_TCC43 0
   (semtlpp_TCC25-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -2546,7 +2659,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1)) | booleans.⇒((k = pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1)), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e2, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC42 0
+ (semtlpp_TCC44 0
   (semtlpp_TCC81-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -2678,7 +2791,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC43 0
+ (semtlpp_TCC45 0
   (semtlpp_TCC82-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -2833,7 +2946,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T2))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC44 0
+ (semtlpp_TCC46 0
   (semtlpp_TCC84-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3005,7 +3118,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC45 0
+ (semtlpp_TCC47 0
   (semtlpp_TCC27-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T1")
@@ -3111,7 +3224,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T1"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC46 0
+ (semtlpp_TCC48 0
   (semtlpp_TCC88-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3229,7 +3342,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].seq(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T2), semantic_tlparser.T1, semantic_tlparser.T2)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC47 0
+ (semtlpp_TCC49 0
   (semtlpp_TCC29-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3363,7 +3476,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1), semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1), semantic_tlparser.s_T))), (T2: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status2 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2)), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].seq(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2), semantic_tlparser.T1, T2), res) ENDIF))"
     "nil")))
- (semtlpp_TCC48 0
+ (semtlpp_TCC50 0
   (semtlpp_TCC31-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3437,7 +3550,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status1: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T1: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status1 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T1)), res) ELSE semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T1), semantic_tlparser.s_T, res, LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T1), semantic_tlparser.s_T))), (T2: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T1), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status2 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2)), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].seq(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2), T1, T2), res) ENDIF) ENDIF))"
     "nil")))
- (semtlpp_TCC49 0
+ (semtlpp_TCC51 0
   (semtlpp_TCC33-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -3487,7 +3600,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e1"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC50 0
+ (semtlpp_TCC52 0
   (semtlpp_TCC34-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -3543,7 +3656,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e1, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC51 0
+ (semtlpp_TCC53 0
   (semtlpp_TCC58-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3563,7 +3676,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC52 0
+ (semtlpp_TCC54 0
   (semtlpp_TCC35-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T1")
@@ -3665,7 +3778,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T1"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC53 0
+ (semtlpp_TCC55 0
   (semtlpp_TCC60-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3708,7 +3821,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].prior(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T1), semantic_tlparser.T1, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.e2))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC54 0
+ (semtlpp_TCC56 0
   (semtlpp_TCC37-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -3758,7 +3871,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e2"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC55 0
+ (semtlpp_TCC57 0
   (semtlpp_TCC38-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -3814,7 +3927,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e2, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC56 0
+ (semtlpp_TCC58 0
   (semtlpp_TCC63-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -3933,7 +4046,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC57 0
+ (semtlpp_TCC59 0
   (semtlpp_TCC39-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T1")
@@ -4035,7 +4148,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T1"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC58 0
+ (semtlpp_TCC60 0
   (semtlpp_TCC65-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -4153,7 +4266,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].prior(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T2), semantic_tlparser.T1, semantic_tlparser.T2)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC59 0
+ (semtlpp_TCC61 0
   (semtlpp_TCC66-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -4291,7 +4404,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC60 0
+ (semtlpp_TCC62 0
   (semtlpp_TCC67-1 nil 3804399719
    ("" (assert)
     (("" (skeep*)
@@ -4467,7 +4580,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T2))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC61 0
+ (semtlpp_TCC63 0
   (semtlpp_TCC42-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -4600,7 +4713,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T2: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status2 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].prior(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2), semantic_tlparser.T1, T2), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2)), res) ENDIF))"
     "nil")))
- (semtlpp_TCC62 0
+ (semtlpp_TCC64 0
   (semtlpp_TCC44-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -4674,7 +4787,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status1: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T1: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e1, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status1 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].prior(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T1), T1, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.e2)), res) ELSE semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, res, LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T2: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e2, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status2 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].prior(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2), T1, T2), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T2)), res) ENDIF) ENDIF))"
     "nil")))
- (semtlpp_TCC63 0
+ (semtlpp_TCC65 0
   (semtlpp_TCC46-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -4722,7 +4835,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC64 0
+ (semtlpp_TCC66 0
   (semtlpp_TCC47-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -4778,7 +4891,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC65 0
+ (semtlpp_TCC67 0
   (semtlpp_TCC76-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -4798,7 +4911,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC66 0
+ (semtlpp_TCC68 0
   (semtlpp_TCC48-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T0")
@@ -4900,7 +5013,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T0"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC67 0
+ (semtlpp_TCC69 0
   (semtlpp_TCC78-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -5034,7 +5147,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.T0, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e)))"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC68 0
+ (semtlpp_TCC70 0
   (semtlpp_TCC50-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
@@ -5138,7 +5251,7 @@
    (semtlpp subtype
     "peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e)"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC69 0
+ (semtlpp_TCC71 0
   (semtlpp_TCC51-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -5252,7 +5365,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0)) | booleans.⇒((k = pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0)), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC70 0
+ (semtlpp_TCC72 0
   (semtlpp_TCC81-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -5359,7 +5472,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC71 0
+ (semtlpp_TCC73 0
   (semtlpp_TCC52-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T0")
@@ -5461,7 +5574,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T0"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC72 0
+ (semtlpp_TCC74 0
   (semtlpp_TCC53-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "Ts")
@@ -5584,7 +5697,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.Ts"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | booleans.OR(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T), pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star?(T))}")))
- (semtlpp_TCC73 0
+ (semtlpp_TCC75 0
   (semtlpp_TCC84-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -5724,7 +5837,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.Ts), semantic_tlparser.T0, semantic_tlparser.Ts)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC74 0
+ (semtlpp_TCC76 0
   (semtlpp_TCC55-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -5873,7 +5986,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T))), (Ts: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(Ts), semantic_tlparser.T0, Ts), res)))"
     "nil")))
- (semtlpp_TCC75 0
+ (semtlpp_TCC77 0
   (semtlpp_TCC57-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -5943,7 +6056,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status0: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T0: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status0 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star(semantic_tlparser.s, semantic_tlparser.s, T0, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e))), res) ELSE semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T, res, LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T))), (Ts: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].star(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].star(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(Ts), T0, Ts), res)) ENDIF))"
     "nil")))
- (semtlpp_TCC76 0
+ (semtlpp_TCC78 0
   (semtlpp_TCC59-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -5991,7 +6104,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC77 0
+ (semtlpp_TCC79 0
   (semtlpp_TCC60-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -6047,7 +6160,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC78 0
+ (semtlpp_TCC80 0
   (semtlpp_TCC93-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -6067,7 +6180,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC79 0
+ (semtlpp_TCC81 0
   (semtlpp_TCC94-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -6101,7 +6214,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC80 0
+ (semtlpp_TCC82 0
   (semtlpp_TCC70-1 nil 3804395188 ("" (subtype-tcc) nil nil)
    ((boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
@@ -6205,7 +6318,7 @@
    (semtlpp subtype
     "peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e)"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC81 0
+ (semtlpp_TCC83 0
   (semtlpp_TCC63-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -6316,7 +6429,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0)) | booleans.⇒((k = pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0)), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC82 0
+ (semtlpp_TCC84 0
   (semtlpp_TCC97-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -6476,7 +6589,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC83 0
+ (semtlpp_TCC85 0
   (semtlpp_TCC64-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T0")
@@ -6578,7 +6691,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T0"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC84 0
+ (semtlpp_TCC86 0
   (semtlpp_TCC65-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "Ts")
@@ -6711,7 +6824,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.Ts"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | booleans.OR(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T), booleans.OR(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].plus?(T), pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail?(T)))}")))
- (semtlpp_TCC85 0
+ (semtlpp_TCC87 0
   (semtlpp_TCC100-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -6858,7 +6971,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].plus(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.Ts), semantic_tlparser.T0, semantic_tlparser.Ts)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC86 0
+ (semtlpp_TCC88 0
   (semtlpp_TCC67-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7012,7 +7125,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T))), (Ts: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T0), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].plus(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(Ts), semantic_tlparser.T0, Ts), res)))"
     "nil")))
- (semtlpp_TCC87 0
+ (semtlpp_TCC89 0
   (semtlpp_TCC69-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7089,7 +7202,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status0: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T0: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status0 = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s), res) ELSE semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T, res, LAMBDA (status2: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T))), (Ts: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].plus(semantic_tlparser.e), semantic_tlparser.inp, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T0), semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].plus(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(Ts), T0, Ts), res)) ENDIF))"
     "nil")))
- (semtlpp_TCC88 0
+ (semtlpp_TCC90 0
   (semtlpp_TCC71-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -7137,7 +7250,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC89 0
+ (semtlpp_TCC91 0
   (semtlpp_TCC72-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -7191,7 +7304,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC90 0
+ (semtlpp_TCC92 0
   (semtlpp_TCC111-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7211,7 +7324,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC91 0
+ (semtlpp_TCC93 0
   (semtlpp_TCC74-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T!1")
@@ -7313,7 +7426,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC92 0
+ (semtlpp_TCC94 0
   (semtlpp_TCC132-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7347,7 +7460,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].opt(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.T)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC93 0
+ (semtlpp_TCC95 0
   (semtlpp_TCC119-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7443,7 +7556,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC94 0
+ (semtlpp_TCC96 0
   (semtlpp_TCC80-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T!1")
@@ -7545,7 +7658,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC95 0
+ (semtlpp_TCC97 0
   (semtlpp_TCC113-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7660,7 +7773,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].opt(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(semantic_tlparser.T), semantic_tlparser.T)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC96 0
+ (semtlpp_TCC98 0
   (semtlpp_TCC76-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7730,7 +7843,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].opt(semantic_tlparser.s, semantic_tlparser.s, T), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].opt(semantic_tlparser.s, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].e(T), T), res) ENDIF))"
     "nil")))
- (semtlpp_TCC97 0
+ (semtlpp_TCC99 0
   (semtlpp_TCC78-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -7778,7 +7891,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC98 0
+ (semtlpp_TCC100 0
   (semtlpp_TCC79-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -7832,7 +7945,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC99 0
+ (semtlpp_TCC101 0
   (semtlpp_TCC129-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7852,7 +7965,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC100 0
+ (semtlpp_TCC102 0
   (semtlpp_TCC87-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "T!1")
@@ -7954,7 +8067,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC101 0
+ (semtlpp_TCC103 0
   (semtlpp_TCC121-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -7988,7 +8101,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].notP(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.T)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC102 0
+ (semtlpp_TCC104 0
   (semtlpp_TCC109-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8084,7 +8197,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC103 0
+ (semtlpp_TCC105 0
   (semtlpp_TCC110-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8193,7 +8306,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC104 0
+ (semtlpp_TCC106 0
   (semtlpp_TCC83-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8263,7 +8376,7 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].notP(semantic_tlparser.s, semantic_tlparser.s, T), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s), res) ENDIF))"
     "nil")))
- (semtlpp_TCC105 0
+ (semtlpp_TCC107 0
   (semtlpp_TCC85-1 nil 3804395188
    ("" (skeep*)
     (("" (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
@@ -8311,7 +8424,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.e"
     "{e: wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].Δ | peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].subterm(e, semantic_tlparser.P_exp(semantic_tlparser.A))}")))
- (semtlpp_TCC106 0
+ (semtlpp_TCC108 0
   (semtlpp_TCC86-1 nil 3804395188
    ("" (skeep*)
     (("" (typepred "s_T")
@@ -8365,7 +8478,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.s_T"
     "{k: naturalnumbers.upto(semantic_tlparser.s) | booleans.⇒((k = semantic_tlparser.s), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].g_wf(semantic_tlparser.e, semantic_tlparser.A, wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].P_0c?(semantic_tlparser.P_exp), wf_peg[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b].strong))}")))
- (semtlpp_TCC107 0
+ (semtlpp_TCC109 0
   (semtlpp_TCC133-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8385,7 +8498,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC108 0
+ (semtlpp_TCC110 0
   (semtlpp_TCC108-1 nil 3804487992
    ("" (skeep*)
     (("" (case "astWellformed?(T!1)")
@@ -8483,7 +8596,7 @@
    nil
    (semtlpp subtype "semantic_tlparser.T"
     "{T: pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].pre_ast | (booleans.¬)(pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].skip?(T))}")))
- (semtlpp_TCC109 0
+ (semtlpp_TCC111 0
   (semtlpp_TCC131-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8517,7 +8630,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].andP(semantic_tlparser.s, semantic_tlparser.s, semantic_tlparser.T)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC110 0
+ (semtlpp_TCC112 0
   (semtlpp_TCC122-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8611,7 +8724,7 @@
    (semtlpp subtype
     "ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure"
     "semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))")))
- (semtlpp_TCC111 0
+ (semtlpp_TCC113 0
   (semtlpp_TCC123-1 nil 3804399719
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8720,7 +8833,7 @@
    (semtlpp subtype
     "pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s)"
     "semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.G, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)")))
- (semtlpp_TCC112 0
+ (semtlpp_TCC114 0
   (semtlpp_TCC90-1 nil 3804395188
    ("" (skeep*)
     (("" (replace -1 * LR)
@@ -8790,178 +8903,186 @@
    (semtlpp termination
     "semantic_tlparser.semtlpp(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T, semantic_tlparser.res, (LAMBDA (status: semantic_tlparser.astTypeOf(peg_parser[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].parsing(semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T))), (T: semantic_tlparser.sem_result(semantic_tlparser.P_inp, semantic_tlparser.P_exp, semantic_tlparser.A, semantic_tlparser.e, semantic_tlparser.inp, semantic_tlparser.s, semantic_tlparser.s_T)), (res: semantic_tlparser.results(semantic_tlparser.P_exp, semantic_tlparser.P_inp, semantic_tlparser.inp)): IF (status = ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success) THEN semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].success, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].andP(semantic_tlparser.s, semantic_tlparser.s, T), res) ELSE semantic_tlparser.cont(ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].failure, pre_ast[semantic_tlparser.V_T, semantic_tlparser.<=, semantic_tlparser.V_N_b, semantic_tlparser.bound, semantic_tlparser.V_S].fail(semantic_tlparser.s, semantic_tlparser.s), res) ENDIF))"
     "nil")))
- (memoïzed_does_not_change 0
-  (memoïzed_does_not_change-1 nil 3804503631
-   ("" (skolem 1 ("P_exp" "P_inp" "_" "_" "inp" "_" "_" "_" "_" "_"))
-    (("" (measure-induct "A" "A")
-      (("" (skolem 1 "A")
-        (("" (ground)
-          (("" (measure-induct+ "pegMeasure(G)" "G")
-            (("" (name-replace "G" "x!1")
-              (("" (measure-induct+ "bound - s" "s")
-                (("1" (name-replace "s" "x!2")
-                  (("1" (postpone) nil nil)) nil)
-                 ("2" (postpone) nil nil) ("3" (postpone) nil nil)
-                 ("4" (postpone) nil nil) ("5" (postpone) nil nil)
-                 ("6" (postpone) nil nil))
+ (semantic_tlparser_correct 0
+  (semantic_tlparser_correct-1 nil 3804495937
+   ("" (skolem 1 ("P_exp" "P_inp" "_" "_" "inp" "_" "_" "_"))
+    ((""
+      (case "FORALL (A:below(V_N_b)), (G: Δ), (s: upto(bound)), (s_T: upto(bound)):
+        subterm(G, P_exp(A)) ⇒
+	((s_T <= s) AND ((s_T = s) ⇒ g_wf(G, A, P_0c?(P_exp), strong))) ⇒
+	(forall (res: results(P_exp, P_inp, inp)), (cont  : [
+               	             [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                                     sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+               		      results(P_exp, P_inp, inp)]
+               		     ->
+               		     [astType, pre_ast,results(P_exp,P_inp,inp)]
+               		    ]):
+                       semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res, cont)
+                        = cont(astType?(parsing(P_exp, A, G, inp, s, s_T)), s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T)), res))")
+      (("1" (skeep)
+        (("1" (inst -1 "A" "G" "s" "s_T")
+          (("1" (assert)
+            (("1" (typepred "s_T")
+              (("1" (assert)
+                (("1" (split -3)
+                  (("1"
+                    (inst -1 "res" "LAMBDA (x:
+                                [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                                 sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+                                 results(P_exp, P_inp, inp)]):
+                        (x`1, x`2, x`3)")
+                    (("1" (replace -1 * LR) (("1" (assert) nil nil))
+                      nil))
+                    nil)
+                   ("2" (propax) nil nil))
+                  nil))
                 nil))
               nil))
             nil))
           nil))
-        nil))
-      nil))
-    nil)
-   nil shostak))
- (semantic_tlparser_correct 0
-  (semantic_tlparser_correct-1 nil 3804495937
-   ("" (skolem 1 ("P_exp" "P_inp" "A" "_" "inp" "_" "_" "_"))
-    ((""
-      (case "FORALL (G: {e: Δ | subterm(e, P_exp(A))}),
-             (s: upto(bound)),
-             (s_T:
-                {k: upto(s) | (k = s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}),
-             (res: results(P_exp, P_inp, inp)), (cont  : [
-	             [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
-                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
-		      results(P_exp, P_inp, inp)]
-		     ->
-		     [astType, pre_ast]
-		    ]):
-        semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res, cont)
-         = cont(astType?(parsing(P_exp, A, G, inp, s, s_T)), s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T)), res)")
-      (("1" (skeep)
-        (("1" (inst -1 "G" "s" "s_T" "res" "_")
-          (("1"
-            (inst -1 "LAMBDA (x:
-                        [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
-                         sem_result(P_inp, P_exp, A, G, inp, s, s_T),
-                         results(P_exp, P_inp, inp)]):
-                (x`1, x`2)")
-            (("1" (replace -1 * LR) (("1" (assert) nil nil)) nil))
-            nil))
-          nil))
         nil)
        ("2" (hide 2)
-        (("2" (induct "G")
-          (("1" (typepred "G!1") (("1" (propax) nil nil)) nil)
-           ("2" (flatten)
-            (("2" (skeep*) (("2" (assert) (("2" (grind) nil nil)) nil))
-              nil))
-            nil)
-           ("3" (flatten)
-            (("3" (skeep*) (("3" (assert) (("3" (grind) nil nil)) nil))
-              nil))
-            nil)
-           ("4" (skeep*) (("4" (assert) (("4" (grind) nil nil)) nil))
-            nil)
-           ("5" (skeep*) (("5" (assert) (("5" (grind) nil nil)) nil))
-            nil)
-           ("6" (skeep*)
-            (("6" (name-replace "B" "nonTerminal1_var")
-              (("6" (expand "semtlpp")
-                (("6" (lift-if)
-                  (("6" (split)
-                    (("1" (flatten)
-                      (("1" (typepred "res")
-                        (("1" (inst? -1)
-                          (("1" (assert)
-                            (("1" (flatten)
+        (("2"
+          (measure-induct+
+           " lex4(bound - s_T, bound - s,  A, pegMeasure(G))"
+           ("A" "G" "s" "s_T"))
+          (("1" (name-replace "A" "x!1")
+            (("1" (name-replace "G" "x!2")
+              (("1" (name-replace "s" "x!3")
+                (("1" (name-replace "s_T" "x!4")
+                  (("1" (skeep)
+                    (("1" (case "nonTerminal?(G)")
+                      (("1"
+                        (case "Exists (B: V_N): G = nonTerminal(B)")
+                        (("1" (skeep -1)
+                          (("1" (replace -1 * LR)
+                            (("1" (expand "semtlpp" +)
                               (("1"
-                                (lemma
-                                 "Wellformed_theorem"
-                                 (T
-                                  "parsing(P_exp, B, P_exp(B), inp, s, s)"))
+                                (lift-if)
                                 (("1"
-                                  (assert)
+                                  (split 1)
                                   (("1"
                                     (flatten)
                                     (("1"
-                                      (split -2)
+                                      (typepred "res")
                                       (("1"
-                                        (assert)
+                                        (inst? -1)
                                         (("1"
-                                          (replace -7 * LR)
+                                          (assert)
                                           (("1"
-                                            (expand "parsing" +)
+                                            (lemma
+                                             "Wellformed_theorem"
+                                             (T
+                                              "parsing(P_exp, B, P_exp(B), inp, s, s)"))
                                             (("1"
-                                              (expand "astType?" +)
+                                              (assert)
                                               (("1"
-                                                (expand "s_inp" +)
+                                                (flatten)
                                                 (("1"
                                                   (assert)
                                                   (("1"
-                                                    (replace -1 * LR)
+                                                    (expand
+                                                     "parsing"
+                                                     1)
                                                     (("1"
-                                                      (expand
-                                                       "astType?"
-                                                       +)
+                                                      (name-replace
+                                                       "T_ref"
+                                                       "parsing(P_exp, B, P_exp(B), inp, s, s)")
                                                       (("1"
-                                                        (replace
-                                                         -3
-                                                         *
-                                                         LR)
+                                                        (expand
+                                                         "astType?"
+                                                         1)
                                                         (("1"
-                                                          (assert)
+                                                          (split -2)
                                                           (("1"
-                                                            (expand
-                                                             "astType?"
-                                                             -4)
+                                                            (ground)
                                                             (("1"
-                                                              (propax)
+                                                              (grind)
+                                                              nil
+                                                              nil)
+                                                             ("2"
+                                                              (grind)
                                                               nil
                                                               nil))
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil)
-                                       ("2"
-                                        (assert)
-                                        (("2"
-                                          (replace -4 * LR)
-                                          (("2"
-                                            (expand "parsing" 2 4)
-                                            (("2"
-                                              (expand "parsing" 2 6)
-                                              (("2"
-                                                (assert)
-                                                (("2"
-                                                  (expand "astType?" +)
-                                                  (("2"
-                                                    (assert)
-                                                    (("2"
-                                                      (hide 1)
-                                                      (("2"
-                                                        (expand
-                                                         "s_inp"
-                                                         1
-                                                         2)
-                                                        (("2"
-                                                          (expand
-                                                           "astType?"
-                                                           1
-                                                           2)
-                                                          (("2"
-                                                            (replace
-                                                             -3
-                                                             *
-                                                             RL)
-                                                            (("2"
+                                                            nil)
+                                                           ("2"
+                                                            (ground)
+                                                            (("1"
                                                               (replace
-                                                               -1
+                                                               -3
+                                                               *
+                                                               LR)
+                                                              (("1"
+                                                                (replace
+                                                                 -2
+                                                                 *
+                                                                 LR)
+                                                                (("1"
+                                                                  (replace
+                                                                   -5
+                                                                   *
+                                                                   RL)
+                                                                  (("1"
+                                                                    (expand
+                                                                     "astType?"
+                                                                     +)
+                                                                    (("1"
+                                                                      (assert)
+                                                                      (("1"
+                                                                        (expand
+                                                                         "s_inp"
+                                                                         3
+                                                                         2)
+                                                                        (("1"
+                                                                          (expand
+                                                                           "astType?"
+                                                                           +)
+                                                                          (("1"
+                                                                            (assert)
+                                                                            nil
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil)
+                                                             ("2"
+                                                              (replace
+                                                               -2
                                                                *
                                                                LR)
                                                               (("2"
-                                                                (assert)
+                                                                (replace
+                                                                 -1
+                                                                 *
+                                                                 LR)
                                                                 (("2"
-                                                                  (postpone)
-                                                                  nil
+                                                                  (replace
+                                                                   -4
+                                                                   *
+                                                                   RL)
+                                                                  (("2"
+                                                                    (expand
+                                                                     "astType?"
+                                                                     +)
+                                                                    (("2"
+                                                                      (expand
+                                                                       "s_inp"
+                                                                       +
+                                                                       2)
+                                                                      (("2"
+                                                                        (expand
+                                                                         "astType?"
+                                                                         +)
+                                                                        (("2"
+                                                                          (assert)
+                                                                          nil
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
                                                                   nil))
                                                                 nil))
                                                               nil))
@@ -8977,28 +9098,352 @@
                                           nil))
                                         nil))
                                       nil))
+                                    nil)
+                                   ("2"
+                                    (flatten)
+                                    (("2"
+                                      (inst -3 "B" "P_exp(B)" "s" "s")
+                                      (("2"
+                                        (split -3)
+                                        (("1"
+                                          (inst
+                                           -1
+                                           "res"
+                                           "(LAMBDA (status:
+                        astTypeOf(parsing(P_exp, B, P_exp(B), inp, s, s))),
+                     (T_B:
+                        sem_result(P_inp, P_exp, B, P_exp(B), inp, s, s)),
+                     (res: results(P_exp, P_inp, inp)):
+                IF (status = success)
+                  THEN LET sem_T: (semantic?[V_T, <=, V_N_b, bound, V_S]) =
+                             semantic(s, e(T_B), B, P_inp(B, T_B))
+                         IN
+                         cont(success, sem_T,
+                              res WITH [(B, s) := known(success, sem_T)])
+                ELSE LET fail_T: (fail?[V_T, <=, V_N_b, bound, V_S]) =
+                           fail(s, e(T_B))
+                       IN
+                       cont(failure, fail_T,
+                            res WITH [(B, s) := known(failure, fail_T)])
+                ENDIF)")
+                                          (("1"
+                                            (replace -1 * LR)
+                                            (("1"
+                                              (hide -1)
+                                              (("1"
+                                                (lift-if)
+                                                (("1"
+                                                  (assert)
+                                                  (("1"
+                                                    (assert)
+                                                    (("1"
+                                                      (split)
+                                                      (("1"
+                                                        (flatten)
+                                                        (("1"
+                                                          (name-replace
+                                                           "T_ref"
+                                                           "parsing(P_exp, B, P_exp(B), inp, s, s)")
+                                                          (("1"
+                                                            (expand
+                                                             "parsing"
+                                                             1)
+                                                            (("1"
+                                                              (expand
+                                                               "astType?"
+                                                               1)
+                                                              (("1"
+                                                                (assert)
+                                                                (("1"
+                                                                  (expand
+                                                                   "s_inp"
+                                                                   +
+                                                                   5)
+                                                                  (("1"
+                                                                    (reveal
+                                                                     -1)
+                                                                    (("1"
+                                                                      (replace
+                                                                       -1
+                                                                       *
+                                                                       LR)
+                                                                      (("1"
+                                                                        (assert)
+                                                                        (("1"
+                                                                          (replace
+                                                                           -2
+                                                                           *
+                                                                           LR)
+                                                                          (("1"
+                                                                            (expand
+                                                                             "astType?"
+                                                                             +)
+                                                                            (("1"
+                                                                              (postpone)
+                                                                              nil
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil)
+                                                       ("2"
+                                                        (postpone)
+                                                        nil
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil)
+                                           ("2" (postpone) nil nil)
+                                           ("3" (postpone) nil nil)
+                                           ("4" (postpone) nil nil)
+                                           ("5" (postpone) nil nil)
+                                           ("6" (postpone) nil nil)
+                                           ("7" (postpone) nil nil)
+                                           ("8" (postpone) nil nil)
+                                           ("9" (postpone) nil nil)
+                                           ("10" (postpone) nil nil))
+                                          nil)
+                                         ("2" (postpone) nil nil)
+                                         ("3" (postpone) nil nil)
+                                         ("4" (postpone) nil nil)
+                                         ("5" (postpone) nil nil))
+                                        nil))
+                                      nil))
                                     nil))
-                                  nil)
-                                 ("2" (postpone) nil nil)
-                                 ("3" (postpone) nil nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil)
+                         ("2" (inst 1 "A(G)")
+                          (("2" (assert)
+                            (("2" (hide 2 -2 -3 -4)
+                              (("2"
+                                (hide -2)
+                                (("2" (decompose-equality) nil nil))
                                 nil))
                               nil))
                             nil))
                           nil))
-                        nil))
-                      nil)
-                     ("2" (postpone) nil nil))
+                        nil)
+                       ("2" (postpone) nil nil))
+                      nil))
                     nil))
                   nil))
                 nil))
               nil))
             nil)
-           ("7" (postpone) nil nil) ("8" (postpone) nil nil)
-           ("9" (postpone) nil nil) ("10" (postpone) nil nil)
-           ("11" (postpone) nil nil) ("12" (postpone) nil nil)
-           ("13" (postpone) nil nil))
+           ("2" (hide 2)
+            (("2" (skeep)
+              (("2" (typepred "P_exp")
+                (("2" (expand "strong_WF") (("2" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("3" (hide 2)
+            (("3" (skeep*)
+              (("3" (typepred "P_exp")
+                (("3" (expand "strong_WF")
+                  (("3" (inst? -)
+                    (("3" (expand "subterm") (("3" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("4" (hide 2)
+            (("4" (skeep*)
+              (("4" (typepred "P_exp")
+                (("4" (expand "strong_WF") (("4" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("5" (hide 2)
+            (("5" (skeep*)
+              (("5" (typepred "P_exp")
+                (("5" (expand "strong_WF")
+                  (("5" (inst? -)
+                    (("5" (expand "subterm") (("5" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("6" (hide 2)
+            (("6" (skeep*)
+              (("6" (typepred "P_exp")
+                (("6" (expand "strong_WF") (("6" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("7" (hide 2)
+            (("7" (skeep*)
+              (("7" (typepred "P_exp")
+                (("7" (expand "strong_WF")
+                  (("7" (inst? -)
+                    (("7" (expand "subterm") (("7" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("8" (hide 2)
+            (("8" (skeep*)
+              (("8" (typepred "P_exp")
+                (("8" (expand "strong_WF") (("8" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("9" (hide 2)
+            (("9" (skeep*)
+              (("9" (typepred "P_exp")
+                (("9" (expand "strong_WF")
+                  (("9" (inst? -)
+                    (("9" (expand "subterm") (("9" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("10" (hide 2)
+            (("10" (typepred "P_exp")
+              (("10" (expand "strong_WF")
+                (("10" (typepred "x!1`1") (("10" (assert) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("11" (hide 2)
+            (("11" (skeep*)
+              (("11" (typepred "P_exp")
+                (("11" (expand "strong_WF") (("11" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("12" (assert)
+            (("12" (hide 2)
+              (("12" (skeep*)
+                (("12" (typepred "P_exp")
+                  (("12" (expand "strong_WF")
+                    (("12" (inst? -)
+                      (("12" (expand "subterm")
+                        (("12" (propax) nil nil)) nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("13" (hide 2)
+            (("13" (skeep*)
+              (("13" (typepred "P_exp")
+                (("13" (expand "strong_WF") (("13" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("14" (hide 2)
+            (("14" (skeep*)
+              (("14" (typepred "P_exp")
+                (("14" (expand "strong_WF")
+                  (("14" (inst? -)
+                    (("14" (expand "subterm") (("14" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("15" (hide 2)
+            (("15" (typepred "P_exp")
+              (("15" (expand "strong_WF")
+                (("15" (inst? -) (("15" (assert) nil nil)) nil)) nil))
+              nil))
+            nil)
+           ("16" (typepred "x!1`3") (("16" (assert) nil nil)) nil)
+           ("17" (assert) nil nil) ("18" (assert) nil nil)
+           ("19" (assert) nil nil)
+           ("20" (assert)
+            (("20" (hide 2)
+              (("20" (skeep*)
+                (("20" (typepred "P_exp")
+                  (("20" (expand "strong_WF")
+                    (("20" (inst? -) nil nil)) nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("21" (assert)
+            (("21" (hide 2)
+              (("21" (skeep*)
+                (("21" (typepred "P_exp")
+                  (("21" (expand "strong_WF")
+                    (("21" (inst? -)
+                      (("21" (expand "subterm")
+                        (("21" (propax) nil nil)) nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("22" (hide 2)
+            (("22" (skeep*)
+              (("22" (typepred "P_exp")
+                (("22" (expand "strong_WF") (("22" (inst? -) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("23" (hide 2)
+            (("23" (skeep*)
+              (("23" (typepred "P_exp")
+                (("23" (expand "strong_WF")
+                  (("23" (inst? -)
+                    (("23" (expand "subterm") (("23" (propax) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
           nil))
-        nil))
+        nil)
+       ("3" (hide 2)
+        (("3" (skeep*)
+          (("3" (typepred "P_exp")
+            (("3" (expand "strong_WF") (("3" (inst? -) nil nil)) nil))
+            nil))
+          nil))
+        nil)
+       ("4" (expand "subterm") (("4" (propax) nil nil)) nil)
+       ("5" (hide 2)
+        (("5" (skeep*)
+          (("5" (typepred "P_exp")
+            (("5" (expand "strong_WF") (("5" (inst? -) nil nil)) nil))
+            nil))
+          nil))
+        nil)
+       ("6" (expand "subterm") (("6" (propax) nil nil)) nil))
       nil))
     nil)
    nil shostak)))

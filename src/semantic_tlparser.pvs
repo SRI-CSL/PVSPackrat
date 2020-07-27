@@ -65,9 +65,9 @@ semantic_tlparser [
                       sem_result(P_inp, P_exp, A, G, inp, s, s_T),
 		      results(P_exp, P_inp, inp)]
 		     ->
-		     [astType, pre_ast]
+		     [astType, pre_ast, results(P_exp, P_inp, inp)]
 		    ]):
-      RECURSIVE [astType, pre_ast] =
+      RECURSIVE [astType, pre_ast, results(P_exp, P_inp, inp)] =
           CASES G OF
               ε: cont(success, ε(s,s), res),
               any: if (s+1 > bound)
@@ -189,26 +189,6 @@ semantic_tlparser [
     ENDCASES
     MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
 
-    % semtlpp_induction
-
-    memoïzed_does_not_change : THEOREM
-        ∀  (P_exp : WF_nT),
-  	   (P_inp : semantic_interp),
-  	   (A     : below(V_N_b)),                   % Current non Terminal
-           (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
-           (inp   : input),                          % Input array
-  	   (s     : upto(bound)),                      % Starting index
-  	   (s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}),
-	   (cont  : [
-	             [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
-                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
-		      results(P_exp, P_inp, inp)]
-		     ->
-		     [astType, pre_ast]
-		    ]),
-  	   (res1, res2 : results(P_exp, P_inp, inp)) :
-	   semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res1, cont) =
-	   semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res2, cont)
 
     semantic_tlparser_correct :
       THEOREM
@@ -225,7 +205,7 @@ semantic_tlparser [
 		    (λ (x : [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
                       sem_result(P_inp, P_exp, A, G, inp, s, s_T),
 		      results(P_exp, P_inp, inp)])
-		     : (x`1, x`2)))`2 = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))
+		     : (x`1, x`2, x`3)))`2 = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))
 
 
 END semantic_tlparser
