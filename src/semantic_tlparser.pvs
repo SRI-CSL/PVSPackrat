@@ -13,34 +13,14 @@ semantic_tlparser [
       V_S   : TYPE
       ]: THEORY
   BEGIN
-  IMPORTING peg_parser[V_T, <=, V_N_b, bound, V_S]
-  IMPORTING semantic_interp[V_T, <=, V_N_b, bound, V_S]
+  IMPORTING semantic_parser[V_T, <=, V_N_b, bound, V_S]
 
   b : VAR inp_bound
-
-  % Array for packrat memoization
-  saved_result: DATATYPE
-    BEGIN
-      unknown : unknown?
-      known(status : astType, T : (valuedTree?)) : known?
-    END saved_result
-
-  % Type to store results of partial parsing. Maintains equivalence with reference parser
-  results(P_exp : WF_nT,
-          P_inp : semantic_interp,
-  	      inp   : input) : TYPE =
-  	   	  { res : [[V_N, inp_bound] -> saved_result] |
-		    FORALL (A : V_N, s : upto(bound)) :
-		       LET T_p = parsing(P_exp, A, P_exp(A), inp, s, s) IN
-  		       known?(res(A,s)) ⇒ ((astType?(T_p) = failure ⇔ T(res(A,s)) = fail    (s(T_p), e(T_p)))
-		                          ∧(astType?(T_p) = success ⇔ T(res(A,s)) = semantic(s(T_p), e(T_p), A, P_inp(A, s_inp(P_inp, T_p))))
-					  ∧(astType?(T(res(A,s))) = status(res(A,s))))}
 
 
   status, status1, status2 : VAR astType
   T, T0, T1, T2, T_B, Ts : VAR pre_ast
 
-  astTypeOf(T: pre_ast) : TYPE = {s: astType | s = astType?(T)}
   sem_result(P_inp : semantic_interp,
 	     P_exp : WF_nT,
   	     A     : below(V_N_b),                   % Current non Terminal
