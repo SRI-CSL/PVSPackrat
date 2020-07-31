@@ -73,7 +73,7 @@ semantic_parser [
               nonTerminal(B):
 	          cases res(B,s) of
 		    known(status, T_B): (status, T_B, res),
-		    unknown: let (status, T_B, resB) = sempp(P_exp, P_inp, B, P_exp(B), inp, s, s, res) in
+		    unknown: let (status, T_B, res) = sempp(P_exp, P_inp, B, P_exp(B), inp, s, s, res) in
 		             if (status = success) then
 			        let sem_T = semantic(s, e(T_B), B, P_inp(B,T_B)) in
 				(success, sem_T, res WITH [(B,s) := known(success, sem_T)])

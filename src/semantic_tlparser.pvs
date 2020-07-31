@@ -47,7 +47,7 @@ semantic_tlparser [
 		     ->
 		     [astType, pre_ast, results(P_exp, P_inp, inp)]
 		    ]):
-      RECURSIVE [astType, pre_ast, results(P_exp, P_inp, inp)] =
+      RECURSIVE {x : [astType, pre_ast, results(P_exp, P_inp, inp)] | x = cont(sempp(P_exp, P_inp, A, G, inp, s, s_T, res))} =
           CASES G OF
               ε: cont(success, ε(s,s), res),
               any: if (s+1 > bound)
