@@ -188,4 +188,22 @@ semantic_tlparser [
 		     : (x`1, x`2, x`3)))`2 = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))
 
 
+
+    semantic_tlparser
+           (P_exp : WF_nT,
+  	    P_inp : semantic_interp,
+  	    A     : below(V_N_b),                % Current non Terminal
+            G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
+            inp   : input,                          % Input array
+  	    s     : upto(bound),                      % Starting index
+  	    s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)},
+  	    res   : results(P_exp, P_inp, inp)) : astType =
+		    semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res,
+		    % Identity continuation
+		    (λ (x : [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+		      results(P_exp, P_inp, inp)])
+		     : (x`1, x`2, x`3)))`1
+
+
 END semantic_tlparser

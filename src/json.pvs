@@ -20,7 +20,7 @@ json_grammar : THEORY BEGIN
    J_object: Δ = nonTerminal(10)
    member  : Δ = nonTerminal(11)
    J_array : Δ = nonTerminal(12)
-   value   : Δ = nonTerminal(30)
+   value   : Δ = nonTerminal(29)
 
    % Json number
    J_number: Δ = nonTerminal(23)
@@ -60,8 +60,8 @@ json_grammar : THEORY BEGIN
        % Json object:
        % object = begin-object [ member *(value-separator member)] end-array
        % member = string name-separator value
-      x = 10-> seq3(begin_object, opt(seq(member, star(seq(value_separator, member)))), end_object),
-      x = 11-> seq3(J_string, name_separator, value),
+      x = 10-> seq3(begin_object, opt(seq(seq3(J_string, name_separator, value), star(seq(value_separator, seq3(J_string, name_separator, value))))), end_object),
+      %x = 11-> ,
 
        % Json Array:
        % array = begin-array [ value *(value-separator value)] end-array
@@ -89,11 +89,13 @@ json_grammar : THEORY BEGIN
       x = 27-> prior3(range(char(48), char(57)), range(char(65), char(70)), range(char(97), char(102))),
       x = 28-> seq3(quotation_mark, star(J_char), quotation_mark),
 
-       % Json text
-      x = 29-> seq3(ws, value, ws),
 
        % Json value
-      x = 30-> prior7(J_false, J_null, J_true, J_object, J_array, J_number, J_string),
+      x = 29-> prior7(J_false, J_null, J_true, J_object, J_array, J_number, J_string),
+
+       % Json text
+      x = 30-> seq3(ws, value, ws),
+
       else  -> ε
       endcond
 
@@ -101,7 +103,7 @@ json_grammar : THEORY BEGIN
 
 
    % Entry point
-   entry : int = 29
+   entry : int = 30
 
 
 END json_grammar
@@ -130,7 +132,7 @@ Begin
     IMPORTING json_grammar
 
     V_S : TYPE = JSON
-    IMPORTING semantic_parser[V_T, <=, V_N_b, 1000, V_S]
+    IMPORTING semantic_tlparser[V_T, <=, V_N_b, 1000, V_S]
     IMPORTING ast_tools[V_T, <=, V_N_b, 1000, V_S]
 
     ;⊥ : JSON = JSON_error(0)
@@ -174,11 +176,14 @@ Begin
         endcond
 
 
-     strToInp(s: string) : input = λ(x : below(1000)) :
+     strToInp(s: string) : input = λ(x : upto(1000)) :
       if (x < s`length) then s`seq(x)
       else char(0) endif
 
-    parser : [string -> V_S] = λ(str: string): P_inp(entry, sempp(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
+    % parser : [string -> V_S] = λ(str: string): P_inp(entry, sempp(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
+
+
+    tlresult : [string -> astType] = λ(str: string) : semantic_tlparser(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ (A:V_N, s: inp_bound): unknown))
 
 
 end json_parser
