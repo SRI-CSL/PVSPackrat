@@ -36,7 +36,7 @@ json_grammar : THEORY BEGIN
    zero     : Δ = nonTerminal(13)
 
    % Json strings
-   quotation_mark : Δ = nonTerminal(24)
+   quotation_mark : Δ = terminal(char(39))
    unescaped      : Δ = nonTerminal(25)
    escape         : Δ = terminal(char(92))
    J_char         : Δ = nonTerminal(26)
@@ -83,9 +83,9 @@ json_grammar : THEORY BEGIN
       x = 23-> seq4(opt(J_minus), J_int, opt(frac), opt(exp)),
 
        % Json string:
-      x = 24-> terminal(char(34)), % quotation mark
-      x = 25-> prior3(range(char(32), char(33)), range(char(35), char(91)), range(char(93), char(127))),
-      x = 26-> prior(unescaped, seq(escape, prior9(terminal(char(34)), terminal(char(92)), terminal(char(47)), terminal(char(98)), terminal(char(102)), terminal(char(110)), terminal(char(114)), terminal(char(116)), hexdig4))),
+      x = 24-> terminal(char(39)), % quotation mark
+      x = 25-> prior3(range(char(32), char(33)), range(char(40), char(91)), range(char(93), char(127))),
+      x = 26-> prior(unescaped, seq(escape, prior9(terminal(char(39)), terminal(char(92)), terminal(char(47)), terminal(char(98)), terminal(char(102)), terminal(char(110)), terminal(char(114)), terminal(char(116)), hexdig4))),
       x = 27-> prior3(range(char(48), char(57)), range(char(65), char(70)), range(char(97), char(102))),
       x = 28-> seq3(quotation_mark, star(J_char), quotation_mark),
 
@@ -170,8 +170,8 @@ Begin
         A = 12 -> extractJsonArray(T),
         A = 10 -> extractJsonObject(T),
 
-        A = 29 -> (if seq?(T) ∧ seq?(T2(T)) then extractSemantic(T1(T2(T))) else JSON_error(29) endif ),
-	A = 30 -> extractSemantic(extract_prior(T)),
+        A = 29 ->  extractSemantic(extract_prior(T)),
+	A = 30 ->  (if seq?(T) ∧ seq?(T2(T)) then extractSemantic(T1(T2(T))) else JSON_error(30) endif ),
         else  -> JSON_error(1)
         endcond
 
@@ -183,7 +183,43 @@ Begin
     % parser : [string -> V_S] = λ(str: string): P_inp(entry, sempp(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
 
 
+    ast_semantic_tlparser
+           (P_exp : WF_nT,
+  	    P_inp : semantic_interp,
+  	    A     : below(V_N_b),                % Current non Terminal
+            G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
+            inp   : input,                          % Input array
+  	    s     : upto(1000),                      % Starting index
+  	    s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)},
+  	    res   : results(P_exp, P_inp, inp)) : pre_ast =
+		    semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res,
+		    % Identity continuation
+		    (λ (x : [astType, pre_ast, results(P_exp, P_inp, inp)])
+		     : (x`1, x`2, x`3)))`2
+
     tlresult : [string -> astType] = λ(str: string) : semantic_tlparser(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ (A:V_N, s: inp_bound): unknown))
+    ast_tlresult : [string -> pre_ast] = λ(str: string) : ast_semantic_tlparser(P_exp, P_inp, entry, P_exp(entry), strToInp(str), 0, 0, (λ (A:V_N, s: inp_bound): unknown))
+
+    cut_fails (T: pre_ast) : RECURSIVE pre_ast =
+    IF (astType?(T) = failure) THEN fail(s(T), e(T))
+    ELSE CASES T
+           OF ε(s, e): T,
+              any(s, e, x): T,
+              terminal(s, e, x, y): T,
+              range(s, e, a, b, x): T,
+              nonTerminal(s, e, A, T): nonTerminal(s, e, A, cut_fails(T)),
+              semantic(s, e, A, S): T,
+              seq(s, e, T1, T2): seq(s, e, cut_fails(T1), cut_fails(T2)),
+              prior(s, e, T1, T2): prior(s, e, cut_fails(T1), cut_fails(T2)),
+              star(s, e, T0, Ts): if (s = e) then ε(s, e) else star(s, e, cut_fails(T0), cut_fails(Ts)) endif,
+              plus(s, e, T0, Ts): plus(s, e, cut_fails(T0), cut_fails(Ts)),
+              opt(s, e, T0): opt(s, e, cut_fails(T0)),
+              notP(s, e, T): notP(s, e, cut_fails(T)),
+              andP(s, e, T): andP(s, e, cut_fails(T)),
+              skip(s, e, G): skip(s, e, ε)
+           ENDCASES
+    ENDIF
+     MEASURE astMeasure(T)
 
 
 end json_parser

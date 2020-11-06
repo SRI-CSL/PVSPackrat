@@ -1,0 +1,77 @@
+
+
+inferred_order_wf_peg [
+    V_T   : TYPE+,
+    <=    : (total_order?[V_T]),
+    V_N_b : posnat
+    ]:THEORY
+BEGIN
+  IMPORTING wf_peg[V_T, <=, V_N_b]
+  nT_Permutation: TYPE = (bijective?[V_N, V_N])
+  σ, σ': VAR nT_Permutation
+  inv(σ) : {σ'| σ o σ' = identity[V_N]}
+  P_exp: VAR interp
+  G: VAR Δ
+  ∅: set[V_N] = emptyset
+
+
+  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF(P_exp o σ)
+  orderly_WF_nT: TYPE = (orderly_WF_nT?)
+
+  well_orders?(P_exp)(σ): bool = strong_WF(P_exp o σ)
+  well_orders_orderly: LEMMA
+    FORALL P_exp, σ: well_orders?(P_exp)(σ) ⇒ orderly_WF_nT?(P_exp)
+
+  sub_nT(G, (P_0: [Δ -> bool])): RECURSIVE finite_set[V_N[V_N_b]] =
+    CASES G
+      OF ε: ∅,
+         any: ∅,
+         terminal(a): ∅,
+         range(a, b): ∅,
+         nonTerminal(B): singleton(B),
+         seq(e1, e2):
+           IF (P_0(e1)) THEN union(sub_nT(e1, P_0), sub_nT(e2, P_0))
+           ELSE sub_nT(e1, P_0)
+           ENDIF,
+         prior(e1, e2): union(sub_nT(e1, P_0), sub_nT(e2, P_0)),
+         star(e): sub_nT(e, P_0),
+         plus(e): sub_nT(e, P_0),
+         opt(e): sub_nT(e, P_0),
+         notP(e): sub_nT(e, P_0),
+         andP(e): sub_nT(e, P_0)
+      ENDCASES
+     MEASURE pegMeasure(G)
+
+  sub_nT_and_wellformedness: LEMMA
+    ∀ G, (A: V_N), (P_0: [Δ -> bool]):
+      g_wf(G, A, P_0, strong) ⇔
+       (g_wf(G, A, P_0, complete) ∧
+         (∀ (B: V_N): (sub_nT(G, P_0)(B)) ⇒ B < A))
+
+
+
+  topologically_sorts?(P_exp, σ) : bool =
+    ∀ (A, B: V_N): sub_nT(P_exp(A), P_0c?(P_exp))(B) ⇒ σ(B) < σ(A)
+
+  option_permutation :
+  DATATYPE
+  BEGIN
+    None: None?
+    Some(σ: nT_Permutation): Some?
+  END option_permutation
+
+  kahns_algorithm(P_exp) : {Σ:option_permutation |
+    % (None?(Σ) ⇔ (∀ σ, ¬ topologically_sorts?(P_exp, σ))) ∧
+    (Some?(Σ) ⇒ topologically_sorts?(P_exp, σ(Σ)))}
+
+  nT_properties_reorders : LEMMA
+    ∀ P_exp, σ : nT_properties(P_exp o σ) = (nT_properties(P_exp)`1 o σ, nT_properties(P_exp)`2 o σ, nT_properties(P_exp)`3 o σ)
+  complete_WF_reorders : LEMMA
+    ∀ P_exp, σ : complete_WF(P_exp) ⇒ complete_WF(P_exp o σ)
+
+
+  topological_sort_well_orders: LEMMA
+    ∀ P_exp, σ : kahns_algorithm(P_exp) = Some(σ) ⇒ complete_WF(P_exp) ⇒ well_orders?(P_exp)(σ)
+
+
+END inferred_order_wf_peg
