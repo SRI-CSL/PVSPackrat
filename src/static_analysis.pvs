@@ -8,19 +8,35 @@ inferred_order_wf_peg [
 BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
   nT_Permutation: TYPE = (bijective?[V_N, V_N])
+  A, B, C : VAR V_N
   σ, σ': VAR nT_Permutation
   inv(σ) : {σ'| σ o σ' = identity[V_N]}
   P_exp: VAR interp
   G: VAR Δ
   ∅: set[V_N] = emptyset
+  δ : VAR bool
 
+  g_wf_perm(σ)(G, A, (P_0 : [Δ -> bool]), δ) : RECURSIVE bool =
+    CASES G of
+      ε: true, any: true, terminal(a): true,range(a,b): true,
+      nonTerminal(B) : δ ⇒ (σ(B) < σ(A)),
+      seq(e1, e2)    : g_wf_perm(σ)(e1, A, P_0, δ) ∧ g_wf_perm(σ)(e2, A, P_0, P_0(e1) ∧ δ),
+      prior(e1, e2)  : g_wf_perm(σ)(e1, A, P_0, δ) ∧ g_wf_perm(σ)(e2, A, P_0, δ),
+      star(e)        : g_wf_perm(σ)(e , A, P_0, δ) ∧ (¬P_0(e)),
+      plus(e)        : g_wf_perm(σ)(e , A, P_0, δ) ∧ (¬P_0(e)),
+      opt(e)         : g_wf_perm(σ)(e , A, P_0, δ),
+      notP(e)        : g_wf_perm(σ)(e , A, P_0, δ),
+      andP(e)        : g_wf_perm(σ)(e , A, P_0, δ)
+    ENDCASES
+  MEASURE pegMeasure(G)
 
-  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF(P_exp o σ)
+  strong_WF_perm(P_exp, σ): bool = ∀ A : g_wf_perm(σ)(P_exp(A), A, P_0c?(P_exp), strong)
+  complete_WF_perm(P_exp, σ) : bool = ∀ A : g_wf_perm(σ)(P_exp(A), A, P_0c?(P_exp), complete)
+
+  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF_perm(P_exp, σ)
   orderly_WF_nT: TYPE = (orderly_WF_nT?)
 
-  well_orders?(P_exp)(σ): bool = strong_WF(P_exp o σ)
-  well_orders_orderly: LEMMA
-    FORALL P_exp, σ: well_orders?(P_exp)(σ) ⇒ orderly_WF_nT?(P_exp)
+  well_orders?(P_exp)(σ): bool = strong_WF_perm(P_exp, σ)
 
   sub_nT(G, (P_0: [Δ -> bool])): RECURSIVE finite_set[V_N[V_N_b]] =
     CASES G
@@ -48,7 +64,11 @@ BEGIN
        (g_wf(G, A, P_0, complete) ∧
          (∀ (B: V_N): (sub_nT(G, P_0)(B)) ⇒ B < A))
 
-
+  sub_nT_and_wellformedness_perm: LEMMA
+    ∀ G, (A: V_N), (P_0: [Δ -> bool]):
+      g_wf_perm(σ)(G, A, P_0, strong) ⇔
+       (g_wf_perm(σ)(G, A, P_0, complete) ∧
+         (∀ (B: V_N): (sub_nT(G, P_0)(B)) ⇒ σ(B) < σ(A)))
 
   topologically_sorts?(P_exp, σ) : bool =
     ∀ (A, B: V_N): sub_nT(P_exp(A), P_0c?(P_exp))(B) ⇒ σ(B) < σ(A)
@@ -64,11 +84,8 @@ BEGIN
     % (None?(Σ) ⇔ (∀ σ, ¬ topologically_sorts?(P_exp, σ))) ∧
     (Some?(Σ) ⇒ topologically_sorts?(P_exp, σ(Σ)))}
 
-  nT_properties_reorders : LEMMA
-    ∀ P_exp, σ : nT_properties(P_exp o σ) = (nT_properties(P_exp)`1 o σ, nT_properties(P_exp)`2 o σ, nT_properties(P_exp)`3 o σ)
   complete_WF_reorders : LEMMA
-    ∀ P_exp, σ : complete_WF(P_exp) ⇒ complete_WF(P_exp o σ)
-
+    ∀ P_exp, σ : complete_WF(P_exp) ⇒ complete_WF_perm(P_exp, σ)
 
   topological_sort_well_orders: LEMMA
     ∀ P_exp, σ : kahns_algorithm(P_exp) = Some(σ) ⇒ complete_WF(P_exp) ⇒ well_orders?(P_exp)(σ)

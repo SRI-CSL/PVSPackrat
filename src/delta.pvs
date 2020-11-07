@@ -181,7 +181,7 @@ BEGIN
     complete: bool = false
     δ : VAR bool
 
-    g_wf(G, (A : upto(V_N_b)), (P_0 : [Δ -> bool]), δ) : RECURSIVE bool =
+    g_wf(G, A, (P_0 : [Δ -> bool]), δ) : RECURSIVE bool =
       CASES G of
         ε: true, any: true, terminal(a): true,range(a,b): true,
     	nonTerminal(B) : δ ⇒ (B < A),
