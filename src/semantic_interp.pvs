@@ -24,9 +24,9 @@ semantic_interp [
 
   % Function that transforms a tree into its semantic interpretation, recursively
   s_inp(P_inp: semantic_interp, T: pre_ast): RECURSIVE
-        {T': semanticTree |
-           ((skip?(T) ⇔ skip?(T')) ∧ (star?(T) ⇔ star?(T')) ∧ ((astType?(T) = failure) ⇔ fail?(T')) ∧ ((plus?(T) ⇒ (plus?(T') ∨ fail?(T'))))) ∧
-            (s(T') = s(T)) ∧ (e(T') = e(T)) ∧ (astWellformed?(T) ⇒ (astWellformed?(T') ∧ (astType?(T') = astType?(T))))} =
+        {T_p: semanticTree |
+           ((skip?(T) ⇔ skip?(T_p)) ∧ (star?(T) ⇔ star?(T_p)) ∧ ((astType?(T) = failure) ⇔ fail?(T_p)) ∧ ((plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))))) ∧
+            (s(T_p) = s(T)) ∧ (e(T_p) = e(T)) ∧ (astWellformed?(T) ⇒ (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))} =
     IF (astType?(T) = failure) THEN fail(s(T), e(T))
     ELSE CASES T
            OF ε(s, e): T,

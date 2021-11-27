@@ -1,8 +1,8 @@
 % ————————————————————————————–
 % ast_props.pvs
 %  |– ast_props THEORY
-%     Provides tools to reconstruct grammar or input from 
-%     wellformed trees. It can later on be used to prove 
+%     Provides tools to reconstruct grammar or input from
+%     wellformed trees. It can later on be used to prove
 %     correctness of a parser.
 % ————————————————————————————–
 
@@ -18,13 +18,13 @@ ast_props [
     IMPORTING ast[V_T, <=, V_N_b, bound, V_S]
 
     T, T1, T2: VAR pre_ast
-    G, G', G1, G2: VAR Δ
+    G, G_p, G1, G2: VAR Δ
     inp_bound : TYPE = upto(bound)
     input : TYPE = [inp_bound -> V_T]
     inp, inp1, inp2: VAR input
     P_exp: VAR WF_nT
-    
-    trueToGrammar(T, G, P_exp) : RECURSIVE bool = 
+
+    trueToGrammar(T, G, P_exp) : RECURSIVE bool =
         CASES T OF
             ε(s, e): ε?(G),
             any(s, e, x): any?(G),
@@ -38,15 +38,15 @@ ast_props [
             opt(s, e, T0): opt?(G) ∧ trueToGrammar(T0, e(G), P_exp),
             notP(s, e, T): notP?(G) ∧ trueToGrammar(T, e(G), P_exp),
             andP(s, e, T): andP?(G) ∧ trueToGrammar(T, e(G), P_exp),
-            skip(s, e, G'): (G' = G)
+            skip(s, e, G_p): (G_p = G)
             ELSE false
         ENDCASES
     MEASURE astMeasure(T)
-    
+
     % Grammar uniqueness:
     unique_grammar: LEMMA ∀(T, G1, G2, P_exp): (trueToGrammar(T, G1, P_exp) ∧ trueToGrammar(T, G2, P_exp)) ⇒ (G1 = G2)
 
-    trueToInput(T, inp) : Recursive bool = 
+    trueToInput(T, inp) : Recursive bool =
         CASES T OF
             ε(s, e): true,
             any(s, e, x): (inp(s) = x),
@@ -68,10 +68,7 @@ ast_props [
     % Input uniqueness:
     unique_input: LEMMA ∀((T: ast), inp1, inp2): (trueToInput(T, inp1) ∧ trueToInput(T, inp2)) ⇒ (∀ (i:below(e(T))): (i >= s(T)) ⇒ inp1(i) = inp2(i))
 
-    % Main uniqueness theorem: 
+    % Main uniqueness theorem:
     unique_tree: LEMMA ∀((T1, T2 : ast), inp, G, P_exp): (trueToInput(T1, inp) ∧ trueToInput(T2, inp) ∧ trueToGrammar(T1, G, P_exp) ∧ trueToGrammar(T2, G, P_exp) ∧ s(T1) = s(T2)) ⇒ T1 = T2
 
 END ast_props
-
-
-

@@ -426,7 +426,7 @@
    (g_props termination "wf_peg.g_props(wf_peg.e, wf_peg.P)" "nil")))
  (g_props_growth 0
   (g_props_growth-1 nil 3784716892
-   ("" (skolem 1 ("_" "P" "P'"))
+   ("" (skolem 1 ("_" "P" "P1"))
     (("" (induct "G")
       (("1" (grind) nil nil) ("2" (grind) nil nil)
        ("3" (grind) nil nil) ("4" (grind) nil nil)
@@ -479,12 +479,12 @@
    ("" (skeep)
     (("" (typepred "P")
       ((""
-        (name "P'"
+        (name "P1"
               "(P`1 WITH [(A) := A_f], P`2 WITH [(A) := A_0], P`3 WITH [(A) := A_s])")
         (("" (replace -1 * LR)
           (("" (expand "coherent_properties")
             (("" (lemma "g_props_growth")
-              (("" (inst -1 "_" "P" "P'")
+              (("" (inst -1 "_" "P" "P1")
                 (("" (skolem 1 "B")
                   (("" (inst -1 "P_exp(B)")
                     (("" (split -1)
@@ -865,7 +865,7 @@
    ("" (skeep)
     (("" (expand " ρ")
       (("" (lemma "g_props_growth")
-        (("" (inst -1 "P_exp(A)" "P" "P'")
+        (("" (inst -1 "P_exp(A)" "P" "P1")
           (("" (assert)
             (("" (expand "<=")
               (("" (expand "leq_inst")
@@ -1105,9 +1105,9 @@
   (lemma_3_2_2-1 nil 3784707998
    ("" (skolem 1 ("P_exp" "_" "_" "_"))
     ((""
-      (case "FORALL ((P, P': C(P_exp)), A): (P <= P') ⇒ (r(P_exp, V_N_b-1-A, P) <= r(P_exp, V_N_b-1-A, P'))")
+      (case "FORALL ((P, P1: C(P_exp)), A): (P <= P1) ⇒ (r(P_exp, V_N_b-1-A, P) <= r(P_exp, V_N_b-1-A, P1))")
       (("1" (skeep)
-        (("1" (inst -1 "P" "P'" "V_N_b-1-A") (("1" (assert) nil nil))
+        (("1" (inst -1 "P" "P1" "V_N_b-1-A") (("1" (assert) nil nil))
           nil))
         nil)
        ("2" (hide 2)
@@ -1119,7 +1119,7 @@
                   (("1" (expand "recompute_nonTerminals_properties")
                     (("1" (expand " ρ")
                       (("1" (lemma "g_props_growth")
-                        (("1" (inst -1 "P_exp(V_N_b -1)" "P" "P'")
+                        (("1" (inst -1 "P_exp(V_N_b -1)" "P" "P1")
                           (("1" (assert)
                             (("1" (expand "<=")
                               (("1"
@@ -1199,12 +1199,12 @@
             (("2" (flatten)
               (("2" (skeep)
                 (("2" (lemma " ρ_growth2")
-                  (("2" (inst -1 "P_exp" "_" "P" "P'")
+                  (("2" (inst -1 "P_exp" "_" "P" "P1")
                     (("2" (assert)
                       (("2" (inst -1 "V_N_b -2 -j")
                         (("2"
                           (inst -3 "ρ(P_exp, V_N_b - 2 - j, P)"
-                           "ρ(P_exp, V_N_b - 2 - j, P')")
+                           "ρ(P_exp, V_N_b - 2 - j, P1)")
                           (("2" (expand "r")
                             (("2"
                               (expand "recompute_nonTerminals_properties"
@@ -3033,4 +3033,3 @@
    (string_aux termination
     "peg_extented.string_aux((number_fields.+)(peg_extented.i, 1), peg_extented.s)"
     "nil"))))
-

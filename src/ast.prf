@@ -35,7 +35,7 @@
      integers nil))
    nil
    (astType? disjointness
-    "COND (number_fields.+)(ast.s, 1) = ast.e -> ast.success, ast.s = ast.e -> ast.failure, ELSE -> ast.undefined ENDCOND"
+    "COND (number_fields.+)(ast.s, 1) = ast.e -> ast.success, ast.s = ast.e = ast.bound -> ast.failure, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC2 0
   (astType?_TCC2-1 nil 3768230449 ("" (cond-disjoint-tcc) nil nil)
@@ -74,7 +74,7 @@
     (/= const-decl "boolean" notequal nil))
    nil
    (astType? disjointness
-    "COND booleans.AND((number_fields.+)(ast.s, 1) = ast.e, ast.a = ast.x) -> ast.success, booleans.AND((number_fields.+)(ast.s, 1) = ast.e, ast.a /= ast.x) -> ast.failure, ast.s = ast.e -> ast.failure, ELSE -> ast.undefined ENDCOND"
+    "COND booleans.∧((number_fields.+)(ast.s, 1) = ast.e, ast.a = ast.x) -> ast.success, booleans.∧((number_fields.+)(ast.s, 1) = ast.e, ast.a /= ast.x) -> ast.failure, ast.s = ast.e = ast.bound -> ast.failure, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC3 0
   (astType?_TCC3-1 nil 3772291105 ("" (cond-disjoint-tcc) nil nil)
@@ -113,7 +113,7 @@
     (in_range const-decl "bool" ast nil))
    nil
    (astType? disjointness
-    "COND booleans.AND((number_fields.+)(ast.s, 1) = ast.e, ast.in_range(ast.a, ast.b)(ast.x)) -> ast.success, booleans.AND((number_fields.+)(ast.s, 1) = ast.e, ((booleans.NOT)((ast.in_range(ast.a, ast.b)(ast.x))))) -> ast.failure, ast.s = ast.e -> ast.failure, ELSE -> ast.undefined ENDCOND"
+    "COND booleans.∧((number_fields.+)(ast.s, 1) = ast.e, ast.in_range(ast.a, ast.b)(ast.x)) -> ast.success, booleans.∧((number_fields.+)(ast.s, 1) = ast.e, ((booleans.NOT)((ast.in_range(ast.a, ast.b)(ast.x))))) -> ast.failure, ast.s = ast.e = ast.bound -> ast.failure, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC4 0
   (astType?_TCC3-1 nil 3768230449 ("" (termination-tcc) nil nil)
@@ -207,11 +207,11 @@
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (V_S formal-type-decl nil ast nil)
     (bound formal-const-decl "nat" ast nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -276,7 +276,7 @@
      real_props nil))
    nil
    (astType? disjointness
-    "COND booleans.AND(ast.tT1 = ast.success, ast.tT2 = ast.success) -> ast.success, booleans.OR(ast.tT1 = ast.failure, (booleans.AND(ast.tT1 = ast.success, ast.tT2 = ast.failure))) -> ast.failure, ELSE -> ast.undefined ENDCOND"
+    "COND booleans.∧(ast.tT1 = ast.success, ast.tT2 = ast.success) -> ast.success, booleans.∨(ast.tT1 = ast.failure, (booleans.∧(ast.tT1 = ast.success, ast.tT2 = ast.failure))) -> ast.failure, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC8 0
   (astType?_TCC7-1 nil 3768230449 ("" (termination-tcc) nil nil)
@@ -327,11 +327,11 @@
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (V_S formal-type-decl nil ast nil)
     (bound formal-const-decl "nat" ast nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -396,7 +396,7 @@
      real_props nil))
    nil
    (astType? disjointness
-    "COND booleans.OR(ast.tT1 = ast.success, (booleans.AND(ast.tT1 = ast.failure, ast.tT2 = ast.success))) -> ast.success, booleans.AND(ast.tT1 = ast.failure, ast.tT2 = ast.failure) -> ast.failure, ELSE -> ast.undefined ENDCOND"
+    "COND booleans.∨(ast.tT1 = ast.success, (booleans.∧(ast.tT1 = ast.failure, ast.tT2 = ast.success))) -> ast.success, booleans.∧(ast.tT1 = ast.failure, ast.tT2 = ast.failure) -> ast.failure, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC11 0
   (astType?_TCC10-1 nil 3768230449 ("" (termination-tcc) nil nil)
@@ -451,11 +451,11 @@
     (¬ const-decl "[bool -> bool]" booleans nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (V_S formal-type-decl nil ast nil)
     (bound formal-const-decl "nat" ast nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -539,11 +539,11 @@
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (V_S formal-type-decl nil ast nil)
     (bound formal-const-decl "nat" ast nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -611,7 +611,7 @@
      real_props nil))
    nil
    (astType? disjointness
-    "COND ast.tT0 = ast.failure -> ast.failure, booleans.AND(ast.tT0 = ast.success, ast.tTs = ast.failure) -> ast.success, booleans.AND(ast.tT0 = ast.success, ast.tTs = ast.success) -> ast.success, ELSE -> ast.undefined ENDCOND"
+    "COND ast.tT0 = ast.failure -> ast.failure, booleans.∧(ast.tT0 = ast.success, ast.tTs = ast.failure) -> ast.success, booleans.∧(ast.tT0 = ast.success, ast.tTs = ast.success) -> ast.success, ELSE -> ast.undefined ENDCOND"
     "nil")))
  (astType?_TCC16 0
   (astType?_TCC16-1 nil 3772291105 ("" (termination-tcc) nil nil)
@@ -1157,61 +1157,5 @@
     (bool nonempty-type-eq-decl nil booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
     (V_T formal-nonempty-type-decl nil ast nil))
-   shostak))
- (seq_2_TCC1 0
-  (seq_2_TCC1-1 nil 3785499487 ("" (subtype-tcc) nil nil) nil nil
-   (seq_2 subtype "ast.T"
-    "{x: pre_ast[ast.V_T, ast.<=, ast.V_N_b, ast.bound, ast.V_S].pre_ast | booleans.OR(pre_ast[ast.V_T, ast.<=, ast.V_N_b, ast.bound, ast.V_S].seq?(x), pre_ast[ast.V_T, ast.<=, ast.V_N_b, ast.bound, ast.V_S].prior?(x))}")))
- (seq_2 0
-  (seq_2-1 nil 3785499490
-   ("" (skeep)
-    (("" (typepred "T")
-      (("" (expand "astWellformed?")
-        (("" (assert)
-          (("" (flatten)
-            (("" (assert)
-              (("" (expand "astType?" 2 1)
-                (("" (lift-if 2)
-                  (("" (split 2)
-                    (("1" (flatten) (("1" (assert) nil nil)) nil)
-                     ("2" (flatten) (("2" (assert) nil nil)) nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil))
-      nil))
-    nil)
-   ((ast type-eq-decl nil ast nil)
-    (astWellformed? def-decl "bool" ast nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (V_S formal-type-decl nil ast nil)
-    (bound formal-const-decl "nat" ast nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (V_N_b formal-const-decl "posnat" ast nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number nonempty-type-decl nil numbers nil)
-    (<= formal-const-decl "(total_order?[V_T])" ast nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (V_T formal-nonempty-type-decl nil ast nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (astType? def-decl "astType" ast nil))
    shostak)))
 

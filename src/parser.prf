@@ -1,8 +1,4 @@
 (peg_parser
- (output_TCC1 0
-  (output_TCC1-1 nil 3771774354 ("" (subtype-tcc) nil nil) nil nil
-   (output subtype "peg_parser.A"
-    "naturalnumbers.upto(peg_parser.V_N_b)")))
  (parsing_TCC1 0
   (parsing_TCC1-1 nil 3769177011 ("" (subtype-tcc) nil nil)
    ((int_minus_int_is_int application-judgement "int" integers nil))
@@ -850,10 +846,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -937,10 +933,10 @@
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
-    (peg type-decl nil peg nil) (g_wf def-decl "bool" wf_peg nil)
-    (subterm adt-def-decl "boolean" peg nil)
-    (< const-decl "bool" reals nil)
+    (peg type-decl nil peg nil) (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (subterm adt-def-decl "boolean" peg nil)
     (interp type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (WF_nT type-eq-decl nil wf_peg nil)
@@ -1183,10 +1179,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -1327,10 +1323,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -1641,10 +1637,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -1810,10 +1806,10 @@
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
-    (peg type-decl nil peg nil) (g_wf def-decl "bool" wf_peg nil)
-    (subterm adt-def-decl "boolean" peg nil)
-    (< const-decl "bool" reals nil)
+    (peg type-decl nil peg nil) (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (subterm adt-def-decl "boolean" peg nil)
     (interp type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (WF_nT type-eq-decl nil wf_peg nil)
@@ -2125,10 +2121,10 @@
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
-    (peg type-decl nil peg nil) (g_wf def-decl "bool" wf_peg nil)
-    (subterm adt-def-decl "boolean" peg nil)
-    (< const-decl "bool" reals nil)
+    (peg type-decl nil peg nil) (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (subterm adt-def-decl "boolean" peg nil)
     (interp type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (WF_nT type-eq-decl nil wf_peg nil)
@@ -2428,10 +2424,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -2897,10 +2893,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -3570,10 +3566,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -3715,10 +3711,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -4011,10 +4007,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -4385,10 +4381,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -4466,10 +4462,10 @@
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
-    (peg type-decl nil peg nil) (g_wf def-decl "bool" wf_peg nil)
-    (subterm adt-def-decl "boolean" peg nil)
-    (< const-decl "bool" reals nil)
+    (peg type-decl nil peg nil) (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (subterm adt-def-decl "boolean" peg nil)
     (interp type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (WF_nT type-eq-decl nil wf_peg nil)
@@ -4656,10 +4652,10 @@
     (WF_nT type-eq-decl nil wf_peg nil)
     (strong_WF const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
     (subterm adt-def-decl "boolean" peg nil)
-    (g_wf def-decl "bool" wf_peg nil) (peg type-decl nil peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil) (peg type-decl nil peg nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (upto nonempty-type-eq-decl nil naturalnumbers nil)
@@ -4873,10 +4869,10 @@
    ("" (skolem 1 ("P_exp" "_" "_" "inp" "_" "_"))
     ((""
       (case "FORALL (i : nat, A: below(V_N_b), G: {e: Δ | subterm(e, P_exp(A))},
-                                          s: upto(bound),
-                                          s_T:
-                                            {k: upto(s) | (k = s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}):
-                                    astMeasure(parsing(P_exp, A, G, inp, s, s_T)) <= i IMPLIES parseTree?(parsing(P_exp, A, G, inp, s, s_T))")
+                                                 s: upto(bound),
+                                                 s_T:
+                                                   {k: upto(s) | (k = s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}):
+                                           astMeasure(parsing(P_exp, A, G, inp, s, s_T)) <= i IMPLIES parseTree?(parsing(P_exp, A, G, inp, s, s_T))")
       (("1" (skeep)
         (("1"
           (inst -1 "astMeasure(parsing(P_exp, A, G, inp, s, s_T))" "A"
@@ -4893,10 +4889,7 @@
                ("5" (grind) nil nil) ("6" (grind) nil nil)
                ("7" (skeep)
                 (("7" (skeep)
-                  (("7" (hide -1 -2 -3 1)
-                    (("7" (expand "parsing") (("7" (grind) nil nil))
-                      nil))
-                    nil))
+                  (("7" (hide -1 -2 -3 1) (("7" (grind) nil nil)) nil))
                   nil))
                 nil)
                ("8" (skeep*)
@@ -4908,16 +4901,25 @@
                ("9" (skeep*)
                 (("9" (hide -1 -2 1)
                   (("9" (expand "parsing")
-                    (("9" (expand "astMeasure")
-                      (("9" (expand "reduce_nat")
-                        (("9" (assert)
-                          (("9" (lift-if)
-                            (("9" (split)
+                    (("9" (lift-if)
+                      (("9" (split)
+                        (("1" (flatten)
+                          (("1" (assert)
+                            (("1" (expand "astMeasure")
                               (("1"
-                                (flatten)
-                                (("1" (assert) nil nil))
-                                nil)
-                               ("2" (ground) nil nil))
+                                (expand "reduce_nat")
+                                (("1" (ground) nil nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil)
+                         ("2" (flatten)
+                          (("2" (assert)
+                            (("2" (expand "astMeasure")
+                              (("2"
+                                (expand "reduce_nat")
+                                (("2" (ground) nil nil))
+                                nil))
                               nil))
                             nil))
                           nil))
@@ -4931,26 +4933,15 @@
                   (("10" (expand "parsing")
                     (("10" (expand "astMeasure")
                       (("10" (expand "reduce_nat")
-                        (("10" (lift-if)
-                          (("10" (split)
-                            (("1" (ground) nil nil)
-                             ("2" (ground) nil nil))
-                            nil))
+                        (("10" (lift-if) (("10" (ground) nil nil))
                           nil))
                         nil))
                       nil))
                     nil))
                   nil))
                 nil)
-               ("11" (skeep*)
-                (("11" (hide -1 -2 1) (("11" (grind) nil nil)) nil))
-                nil)
-               ("12" (skeep*)
-                (("12" (hide -1 -2 1) (("12" (grind) nil nil)) nil))
-                nil)
-               ("13" (skeep*)
-                (("13" (hide -1 -2 1) (("13" (grind) nil nil)) nil))
-                nil))
+               ("11" (grind) nil nil) ("12" (grind) nil nil)
+               ("13" (grind) nil nil))
               nil))
             nil)
            ("2" (skolem 1 "i")
@@ -4974,7 +4965,7 @@
                                   (("1"
                                     (skeep)
                                     (("1"
-                                      (inst - "T'")
+                                      (inst - "T_p")
                                       (("1"
                                         (expand "parsing" -4)
                                         (("1"
@@ -5021,7 +5012,7 @@
                                               (("1"
                                                 (split -5)
                                                 (("1"
-                                                  (inst - "T'")
+                                                  (inst - "T_p")
                                                   (("1"
                                                     (expand
                                                      "subterm"
@@ -5078,9 +5069,11 @@
                                                     (("1"
                                                       (split -4)
                                                       (("1"
-                                                        (inst - "T'")
+                                                        (inst - "T_p")
                                                         (("1"
-                                                          (inst - "T'")
+                                                          (inst
+                                                           -
+                                                           "T_p")
                                                           (("1"
                                                             (expand
                                                              "subterm"
@@ -5267,30 +5260,14 @@
                                                                                 (("1"
                                                                                   (inst
                                                                                    -
-                                                                                   "T'")
+                                                                                   "T_p")
                                                                                   (("1"
                                                                                     (inst
                                                                                      -
-                                                                                     "T'")
+                                                                                     "T_p")
                                                                                     (("1"
-                                                                                      (assert)
-                                                                                      (("1"
-                                                                                        (expand
-                                                                                         "subterm"
-                                                                                         -2)
-                                                                                        (("1"
-                                                                                          (assert)
-                                                                                          (("1"
-                                                                                            (expand
-                                                                                             "subterm"
-                                                                                             -2)
-                                                                                            (("1"
-                                                                                              (propax)
-                                                                                              nil
-                                                                                              nil))
-                                                                                            nil))
-                                                                                          nil))
-                                                                                        nil))
+                                                                                      (grind)
+                                                                                      nil
                                                                                       nil))
                                                                                     nil))
                                                                                   nil))
@@ -5311,23 +5288,10 @@
                                                                                 (("2"
                                                                                   (inst
                                                                                    -
-                                                                                   "T'")
+                                                                                   "T_p")
                                                                                   (("2"
-                                                                                    (assert)
-                                                                                    (("2"
-                                                                                      (expand
-                                                                                       "subterm"
-                                                                                       -2)
-                                                                                      (("2"
-                                                                                        (expand
-                                                                                         "subterm"
-                                                                                         -2)
-                                                                                        (("2"
-                                                                                          (propax)
-                                                                                          nil
-                                                                                          nil))
-                                                                                        nil))
-                                                                                      nil))
+                                                                                    (grind)
+                                                                                    nil
                                                                                     nil))
                                                                                   nil))
                                                                                 nil))
@@ -5378,61 +5342,25 @@
                                                                           (("1"
                                                                             (inst
                                                                              -
-                                                                             "T'")
+                                                                             "T_p")
                                                                             (("1"
                                                                               (inst
                                                                                -
-                                                                               "T'")
+                                                                               "T_p")
                                                                               (("1"
-                                                                                (assert)
-                                                                                (("1"
-                                                                                  (expand
-                                                                                   "subterm"
-                                                                                   -1)
-                                                                                  (("1"
-                                                                                    (propax)
-                                                                                    nil
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil)
-                                                                           ("2"
-                                                                            (label
-                                                                             "m"
-                                                                             -8)
-                                                                            (("2"
-                                                                              (hide
-                                                                               -
-                                                                               2)
-                                                                              (("2"
-                                                                                (reveal
-                                                                                 "m")
-                                                                                (("2"
-                                                                                  (grind)
-                                                                                  nil
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil))
-                                                                          nil)
-                                                                         ("2"
-                                                                          (label
-                                                                           "m"
-                                                                           -8)
-                                                                          (("2"
-                                                                            (hide
-                                                                             -
-                                                                             2)
-                                                                            (("2"
-                                                                              (reveal
-                                                                               "m")
-                                                                              (("2"
                                                                                 (grind)
                                                                                 nil
                                                                                 nil))
                                                                               nil))
+                                                                            nil)
+                                                                           ("2"
+                                                                            (grind)
+                                                                            nil
                                                                             nil))
+                                                                          nil)
+                                                                         ("2"
+                                                                          (grind)
+                                                                          nil
                                                                           nil))
                                                                         nil))
                                                                       nil))
@@ -5531,24 +5459,50 @@
                                             (("1"
                                               (expand "parseTree?")
                                               (("1"
-                                                (ground)
+                                                (assert)
                                                 (("1"
-                                                  (skeep)
+                                                  (ground)
                                                   (("1"
-                                                    (inst - "T'")
+                                                    (skeep)
                                                     (("1"
-                                                      (inst - "T'")
+                                                      (inst - "T_p")
                                                       (("1"
-                                                        (assert)
+                                                        (inst - "T_p")
                                                         (("1"
-                                                          (expand
-                                                           "subterm"
-                                                           -2)
+                                                          (assert)
                                                           (("1"
                                                             (expand
                                                              "subterm"
                                                              -2)
                                                             (("1"
+                                                              (expand
+                                                               "subterm"
+                                                               -2)
+                                                              (("1"
+                                                                (propax)
+                                                                nil
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil)
+                                                   ("2"
+                                                    (skeep)
+                                                    (("2"
+                                                      (inst - "T_p")
+                                                      (("2"
+                                                        (assert)
+                                                        (("2"
+                                                          (expand
+                                                           "subterm"
+                                                           -2)
+                                                          (("2"
+                                                            (expand
+                                                             "subterm"
+                                                             -2)
+                                                            (("2"
                                                               (propax)
                                                               nil
                                                               nil))
@@ -5556,80 +5510,123 @@
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil))
-                                                  nil)
-                                                 ("2"
-                                                  (skeep)
-                                                  (("2"
-                                                    (inst - "T'")
-                                                    (("2"
-                                                      (assert)
-                                                      (("2"
-                                                        (expand
-                                                         "subterm"
-                                                         -2)
-                                                        (("2"
-                                                          (expand
-                                                           "subterm"
-                                                           -2)
-                                                          (("2"
-                                                            (propax)
-                                                            nil
+                                                    nil)
+                                                   ("3"
+                                                    (skeep)
+                                                    (("3"
+                                                      (inst - "T_p")
+                                                      (("3"
+                                                        (inst - "T_p")
+                                                        (("3"
+                                                          (assert)
+                                                          (("3"
+                                                            (expand
+                                                             "subterm"
+                                                             -1)
+                                                            (("3"
+                                                              (propax)
+                                                              nil
+                                                              nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil))
-                                                  nil)
-                                                 ("3"
-                                                  (skeep)
-                                                  (("3"
-                                                    (inst - "T'")
-                                                    (("3"
-                                                      (inst - "T'")
-                                                      (("3"
+                                                    nil)
+                                                   ("4"
+                                                    (skeep)
+                                                    (("4"
+                                                      (inst - "T_p")
+                                                      (("4"
                                                         (assert)
-                                                        (("3"
+                                                        (("4"
                                                           (expand
                                                            "subterm"
                                                            -1)
-                                                          (("3"
-                                                            (propax)
-                                                            nil
+                                                          (("4"
+                                                            (assert)
+                                                            (("4"
+                                                              (hide
+                                                               2
+                                                               3
+                                                               -1
+                                                               -2
+                                                               -3
+                                                               -4)
+                                                              (("4"
+                                                                (expand
+                                                                 "astMeasure")
+                                                                (("4"
+                                                                  (expand
+                                                                   "reduce_nat"
+                                                                   -1)
+                                                                  (("4"
+                                                                    (assert)
+                                                                    nil
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil))
-                                                  nil)
-                                                 ("4"
-                                                  (skeep)
-                                                  (("4"
-                                                    (inst - "T'")
-                                                    (("4"
+                                                    nil)
+                                                   ("5"
+                                                    (skeep)
+                                                    (("5"
+                                                      (inst - "T_p")
+                                                      (("5"
+                                                        (hide
+                                                         -1
+                                                         -2
+                                                         -3
+                                                         -4
+                                                         -5
+                                                         -6)
+                                                        (("5"
+                                                          (expand
+                                                           "astMeasure")
+                                                          (("5"
+                                                            (expand
+                                                             "reduce_nat"
+                                                             -)
+                                                            (("5"
+                                                              (assert)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil)
+                                                   ("6"
+                                                    (skeep)
+                                                    (("6"
                                                       (assert)
-                                                      (("4"
+                                                      (("6"
                                                         (expand
                                                          "subterm"
-                                                         -1)
-                                                        (("4"
-                                                          (assert)
-                                                          (("4"
+                                                         -2)
+                                                        (("6"
+                                                          (expand
+                                                           "subterm"
+                                                           -2
+                                                           2)
+                                                          (("6"
                                                             (hide
-                                                             2
-                                                             3
                                                              -1
                                                              -2
                                                              -3
-                                                             -4)
-                                                            (("4"
+                                                             -4
+                                                             -5)
+                                                            (("6"
                                                               (expand
                                                                "astMeasure")
-                                                              (("4"
+                                                              (("6"
                                                                 (expand
                                                                  "reduce_nat"
-                                                                 -1)
-                                                                (("4"
+                                                                 -)
+                                                                (("6"
                                                                   (assert)
                                                                   nil
                                                                   nil))
@@ -5639,113 +5636,48 @@
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil))
-                                                  nil)
-                                                 ("5"
-                                                  (skeep)
-                                                  (("5"
-                                                    (inst - "T'")
-                                                    (("5"
-                                                      (hide
-                                                       -1
-                                                       -2
-                                                       -3
-                                                       -4
-                                                       -5
-                                                       -6)
-                                                      (("5"
-                                                        (expand
-                                                         "astMeasure")
-                                                        (("5"
-                                                          (expand
-                                                           "reduce_nat"
-                                                           -)
-                                                          (("5"
-                                                            (assert)
-                                                            nil
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil)
-                                                 ("6"
-                                                  (skeep)
-                                                  (("6"
-                                                    (assert)
-                                                    (("6"
-                                                      (expand
-                                                       "subterm"
-                                                       -2)
-                                                      (("6"
-                                                        (expand
-                                                         "subterm"
-                                                         -2
-                                                         2)
-                                                        (("6"
-                                                          (hide
-                                                           -1
-                                                           -2
-                                                           -3
-                                                           -4
-                                                           -5)
-                                                          (("6"
-                                                            (expand
-                                                             "astMeasure")
-                                                            (("6"
-                                                              (expand
-                                                               "reduce_nat"
-                                                               -)
-                                                              (("6"
-                                                                (assert)
-                                                                nil
-                                                                nil))
-                                                              nil))
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil)
-                                                 ("7"
-                                                  (skeep)
-                                                  (("7"
-                                                    (inst - "T'")
+                                                    nil)
+                                                   ("7"
+                                                    (skeep)
                                                     (("7"
-                                                      (assert)
+                                                      (inst - "T_p")
                                                       (("7"
-                                                        (expand
-                                                         "subterm"
-                                                         -1)
+                                                        (assert)
                                                         (("7"
-                                                          (assert)
+                                                          (expand
+                                                           "subterm"
+                                                           -1)
                                                           (("7"
-                                                            (expand
-                                                             "astMeasure")
+                                                            (assert)
                                                             (("7"
                                                               (expand
-                                                               "reduce_nat"
-                                                               -)
+                                                               "astMeasure")
                                                               (("7"
-                                                                (assert)
-                                                                nil
+                                                                (expand
+                                                                 "reduce_nat"
+                                                                 -)
+                                                                (("7"
+                                                                  (assert)
+                                                                  nil
+                                                                  nil))
                                                                 nil))
                                                               nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil))
-                                                  nil)
-                                                 ("8"
-                                                  (expand "astMeasure")
-                                                  (("8"
+                                                    nil)
+                                                   ("8"
                                                     (expand
-                                                     "reduce_nat"
-                                                     -)
+                                                     "astMeasure")
                                                     (("8"
-                                                      (assert)
-                                                      nil
+                                                      (expand
+                                                       "reduce_nat"
+                                                       -)
+                                                      (("8"
+                                                        (assert)
+                                                        nil
+                                                        nil))
                                                       nil))
                                                     nil))
                                                   nil))
@@ -5850,164 +5782,330 @@
                    ("10" (skolem 1 "e")
                     (("10" (flatten)
                       (("10" (skeep)
-                        (("10" (split -1)
-                          (("1" (inst -1 "s" "s_T")
-                            (("1"
-                              (inst -4 "A" "plus(e)"
-                               "e(parsing(P_exp, A, e, inp, s, s_T))"
-                               "s_T")
-                              (("1"
-                                (expand "parsing" 1)
-                                (("1"
-                                  (expand "parsing" -3)
-                                  (("1"
-                                    (expand "parseTree?")
-                                    (("1"
-                                      (ground)
+                        (("10"
+                          (lemma
+                           "peg[V_T, <=, V_N_b].subterm_transitivity")
+                          (("10" (inst -1 "e" "plus(e)" "P_exp(A)")
+                            (("10" (assert)
+                              (("10"
+                                (expand "subterm" -1 1)
+                                (("10"
+                                  (expand "subterm" -1 1)
+                                  (("10"
+                                    (assert)
+                                    (("10"
+                                      (inst -2 "s" "s_T")
                                       (("1"
-                                        (skeep)
+                                        (inst
+                                         -5
+                                         "A"
+                                         "plus(e)"
+                                         "e(parsing(P_exp, A, e, inp, s, s_T))"
+                                         "s_T")
                                         (("1"
-                                          (inst - "T'")
+                                          (expand "parsing" 1)
                                           (("1"
-                                            (inst - "T'")
+                                            (expand "parseTree?")
                                             (("1"
-                                              (assert)
+                                              (ground)
                                               (("1"
-                                                (expand "subterm" -2)
+                                                (skeep)
                                                 (("1"
-                                                  (expand "subterm" -2)
+                                                  (inst - "T_p")
                                                   (("1"
-                                                    (propax)
-                                                    nil
+                                                    (inst - "T_p")
+                                                    (("1"
+                                                      (assert)
+                                                      (("1"
+                                                        (expand
+                                                         "subterm"
+                                                         -2)
+                                                        (("1"
+                                                          (expand
+                                                           "subterm"
+                                                           -2)
+                                                          (("1"
+                                                            (propax)
+                                                            nil
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("2"
+                                                (skeep)
+                                                (("2"
+                                                  (inst - "T_p")
+                                                  (("2"
+                                                    (assert)
+                                                    (("2"
+                                                      (expand
+                                                       "subterm"
+                                                       -2)
+                                                      (("2"
+                                                        (expand
+                                                         "subterm"
+                                                         -2)
+                                                        (("2"
+                                                          (propax)
+                                                          nil
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("3"
+                                                (skeep)
+                                                (("3"
+                                                  (inst - "T_p")
+                                                  (("3"
+                                                    (inst - "T_p")
+                                                    (("3"
+                                                      (assert)
+                                                      (("3"
+                                                        (expand
+                                                         "subterm"
+                                                         -1)
+                                                        (("3"
+                                                          (propax)
+                                                          nil
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("4"
+                                                (skeep)
+                                                (("4"
+                                                  (inst - "T_p")
+                                                  (("4"
+                                                    (assert)
+                                                    (("4"
+                                                      (expand
+                                                       "subterm"
+                                                       -1)
+                                                      (("4"
+                                                        (expand
+                                                         "parsing"
+                                                         -5)
+                                                        (("4"
+                                                          (name-replace
+                                                           "ep"
+                                                           "e(parsing(P_exp, A, e, inp, s, s_T))")
+                                                          (("4"
+                                                            (expand
+                                                             "astMeasure")
+                                                            (("4"
+                                                              (expand
+                                                               "reduce_nat"
+                                                               -)
+                                                              (("4"
+                                                                (assert)
+                                                                nil
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("5"
+                                                (skeep*)
+                                                (("5"
+                                                  (inst - "T_p")
+                                                  (("5"
+                                                    (assert)
+                                                    (("5"
+                                                      (expand
+                                                       "parsing"
+                                                       -6)
+                                                      (("5"
+                                                        (name-replace
+                                                         "ep"
+                                                         "e(parsing(P_exp, A, e, inp, s, s_T))")
+                                                        (("5"
+                                                          (expand
+                                                           "astMeasure")
+                                                          (("5"
+                                                            (expand
+                                                             "reduce_nat"
+                                                             -)
+                                                            (("5"
+                                                              (assert)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("6"
+                                                (expand "parsing" -4)
+                                                (("6"
+                                                  (name-replace
+                                                   "ep"
+                                                   "e(parsing(P_exp, A, e, inp, s, s_T))")
+                                                  (("6"
+                                                    (expand
+                                                     "astMeasure")
+                                                    (("6"
+                                                      (expand
+                                                       "reduce_nat"
+                                                       -)
+                                                      (("6"
+                                                        (assert)
+                                                        nil
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("7"
+                                                (skeep)
+                                                (("7"
+                                                  (inst - "T_p")
+                                                  (("7"
+                                                    (expand
+                                                     "parsing"
+                                                     -6)
+                                                    (("7"
+                                                      (name-replace
+                                                       "ep"
+                                                       "e(parsing(P_exp, A, e, inp, s, s_T))")
+                                                      (("7"
+                                                        (expand
+                                                         "astMeasure")
+                                                        (("7"
+                                                          (expand
+                                                           "reduce_nat"
+                                                           -)
+                                                          (("7"
+                                                            (assert)
+                                                            nil
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("8"
+                                                (expand "parsing" -)
+                                                (("8"
+                                                  (name-replace
+                                                   "ep"
+                                                   "e(parsing(P_exp, A, e, inp, s, s_T))")
+                                                  (("8"
+                                                    (expand
+                                                     "astMeasure")
+                                                    (("8"
+                                                      (expand
+                                                       "reduce_nat"
+                                                       -)
+                                                      (("8"
+                                                        (assert)
+                                                        nil
+                                                        nil))
+                                                      nil))
                                                     nil))
                                                   nil))
                                                 nil))
                                               nil))
                                             nil))
-                                          nil))
-                                        nil)
-                                       ("2"
-                                        (skeep)
-                                        (("2"
-                                          (inst - "T'")
+                                          nil)
+                                         ("2"
+                                          (typepred "s_T")
                                           (("2"
-                                            (assert)
-                                            (("2"
-                                              (expand "subterm" -2)
+                                            (typepred
+                                             "parsing(P_exp, A, e, inp, s, s_T)")
+                                            (("1"
+                                              (lemma
+                                               "Wellformed_theorem")
+                                              (("1"
+                                                (inst? -1)
+                                                (("1"
+                                                  (assert)
+                                                  (("1"
+                                                    (flatten)
+                                                    (("1"
+                                                      (assert)
+                                                      (("1"
+                                                        (flatten)
+                                                        (("1"
+                                                          (expand
+                                                           "g_wf"
+                                                           2)
+                                                          (("1"
+                                                            (expand
+                                                             "strong")
+                                                            (("1"
+                                                              (assert)
+                                                              (("1"
+                                                                (expand
+                                                                 "g_wf"
+                                                                 -13)
+                                                                (("1"
+                                                                  (propax)
+                                                                  nil
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil)
+                                             ("2"
+                                              (assert)
                                               (("2"
-                                                (expand "subterm" -2)
+                                                (flatten)
                                                 (("2"
-                                                  (propax)
-                                                  nil
+                                                  (assert)
+                                                  (("2"
+                                                    (expand "g_wf" -3)
+                                                    (("2"
+                                                      (propax)
+                                                      nil
+                                                      nil))
+                                                    nil))
                                                   nil))
                                                 nil))
                                               nil))
                                             nil))
-                                          nil))
-                                        nil)
-                                       ("3"
-                                        (skeep)
-                                        (("3"
-                                          (inst - "T'")
+                                          nil)
+                                         ("3"
+                                          (lemma
+                                           "peg[V_T, <=, V_N_b].subterm_transitivity")
                                           (("3"
-                                            (inst - "T'")
+                                            (inst
+                                             -1
+                                             "e"
+                                             "plus(e)"
+                                             "P_exp(A)")
                                             (("3"
                                               (assert)
                                               (("3"
-                                                (expand "subterm" -1)
+                                                (typepred "s_T")
                                                 (("3"
-                                                  (propax)
-                                                  nil
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil)
-                                       ("4"
-                                        (skeep)
-                                        (("4"
-                                          (inst - "T'")
-                                          (("4"
-                                            (assert)
-                                            (("4"
-                                              (expand "subterm" -1)
-                                              (("4"
-                                                (expand "astMeasure")
-                                                (("4"
-                                                  (expand
-                                                   "reduce_nat"
-                                                   -)
-                                                  (("4"
+                                                  (flatten)
+                                                  (("3"
                                                     (assert)
-                                                    nil
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil)
-                                       ("5"
-                                        (expand "astMeasure")
-                                        (("5"
-                                          (expand "reduce_nat" -)
-                                          (("5" (assert) nil nil))
-                                          nil))
-                                        nil)
-                                       ("6"
-                                        (expand "astMeasure")
-                                        (("6"
-                                          (expand "reduce_nat" -)
-                                          (("6" (assert) nil nil))
-                                          nil))
-                                        nil)
-                                       ("7"
-                                        (expand "astMeasure")
-                                        (("7"
-                                          (expand "reduce_nat" -)
-                                          (("7" (assert) nil nil))
-                                          nil))
-                                        nil)
-                                       ("8"
-                                        (expand "astMeasure")
-                                        (("8"
-                                          (expand "reduce_nat" -)
-                                          (("8" (assert) nil nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("2"
-                                (typepred "s_T")
-                                (("2"
-                                  (typepred
-                                   "parsing(P_exp, A, e, inp, s, s_T)")
-                                  (("1"
-                                    (lemma "Wellformed_theorem")
-                                    (("1"
-                                      (inst? -1)
-                                      (("1"
-                                        (assert)
-                                        (("1"
-                                          (flatten)
-                                          (("1"
-                                            (assert)
-                                            (("1"
-                                              (flatten)
-                                              (("1"
-                                                (expand "g_wf" 2)
-                                                (("1"
-                                                  (expand "strong")
-                                                  (("1"
-                                                    (assert)
-                                                    (("1"
+                                                    (("3"
                                                       (expand
                                                        "g_wf"
-                                                       -13)
-                                                      (("1"
+                                                       -2)
+                                                      (("3"
                                                         (propax)
                                                         nil
                                                         nil))
@@ -6018,103 +6116,46 @@
                                               nil))
                                             nil))
                                           nil))
-                                        nil))
-                                      nil))
-                                    nil)
-                                   ("2"
-                                    (assert)
-                                    (("2"
-                                      (flatten)
-                                      (("2"
-                                        (assert)
+                                        nil)
+                                       ("2"
+                                        (lemma
+                                         "peg[V_T, <=, V_N_b].subterm_transitivity")
                                         (("2"
-                                          (expand "g_wf" -3)
-                                          (("2" (propax) nil nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil)
-                                   ("3"
-                                    (lemma
-                                     "peg[V_T, <=, V_N_b].subterm_transitivity")
-                                    (("3"
-                                      (inst
-                                       -1
-                                       "e"
-                                       "plus(e)"
-                                       "P_exp(A)")
-                                      (("3"
-                                        (assert)
-                                        (("3"
-                                          (expand "subterm" 1)
-                                          (("3"
-                                            (expand "subterm" 1)
-                                            (("3" (propax) nil nil))
+                                          (inst
+                                           -1
+                                           "e"
+                                           "plus(e)"
+                                           "P_exp(A)")
+                                          (("2"
+                                            (assert)
+                                            (("2"
+                                              (expand "subterm" -1 1)
+                                              (("2"
+                                                (expand "subterm" -1 1)
+                                                (("2"
+                                                  (typepred "s_T")
+                                                  (("2"
+                                                    (flatten)
+                                                    (("2"
+                                                      (assert)
+                                                      (("2"
+                                                        (expand
+                                                         "g_wf"
+                                                         -2)
+                                                        (("2"
+                                                          (propax)
+                                                          nil
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
                                             nil))
                                           nil))
                                         nil))
                                       nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("3"
-                                (typepred "s_T")
-                                (("3"
-                                  (assert)
-                                  (("3"
-                                    (flatten)
-                                    (("3"
-                                      (assert)
-                                      (("3"
-                                        (expand "g_wf" -2)
-                                        (("3" (propax) nil nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("4"
-                                (lemma
-                                 "peg[V_T, <=, V_N_b].subterm_transitivity")
-                                (("4"
-                                  (inst -1 "e" "plus(e)" "P_exp(A)")
-                                  (("4"
-                                    (assert)
-                                    (("4"
-                                      (expand "subterm" 1)
-                                      (("4"
-                                        (expand "subterm" 1)
-                                        (("4" (propax) nil nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil)
-                             ("2" (typepred "s_T")
-                              (("2"
-                                (flatten)
-                                (("2"
-                                  (assert)
-                                  (("2"
-                                    (expand "g_wf" -2)
-                                    (("2" (propax) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil)
-                           ("2"
-                            (lemma
-                             "peg[V_T, <=, V_N_b].subterm_transitivity")
-                            (("2" (inst -1 "e" "plus(e)" "P_exp(A)")
-                              (("2"
-                                (assert)
-                                (("2"
-                                  (expand "subterm" 1)
-                                  (("2"
-                                    (expand "subterm" 1)
-                                    (("2" (propax) nil nil))
                                     nil))
                                   nil))
                                 nil))
@@ -6124,93 +6165,121 @@
                         nil))
                       nil))
                     nil)
-                   ("11" (skolem 1 "e")
-                    (("11" (flatten)
-                      (("11" (skeep)
-                        (("11" (hide -4)
-                          (("11" (split -1)
-                            (("1" (inst -1 "s" "s_T")
-                              (("1"
-                                (expand "parsing" 1)
-                                (("1"
-                                  (expand "parsing" -3)
-                                  (("1"
-                                    (expand "parseTree?")
-                                    (("1"
-                                      (ground)
+                   ("11"
+                    (lemma "peg[V_T, <=, V_N_b].subterm_transitivity")
+                    (("11" (skolem 1 "e")
+                      (("11" (flatten)
+                        (("11" (inst -1 "e" "opt(e)" "P_exp(A)")
+                          (("11" (assert)
+                            (("11" (expand "subterm" -1 1)
+                              (("11"
+                                (expand "subterm" -1 1)
+                                (("11"
+                                  (assert)
+                                  (("11"
+                                    (skeep)
+                                    (("11"
+                                      (inst -2 "s" "s_T")
                                       (("1"
-                                        (skeep)
+                                        (expand "parsing" 1)
                                         (("1"
-                                          (inst - "T'")
+                                          (expand "parseTree?")
                                           (("1"
-                                            (assert)
+                                            (ground)
                                             (("1"
-                                              (expand "subterm" -2)
-                                              (("1" (propax) nil nil))
+                                              (skeep)
+                                              (("1"
+                                                (inst - "T_p")
+                                                (("1"
+                                                  (assert)
+                                                  (("1"
+                                                    (expand
+                                                     "subterm"
+                                                     -2)
+                                                    (("1"
+                                                      (propax)
+                                                      nil
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil)
+                                             ("2"
+                                              (skeep)
+                                              (("2"
+                                                (inst - "T_p")
+                                                (("2"
+                                                  (assert)
+                                                  (("2"
+                                                    (expand
+                                                     "subterm"
+                                                     -1)
+                                                    (("2"
+                                                      (propax)
+                                                      nil
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil)
+                                             ("3"
+                                              (hide -5)
+                                              (("3"
+                                                (expand "parsing" -4)
+                                                (("3"
+                                                  (expand "astMeasure")
+                                                  (("3"
+                                                    (expand
+                                                     "reduce_nat"
+                                                     -)
+                                                    (("3"
+                                                      (assert)
+                                                      nil
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil)
+                                             ("4"
+                                              (hide -4)
+                                              (("4"
+                                                (expand "parsing" -)
+                                                (("4"
+                                                  (expand "astMeasure")
+                                                  (("4"
+                                                    (expand
+                                                     "reduce_nat"
+                                                     -)
+                                                    (("4"
+                                                      (assert)
+                                                      nil
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
                                               nil))
                                             nil))
                                           nil))
                                         nil)
                                        ("2"
-                                        (skeep)
+                                        (typepred "s_T")
                                         (("2"
-                                          (inst - "T'")
+                                          (assert)
                                           (("2"
-                                            (assert)
+                                            (flatten)
                                             (("2"
-                                              (expand "subterm" -1)
-                                              (("2" (propax) nil nil))
+                                              (assert)
+                                              (("2"
+                                                (expand "g_wf" -)
+                                                (("2"
+                                                  (propax)
+                                                  nil
+                                                  nil))
+                                                nil))
                                               nil))
                                             nil))
                                           nil))
-                                        nil)
-                                       ("3"
-                                        (expand "astMeasure")
-                                        (("3"
-                                          (expand "reduce_nat" -)
-                                          (("3" (assert) nil nil))
-                                          nil))
-                                        nil)
-                                       ("4"
-                                        (expand "astMeasure")
-                                        (("4"
-                                          (expand "reduce_nat" -)
-                                          (("4" (assert) nil nil))
-                                          nil))
                                         nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("2"
-                                (typepred "s_T")
-                                (("2"
-                                  (assert)
-                                  (("2"
-                                    (flatten)
-                                    (("2"
-                                      (assert)
-                                      (("2"
-                                        (expand "g_wf" -)
-                                        (("2" (propax) nil nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil)
-                             ("2"
-                              (lemma
-                               "peg[V_T, <=, V_N_b].subterm_transitivity")
-                              (("2"
-                                (inst -1 "e" "opt(e)" "P_exp(A)")
-                                (("2"
-                                  (assert)
-                                  (("2"
-                                    (expand "subterm" 1)
-                                    (("2"
-                                      (expand "subterm" 1)
-                                      (("2" (propax) nil nil))
                                       nil))
                                     nil))
                                   nil))
@@ -6238,7 +6307,7 @@
                                       (("1"
                                         (skeep)
                                         (("1"
-                                          (inst - "T'")
+                                          (inst - "T_p")
                                           (("1"
                                             (assert)
                                             (("1"
@@ -6303,7 +6372,7 @@
                                       (("1"
                                         (skeep)
                                         (("1"
-                                          (inst -1 "T'")
+                                          (inst -1 "T_p")
                                           (("1"
                                             (expand "subterm" -4)
                                             (("1" (assert) nil nil))
@@ -6460,12 +6529,16 @@
     (nonTerminal adt-constructor-decl
      "[below(V_N_b) -> (nonTerminal?)]" peg nil)
     (TRUE const-decl "bool" booleans nil)
+    (opt adt-constructor-decl "[peg -> (opt?)]" peg nil)
+    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (notP adt-constructor-decl "[peg -> (notP?)]" peg nil)
+    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (andP adt-constructor-decl "[peg -> (andP?)]" peg nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
     (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (numfield nonempty-type-eq-decl nil number_fields nil)
-    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
-     integers nil)
     (s skolem-const-decl "upto(bound)" peg_parser nil)
     (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (seq adt-constructor-decl "[[peg, peg] -> (seq?)]" peg nil)
@@ -6494,24 +6567,18 @@
      peg_parser nil)
     (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (s skolem-const-decl "upto(bound)" peg_parser nil)
+    (s skolem-const-decl "upto(bound)" peg_parser nil)
+    (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (s_T skolem-const-decl
      "{k: upto(s) | (k = s) ⇒ g_wf(plus(e), A, P_0c?(P_exp), strong)}"
      peg_parser nil)
-    (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (plus adt-constructor-decl "[peg -> (plus?)]" peg nil)
-    (s skolem-const-decl "upto(bound)" peg_parser nil)
-    (s skolem-const-decl "upto(bound)" peg_parser nil)
-    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (opt adt-constructor-decl "[peg -> (opt?)]" peg nil)
-    (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (s_T skolem-const-decl
      "{k: upto(s) | (k = s) ⇒ g_wf(opt(e), A, P_0c?(P_exp), strong)}"
      peg_parser nil)
-    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (notP adt-constructor-decl "[peg -> (notP?)]" peg nil)
+    (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (s skolem-const-decl "upto(bound)" peg_parser nil)
-    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (andP adt-constructor-decl "[peg -> (andP?)]" peg nil)
+    (s skolem-const-decl "upto(bound)" peg_parser nil)
     (e skolem-const-decl "peg[V_T, <=, V_N_b]" peg_parser nil)
     (s_T skolem-const-decl
      "{k: upto(s) | (k = s) ⇒ g_wf(andP(e), A, P_0c?(P_exp), strong)}"

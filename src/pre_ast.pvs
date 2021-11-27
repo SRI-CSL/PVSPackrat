@@ -14,56 +14,59 @@ pre_ast [
      V_S   : TYPE ]:               % Type of semantic values
      THEORY
   BEGIN
+
   IMPORTING wf_peg[V_T, <=, V_N_b]
-  below : TYPE = upto(bound)
-  s, e : VAR below
-  pre_ast : DATATYPE
-  % Could change seq and prior to accept lists of inputs.
+  below: TYPE = upto(bound)
+  s, e: VAR below
+
+  pre_ast: DATATYPE
     BEGIN
-      skip       (s, e: below, G : Δ): skip?
-      fail       (s, e: below): fail? % (used only in compacted trees)
-      ε          (s, e: below): ε?
-      any        (s, e: below, x : V_T): any?
-      terminal   (s, e: below, a : V_T, x : V_T): terminal?
-      range      (s, e: below, a, b : V_T, x : V_T): range?
-      nonTerminal(s, e: below, A: V_N, T: {T : pre_ast | ¬skip?(T)}) : nonTerminal?
-      semantic   (s, e: below, A: V_N, S: V_S): semantic? % (used only in semantic trees)
-      seq        (s, e: below, T1 : {T : pre_ast | ¬skip?(T)}, T2 : pre_ast): seq?
-      prior      (s, e: below, T1 : {T : pre_ast | ¬skip?(T)}, T2 : pre_ast): prior?
-      star       (s, e: below, T0 : {T : pre_ast | ¬skip?(T)}, Ts : {T : pre_ast | skip?(T) or star?(T)}): star?
-      plus       (s, e: below, T0 : {T : pre_ast | ¬skip?(T)}, Ts : {T : pre_ast | skip?(T) or plus?(T) or fail?(T)}): plus?
-      opt        (s, e: below, T0 : {T : pre_ast | ¬skip?(T)}): opt?
-      notP       (s, e: below, T  : {T : pre_ast | ¬skip?(T)}): notP?
-      andP       (s, e: below, T  : {T : pre_ast | ¬skip?(T)}): andP?
+      skip(s, e: below, G: Δ): skip?
+      fail(s, e: below): fail?
+      ε(s, e: below): ε?
+      any(s, e: below, x: V_T): any?
+      terminal(s, e: below, a: V_T, x: V_T): terminal?
+      range(s, e: below, a, b: V_T, x: V_T): range?
+      nonTerminal(s, e: below, A: V_N, T: {T: pre_ast | ¬skip?(T)})
+                 : nonTerminal?
+      semantic(s, e: below, A: V_N, S: V_S): semantic?
+      seq(s, e: below, T1: {T: pre_ast | ¬skip?(T)}, T2: pre_ast): seq?
+      prior(s, e: below, T1: {T: pre_ast | ¬skip?(T)}, T2: pre_ast)
+           : prior?
+      star(s, e: below, T0: {T: pre_ast | ¬skip?(T)},
+           Ts: {T: pre_ast | skip?(T) OR star?(T)})
+          : star?
+      plus(s, e: below, T0: {T: pre_ast | ¬skip?(T)},
+           Ts: {T: pre_ast | skip?(T) OR plus?(T) OR fail?(T)})
+          : plus?
+      opt(s, e: below, T0: {T: pre_ast | ¬skip?(T)}): opt?
+      notP(s, e: below, T: {T: pre_ast | ¬skip?(T)}): notP?
+      andP(s, e: below, T: {T: pre_ast | ¬skip?(T)}): andP?
     END pre_ast
 
-  T, T' : VAR pre_ast
+  T, T_p: VAR pre_ast
 
-  semanticTree?(T) : bool = ∀ T' : subterm(T', T) ⇒ ¬nonTerminal?(T')
+  semanticTree?(T) : bool = ∀ T_p : subterm(T_p, T) ⇒ ¬nonTerminal?(T_p)
   semanticTree : TYPE = (semanticTree?)
-  parseTree?   (T) : bool = ∀ T' : subterm(T', T) ⇒ ¬fail?(T')
+  parseTree?   (T) : bool = ∀ T_p : subterm(T_p, T) ⇒ ¬fail?(T_p)
   parseTree : TYPE = (parseTree?)
-  
+
   i, j : VAR nat
   x, a, b : var V_T
   A : var V_N
   S : var V_S
   G : var Δ
-  astMeasure(T) : nat = reduce_nat((λ(s, e, G)       : 0),    % skip
-                                   (λ(s, e)          : 0),    % fail
-                                   (λ(s, e)          : 0),    % ε
-                                   (λ(s, e, a)       : 0),    % any
-                                   (λ(s, e, a, x)    : 0),    % terminal
-	    	                       (λ(s, e, a, b, x) : 0),    % range
-                                   (λ(s, e, A, i)    : i+1),  % nonTerminal
-				                   (λ(s, e, A, S)    : 1),    % semantic
-  			                       (λ(s, e, i, j)    : i+j+1),% seq
-  				                   (λ(s, e, i, j)    : i+j+1),% prior					     
-  			                       (λ(s, e, i, j)    : i+j+1),% star					     
-  		                           (λ(s, e, i, j)    : i+j+2),% plus 					     
-  			                       (λ(s, e, i)       : i+2),  % opt
-  			                       (λ(s, e, i)       : i+1),  % notP
-  			                       (λ(s, e, i)       : i+2)   % andP
-  		                           )(T)
+  astMeasure(T): nat =
+      reduce_nat((LAMBDA (s, e, G): 0), (LAMBDA (s, e): 0),
+                 (LAMBDA (s, e): 0), (LAMBDA (s, e, a): 0),
+                 (LAMBDA (s, e, a, x): 0), (LAMBDA (s, e, a, b, x): 0),
+                 (LAMBDA (s, e, A, i): i + 1), (LAMBDA (s, e, A, S): 1),
+                 (LAMBDA (s, e, i, j): i + j + 1),
+                 (LAMBDA (s, e, i, j): i + j + 1),
+                 (LAMBDA (s, e, i, j): i + j + 1),
+                 (LAMBDA (s, e, i, j): i + j + 2),
+                 (LAMBDA (s, e, i): i + 2), (LAMBDA (s, e, i): i + 1),
+                 (LAMBDA (s, e, i): i + 2))
+                (T)
 
 END pre_ast
