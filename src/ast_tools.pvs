@@ -16,7 +16,7 @@ ast_tools [
     IMPORTING ast_props[V_T, <=, V_N_b, bound, V_S]
 
     T, T1, T2: VAR ast
-    G, G', G1, G2: VAR Δ
+    G, G_p, G1, G2: VAR Δ
     inp, inp1, inp2: VAR input
     P_exp: VAR WF_nT
 

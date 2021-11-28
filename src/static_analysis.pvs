@@ -9,8 +9,8 @@ BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
   nT_Permutation: TYPE = (bijective?[V_N, V_N])
   A, B, C : VAR V_N
-  σ, σ': VAR nT_Permutation
-  inv(σ) : {σ'| σ o σ' = identity[V_N]}
+  σ, σ_p: VAR nT_Permutation
+  inv(σ) : {σ_p| σ o σ_p = identity[V_N]}
   P_exp: VAR interp
   G: VAR Δ
   ∅: set[V_N] = emptyset

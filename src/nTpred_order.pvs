@@ -10,28 +10,28 @@ Begin
   nTpred : TYPE = pred[V_N]
   nTinst : TYPE = [bool, bool, bool]
   nTprop : TYPE = [nTpred, nTpred, nTpred]
-  
+
   i, j, A, B	       : VAR V_N
   grp1, grp2           : VAR nTinst
   Pf, P0, Ps           : VAR nTpred
-  P, P', P_1, P_2, P_3 : VAR nTprop
+  P, P_p, P_1, P_2, P_3 : VAR nTprop
 
 
-  leq_inst(grp1, grp2) : bool = ((grp1`1 ⇒ grp2`1) ∧ (grp1`2 ⇒ grp2`2) ∧ (grp1`3 ⇒ grp2`3)) 
+  leq_inst(grp1, grp2) : bool = ((grp1`1 ⇒ grp2`1) ∧ (grp1`2 ⇒ grp2`2) ∧ (grp1`3 ⇒ grp2`3))
   leq_pred(Pf, P0) : bool = ∀ i : Pf(i) ⇒ P0(i)
-  leq(P, P')       : bool = ∀ i : (P`1(i) ⇒ P'`1(i)) ∧ (P`2(i) ⇒ P'`2(i)) ∧ (P`3(i) ⇒ P'`3(i))
+  leq(P, P_p)       : bool = ∀ i : (P`1(i) ⇒ P_p`1(i)) ∧ (P`2(i) ⇒ P_p`2(i)) ∧ (P`3(i) ⇒ P_p`3(i))
 
 
 
-  ;<= (P, P') : bool = leq(P, P')
-  ;=> (P, P') : bool = leq(P', P)
+  ;<= (P, P_p) : bool = leq(P, P_p)
+  ;=> (P, P_p) : bool = leq(P_p, P)
   ;<= (Pf, P0) : bool = leq_pred(Pf, P0)
   ;<= (p1,p2 : nTinst) : bool = leq_inst(p1, p2)
   ;=> (p1,p2 : nTinst) : bool = leq_inst(p2, p1)
-  
+
   leq_tr : LEMMA ∀ P_1, P_2, P_3 : ((P_1 <= P_2) ∧ (P_2 <= P_3)) ⇒ (P_1 <= P_3)
-  leq_rf : LEMMA ∀ P, P' : ((P <= P') ∧ (P' <= P)) ⇔ (P = P')
-  leq_dist : LEMMA ∀ P, P' : (P <= P') ⇔ ((P`1 <= P'`1) ∧ (P`2 <= P'`2) ∧ (P`3 <= P'`3))
-  
+  leq_rf : LEMMA ∀ P, P_p : ((P <= P_p) ∧ (P_p <= P)) ⇔ (P = P_p)
+  leq_dist : LEMMA ∀ P, P_p : (P <= P_p) ⇔ ((P`1 <= P_p`1) ∧ (P`2 <= P_p`2) ∧ (P`3 <= P_p`3))
+
 
 end nTpred_order

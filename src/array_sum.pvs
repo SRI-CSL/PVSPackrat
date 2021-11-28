@@ -10,7 +10,7 @@ BEGIN
   IMPORTING nTpred_order[V_N_b]
   i,j,A,B : VAR V_N
   Pf,P0,Ps : VAR nTpred
-  P, P' : VAR nTprop
+  P, P_p : VAR nTprop
 	result : TYPE = upto(V_N_b)
 
 	aux(i, (res : upto(V_N_b - i - 1)), Pf) : RECURSIVE result=
@@ -32,9 +32,8 @@ BEGIN
 	aux_gr4  : LEMMA ∀ Pf, i, (k : below(V_N_b -i)), (res : upto(V_N_b -1 -i-k)) : aux(i, res, Pf) <= aux(i+k, res, Pf)
 	aux_inj : LEMMA ∀ Pf, P0 : ((Pf <= P0) ∧ (aux(V_N_b - 1, 0, Pf) = aux(V_N_b - 1, 0, P0))) ⇒ (Pf = P0)
 
-    
-	sum_growing : LEMMA ∀ P, P' : (P <= P') ⇒ (array_sum(P) <= array_sum(P'))
-	sum_inj     : LEMMA ∀ P, P' : (P <= P') ∧ (array_sum(P) = array_sum(P')) ⇒ (P = P')
+
+	sum_growing : LEMMA ∀ P, P_p : (P <= P_p) ⇒ (array_sum(P) <= array_sum(P_p))
+	sum_inj     : LEMMA ∀ P, P_p : (P <= P_p) ∧ (array_sum(P) = array_sum(P_p)) ⇒ (P = P_p)
 
 END array_sum
-
