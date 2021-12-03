@@ -1,55 +1,59 @@
 
 
-inferred_order_wf_peg [
+static_analysis [
     V_T   : TYPE+,
     <=    : (total_order?[V_T]),
     V_N_b : posnat
     ]:THEORY
 BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
-  nT_Permutation: TYPE = (bijective?[V_N, V_N])
+	IMPORTING c_topological_sort[nat] % From nasalib
+	IMPORTING interval_list
+
+  V_N_not_empty : LEMMA EXISTS (x: V_N): TRUE
+
   A, B, C : VAR V_N
-  σ, σ_p: VAR nT_Permutation
-  inv(σ) : {σ_p| σ o σ_p = identity[V_N]}
+  σ, σ_p: VAR order
+
   P_exp: VAR interp
   G: VAR Δ
-  ∅: set[V_N] = emptyset
   δ : VAR bool
 
-  g_wf_perm(σ)(G, A, (P_0 : [Δ -> bool]), δ) : RECURSIVE bool =
-    CASES G of
-      ε: true, any: true, terminal(a): true,range(a,b): true,
-      nonTerminal(B) : δ ⇒ (σ(B) < σ(A)),
-      seq(e1, e2)    : g_wf_perm(σ)(e1, A, P_0, δ) ∧ g_wf_perm(σ)(e2, A, P_0, P_0(e1) ∧ δ),
-      prior(e1, e2)  : g_wf_perm(σ)(e1, A, P_0, δ) ∧ g_wf_perm(σ)(e2, A, P_0, δ),
-      star(e)        : g_wf_perm(σ)(e , A, P_0, δ) ∧ (¬P_0(e)),
-      plus(e)        : g_wf_perm(σ)(e , A, P_0, δ) ∧ (¬P_0(e)),
-      opt(e)         : g_wf_perm(σ)(e , A, P_0, δ),
-      notP(e)        : g_wf_perm(σ)(e , A, P_0, δ),
-      andP(e)        : g_wf_perm(σ)(e , A, P_0, δ)
-    ENDCASES
-  MEASURE pegMeasure(G)
+  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF(σ, P_exp)
 
-  strong_WF_perm(P_exp, σ): bool = ∀ A : g_wf_perm(σ)(P_exp(A), A, P_0c?(P_exp), strong)
-  complete_WF_perm(P_exp, σ) : bool = ∀ A : g_wf_perm(σ)(P_exp(A), A, P_0c?(P_exp), complete)
+  well_orders?(P_exp)(σ): bool = strong_WF(σ, P_exp)
 
-  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF_perm(P_exp, σ)
-  orderly_WF_nT: TYPE = (orderly_WF_nT?)
+  every_iff_member[T :TYPE]: LEMMA ∀ (l: list[T], P:PRED[T]): every(P)(l) ⇔ (∀ (x:T): member(x,l) ⇒ P(x))
 
-  well_orders?(P_exp)(σ): bool = strong_WF_perm(P_exp, σ)
+  l, l1, l2 : VAR list[nat]
+	n,m : VAR nat
+  node_ls : TYPE = {l : list[nat] | (no_repetitions?(l)) ∧ (∀ n : member(n,l) ⇒ 0 <= n <= V_N_b - 1)}
+	node_ls_list_V_N : JUDGEMENT node_ls SUBTYPE_OF list[V_N]
 
-  sub_nT(G, (P_0: [Δ -> bool])): RECURSIVE finite_set[V_N[V_N_b]] =
+  no_rep_cdr_iff: LEMMA ∀ l, n : no_repetitions?(cons(n,l)) ⇔ no_repetitions?(l) AND NOT member(n,l)
+  no_repetitions_add_ls : LEMMA ∀ l, n : no_repetitions?(l) ⇒ no_repetitions?(add_sl(n,l))
+  no_repetitions_union_ls : LEMMA ∀ l1, l2 : no_repetitions?(l1) ∧ no_repetitions?(l2) ⇒ no_repetitions?(union_sl(l1,l2))
+	V_N_no_add_ls : JUDGEMENT ∀ (l:list[V_N]), A : add_sl(A,l) HAS_TYPE list[V_N]
+	V_N_union_ls : JUDGEMENT ∀ (l1, l2:list[V_N]) : union_sl(l1,l2) HAS_TYPE list[V_N]
+
+	V_N_list_subtype_nat_list : JUDGEMENT list[V_N] SUBTYPE_OF list[nat]
+	V_N_no_repetition_subtype : JUDGEMENT (no_repetitions?[V_N]) SUBTYPE_OF list[nat]
+
+
+  % Compute the set of non-terminals that could be used before a character is consumed
+	% (all those non-terminals are supposed to have a lower index in a wellforming order σ)
+  sub_nT(G, (P_0: [Δ -> bool])): RECURSIVE node_ls =
     CASES G
-      OF ε: ∅,
-         any: ∅,
-         terminal(a): ∅,
-         range(a, b): ∅,
-         nonTerminal(B): singleton(B),
+      OF ε: null,
+         any: null,
+         terminal(a): null,
+         range(a, b): null,
+         nonTerminal(B): cons(B, null),
          seq(e1, e2):
-           IF (P_0(e1)) THEN union(sub_nT(e1, P_0), sub_nT(e2, P_0))
+           IF (P_0(e1)) THEN union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0))
            ELSE sub_nT(e1, P_0)
            ENDIF,
-         prior(e1, e2): union(sub_nT(e1, P_0), sub_nT(e2, P_0)),
+         prior(e1, e2): union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0)),
          star(e): sub_nT(e, P_0),
          plus(e): sub_nT(e, P_0),
          opt(e): sub_nT(e, P_0),
@@ -60,35 +64,29 @@ BEGIN
 
   sub_nT_and_wellformedness: LEMMA
     ∀ G, (A: V_N), (P_0: [Δ -> bool]):
-      g_wf(G, A, P_0, strong) ⇔
-       (g_wf(G, A, P_0, complete) ∧
-         (∀ (B: V_N): (sub_nT(G, P_0)(B)) ⇒ B < A))
+      g_wf(σ, G, A, P_0, strong) ⇔
+       (g_wf(σ, G, A, P_0, complete) ∧
+         (∀ (B: V_N): member(B, sub_nT(G, P_0)) ⇒ σ(B) < σ(A)))
 
-  sub_nT_and_wellformedness_perm: LEMMA
-    ∀ G, (A: V_N), (P_0: [Δ -> bool]):
-      g_wf_perm(σ)(G, A, P_0, strong) ⇔
-       (g_wf_perm(σ)(G, A, P_0, complete) ∧
-         (∀ (B: V_N): (sub_nT(G, P_0)(B)) ⇒ σ(B) < σ(A)))
+  % Construction of the digraph
+	nodes(P_exp): node_ls = interval_list(0, V_N_b - 1)
+	adjacents(P_exp)(A): node_ls =
+     sub_nT(P_exp(A), P_0c?(P_exp))
+  dependency_graph(P_exp): c_digraph[nat] =
+      (# data := nodes(P_exp),
+         adjs := map(adjacents(P_exp))(nodes(P_exp)) #)
 
-  topologically_sorts?(P_exp, σ) : bool =
-    ∀ (A, B: V_N): sub_nT(P_exp(A), P_0c?(P_exp))(B) ⇒ σ(B) < σ(A)
+  % Some lemmas before the main result
+	strong_WF_edge: LEMMA ∀ P_exp, σ :
+	   strong_WF(σ, P_exp) ⇒ ∀ A, B : (edges(dependency_graph(P_exp))(A, B) ⇒ σ(B) < σ(A))
+	strong_WF_path: LEMMA ∀ P_exp, σ : strong_WF(σ, P_exp) ⇒ ∀ (n:nat , w:Walk(dependency_graph(P_exp)), i,j : below(length(w))) : i+n+1=j ⇒ σ(w`seq(i)) > σ(w`seq(j))
 
-  option_permutation :
-  DATATYPE
-  BEGIN
-    None: None?
-    Some(σ: nT_Permutation): Some?
-  END option_permutation
-
-  kahns_algorithm(P_exp) : {Σ:option_permutation |
-    % (None?(Σ) ⇔ (∀ σ, ¬ topologically_sorts?(P_exp, σ))) ∧
-    (Some?(Σ) ⇒ topologically_sorts?(P_exp, σ(Σ)))}
-
-  complete_WF_reorders : LEMMA
-    ∀ P_exp, σ : complete_WF(P_exp) ⇒ complete_WF_perm(P_exp, σ)
-
-  topological_sort_well_orders: LEMMA
-    ∀ P_exp, σ : kahns_algorithm(P_exp) = Some(σ) ⇒ complete_WF(P_exp) ⇒ well_orders?(P_exp)(σ)
+  % Main theorem
+  dependency_graph_wf_iff_dag :
+	   THEOREM ∀ P_exp :
+		 orderly_WF_nT?(P_exp) ⇔ IN?_2(topological_sort[V_N](dependency_graph(P_exp)))
 
 
-END inferred_order_wf_peg
+
+
+END static_analysis

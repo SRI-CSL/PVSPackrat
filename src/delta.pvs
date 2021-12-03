@@ -61,6 +61,13 @@ BEGIN
     subterm_lq: LEMMA ∀ e1, e2 : subterm(e1, e2) ⇒ pegMeasure(e1) <= pegMeasure(e2)
     subterm_eq: LEMMA ∀ e1, e2 : (subterm(e1, e2) ∧ pegMeasure(e1) = pegMeasure(e2)) ⇒ (e1 = e2)
     subterm_transitivity: LEMMA ∀ e, e1, e2 : subterm(e, e1) ∧ subterm(e1, e2) ⇒ subterm(e, e2)
+		subterm_seq : LEMMA ∀ G, e1, e2: subterm(seq(e1,e2), G) ⇒ subterm(e1, G) ∧ subterm(e2, G)
+    subterm_prior : LEMMA ∀ G, e1, e2: subterm(prior(e1,e2), G) ⇒ subterm(e1, G) ∧ subterm(e2, G)
+    subterm_star : LEMMA ∀ G, e: subterm(star(e), G) ⇒ subterm(e, G)
+    subterm_plus : LEMMA ∀ G, e: subterm(plus(e), G) ⇒ subterm(e, G)
+		subterm_opt : LEMMA ∀ G, e: subterm(opt(e), G) ⇒ subterm(e, G)
+		subterm_notP : LEMMA ∀ G, e: subterm(notP(e), G) ⇒ subterm(e, G)
+		subterm_andP : LEMMA ∀ G, e: subterm(andP(e), G) ⇒ subterm(e, G)
 
 END peg
 
