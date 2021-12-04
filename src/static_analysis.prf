@@ -1,4 +1,30 @@
 (static_analysis
+ (IMP_c_topological_sort_TCC1 0
+  (IMP_c_topological_sort_TCC1-1 nil 3847609484
+   ("" (inst 1 0) (("" (assert) nil nil)) nil)
+   ((V_N type-eq-decl nil nTpred_order nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (< const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number nonempty-type-decl nil numbers nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil))
+   nil (IMP_c_topological_sort existence "" "V_N[V_N_b]")))
  (V_N_not_empty 0
   (V_N_not_empty-1 nil 3847461586
    ("" (inst 1 0) (("" (grind) nil nil)) nil)
@@ -25,6 +51,38 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil))
    shostak))
+ (σ_id_TCC1 0
+  (σ_id_TCC1-1 nil 3847609484 ("" (subtype-tcc) nil nil)
+   ((real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (< const-decl "bool" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (injective? const-decl "bool" functions nil)
+    (surjective? const-decl "bool" functions nil)
+    (bijective? const-decl "bool" functions nil))
+   nil
+   (σ_id subtype
+    "LAMBDA (A: nTpred_order[static_analysis.V_N_b].V_N): A"
+    "order[V_T, <=, V_N_b]")))
  (every_iff_member 0
   (every_iff_member-1 nil 3847460814
    ("" (skeep)
@@ -425,6 +483,72 @@
    nil
    (V_N_list_subtype_nat_list_ subtype "list_adt[V_N[V_N_b]].list"
     "list_adt[nat].list")))
+ (idx_V_N_nat 0
+  (idx_V_N_nat-1 nil 3847550410
+   ("" (induct l)
+    (("1" (grind) nil nil)
+     ("2" (skolem 1 ("x" "l"))
+      (("2" (flatten)
+        (("2" (skolem 1 "y")
+          (("2" (expand "idx" +)
+            (("2" (inst -1 y)
+              (("1" (assert)
+                (("1" (lift-if) (("1" (assert) nil nil)) nil)) nil)
+               ("2" (typepred "y")
+                (("2" (expand "member" -) (("2" (assert) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((cons? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (cons adt-constructor-decl "[[T, list] -> (cons?)]" list_adt nil)
+    (x skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (l skolem-const-decl "list[V_N[V_N_b]]" static_analysis nil)
+    (y skolem-const-decl "{x_1: V_N | member(x_1, cons(x, l))}"
+     static_analysis nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (null? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (null adt-constructor-decl "(null?)" list_adt nil)
+    (list_induction formula-decl nil list_adt nil)
+    (number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (idx def-decl "{i: below(length(l)) | nth(l, i) = a}"
+     more_list_props structures)
+    (nth def-decl "T" list_props nil)
+    (below type-eq-decl nil nat_types nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (length def-decl "nat" list_props nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (member def-decl "bool" list_props nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (list type-decl nil list_adt nil))
+   shostak))
  (sub_nT_TCC1 0
   (sub_nT_TCC1-1 nil 3847256679 ("" (grind) nil nil)
    ((real_lt_is_strict_total_order name-judgement
@@ -1965,7 +2089,16 @@
                                           (ground)
                                           (("1" (grind) nil nil)
                                            ("2" (grind) nil nil)
-                                           ("3" (postpone) nil nil))
+                                           ("3"
+                                            (rewrite "idx_V_N_nat")
+                                            (("3"
+                                              (assert)
+                                              (("3"
+                                                (rewrite "idx_V_N_nat")
+                                                nil
+                                                nil))
+                                              nil))
+                                            nil))
                                           nil))
                                         nil))
                                       nil))
@@ -1984,10 +2117,170 @@
             nil))
           nil))
         nil)
-       ("2" (postpone) nil nil))
+       ("2" (skolem 1 "n")
+        (("2" (flatten)
+          (("2" (skeep)
+            (("2" (inst -1 w "i+1" "j")
+              (("1" (assert)
+                (("1" (lemma "strong_WF_edge")
+                  (("1" (inst -1 "P_exp" σ)
+                    (("1" (assert)
+                      (("1" (expand "restrict")
+                        (("1" (inst -1 "w`seq(i)" "w`seq(i+1)")
+                          (("1" (assert)
+                            (("1" (typepred "w")
+                              (("1"
+                                (expand "walk?")
+                                (("1"
+                                  (flatten)
+                                  (("1"
+                                    (inst -3 "i")
+                                    (("1"
+                                      (assert)
+                                      (("1"
+                                        (expand "finseq_appl")
+                                        (("1"
+                                          (expand "edge?")
+                                          (("1"
+                                            (expand "digraph_edges")
+                                            (("1"
+                                              (expand "edges")
+                                              (("1"
+                                                (ground)
+                                                (("1" (grind) nil nil)
+                                                 ("2" (grind) nil nil)
+                                                 ("3"
+                                                  (rewrite
+                                                   "idx_V_N_nat")
+                                                  (("3"
+                                                    (rewrite
+                                                     "idx_V_N_nat")
+                                                    nil
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil)
+               ("2" (assert) nil nil))
+              nil))
+            nil))
+          nil))
+        nil))
       nil))
     nil)
-   nil shostak))
+   ((number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (pred type-eq-decl nil defined_types nil)
+    (below type-eq-decl nil nat_types nil)
+    (< const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (list type-decl nil list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (ComputableDigraph type-eq-decl nil c_digraphs_def digraphs)
+    (cdigraph const-decl "bool" c_digraphs_def digraphs)
+    (digraph_type type-eq-decl nil c_digraphs_imp digraphs)
+    (digraph_verts const-decl "[digraph_type -> [T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_edges const-decl "[digraph_type -> [T, T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_size const-decl "[digraph_type -> nat]" c_digraphs_imp
+     digraphs)
+    (set type-eq-decl nil sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (digraph_make const-decl "[v: (is_finite[T]),
+ {e: (is_finite[[T, T]]) |
+    FORALL (x, y: T): e(x, y) IMPLIES v(x) AND v(y)} ->
+   digraph_type]" c_digraphs_imp digraphs)
+    (prewalk type-eq-decl nil walks_ digraphs)
+    (walk? const-decl "bool" walks_ digraphs)
+    (V_T formal-nonempty-type-decl nil static_analysis nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
+    (peg type-decl nil peg nil) (interp type-eq-decl nil wf_peg nil)
+    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
+    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+    (Walk type-eq-decl nil walks_ digraphs)
+    (below type-eq-decl nil naturalnumbers nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (nat_induction formula-decl nil naturalnumbers nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (strong_WF_edge formula-decl nil static_analysis nil)
+    (edge? const-decl "bool" digraphs_ digraphs)
+    (edges const-decl "bool" c_digraphs_def digraphs)
+    (verts_in? const-decl "bool" walks_ digraphs)
+    (vert const-decl "bool" c_digraphs_def digraphs)
+    (nodes const-decl "node_ls" static_analysis nil)
+    (interval_list const-decl "list[nat]" interval_list nil)
+    (strong_WF const-decl "bool" wf_peg nil)
+    (strong const-decl "bool" wf_peg nil)
+    (member def-decl "bool" list_props nil)
+    (map adt-def-decl "list[T1]" list_adt_map nil)
+    (adjacents const-decl "node_ls" static_analysis nil)
+    (interval_list_rec def-decl
+     "{l: list[nat] | FORALL k: i <= k <= j ⇔ member(k, l)}"
+     interval_list nil)
+    (idx_V_N_nat formula-decl nil static_analysis nil)
+    (restrict const-decl "R" restrict nil)
+    (real_gt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
+     nil)
+    (TRUE const-decl "bool" booleans nil)
+    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
+     nil)
+    (w skolem-const-decl
+     "Walk[V_N[V_N_b], digraph_type[V_N[V_N_b]], digraph_verts, digraph_edges,
+     digraph_size, digraph_make](dependency_graph(P_exp))"
+     static_analysis nil)
+    (i skolem-const-decl "below(length(w))" static_analysis nil))
+   shostak))
  (dependency_graph_wf_iff_dag_TCC1 0
   (dependency_graph_wf_iff_dag_TCC1-1 nil 3847472036
    ("" (skeep)
@@ -2119,22 +2412,646 @@
       (("1" (flatten)
         (("1" (expand "orderly_WF_nT?")
           (("1" (skeep)
-            (("1"
-              (typepred
-               "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
-              (("1" (assert)
-                (("1" (hide -1)
-                  (("1" (expand "is_dag")
-                    (("1" (hide 2)
-                      (("1" (measure-induct+ "w`length" "w")
-                        (("1" (name-replace "w" "x!1")
+            (("1" (split 1)
+              (("1"
+                (typepred
+                 "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
+                (("1" (assert)
+                  (("1" (hide -1)
+                    (("1" (expand "is_dag")
+                      (("1" (hide 2)
+                        (("1" (skeep)
                           (("1" (typepred "w")
                             (("1" (expand "path?")
                               (("1"
-                                (assert)
+                                (skeep)
                                 (("1"
-                                  (expand "finseq_appl")
-                                  (("1" (postpone) nil nil))
+                                  (lemma "strong_WF_path")
+                                  (("1"
+                                    (inst -1 "P_exp" "σ")
+                                    (("1"
+                                      (assert)
+                                      (("1"
+                                        (expand "finseq_appl")
+                                        (("1"
+                                          (case "i<j")
+                                          (("1"
+                                            (inst -2 "j-i-1" w i j)
+                                            (("1" (assert) nil nil)
+                                             ("2" (assert) nil nil))
+                                            nil)
+                                           ("2"
+                                            (case "i>j")
+                                            (("1"
+                                              (inst -2 "i-j-1" w j i)
+                                              (("1" (assert) nil nil)
+                                               ("2" (assert) nil nil))
+                                              nil)
+                                             ("2" (assert) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil)
+               ("2" (use "strong_is_complete_WF" (σ σ))
+                (("2" (assert)
+                  (("2" (lemma "complete_WF_no_order")
+                    (("2" (inst -1 "σ" "σ_id" "P_exp")
+                      (("2" (assert) nil nil)) nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("2" (expand "orderly_WF_nT?")
+        (("2" (flatten)
+          (("2"
+            (typepred
+             "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
+            (("2" (assert)
+              (("2" (flatten)
+                (("2" (assert)
+                  (("2" (hide -1)
+                    (("2"
+                      (name-replace "res"
+                       "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
+                      (("2" (name-replace "m" "OUT_2(res)`1")
+                        (("2" (name-replace "l" "OUT_2(res)`2")
+                          (("2" (expand "size")
+                            (("2" (expand "dependency_graph" -3)
+                              (("2"
+                                (expand "nodes")
+                                (("2"
+                                  (case "length(nodes(P_exp)) = V_N_b")
+                                  (("1"
+                                    (case
+                                     "FORALL (A: V_N[V_N_b]): member[nat](A, l)")
+                                    (("1"
+                                      (name
+                                       "σ_ts"
+                                       "LAMBDA (x: V_N): V_N_b -1 -idx[V_N](l, x)")
+                                      (("1"
+                                        (inst 1 "σ_ts")
+                                        (("1"
+                                          (lemma
+                                           "complete_WF_no_order")
+                                          (("1"
+                                            (inst
+                                             -1
+                                             "σ_id"
+                                             "σ_ts"
+                                             P_exp)
+                                            (("1"
+                                              (replace -1 * LR)
+                                              (("1"
+                                                (hide -1)
+                                                (("1"
+                                                  (expand
+                                                   "complete_WF")
+                                                  (("1"
+                                                    (expand
+                                                     "strong_WF")
+                                                    (("1"
+                                                      (skolem 1 "A")
+                                                      (("1"
+                                                        (inst -8 "A")
+                                                        (("1"
+                                                          (lemma
+                                                           "sub_nT_and_wellformedness")
+                                                          (("1"
+                                                            (inst
+                                                             -1
+                                                             "σ_ts"
+                                                             "P_exp(A)"
+                                                             A
+                                                             "P_0c?(P_exp)")
+                                                            (("1"
+                                                              (assert)
+                                                              (("1"
+                                                                (hide
+                                                                 -9
+                                                                 2)
+                                                                (("1"
+                                                                  (hide
+                                                                   -8
+                                                                   2)
+                                                                  (("1"
+                                                                    (skeep)
+                                                                    (("1"
+                                                                      (expand
+                                                                       "topperm_list")
+                                                                      (("1"
+                                                                        (flatten)
+                                                                        (("1"
+                                                                          (expand
+                                                                           "topological_list?")
+                                                                          (("1"
+                                                                            (expand
+                                                                             "node")
+                                                                            (("1"
+                                                                              (expand
+                                                                               "dependency_graph"
+                                                                               -8)
+                                                                              (("1"
+                                                                                (expand
+                                                                                 "nodes")
+                                                                                (("1"
+                                                                                  (inst
+                                                                                   -9
+                                                                                   "A")
+                                                                                  (("1"
+                                                                                    (rewrite
+                                                                                     "interval_list_nth")
+                                                                                    (("1"
+                                                                                      (use
+                                                                                       "member_iff_nth[nat]"
+                                                                                       (l
+                                                                                        l))
+                                                                                      (("1"
+                                                                                        (assert)
+                                                                                        (("1"
+                                                                                          (skolem
+                                                                                           -1
+                                                                                           "idx_A")
+                                                                                          (("1"
+                                                                                            (inst
+                                                                                             -7
+                                                                                             "idx_A"
+                                                                                             B)
+                                                                                            (("1"
+                                                                                              (split
+                                                                                               -7)
+                                                                                              (("1"
+                                                                                                (skolem
+                                                                                                 -1
+                                                                                                 "idx2_B")
+                                                                                                (("1"
+                                                                                                  (assert)
+                                                                                                  (("1"
+                                                                                                    (flatten)
+                                                                                                    (("1"
+                                                                                                      (expand
+                                                                                                       "σ_ts")
+                                                                                                      (("1"
+                                                                                                        (replace
+                                                                                                         -1
+                                                                                                         *
+                                                                                                         LR)
+                                                                                                        (("1"
+                                                                                                          (replace
+                                                                                                           -3
+                                                                                                           *
+                                                                                                           RL)
+                                                                                                          (("1"
+                                                                                                            (rewrite
+                                                                                                             "idx_nth_no_rep")
+                                                                                                            (("1"
+                                                                                                              (rewrite
+                                                                                                               "idx_nth_no_rep")
+                                                                                                              (("1"
+                                                                                                                (assert)
+                                                                                                                nil
+                                                                                                                nil))
+                                                                                                              nil))
+                                                                                                            nil))
+                                                                                                          nil))
+                                                                                                        nil))
+                                                                                                      nil))
+                                                                                                    nil))
+                                                                                                  nil))
+                                                                                                nil)
+                                                                                               ("2"
+                                                                                                (inst
+                                                                                                 1
+                                                                                                 "gen_seq2(dependency_graph(P_exp), A, B)")
+                                                                                                (("1"
+                                                                                                  (grind)
+                                                                                                  nil
+                                                                                                  nil)
+                                                                                                 ("2"
+                                                                                                  (expand
+                                                                                                   "gen_seq2")
+                                                                                                  (("2"
+                                                                                                    (expand
+                                                                                                     "walk?")
+                                                                                                    (("2"
+                                                                                                      (expand
+                                                                                                       "verts_in?")
+                                                                                                      (("2"
+                                                                                                        (expand
+                                                                                                         "edge?")
+                                                                                                        (("2"
+                                                                                                          (expand
+                                                                                                           "digraph_edges")
+                                                                                                          (("2"
+                                                                                                            (expand
+                                                                                                             "edges")
+                                                                                                            (("2"
+                                                                                                              (expand
+                                                                                                               "finseq_appl")
+                                                                                                              (("2"
+                                                                                                                (skeep)
+                                                                                                                (("2"
+                                                                                                                  (case
+                                                                                                                   "n=0")
+                                                                                                                  (("1"
+                                                                                                                    (assert)
+                                                                                                                    (("1"
+                                                                                                                      (expand
+                                                                                                                       "vert")
+                                                                                                                      (("1"
+                                                                                                                        (expand
+                                                                                                                         "dependency_graph")
+                                                                                                                        (("1"
+                                                                                                                          (expand
+                                                                                                                           "nodes")
+                                                                                                                          (("1"
+                                                                                                                            (ground)
+                                                                                                                            (("1"
+                                                                                                                              (use
+                                                                                                                               "interval_list_member")
+                                                                                                                              (("1"
+                                                                                                                                (assert)
+                                                                                                                                nil
+                                                                                                                                nil))
+                                                                                                                              nil)
+                                                                                                                             ("2"
+                                                                                                                              (use
+                                                                                                                               "interval_list_member")
+                                                                                                                              (("2"
+                                                                                                                                (assert)
+                                                                                                                                nil
+                                                                                                                                nil))
+                                                                                                                              nil)
+                                                                                                                             ("3"
+                                                                                                                              (lemma
+                                                                                                                               "interval_list_idx")
+                                                                                                                              (("3"
+                                                                                                                                (inst
+                                                                                                                                 -1
+                                                                                                                                 0
+                                                                                                                                 "V_N_b - 1"
+                                                                                                                                 B)
+                                                                                                                                (("3"
+                                                                                                                                  (assert)
+                                                                                                                                  (("3"
+                                                                                                                                    (rewrite
+                                                                                                                                     "idx_V_N_nat")
+                                                                                                                                    (("3"
+                                                                                                                                      (replace
+                                                                                                                                       -1
+                                                                                                                                       *
+                                                                                                                                       LR)
+                                                                                                                                      (("3"
+                                                                                                                                        (lemma
+                                                                                                                                         "interval_list_idx")
+                                                                                                                                        (("3"
+                                                                                                                                          (inst
+                                                                                                                                           -1
+                                                                                                                                           0
+                                                                                                                                           "V_N_b - 1"
+                                                                                                                                           A)
+                                                                                                                                          (("3"
+                                                                                                                                            (assert)
+                                                                                                                                            (("3"
+                                                                                                                                              (rewrite
+                                                                                                                                               "idx_V_N_nat")
+                                                                                                                                              (("3"
+                                                                                                                                                (replace
+                                                                                                                                                 -1
+                                                                                                                                                 *
+                                                                                                                                                 LR)
+                                                                                                                                                (("3"
+                                                                                                                                                  (lemma
+                                                                                                                                                   "map_nth_rw[V_N, node_ls]")
+                                                                                                                                                  (("3"
+                                                                                                                                                    (inst
+                                                                                                                                                     -1
+                                                                                                                                                     "adjacents(P_exp)"
+                                                                                                                                                     "interval_list(0,V_N_b-1)"
+                                                                                                                                                     A)
+                                                                                                                                                    (("3"
+                                                                                                                                                      (replace
+                                                                                                                                                       -1
+                                                                                                                                                       *
+                                                                                                                                                       LR)
+                                                                                                                                                      (("3"
+                                                                                                                                                        (rewrite
+                                                                                                                                                         "interval_list_nth")
+                                                                                                                                                        (("3"
+                                                                                                                                                          (expand
+                                                                                                                                                           "adjacents")
+                                                                                                                                                          (("3"
+                                                                                                                                                            (propax)
+                                                                                                                                                            nil
+                                                                                                                                                            nil))
+                                                                                                                                                          nil))
+                                                                                                                                                        nil))
+                                                                                                                                                      nil))
+                                                                                                                                                    nil))
+                                                                                                                                                  nil))
+                                                                                                                                                nil))
+                                                                                                                                              nil))
+                                                                                                                                            nil))
+                                                                                                                                          nil))
+                                                                                                                                        nil))
+                                                                                                                                      nil))
+                                                                                                                                    nil))
+                                                                                                                                  nil))
+                                                                                                                                nil))
+                                                                                                                              nil))
+                                                                                                                            nil))
+                                                                                                                          nil))
+                                                                                                                        nil))
+                                                                                                                      nil))
+                                                                                                                    nil)
+                                                                                                                   ("2"
+                                                                                                                    (assert)
+                                                                                                                    nil
+                                                                                                                    nil))
+                                                                                                                  nil))
+                                                                                                                nil))
+                                                                                                              nil))
+                                                                                                            nil))
+                                                                                                          nil))
+                                                                                                        nil))
+                                                                                                      nil))
+                                                                                                    nil))
+                                                                                                  nil)
+                                                                                                 ("3"
+                                                                                                  (expand
+                                                                                                   "vert")
+                                                                                                  (("3"
+                                                                                                    (expand
+                                                                                                     "dependency_graph")
+                                                                                                    (("3"
+                                                                                                      (expand
+                                                                                                       "nodes")
+                                                                                                      (("3"
+                                                                                                        (use
+                                                                                                         "interval_list_member")
+                                                                                                        (("3"
+                                                                                                          (assert)
+                                                                                                          nil
+                                                                                                          nil))
+                                                                                                        nil))
+                                                                                                      nil))
+                                                                                                    nil))
+                                                                                                  nil)
+                                                                                                 ("4"
+                                                                                                  (expand
+                                                                                                   "vert")
+                                                                                                  (("4"
+                                                                                                    (expand
+                                                                                                     "dependency_graph")
+                                                                                                    (("4"
+                                                                                                      (expand
+                                                                                                       "nodes")
+                                                                                                      (("4"
+                                                                                                        (use
+                                                                                                         "interval_list_member")
+                                                                                                        (("4"
+                                                                                                          (assert)
+                                                                                                          nil
+                                                                                                          nil))
+                                                                                                        nil))
+                                                                                                      nil))
+                                                                                                    nil))
+                                                                                                  nil))
+                                                                                                nil))
+                                                                                              nil))
+                                                                                            nil))
+                                                                                          nil))
+                                                                                        nil))
+                                                                                      nil))
+                                                                                    nil)
+                                                                                   ("2"
+                                                                                    (expand
+                                                                                     "dependency_graph")
+                                                                                    (("2"
+                                                                                      (expand
+                                                                                       "size")
+                                                                                      (("2"
+                                                                                        (assert)
+                                                                                        nil
+                                                                                        nil))
+                                                                                      nil))
+                                                                                    nil))
+                                                                                  nil))
+                                                                                nil))
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil)
+                                         ("2"
+                                          (expand "bijective?")
+                                          (("2"
+                                            (assert)
+                                            (("2"
+                                              (assert)
+                                              (("2"
+                                                (split 1)
+                                                (("1"
+                                                  (skolem 1 "x")
+                                                  (("1"
+                                                    (expand "σ_ts")
+                                                    (("1"
+                                                      (assert)
+                                                      (("1"
+                                                        (typepred
+                                                         "idx[V_N[V_N_b]](l, x)")
+                                                        (("1"
+                                                          (assert)
+                                                          (("1"
+                                                            (expand
+                                                             "dependency_graph")
+                                                            (("1"
+                                                              (expand
+                                                               "nodes")
+                                                              (("1"
+                                                                (rewrite
+                                                                 "interval_list_length")
+                                                                (("1"
+                                                                  (assert)
+                                                                  nil
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil)
+                                                         ("2"
+                                                          (inst -6 "x")
+                                                          (("1"
+                                                            (expand
+                                                             "node")
+                                                            (("1"
+                                                              (rewrite
+                                                               "interval_list_nth")
+                                                              nil
+                                                              nil))
+                                                            nil)
+                                                           ("2"
+                                                            (expand
+                                                             "size")
+                                                            (("2"
+                                                              (expand
+                                                               "nodes")
+                                                              (("2"
+                                                                (expand
+                                                                 "dependency_graph")
+                                                                (("2"
+                                                                  (expand
+                                                                   "nodes")
+                                                                  (("2"
+                                                                    (assert)
+                                                                    nil
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil)
+                                                 ("2"
+                                                  (assert)
+                                                  (("2"
+                                                    (expand
+                                                     "injective?")
+                                                    (("2"
+                                                      (skeep)
+                                                      (("2"
+                                                        (expand "σ_ts")
+                                                        (("2"
+                                                          (use
+                                                           "idx_inj[V_N]")
+                                                          (("1"
+                                                            (assert)
+                                                            nil
+                                                            nil)
+                                                           ("2"
+                                                            (expand
+                                                             "topperm_list")
+                                                            (("2"
+                                                              (flatten)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil)
+                                                 ("3"
+                                                  (expand
+                                                   "surjective?")
+                                                  (("3"
+                                                    (skeep)
+                                                    (("3"
+                                                      (expand "σ_ts")
+                                                      (("3"
+                                                        (inst
+                                                         1
+                                                         "nth(l, V_N_b-1-y)")
+                                                        (("1"
+                                                          (rewrite
+                                                           "idx_nth_no_rep")
+                                                          (("1"
+                                                            (assert)
+                                                            nil
+                                                            nil)
+                                                           ("2"
+                                                            (expand
+                                                             "topperm_list")
+                                                            (("2"
+                                                              (propax)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil)
+                                                         ("2"
+                                                          (expand
+                                                           "dependency_graph")
+                                                          (("2"
+                                                            (assert)
+                                                            nil
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil)
+                                       ("2" (propax) nil nil))
+                                      nil)
+                                     ("2"
+                                      (skeep)
+                                      (("2"
+                                        (inst - A)
+                                        (("1"
+                                          (expand "node")
+                                          (("1"
+                                            (expand "dependency_graph")
+                                            (("1"
+                                              (expand "nodes")
+                                              (("1"
+                                                (rewrite
+                                                 "interval_list_nth")
+                                                nil
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil)
+                                         ("2"
+                                          (expand "size")
+                                          (("2"
+                                            (expand "dependency_graph")
+                                            (("2" (assert) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("2"
+                                    (expand "nodes")
+                                    (("2"
+                                      (rewrite "interval_list_length")
+                                      nil
+                                      nil))
+                                    nil))
                                   nil))
                                 nil))
                               nil))
@@ -2148,9 +3065,166 @@
               nil))
             nil))
           nil))
-        nil)
-       ("2" (postpone) nil nil))
+        nil))
       nil))
     nil)
-   nil shostak)))
+   ((orderly_WF_nT? const-decl "bool" static_analysis nil)
+    (strong_WF_path formula-decl nil static_analysis nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (real_gt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (int_plus_int_is_int application-judgement "int" integers nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (j skolem-const-decl "below(length(w))" static_analysis nil)
+    (i skolem-const-decl "below(length(w))" static_analysis nil)
+    (w skolem-const-decl
+     "Walk[V_N[V_N_b], digraph_type[V_N[V_N_b]], digraph_verts, digraph_edges,
+     digraph_size, digraph_make](dependency_graph(P_exp))"
+     static_analysis nil)
+    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
+     nil)
+    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
+     nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
+    (below type-eq-decl nil nat_types nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (list type-decl nil list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (ComputableDigraph type-eq-decl nil c_digraphs_def digraphs)
+    (cdigraph const-decl "bool" c_digraphs_def digraphs)
+    (digraph_type type-eq-decl nil c_digraphs_imp digraphs)
+    (digraph_verts const-decl "[digraph_type -> [T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_edges const-decl "[digraph_type -> [T, T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_size const-decl "[digraph_type -> nat]" c_digraphs_imp
+     digraphs)
+    (set type-eq-decl nil sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (digraph_make const-decl "[v: (is_finite[T]),
+ {e: (is_finite[[T, T]]) |
+    FORALL (x, y: T): e(x, y) IMPLIES v(x) AND v(y)} ->
+   digraph_type]" c_digraphs_imp digraphs)
+    (prewalk type-eq-decl nil walks_ digraphs)
+    (walk? const-decl "bool" walks_ digraphs)
+    (Walk type-eq-decl nil walks_ digraphs)
+    (path? const-decl "bool" paths_ digraphs)
+    (loop type-eq-decl nil c_topological_sort digraphs)
+    (mark type-decl nil c_topological_sort digraphs)
+    (marking type-eq-decl nil c_topological_sort digraphs)
+    (temporary? adt-recognizer-decl "[mark -> boolean]"
+     c_topological_sort digraphs)
+    (non_temporary_marking type-eq-decl nil c_topological_sort
+     digraphs)
+    (vert? const-decl "bool" digraphs_ digraphs)
+    (Vert type-eq-decl nil c_topological_sort digraphs)
+    (is_dag const-decl "bool" c_topological_sort digraphs)
+    (topperm_list const-decl "bool" c_topological_sort digraphs)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (length def-decl "nat" list_props nil)
+    (size const-decl "nat" c_digraphs_def digraphs)
+    (below type-eq-decl nil naturalnumbers nil)
+    (member def-decl "bool" list_props nil)
+    (node const-decl "{v: T | member(v, data(cd))}" c_digraphs_def
+     digraphs)
+    (topological_sort const-decl
+     "{res: [loop(G) + [non_temporary_marking, list[Vert(G)]]] |
+   CASES res
+     OF IN_1(loop): NOT is_dag(G),
+        IN_2(res):
+          LET (m, l) = res IN
+            topperm_list(G, m)(l) ∧
+             length(l) = size(G) ∧
+              FORALL (i: below(size(G))): member(node(G)(i), l)
+     ENDCASES}" c_topological_sort digraphs)
+    (V_T formal-nonempty-type-decl nil static_analysis nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
+    (peg type-decl nil peg nil) (interp type-eq-decl nil wf_peg nil)
+    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+    (σ_id const-decl "order" static_analysis nil)
+    (complete_WF_no_order formula-decl nil wf_peg nil)
+    (strong_is_complete_WF formula-decl nil wf_peg nil)
+    (no_repetitions? const-decl "bool" more_list_props structures)
+    (<= const-decl "bool" reals nil)
+    (node_ls type-eq-decl nil static_analysis nil)
+    (A skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (nth def-decl "T" list_props nil)
+    (idx def-decl "{i: below(length(l)) | nth(l, i) = a}"
+     more_list_props structures)
+    (surjective? const-decl "bool" functions nil)
+    (y skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (idx_inj formula-decl nil more_list_props structures)
+    (int_times_int_is_int application-judgement "int" integers nil)
+    (l skolem-const-decl
+     "list[Vert[V_N[V_N_b]](dependency_graph(P_exp))]" static_analysis
+     nil)
+    (injective? const-decl "bool" functions nil)
+    (x skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (interval_list_length formula-decl nil interval_list nil)
+    (complete_WF const-decl "bool" wf_peg nil)
+    (sub_nT_and_wellformedness formula-decl nil static_analysis nil)
+    (topological_list? const-decl "bool" c_topological_sort digraphs)
+    (A skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (member_iff_nth formula-decl nil more_list_props structures)
+    (idx_nth_no_rep formula-decl nil more_list_props structures)
+    (interval_list_idx formula-decl nil interval_list nil)
+    (map_nth_rw formula-decl nil more_map_props nil)
+    (adjacents const-decl "node_ls" static_analysis nil)
+    (idx_V_N_nat formula-decl nil static_analysis nil)
+    (interval_list_member formula-decl nil interval_list nil)
+    (edges const-decl "bool" c_digraphs_def digraphs)
+    (edge? const-decl "bool" digraphs_ digraphs)
+    (interval_list const-decl "list[nat]" interval_list nil)
+    (from? const-decl "bool" walks_ digraphs)
+    (gen_seq2 const-decl "Seq(G)" walks_ digraphs)
+    (Seq type-eq-decl nil walks_ digraphs)
+    (verts_in? const-decl "bool" walks_ digraphs)
+    (B skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (vert const-decl "bool" c_digraphs_def digraphs)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (interval_list_nth formula-decl nil interval_list nil)
+    (P_0c? const-decl "[Δ -> bool]" wf_peg nil)
+    (strong_WF const-decl "bool" wf_peg nil)
+    (σ_ts skolem-const-decl "[V_N[V_N_b] -> int]" static_analysis nil)
+    (nodes const-decl "node_ls" static_analysis nil))
+   shostak)))
 

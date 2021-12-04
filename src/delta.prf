@@ -199,8 +199,8 @@
     (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (e shared-adt-accessor-decl
-     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} ->
-   peg]" peg nil)
+     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} -> peg]"
+     peg nil)
     (e2 shared-adt-accessor-decl
      "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
     (real_lt_is_strict_total_order name-judgement
@@ -216,6 +216,7 @@
     (e1 shared-adt-accessor-decl
      "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
     (prior? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (G skolem-const-decl "peg" peg nil)
     (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
@@ -666,7 +667,9 @@
     (V_N type-eq-decl nil nTpred_order nil)
     (nTpred type-eq-decl nil nTpred_order nil)
     (nTprop type-eq-decl nil nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (nTinst type-eq-decl nil nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (g_props def-decl "[bool, bool, bool]" wf_peg nil)
     (V_N_b formal-const-decl "posnat" wf_peg nil)
     (posnat nonempty-type-eq-decl nil integers nil)
@@ -980,6 +983,8 @@
     (boolean nonempty-type-decl nil booleans nil)
     (g_props_growth formula-decl nil wf_peg nil)
     (leq_inst const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (leq const-decl "bool" nTpred_order nil)
     (= const-decl "[T, T -> boolean]" equalities nil))
    nil
@@ -1081,7 +1086,9 @@
     (NOT const-decl "[bool -> bool]" booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
-    (leq_inst const-decl "bool" nTpred_order nil))
+    (leq_inst const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil))
    shostak))
  (ρ_growth2 0
   (ρ_growth2-1 nil 3784708391
@@ -1160,6 +1167,8 @@
     (nTprop type-eq-decl nil nTpred_order nil)
     (coherent_properties const-decl "bool" wf_peg nil)
     (C type-eq-decl nil wf_peg nil)
+    (<= const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (leq const-decl "bool" nTpred_order nil)
     (leq_inst const-decl "bool" nTpred_order nil)
     (g_props_growth formula-decl nil wf_peg nil))
@@ -1204,6 +1213,7 @@
     (coherent_properties const-decl "bool" wf_peg nil)
     (C type-eq-decl nil wf_peg nil)
     (leq_inst const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (int_minus_int_is_int application-judgement "int" integers nil)
@@ -1278,6 +1288,7 @@
    ((- const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (numfield nonempty-type-eq-decl nil number_fields nil)
     (r const-decl "C(P_exp)" wf_peg nil)
+    (<= const-decl "bool" nTpred_order nil)
     (C type-eq-decl nil wf_peg nil)
     (coherent_properties const-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
@@ -1320,6 +1331,7 @@
     (ρ_growth formula-decl nil wf_peg nil)
     (int_plus_int_is_int application-judgement "int" integers nil)
     (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (i skolem-const-decl "below(V_N_b)" wf_peg nil)
     (- const-decl "[numfield -> numfield]" number_fields nil)
     (ρ const-decl "C(P_exp)" wf_peg nil)
     (leq_tr formula-decl nil nTpred_order nil))
@@ -1449,6 +1461,7 @@
    ((- const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (numfield nonempty-type-eq-decl nil number_fields nil)
     (r const-decl "C(P_exp)" wf_peg nil)
+    (<= const-decl "bool" nTpred_order nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (C type-eq-decl nil wf_peg nil)
     (coherent_properties const-decl "bool" wf_peg nil)
@@ -1489,6 +1502,7 @@
     (below type-eq-decl nil naturalnumbers nil)
     (below_induction formula-decl nil bounded_nat_inductions nil)
     (ρ const-decl "C(P_exp)" wf_peg nil)
+    (<= const-decl "bool" nTpred_order nil)
     (leq_inst const-decl "bool" nTpred_order nil)
     (leq const-decl "bool" nTpred_order nil)
     (g_props_growth formula-decl nil wf_peg nil)
@@ -1612,6 +1626,7 @@
     (C type-eq-decl nil wf_peg nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
+    (<= const-decl "bool" nTpred_order nil)
     (leq_inst const-decl "bool" nTpred_order nil))
    nil (fix_point subtype "0" "V_N[V_N_b]")))
  (fix_point_lemma 0
@@ -1671,6 +1686,7 @@
     (C type-eq-decl nil wf_peg nil)
     (fix_point const-decl "bool" wf_peg nil)
     (F type-eq-decl nil wf_peg nil)
+    (<= const-decl "bool" nTpred_order nil)
     (r const-decl "C(P_exp)" wf_peg nil)
     (V_N_b formal-const-decl "posnat" wf_peg nil)
     (posnat nonempty-type-eq-decl nil integers nil)
@@ -1701,6 +1717,7 @@
     (leq_tr formula-decl nil nTpred_order nil)
     (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (numfield nonempty-type-eq-decl nil number_fields nil)
+    (j skolem-const-decl "below(V_N_b)" wf_peg nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (int_minus_int_is_int application-judgement "int" integers nil))
@@ -2362,6 +2379,7 @@
     (boolean nonempty-type-decl nil booleans nil)
     (number nonempty-type-decl nil numbers nil)
     (leq_inst const-decl "bool" nTpred_order nil)
+    (<= const-decl "bool" nTpred_order nil)
     (coherent_properties const-decl "bool" wf_peg nil))
    nil
    (nT_properties subtype
@@ -2435,6 +2453,77 @@
    nil
    (nT_properties subtype "0"
     "{k: naturalnumbers.upto(number_fields.*(3, wf_peg.V_N_b)) | k = array_sum[wf_peg.V_N_b].array_sum(wf_peg.all_false, wf_peg.all_false, wf_peg.all_false)}")))
+ (complete_WF_no_order 0
+  (complete_WF_no_order-1 nil 3847607482
+   ("" (skeep)
+    (("" (expand "complete_WF")
+      (("" (expand "complete")
+        (("" (iff 1)
+          ((""
+            (case "FORALL A, G: g_wf(σ, G, A, P_0c?(P_exp), FALSE) = g_wf(σ_p, G, A, P_0c?(P_exp), FALSE)")
+            (("1" (grind) nil nil)
+             ("2" (hide 2)
+              (("2" (skolem 1 ("A" "_"))
+                (("2" (induct "G")
+                  (("1" (grind) nil nil) ("2" (grind) nil nil)
+                   ("3" (grind) nil nil) ("4" (grind) nil nil)
+                   ("5" (grind) nil nil) ("6" (grind) nil nil)
+                   ("7" (grind) nil nil) ("8" (grind) nil nil)
+                   ("9" (grind) nil nil) ("10" (grind) nil nil)
+                   ("11" (grind) nil nil) ("12" (grind) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((complete_WF const-decl "bool" wf_peg nil)
+    (peg_induction formula-decl nil peg nil)
+    (nT_properties const-decl "F(P_exp)" wf_peg nil)
+    (array_sum const-decl "upto(3 * V_N_b)" array_sum nil)
+    (r const-decl "C(P_exp)" wf_peg nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" wf_peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (V_T formal-nonempty-type-decl nil wf_peg nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" wf_peg nil)
+    (peg type-decl nil peg nil) (Δ type-eq-decl nil wf_peg nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
+    (interp type-eq-decl nil wf_peg nil)
+    (P_0c? const-decl "[Δ -> bool]" wf_peg nil)
+    (FALSE const-decl "bool" booleans nil)
+    (complete const-decl "bool" wf_peg nil))
+   shostak))
  (strong_is_complete_WF 0
   (strong_is_complete_WF-1 nil 3771171785
    ("" (skeep)
@@ -2830,22 +2919,37 @@
     (subterm_lq formula-decl nil peg nil)
     (strong_is_complete_WF formula-decl nil wf_peg nil)
     (int_plus_int_is_int application-judgement "int" integers nil)
+    (G skolem-const-decl "Δ" wf_peg nil)
+    (A skolem-const-decl "V_N[V_N_b]" wf_peg nil)
+    (P_exp skolem-const-decl "WF_nT(σ)" wf_peg nil)
+    (σ skolem-const-decl "order" wf_peg nil)
     (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (int_minus_int_is_int application-judgement "int" integers nil)
     (real_ge_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (andP1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (notP1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (opt1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (plus1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
     (r const-decl "C(P_exp)" wf_peg nil)
     (array_sum const-decl "upto(3 * V_N_b)" array_sum nil)
     (nT_properties const-decl "F(P_exp)" wf_peg nil)
     (inc const-decl "nat" peg nil)
+    (star1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (prior2_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (prior1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (sum const-decl "nat" peg nil)
+    (seq1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (seq2_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
     (below type-eq-decl nil naturalnumbers nil)
+    (nonTerminal1_var!1 skolem-const-decl "below(V_N_b)" wf_peg nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
+    (i skolem-const-decl "nat" wf_peg nil)
     (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
     (peg_induction formula-decl nil peg nil)
     (subterm_eq formula-decl nil peg nil)
@@ -2857,138 +2961,86 @@
    ("" (skeep)
     (("" (skeep)
       ((""
-        (case "FORALL (j :nat) : FORALL (i : upto(j), G' : Δ) : (subterm(G,G') AND (pegMeasure(G') = pegMeasure(G) +i)) IMPLIES ((NOT g_wf(G, A, P_0c?(P_exp), complete)) IMPLIES (NOT g_wf(G', A, P_0c?(P_exp), complete)))")
+        (case "FORALL (j :nat) : FORALL (i : upto(j), G' : Δ) : (subterm(G,G') AND (pegMeasure(G') = pegMeasure(G) +i)) IMPLIES ((NOT g_wf(σ, G, A, P_0c?(P_exp), complete)) IMPLIES (NOT g_wf(σ, G', A, P_0c?(P_exp), complete)))")
         (("1" (inst -1 "pegMeasure(P_exp(A)) - pegMeasure(G)")
           (("1"
             (inst -1 "pegMeasure(P_exp(A)) - pegMeasure(G)"
              " P_exp(A)")
-            (("1" (assert)
-              (("1" (expand "complete_WF")
-                (("1" (expand "complete") (("1" (inst? -) nil nil))
-                  nil))
-                nil))
-              nil)
+            (("1" (grind) nil nil)
              ("2" (use "peg[V_T, <=,  V_N_b].subterm_lq")
               (("2" (assert) nil nil)) nil))
             nil)
-           ("2" (hide 2)
-            (("2" (use "peg[V_T, <=, V_N_b].subterm_lq")
-              (("2" (assert) nil nil)) nil))
-            nil))
+           ("2" (use "peg[V_T, <=, V_N_b].subterm_lq")
+            (("2" (assert) nil nil)) nil))
           nil)
-         ("2" (induct "j")
-          (("1" (skeep)
-            (("1" (typepred "i")
-              (("1" (assert)
-                (("1" (case-replace "i=0")
-                  (("1" (expand "complete")
-                    (("1" (use "peg[V_T, <=, V_N_b].subterm_eq")
-                      (("1" (grind) nil nil)) nil))
-                    nil)
-                   ("2" (assert) nil nil))
+         ("2" (hide 2)
+          (("2" (induct "j")
+            (("1" (skeep)
+              (("1" (typepred "i")
+                (("1" (assert)
+                  (("1" (case-replace "i=0")
+                    (("1" (expand "complete")
+                      (("1" (use "peg[V_T, <=, V_N_b].subterm_eq")
+                        (("1" (grind) nil nil)) nil))
+                      nil)
+                     ("2" (assert) nil nil))
+                    nil))
                   nil))
                 nil))
-              nil))
-            nil)
-           ("2" (skolem 1 "i")
-            (("2" (flatten)
-              (("2" (skolem 1 ("k" "_"))
-                (("2" (induct "G'")
-                  (("1" (grind) nil nil) ("2" (grind) nil nil)
-                   ("3" (grind) nil nil) ("4" (grind) nil nil)
-                   ("5" (grind) nil nil)
-                   ("6" (skolem 1 ("e1" "e2"))
-                    (("6" (assert)
-                      (("6" (flatten)
-                        (("6" (expand "subterm" -3)
-                          (("6" (split -3)
-                            (("1" (replace -1 * LR)
-                              (("1" (propax) nil nil)) nil)
-                             ("2" (expand "complete")
-                              (("2"
-                                (inst
-                                 -6
-                                 "pegMeasure(e1) - pegMeasure(G)"
-                                 "e1")
-                                (("1"
-                                  (assert)
-                                  (("1"
-                                    (expand "g_wf" -5)
-                                    (("1" (propax) nil nil))
-                                    nil))
-                                  nil)
-                                 ("2"
-                                  (use
-                                   "peg[V_T, <=, V_N_b].subterm_lq")
-                                  (("2"
-                                    (assert)
-                                    (("2" (grind) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil)
-                             ("3" (expand "g_wf" -5)
-                              (("3"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("3"
-                                  (inst
-                                   -7
-                                   "pegMeasure(e2) - pegMeasure(G)"
-                                   "e2")
-                                  (("1" (grind) nil nil)
-                                   ("2"
-                                    (use
-                                     "peg[V_T, <=, V_N_b].subterm_lq")
-                                    (("2" (grind) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil)
-                   ("7" (skeep)
-                    (("7" (copy -5)
-                      (("7" (expand "g_wf" -1)
-                        (("7" (flatten)
-                          (("7" (expand "subterm" -5)
-                            (("7" (split -5)
-                              (("1"
-                                (replace -1 * LR)
-                                (("1" (propax) nil nil))
-                                nil)
+              nil)
+             ("2" (skolem 1 "i")
+              (("2" (flatten)
+                (("2" (skolem 1 ("k" "_"))
+                  (("2" (induct "G'")
+                    (("1" (grind) nil nil) ("2" (grind) nil nil)
+                     ("3" (grind) nil nil) ("4" (grind) nil nil)
+                     ("5" (grind) nil nil)
+                     ("6" (skolem 1 ("e1" "e2"))
+                      (("6" (assert)
+                        (("6" (flatten)
+                          (("6" (expand "subterm" -3)
+                            (("6" (split -3)
+                              (("1" (assert) nil nil)
                                ("2"
-                                (assert)
+                                (expand "complete")
                                 (("2"
                                   (inst
                                    -6
-                                   "pegMeasure(prior1_var) - pegMeasure(G)"
-                                   "prior1_var")
-                                  (("1" (grind) nil nil)
+                                   "pegMeasure(e1) - pegMeasure(G)"
+                                   "e1")
+                                  (("1"
+                                    (assert)
+                                    (("1"
+                                      (expand "g_wf" -5)
+                                      (("1" (propax) nil nil))
+                                      nil))
+                                    nil)
                                    ("2"
                                     (use
                                      "peg[V_T, <=, V_N_b].subterm_lq")
                                     (("2"
-                                      (expand "complete")
+                                      (assert)
                                       (("2" (grind) nil nil))
                                       nil))
                                     nil))
                                   nil))
                                 nil)
                                ("3"
-                                (assert)
+                                (expand "g_wf" -5)
                                 (("3"
-                                  (inst
-                                   -6
-                                   "pegMeasure(prior2_var) - pegMeasure(G)"
-                                   "prior2_var")
-                                  (("1" (grind) nil nil)
-                                   ("2"
-                                    (use
-                                     "peg[V_T, <=, V_N_b].subterm_lq")
-                                    (("2" (grind) nil nil))
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("3"
+                                    (inst
+                                     -7
+                                     "pegMeasure(e2) - pegMeasure(G)"
+                                     "e2")
+                                    (("1" (grind) nil nil)
+                                     ("2"
+                                      (use
+                                       "peg[V_T, <=, V_N_b].subterm_lq")
+                                      (("2" (grind) nil nil))
+                                      nil))
                                     nil))
                                   nil))
                                 nil))
@@ -2996,106 +3048,163 @@
                             nil))
                           nil))
                         nil))
-                      nil))
-                    nil)
-                   ("8" (skeep)
-                    (("8" (copy -4)
-                      (("8" (expand "g_wf" -1)
-                        (("8" (expand "subterm" -3)
-                          (("8" (split -3)
-                            (("1" (grind) nil nil)
-                             ("2"
-                              (inst -6
-                               "pegMeasure(star1_var) - pegMeasure(G)"
-                               "star1_var")
-                              (("1" (grind) nil nil)
-                               ("2"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("2" (grind) nil nil))
+                      nil)
+                     ("7" (skeep)
+                      (("7" (copy -5)
+                        (("7" (expand "g_wf" -1)
+                          (("7" (flatten)
+                            (("7" (expand "subterm" -5)
+                              (("7"
+                                (split -5)
+                                (("1" (assert) nil nil)
+                                 ("2"
+                                  (assert)
+                                  (("2"
+                                    (inst
+                                     -6
+                                     "pegMeasure(prior1_var) - pegMeasure(G)"
+                                     "prior1_var")
+                                    (("1" (grind) nil nil)
+                                     ("2"
+                                      (use
+                                       "peg[V_T, <=, V_N_b].subterm_lq")
+                                      (("2"
+                                        (expand "complete")
+                                        (("2" (grind) nil nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil)
+                                 ("3"
+                                  (assert)
+                                  (("3"
+                                    (inst
+                                     -6
+                                     "pegMeasure(prior2_var) - pegMeasure(G)"
+                                     "prior2_var")
+                                    (("1" (grind) nil nil)
+                                     ("2"
+                                      (use
+                                       "peg[V_T, <=, V_N_b].subterm_lq")
+                                      (("2" (grind) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
                                 nil))
                               nil))
                             nil))
                           nil))
                         nil))
-                      nil))
-                    nil)
-                   ("9" (skeep)
-                    (("9" (copy -4)
-                      (("9" (expand "g_wf" -1)
-                        (("9" (expand "subterm" -3)
-                          (("9" (split -3)
-                            (("1" (grind) nil nil)
-                             ("2"
-                              (inst -6
-                               "pegMeasure(plus1_var) - pegMeasure(G)"
-                               "plus1_var")
+                      nil)
+                     ("8" (skeep)
+                      (("8" (copy -4)
+                        (("8" (expand "g_wf" -1)
+                          (("8" (expand "subterm" -3)
+                            (("8" (split -3)
                               (("1" (grind) nil nil)
                                ("2"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("2" (grind) nil nil))
+                                (inst
+                                 -6
+                                 "pegMeasure(star1_var) - pegMeasure(G)"
+                                 "star1_var")
+                                (("1" (grind) nil nil)
+                                 ("2"
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("2" (grind) nil nil))
+                                  nil))
                                 nil))
                               nil))
                             nil))
                           nil))
                         nil))
-                      nil))
-                    nil)
-                   ("10" (skeep)
-                    (("10" (copy -4)
-                      (("10" (expand "g_wf" -1)
-                        (("10" (expand "subterm" -3)
-                          (("10" (split -3)
-                            (("1" (grind) nil nil)
-                             ("2"
-                              (inst -6
-                               "pegMeasure(opt1_var) - pegMeasure(G)"
-                               "opt1_var")
+                      nil)
+                     ("9" (skeep)
+                      (("9" (copy -4)
+                        (("9" (expand "g_wf" -1)
+                          (("9" (expand "subterm" -3)
+                            (("9" (split -3)
                               (("1" (grind) nil nil)
                                ("2"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("2" (grind) nil nil))
+                                (inst
+                                 -6
+                                 "pegMeasure(plus1_var) - pegMeasure(G)"
+                                 "plus1_var")
+                                (("1" (grind) nil nil)
+                                 ("2"
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("2" (grind) nil nil))
+                                  nil))
                                 nil))
                               nil))
                             nil))
                           nil))
                         nil))
-                      nil))
-                    nil)
-                   ("11" (skeep)
-                    (("11" (copy -4)
-                      (("11" (expand "g_wf" -1)
-                        (("11" (expand "subterm" -3)
-                          (("11" (split -3)
-                            (("1" (grind) nil nil)
-                             ("2"
-                              (inst -6
-                               "pegMeasure(notP1_var) - pegMeasure(G)"
-                               "notP1_var")
+                      nil)
+                     ("10" (skeep)
+                      (("10" (copy -4)
+                        (("10" (expand "g_wf" -1)
+                          (("10" (expand "subterm" -3)
+                            (("10" (split -3)
                               (("1" (grind) nil nil)
                                ("2"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("2" (grind) nil nil))
+                                (inst
+                                 -6
+                                 "pegMeasure(opt1_var) - pegMeasure(G)"
+                                 "opt1_var")
+                                (("1" (grind) nil nil)
+                                 ("2"
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("2" (grind) nil nil))
+                                  nil))
                                 nil))
                               nil))
                             nil))
                           nil))
                         nil))
-                      nil))
-                    nil)
-                   ("12" (skeep)
-                    (("12" (copy -4)
-                      (("12" (expand "g_wf" -1)
-                        (("12" (expand "subterm" -3)
-                          (("12" (split -3)
-                            (("1" (grind) nil nil)
-                             ("2"
-                              (inst -6
-                               "pegMeasure(andP1_var) - pegMeasure(G)"
-                               "andP1_var")
+                      nil)
+                     ("11" (skeep)
+                      (("11" (copy -4)
+                        (("11" (expand "g_wf" -1)
+                          (("11" (expand "subterm" -3)
+                            (("11" (split -3)
                               (("1" (grind) nil nil)
                                ("2"
-                                (use "peg[V_T, <=, V_N_b].subterm_lq")
-                                (("2" (grind) nil nil))
+                                (inst
+                                 -6
+                                 "pegMeasure(notP1_var) - pegMeasure(G)"
+                                 "notP1_var")
+                                (("1" (grind) nil nil)
+                                 ("2"
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("2" (grind) nil nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil)
+                     ("12" (skeep)
+                      (("12" (copy -4)
+                        (("12" (expand "g_wf" -1)
+                          (("12" (expand "subterm" -3)
+                            (("12" (split -3)
+                              (("1" (grind) nil nil)
+                               ("2"
+                                (inst
+                                 -6
+                                 "pegMeasure(andP1_var) - pegMeasure(G)"
+                                 "andP1_var")
+                                (("1" (grind) nil nil)
+                                 ("2"
+                                  (use
+                                   "peg[V_T, <=, V_N_b].subterm_lq")
+                                  (("2" (grind) nil nil))
+                                  nil))
                                 nil))
                               nil))
                             nil))
@@ -3111,28 +3220,43 @@
         nil))
       nil))
     nil)
-   ((nat_induction formula-decl nil naturalnumbers nil)
-    (subterm_eq formula-decl nil peg nil)
-    (peg_induction formula-decl nil peg nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (below type-eq-decl nil naturalnumbers nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (r const-decl "C(P_exp)" wf_peg nil)
-    (array_sum const-decl "upto(3 * V_N_b)" array_sum nil)
-    (nT_properties const-decl "F(P_exp)" wf_peg nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
+   ((andP1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (notP1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (opt1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (plus1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (inc const-decl "nat" peg nil)
+    (star1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (prior2_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (prior1_var skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (e1 skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (sum const-decl "nat" peg nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (sum const-decl "nat" peg nil) (inc const-decl "nat" peg nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (nT_properties const-decl "F(P_exp)" wf_peg nil)
+    (array_sum const-decl "upto(3 * V_N_b)" array_sum nil)
+    (r const-decl "C(P_exp)" wf_peg nil)
+    (e2 skolem-const-decl "peg[V_T, <=, V_N_b]" wf_peg nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (nonTerminal1_var!1 skolem-const-decl "below(V_N_b)" wf_peg nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (i skolem-const-decl "nat" wf_peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (peg_induction formula-decl nil peg nil)
+    (subterm_eq formula-decl nil peg nil)
+    (nat_induction formula-decl nil naturalnumbers nil)
     (real_ge_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
     (int_minus_int_is_int application-judgement "int" integers nil)
     (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (P_exp skolem-const-decl "interp" wf_peg nil)
+    (A skolem-const-decl "V_N[V_N_b]" wf_peg nil)
+    (G skolem-const-decl "Δ" wf_peg nil)
     (subterm_lq formula-decl nil peg nil)
-    (int_plus_int_is_int application-judgement "int" integers nil)
     (complete_WF const-decl "bool" wf_peg nil)
+    (int_plus_int_is_int application-judgement "int" integers nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
     (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
@@ -3170,8 +3294,11 @@
     (numfield nonempty-type-eq-decl nil number_fields nil)
     (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
-    (g_wf def-decl "bool" wf_peg nil) (< const-decl "bool" reals nil)
+    (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (g_wf def-decl "bool" wf_peg nil)
     (interp type-eq-decl nil wf_peg nil)
     (P_0c? const-decl "[Δ -> bool]" wf_peg nil)
     (complete const-decl "bool" wf_peg nil))

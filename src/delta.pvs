@@ -92,7 +92,7 @@ BEGIN
     P_exp: VAR interp
     P, P1: VAR nTprop
     Pf, P0, Ps, WF: VAR nTpred
-		σ: VAR order
+		σ, σ_p: VAR order
 
     all_false: nTpred = LAMBDA (A): FALSE
     all_true: nTpred = LAMBDA (A): TRUE
@@ -223,6 +223,8 @@ BEGIN
         FORALL A: g_wf(σ, P_exp(A), A, P_0c?(P_exp), strong)
     complete_WF(σ, P_exp): bool =
         FORALL A: g_wf(σ, P_exp(A), A, P_0c?(P_exp), complete)
+
+    complete_WF_no_order: LEMMA ∀ σ, σ_p, P_exp : complete_WF(σ,P_exp) = complete_WF(σ_p, P_exp)
 
     % Definition of a well-formed grammar
     WF_nT(σ): TYPE = (LAMBDA P_exp : strong_WF(σ, P_exp))
