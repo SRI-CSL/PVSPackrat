@@ -88,11 +88,11 @@ ast [
       ELSE undefined
       ENDCASES
      MEASURE astMeasure
-
+	AUTO_REWRITE+ astType?
 
   astMeaningful?(T) : bool = ( astType?(T) = success) ∨ (astType?(T) = failure)
   astMeaningful : TYPE = (astMeaningful?)
-
+  AUTO_REWRITE+ astMeaningful?
 
   % Checks that a tree verifies a certain number of conditions
   % These conditions ensure that the tree represent a possible computational
@@ -103,53 +103,20 @@ ast [
          any(s, e, x): astMeaningful?(T),
          terminal(s, e, x, y): astMeaningful?(T),
          range(s, e, a, b, x): astMeaningful?(T),
-         nonTerminal(s, e, A, T):
-           (s(T) = s) ∧ (e(T) = e) ∧ astWellformed?(T),
+         nonTerminal(s, e, A, T): (s(T) = s) ∧ (e(T) = e) ∧ astWellformed?(T),
          semantic(s, e, A, S): astMeaningful?(T),
-         seq(s, e, T1, T2):
-           (s(T1) = s) ∧
-            (e(T1) = s(T2)) ∧
-             (e(T2) = e) ∧
-              astWellformed?(T1) ∧
-               (skip?(T2) ⇒ e(T2) = s(T2) = e(T1)) ∧
-                (astType?(T1) = failure ⇔ skip?(T2)) ∧
-                 (astType?(T1) = success ⇔ astWellformed?(T2)),
-         prior(s, e, T1, T2):
-           (s(T1) = s) ∧
-            (s(T2) = s) ∧
-             astWellformed?(T1) ∧
-              ((astType?(T1) = failure) ⇒
-                (astWellformed?(T2) ∧ (e = e(T2))))
-               ∧
-               ((astType?(T1) = success) ⇒
-                 (skip?(T2) ∧ (e(T2) = s) ∧ (e = e(T1)))),
-         star(s, e, T0, Ts):
-           (s(T0) = s) ∧
-            (e(T0) = s(Ts)) ∧
-             astWellformed?(T0) ∧
-              (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts))))
-               ∧
-               (astType?(T0) = failure ⇒
-                 (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
-         plus(s, e, T0, Ts):
-           (s(T0) = s) ∧
-            (e(T0) = s(Ts)) ∧
-             astWellformed?(T0) ∧
-              (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts))))
-               ∧
-               (astType?(T0) = failure ⇒
-                 (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
-         opt(s, e, T0):
-           (s(T0) = s) ∧
-            astWellformed?(T0) ∧
-             (astType?(T0) = success ⇒ (e = e(T0))) ∧
-              (astType?(T0) = failure ⇒ (e = s)),
+         seq(s, e, T1, T2): (s(T1) = s) ∧ (e(T1) = s(T2)) ∧ (e(T2) = e) ∧ astWellformed?(T1) ∧ (skip?(T2) ⇒ e(T2) = s(T2) = e(T1)) ∧ (astType?(T1) = failure ⇔ skip?(T2)) ∧ (astType?(T1) = success ⇔ astWellformed?(T2)),
+         prior(s, e, T1, T2): (s(T1) = s) ∧ (s(T2) = s) ∧ astWellformed?(T1) ∧ ((astType?(T1) = failure) ⇒ (astWellformed?(T2) ∧ (e = e(T2)))) ∧ ((astType?(T1) = success) ⇒ (skip?(T2) ∧ (e(T2) = s) ∧ (e = e(T1)))),
+         star(s, e, T0, Ts): (s(T0) = s) ∧ (e(T0) = s(Ts)) ∧ astWellformed?(T0) ∧ (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts)))) ∧ (astType?(T0) = failure ⇒ (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
+         plus(s, e, T0, Ts): (s(T0) = s) ∧ (e(T0) = s(Ts)) ∧ astWellformed?(T0) ∧ (astType?(T0) = success ⇒ (astWellformed?(Ts) ∧ (e = e(Ts)))) ∧ (astType?(T0) = failure ⇒ (skip?(Ts) ∧ (e(Ts) = s(Ts)) ∧ (s = e))),
+         opt(s, e, T0): (s(T0) = s) ∧ astWellformed?(T0) ∧ (astType?(T0) = success ⇒ (e = e(T0))) ∧ (astType?(T0) = failure ⇒ (e = s)),
          notP(s, e, T): (s = e) ∧ (s(T) = s) ∧ astWellformed?(T),
          andP(s, e, T): (s = e) ∧ (s(T) = s) ∧ astWellformed?(T),
          skip(s, e, G): FALSE,
          fail(s, e): (s <= e)
       ENDCASES
      MEASURE astMeasure
+		 AUTO_REWRITE+ astWellformed?
 
   % Exmaple lemmas of properties of a wellformed tree
   Star_cannot_fail: LEMMA FORALL T: star?(T) ⇒ astType?(T) /= failure
@@ -165,6 +132,7 @@ ast [
       astWellformed?(T) ⇒
        ((s(T) <= e(T)) ∧
          ((astType?(T) = failure) ∨ (astType?(T) = success)))
+	%AUTO_REWRITE+ Consumption_growth, Wellformedness_is_meaningfulness
 
   % Type definition
   ast: TYPE = {T: pre_ast | astWellformed?(T)}

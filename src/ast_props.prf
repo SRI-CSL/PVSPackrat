@@ -2,15 +2,10 @@
  (trueToGrammar_TCC1 0
   (trueToGrammar_TCC1-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
+    (< const-decl "bool" reals nil)
+    (V_N type-eq-decl nil nTpred_order nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
@@ -19,9 +14,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -48,11 +40,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "(ast_props.trueToGrammar(ast_props.T, ast_props.P_exp(ast_props.A), ast_props.σ, ast_props.P_exp))"
+    "(ast_props.trueToGrammar(ast_props.T, ast_props.P_exp(ast_props.A), ast_props.P_exp))"
     "nil")))
  (trueToGrammar_TCC2 0
   (trueToGrammar_TCC2-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -65,48 +56,33 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (¬ const-decl "[bool -> bool]" booleans nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg | booleans.OR(peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].seq?(x), peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].prior?(x))}")))
  (trueToGrammar_TCC3 0
   (trueToGrammar_TCC3-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -117,9 +93,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -146,22 +119,14 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T1, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e1(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T1, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e1(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC4 0
   (trueToGrammar_TCC4-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -172,9 +137,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -201,11 +163,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T2, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e2(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T2, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e2(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC5 0
   (trueToGrammar_TCC5-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -218,48 +179,33 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (¬ const-decl "[bool -> bool]" booleans nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg | booleans.OR(peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].seq?(x), peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].prior?(x))}")))
  (trueToGrammar_TCC6 0
   (trueToGrammar_TCC6-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -270,9 +216,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -299,22 +242,14 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T1, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e1(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T1, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e1(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC7 0
   (trueToGrammar_TCC7-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -325,9 +260,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -354,11 +286,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T2, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e2(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T2, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e2(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC8 0
   (trueToGrammar_TCC8-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -371,50 +302,35 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg |      peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].star?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].plus?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].opt?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].notP?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].andP?(x)}")))
  (trueToGrammar_TCC9 0
   (trueToGrammar_TCC9-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -427,9 +343,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -456,22 +369,14 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC10 0
   (trueToGrammar_TCC10-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -484,9 +389,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -513,11 +415,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.Ts, ast_props.G, ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.Ts, ast_props.G, ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC11 0
   (trueToGrammar_TCC11-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -530,29 +431,22 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -560,21 +454,13 @@
     (¬ const-decl "[bool -> bool]" booleans nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg |      peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].star?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].plus?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].opt?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].notP?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].andP?(x)}")))
  (trueToGrammar_TCC12 0
   (trueToGrammar_TCC12-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -588,9 +474,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -617,22 +500,14 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC13 0
   (trueToGrammar_TCC13-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -646,9 +521,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -675,11 +547,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.Ts, ast_props.G, ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.Ts, ast_props.G, ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC14 0
   (trueToGrammar_TCC14-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -692,48 +563,33 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (¬ const-decl "[bool -> bool]" booleans nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg |      peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].star?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].plus?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].opt?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].notP?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].andP?(x)}")))
  (trueToGrammar_TCC15 0
   (trueToGrammar_TCC15-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -744,9 +600,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -773,11 +626,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T0, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC16 0
   (trueToGrammar_TCC16-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -790,48 +642,33 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (¬ const-decl "[bool -> bool]" booleans nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg |      peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].star?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].plus?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].opt?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].notP?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].andP?(x)}")))
  (trueToGrammar_TCC17 0
   (trueToGrammar_TCC17-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -842,9 +679,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -871,11 +705,10 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
  (trueToGrammar_TCC18 0
   (trueToGrammar_TCC18-1 nil 3785505087 ("" (subtype-tcc) nil nil)
@@ -888,48 +721,33 @@
     (number_field nonempty-type-from-decl nil number_fields nil)
     (real_pred const-decl "[number_field -> boolean]" reals nil)
     (real nonempty-type-from-decl nil reals nil)
+    (<= const-decl "bool" reals nil)
     (rational_pred const-decl "[real -> boolean]" rationals nil)
     (rational nonempty-type-from-decl nil rationals nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
     (int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
+    (bound formal-const-decl "nat" ast_props nil)
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
     (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
-    (<= const-decl "bool" reals nil)
-    (bound formal-const-decl "nat" ast_props nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
     (V_S formal-type-decl nil ast_props nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+    (¬ const-decl "[bool -> bool]" booleans nil))
    nil
    (trueToGrammar subtype "ast_props.G"
     "{x: peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].peg |      peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].star?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].plus?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].opt?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].notP?(x) OR peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].andP?(x)}")))
  (trueToGrammar_TCC19 0
   (trueToGrammar_TCC19-1 nil 3785505087 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (<= const-decl "bool" reals nil)
     (below type-eq-decl nil pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
@@ -940,9 +758,6 @@
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (strong const-decl "bool" wf_peg nil)
-    (surjective? const-decl "bool" functions nil)
-    (injective? const-decl "bool" functions nil)
     (V_S formal-type-decl nil ast_props nil)
     (bound formal-const-decl "nat" ast_props nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
@@ -969,153 +784,88 @@
     (V_T formal-nonempty-type-decl nil ast_props nil)
     (astMeasure const-decl "nat" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (int_minus_int_is_int application-judgement "int" integers nil))
+     integers nil))
    nil
    (trueToGrammar termination
-    "ast_props.trueToGrammar(ast_props.T, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.σ, ast_props.P_exp)"
+    "ast_props.trueToGrammar(ast_props.T, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
  (unique_grammar 0
   (unique_grammar-1 nil 3785505087
-   ("" (skolem 1 ("_" "_" "_" "σ" "P_exp"))
+   ("" (skolem 1 ("_" "_" "_" "P_exp"))
     (("" (induct "T")
       (("1" (grind) nil nil) ("2" (grind) nil nil)
        ("3" (grind) nil nil) ("4" (grind) nil nil)
        ("5" (grind) nil nil) ("6" (grind) nil nil)
-       ("7" (skolem 1 ("s" "e" "A" "T"))
-        (("7" (flatten)
-          (("7" (skeep)
-            (("7" (expand "trueToGrammar" -2)
-              (("7" (expand "trueToGrammar" -3)
-                (("7" (flatten)
-                  (("7" (inst -1 "G1" "G2") (("7" (assert) nil nil))
-                    nil))
+       ("7" (grind) nil nil) ("8" (grind) nil nil)
+       ("9" (skeep*)
+        (("9" (assert)
+          (("9" (flatten)
+            (("9" (inst -1 "e1(G1)" "e1(G2)")
+              (("9" (inst -2 "e2(G1)" "e2(G2)")
+                (("9" (assert) (("9" (decompose-equality 1) nil nil))
                   nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("8" (ground) (("8" (grind) nil nil)) nil)
-       ("9" (skolem 1 ("s" "e" "T1" "T2"))
-        (("9" (flatten)
-          (("9" (skeep*)
-            (("9" (expand "trueToGrammar" -3)
-              (("9" (expand "trueToGrammar" -4)
-                (("9" (flatten)
-                  (("9" (inst -1 "e1(G1)" "e1(G2)")
-                    (("9" (assert)
-                      (("9" (inst -2 "e2(G1)" "e2(G2)")
-                        (("9" (assert)
-                          (("9" (decompose-equality 1) nil nil)) nil))
-                        nil))
-                      nil))
-                    nil))
+       ("10" (skeep*)
+        (("10" (assert)
+          (("10" (flatten)
+            (("10" (inst -1 "e1(G1)" "e1(G2)")
+              (("10" (inst -2 "e2(G1)" "e2(G2)")
+                (("10" (assert) (("10" (decompose-equality 1) nil nil))
                   nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("10" (skolem 1 ("s" "e" "T1" "T2"))
-        (("10" (flatten)
-          (("10" (skeep*)
-            (("10" (expand "trueToGrammar" -3)
-              (("10" (expand "trueToGrammar" -4)
-                (("10" (flatten)
-                  (("10" (inst -1 "e1(G1)" "e1(G2)")
-                    (("10" (assert)
-                      (("10" (inst -2 "e2(G1)" "e2(G2)")
-                        (("10" (assert)
-                          (("10" (decompose-equality 1) nil nil)) nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
+       ("11" (skeep*)
+        (("11" (assert)
+          (("11" (flatten)
+            (("11" (inst -1 "e(G1)" "e(G2)")
+              (("11" (assert) (("11" (decompose-equality 1) nil nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("11" (skolem 1 ("s" "e" "T0" "Ts"))
-        (("11" (flatten)
-          (("11" (skeep*)
-            (("11" (expand "trueToGrammar" -3)
-              (("11" (expand "trueToGrammar" -4)
-                (("11" (flatten)
-                  (("11" (inst -1 "e(G1)" "e(G2)")
-                    (("11" (assert)
-                      (("11" (inst -2 "G1" "G2")
-                        (("11" (assert) nil nil)) nil))
-                      nil))
-                    nil))
-                  nil))
+       ("12" (skeep*)
+        (("12" (assert)
+          (("12" (flatten)
+            (("12" (inst -1 "e(G1)" "e(G2)")
+              (("12" (assert) (("12" (decompose-equality 1) nil nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("12" (skolem 1 ("s" "e" "T0" "Ts"))
-        (("12" (flatten)
-          (("12" (skeep*)
-            (("12" (expand "trueToGrammar" -3)
-              (("12" (expand "trueToGrammar" -4)
-                (("12" (flatten)
-                  (("12" (inst -1 "e(G1)" "e(G2)")
-                    (("12" (assert)
-                      (("12" (inst -2 "G1" "G2")
-                        (("12" (assert) nil nil)) nil))
-                      nil))
-                    nil))
-                  nil))
+       ("13" (skeep*)
+        (("13" (assert)
+          (("13" (flatten)
+            (("13" (inst -1 "e(G1)" "e(G2)")
+              (("13" (assert) (("13" (decompose-equality 1) nil nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("13" (skolem 1 ("s" "e" "T"))
-        (("13" (flatten)
-          (("13" (skeep)
-            (("13" (expand "trueToGrammar" -2)
-              (("13" (expand "trueToGrammar" -3)
-                (("13" (flatten)
-                  (("13" (inst -1 "e(G1)" "e(G2)")
-                    (("13" (assert)
-                      (("13" (decompose-equality 1) nil nil)) nil))
-                    nil))
-                  nil))
+       ("14" (skeep*)
+        (("14" (assert)
+          (("14" (flatten)
+            (("14" (inst -1 "e(G1)" "e(G2)")
+              (("14" (assert) (("14" (decompose-equality 1) nil nil))
                 nil))
               nil))
             nil))
           nil))
         nil)
-       ("14" (skolem 1 ("s" "e" "T"))
-        (("14" (flatten)
-          (("14" (skeep)
-            (("14" (expand "trueToGrammar" -2)
-              (("14" (expand "trueToGrammar" -3)
-                (("14" (flatten)
-                  (("14" (inst -1 "e(G1)" "e(G2)")
-                    (("14" (assert)
-                      (("14" (decompose-equality 1) nil nil)) nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("15" (skolem 1 ("s" "e" "T"))
-        (("15" (flatten)
-          (("15" (skeep)
-            (("15" (expand "trueToGrammar" -2)
-              (("15" (expand "trueToGrammar" -3)
-                (("15" (flatten)
-                  (("15" (inst -1 "e(G1)" "e(G2)")
-                    (("15" (assert)
-                      (("15" (decompose-equality 1) nil nil)) nil))
-                    nil))
-                  nil))
+       ("15" (skeep*)
+        (("15" (assert)
+          (("15" (flatten)
+            (("15" (inst -1 "e(G1)" "e(G2)")
+              (("15" (assert) (("15" (decompose-equality 1) nil nil))
                 nil))
               nil))
             nil))
@@ -1126,12 +876,9 @@
    ((pre_ast type-decl nil pre_ast nil) (peg type-decl nil peg nil)
     (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (order type-eq-decl nil wf_peg nil) (< const-decl "bool" reals nil)
+    (< const-decl "bool" reals nil)
     (V_N type-eq-decl nil nTpred_order nil)
     (interp type-eq-decl nil wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (trueToGrammar def-decl "bool" ast_props nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (V_S formal-type-decl nil ast_props nil)
@@ -1162,27 +909,30 @@
     (below type-eq-decl nil pre_ast nil)
     (<= const-decl "bool" reals nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
-    (int_minus_int_is_int application-judgement "int" integers nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (e1 shared-adt-accessor-decl
+     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
+    (prior? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
     (peg_seq_extensionality formula-decl nil peg nil)
     (e2 shared-adt-accessor-decl
      "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
-    (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (prior? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (e1 shared-adt-accessor-decl
-     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
     (TRUE const-decl "bool" booleans nil)
     (peg_prior_extensionality formula-decl nil peg nil)
-    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (e shared-adt-accessor-decl
-     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} ->
-   peg]" peg nil)
+     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} -> peg]"
+     peg nil)
+    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (peg_star_extensionality formula-decl nil peg nil)
+    (peg_plus_extensionality formula-decl nil peg nil)
     (peg_opt_extensionality formula-decl nil peg nil)
     (peg_notP_extensionality formula-decl nil peg nil)
     (peg_andP_extensionality formula-decl nil peg nil))
@@ -1761,145 +1511,28 @@
    ("" (skolem 1 ("_" "inp1" "inp2"))
     (("" (induct "T")
       (("1" (typepred "T!1") (("1" (propax) nil nil)) nil)
-       ("2" (skolem 1 ("s" "e" "G"))
-        (("2" (flatten)
-          (("2" (expand "astWellformed?") (("2" (propax) nil nil))
-            nil))
-          nil))
-        nil)
-       ("3" (skolem 1 ("s" "e"))
-        (("3" (flatten)
-          (("3" (expand "astWellformed?")
-            (("3" (expand "trueToInput") (("3" (propax) nil nil)) nil))
-            nil))
-          nil))
-        nil)
-       ("4" (skolem 1 ("s" "e"))
-        (("4" (flatten)
-          (("4" (expand "astWellformed?")
-            (("4" (expand "trueToInput")
-              (("4" (assert)
-                (("4" (expand "astMeaningful?")
-                  (("4" (expand "astType?")
-                    (("4" (lift-if -1)
-                      (("4" (skeep)
-                        (("4" (typepred "i") (("4" (assert) nil nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("5" (skolem 1 ("s" "e" "x"))
-        (("5" (expand "trueToInput")
-          (("5" (expand "astWellformed?")
-            (("5" (flatten)
-              (("5" (expand "astMeaningful?")
-                (("5" (expand "astType?")
-                  (("5" (lift-if)
-                    (("5" (assert)
-                      (("5" (skeep)
-                        (("5" (typepred "i") (("5" (assert) nil nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("6" (expand "trueToInput")
-        (("6" (expand "astWellformed?")
-          (("6" (expand "astMeaningful?")
-            (("6" (skeep)
-              (("6" (expand "astType?")
-                (("6" (lift-if)
-                  (("6" (assert)
-                    (("6" (skeep) (("6" (assert) nil nil)) nil)) nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("7" (skeep)
-        (("7" (skeep)
-          (("7" (expand "trueToInput")
-            (("7" (expand "astWellformed?")
-              (("7" (expand "astMeaningful?")
-                (("7" (expand "astType?")
-                  (("7" (lift-if)
-                    (("7" (assert) (("7" (ground) nil nil)) nil)) nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("8" (skolem 1 ("s" "e" "A" "T"))
-        (("8" (flatten)
-          (("8" (skeep)
-            (("8" (typepred "T")
-              (("8" (assert)
-                (("8" (expand "astWellformed?" -2)
-                  (("8" (flatten)
-                    (("8" (assert)
-                      (("8" (expand "trueToInput" -5)
-                        (("8" (expand "trueToInput" -6)
-                          (("8" (assert)
-                            (("8" (inst -1 "i")
-                              (("8" (assert) nil nil)) nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("9" (skeep*)
-        (("9" (expand "trueToInput") (("9" (propax) nil nil)) nil))
-        nil)
+       ("2" (skeep*) (("2" (assert) nil nil)) nil)
+       ("3" (skeep*) (("3" (assert) nil nil)) nil)
+       ("4" (skeep*) (("4" (assert) (("4" (grind) nil nil)) nil)) nil)
+       ("5" (grind) nil nil) ("6" (grind) nil nil)
+       ("7" (grind) nil nil) ("8" (grind) nil nil)
+       ("9" (grind) nil nil)
        ("10" (skolem 1 ("s" "e" "T1" "T2"))
         (("10" (flatten)
-          (("10" (skeep)
-            (("10" (expand "trueToInput" -4)
-              (("10" (expand "trueToInput" -5)
-                (("10" (flatten)
-                  (("10" (assert)
-                    (("10" (expand "astWellformed?" -3)
-                      (("10" (flatten)
-                        (("10" (assert)
-                          (("10" (inst -1 "i")
-                            (("1" (assert) nil nil)
-                             ("2" (assert)
-                              (("2"
-                                (split -7)
-                                (("1"
-                                  (assert)
-                                  (("1"
-                                    (inst -2 "i")
-                                    (("1" (assert) nil nil))
-                                    nil))
-                                  nil)
-                                 ("2"
-                                  (lemma "Wellformed_theorem")
-                                  (("2"
-                                    (inst -1 "T1")
-                                    (("2" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
+          (("10" (assert)
+            (("10" (flatten)
+              (("10" (assert)
+                (("10" (skeep)
+                  (("10" (inst -1 "i")
+                    (("1" (assert) nil nil)
+                     ("2" (assert)
+                      (("2" (split -7)
+                        (("1" (assert)
+                          (("1" (inst -2 "i") (("1" (assert) nil nil))
+                            nil))
+                          nil)
+                         ("2" (lemma "Wellformed_theorem")
+                          (("2" (inst -1 "T1") (("2" (assert) nil nil))
                             nil))
                           nil))
                         nil))
@@ -1913,38 +1546,20 @@
         nil)
        ("11" (skolem 1 ("s" "e" "T1" "T2"))
         (("11" (flatten)
-          (("11" (skeep)
-            (("11" (expand "trueToInput" -5)
-              (("11" (expand "trueToInput" -4)
-                (("11" (assert)
-                  (("11" (expand "astWellformed?" -3)
-                    (("11" (flatten)
-                      (("11" (assert)
-                        (("11" (inst -1 "i")
-                          (("1" (assert) nil nil)
-                           ("2" (assert)
-                            (("2" (lemma "Wellformed_theorem")
+          (("11" (assert)
+            (("11" (flatten)
+              (("11" (assert)
+                (("11" (skeep)
+                  (("11" (inst -1 "i")
+                    (("1" (assert) nil nil)
+                     ("2" (assert)
+                      (("2" (lemma "Wellformed_theorem")
+                        (("2" (inst -1 "T1")
+                          (("2" (assert)
+                            (("2" (flatten)
                               (("2"
-                                (inst -1 "T1")
-                                (("2"
-                                  (assert)
-                                  (("2"
-                                    (flatten)
-                                    (("2"
-                                      (assert)
-                                      (("2"
-                                        (flatten)
-                                        (("2"
-                                          (assert)
-                                          (("2"
-                                            (inst -3 "i")
-                                            (("2" (assert) nil nil))
-                                            nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
+                                (assert)
+                                (("2" (grind) nil nil))
                                 nil))
                               nil))
                             nil))
@@ -1961,37 +1576,15 @@
        ("12" (skolem 1 ("s" "e" "T0" "Ts"))
         (("12" (flatten)
           (("12" (skeep)
-            (("12" (expand "trueToInput" -5)
-              (("12" (expand "trueToInput" -4)
-                (("12" (expand "astWellformed?" -3)
-                  (("12" (lemma "Wellformed_theorem")
-                    (("12" (flatten)
-                      (("12" (assert)
-                        (("12" (inst -1 "T0")
-                          (("12" (assert)
-                            (("12" (flatten)
-                              (("12"
-                                (assert)
-                                (("12"
-                                  (inst -3 "i")
-                                  (("1" (assert) nil nil)
-                                   ("2"
-                                    (assert)
-                                    (("2"
-                                      (flatten)
-                                      (("2"
-                                        (assert)
-                                        (("2"
-                                          (inst -3 "i")
-                                          (("2" (assert) nil nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
+            (("12" (assert)
+              (("12" (flatten)
+                (("12" (assert)
+                  (("12" (inst -1 "i")
+                    (("1" (assert) nil nil)
+                     ("2" (lemma "Wellformed_theorem")
+                      (("2" (inst -1 "T0")
+                        (("2" (assert)
+                          (("2" (flatten) (("2" (grind) nil nil)) nil))
                           nil))
                         nil))
                       nil))
@@ -2005,37 +1598,15 @@
        ("13" (skolem 1 ("s" "e" "T0" "Ts"))
         (("13" (flatten)
           (("13" (skeep)
-            (("13" (expand "trueToInput" -5)
-              (("13" (expand "trueToInput" -4)
-                (("13" (expand "astWellformed?" -3)
-                  (("13" (lemma "Wellformed_theorem")
-                    (("13" (inst -1 "T0")
-                      (("13" (flatten)
-                        (("13" (assert)
-                          (("13" (flatten)
-                            (("13" (assert)
-                              (("13"
-                                (flatten)
-                                (("13"
-                                  (assert)
-                                  (("13"
-                                    (inst - "i")
-                                    (("1"
-                                      (inst - "i")
-                                      (("1" (assert) nil nil))
-                                      nil)
-                                     ("2"
-                                      (assert)
-                                      (("2"
-                                        (inst - "i")
-                                        (("2" (assert) nil nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
+            (("13" (assert)
+              (("13" (flatten)
+                (("13" (assert)
+                  (("13" (inst -1 "i")
+                    (("1" (assert) nil nil)
+                     ("2" (lemma "Wellformed_theorem")
+                      (("2" (inst -1 "T0")
+                        (("2" (assert)
+                          (("2" (flatten) (("2" (grind) nil nil)) nil))
                           nil))
                         nil))
                       nil))
@@ -2046,79 +1617,28 @@
             nil))
           nil))
         nil)
-       ("14" (skolem 1 ("s" "e" "T0"))
-        (("14" (flatten)
-          (("14" (skeep)
-            (("14" (expand "trueToInput" -4)
+       ("14" (skeep)
+        (("14" (assert)
+          (("14" (flatten)
+            (("14" (assert)
               (("14" (lemma "Wellformed_theorem")
-                (("14" (inst -1 "T0")
-                  (("14" (assert)
-                    (("14" (expand "astWellformed?" -3)
-                      (("14" (flatten)
-                        (("14" (assert)
-                          (("14" (assert)
-                            (("14" (expand "trueToInput" -6)
-                              (("14"
-                                (flatten)
-                                (("14"
-                                  (assert)
-                                  (("14"
-                                    (inst - "i")
-                                    (("14" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
+                (("14" (assert) (("14" (grind) nil nil)) nil)) nil))
               nil))
             nil))
           nil))
         nil)
-       ("15" (skolem 1 ("s" "e" "T"))
-        (("15" (flatten)
-          (("15" (assert)
-            (("15" (skeep)
-              (("15" (expand "trueToInput" -4)
-                (("15" (expand "trueToInput" -3)
-                  (("15" (expand "astWellformed?" -2)
-                    (("15" (flatten) (("15" (assert) nil nil)) nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
+       ("15" (skeep)
+        (("15" (assert)
+          (("15" (flatten) (("15" (assert) nil nil)) nil)) nil))
         nil)
-       ("16" (skolem 1 ("s" "e" "T"))
-        (("16" (flatten)
-          (("16" (assert)
-            (("16" (skeep)
-              (("16" (expand "trueToInput" -4)
-                (("16" (expand "trueToInput" -3)
-                  (("16" (expand "astWellformed?" -2)
-                    (("16" (flatten) (("16" (assert) nil nil)) nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
+       ("16" (assert)
+        (("16" (lemma "Wellformed_theorem")
+          (("16" (assert) (("16" (grind) nil nil)) nil)) nil))
         nil)
-       ("17" (assert)
-        (("17" (skeep)
-          (("17" (skeep)
-            (("17" (skeep)
-              (("17" (assert)
-                (("17" (typepred "i") (("17" (assert) nil nil)) nil))
-                nil))
-              nil))
-            nil))
+       ("17" (skeep)
+        (("17" (assert)
+          (("17" (lemma "Wellformed_theorem")
+            (("17" (assert) (("17" (grind) nil nil)) nil)) nil))
           nil))
         nil))
       nil))
@@ -2166,48 +1686,55 @@
     (pre_ast_induction formula-decl nil pre_ast nil)
     (ast type-eq-decl nil ast nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
-    (astMeaningful? const-decl "bool" ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (real_ge_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (astType? def-decl "astType" ast nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
     (TRUE const-decl "bool" booleans nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (T1 skolem-const-decl "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] |
-   ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}" ast_props nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (T1 skolem-const-decl "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] |
-   ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}" ast_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (astMeaningful? const-decl "bool" ast nil)
+    (astType? def-decl "astType" ast nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (/= const-decl "boolean" notequal nil)
+    (in_range const-decl "bool" ast nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (Wellformed_theorem formula-decl nil ast nil)
     (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
     (i skolem-const-decl "below(e)" ast_props nil)
-    (T0 skolem-const-decl "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] |
-   ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}" ast_props nil)
-    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (T1 skolem-const-decl
+     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
+     ast_props nil)
+    (T1 skolem-const-decl
+     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
+     ast_props nil)
+    (i skolem-const-decl "below(e)" ast_props nil)
+    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (T0 skolem-const-decl
+     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
+     ast_props nil)
+    (i skolem-const-decl "below(e)" ast_props nil)
+    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (T0 skolem-const-decl "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] |
-   ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}" ast_props nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (T0 skolem-const-decl
+     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
+     ast_props nil)
     (i skolem-const-decl "below(e)" ast_props nil)
     (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil))
    shostak))
  (unique_tree 0
   (unique_tree-1 nil 3785562763
-   ("" (skolem 1 ("_" "_" "inp" "_" "σ" "P_exp"))
+   ("" (skolem 1 ("_" "_" "inp" "_" "P_exp"))
     (("" (measure-induct+ "astMeasure(T1)" "T1")
       (("" (name-replace "T1" "x!1")
         (("" (induct "G")
@@ -2277,21 +1804,18 @@
                                   (("2"
                                     (assert)
                                     (("2"
-                                      (expand "trueToInput")
-                                      (("2"
-                                        (case
-                                         "T1 = any(s(T1), e(T1), x(T1))")
+                                      (case
+                                       "T1 = any(s(T1), e(T1), x(T1))")
+                                      (("1"
+                                        (replaces)
                                         (("1"
-                                          (replaces)
-                                          (("1"
-                                            (apply-extensionality)
-                                            (("1" (ground) nil nil))
-                                            nil))
-                                          nil)
-                                         ("2"
                                           (apply-extensionality)
-                                          nil
+                                          (("1" (ground) nil nil))
                                           nil))
+                                        nil)
+                                       ("2"
+                                        (apply-extensionality)
+                                        nil
                                         nil))
                                       nil))
                                     nil))
@@ -2322,50 +1846,47 @@
                                 (("3"
                                   (decompose-equality -)
                                   (("3"
-                                    (expand "trueToInput")
+                                    (expand "astMeaningful?")
                                     (("3"
-                                      (expand "astMeaningful?")
-                                      (("3"
-                                        (case-replace
-                                         "T1 = terminal(s(T1), e(T1), a, inp(s(T1)))")
+                                      (case-replace
+                                       "T1 = terminal(s(T1), e(T1), a, inp(s(T1)))")
+                                      (("1"
+                                        (apply-extensionality)
                                         (("1"
-                                          (apply-extensionality)
-                                          (("1"
-                                            (ground)
-                                            (("1" (grind) nil nil)
-                                             ("2" (grind) nil nil)
-                                             ("3"
-                                              (expand "astType?")
+                                          (ground)
+                                          (("1" (grind) nil nil)
+                                           ("2" (grind) nil nil)
+                                           ("3"
+                                            (expand "astType?")
+                                            (("3"
+                                              (lift-if)
                                               (("3"
-                                                (lift-if)
+                                                (assert)
                                                 (("3"
-                                                  (assert)
-                                                  (("3"
-                                                    (ground)
-                                                    nil
-                                                    nil))
+                                                  (ground)
+                                                  nil
                                                   nil))
                                                 nil))
-                                              nil)
-                                             ("4"
-                                              (expand "astType?")
+                                              nil))
+                                            nil)
+                                           ("4"
+                                            (expand "astType?")
+                                            (("4"
+                                              (lift-if)
                                               (("4"
-                                                (lift-if)
+                                                (assert)
                                                 (("4"
-                                                  (assert)
-                                                  (("4"
-                                                    (ground)
-                                                    nil
-                                                    nil))
+                                                  (ground)
+                                                  nil
                                                   nil))
                                                 nil))
                                               nil))
                                             nil))
-                                          nil)
-                                         ("2"
-                                          (apply-extensionality)
-                                          nil
                                           nil))
+                                        nil)
+                                       ("2"
+                                        (apply-extensionality)
+                                        nil
                                         nil))
                                       nil))
                                     nil))
@@ -2394,24 +1915,21 @@
                               (("4"
                                 (expand "astMeaningful?")
                                 (("4"
-                                  (expand "trueToInput")
+                                  (decompose-equality -)
                                   (("4"
                                     (decompose-equality -)
                                     (("4"
-                                      (decompose-equality -)
+                                      (replaces)
                                       (("4"
-                                        (replaces)
-                                        (("4"
-                                          (case-replace
-                                           "T1 = range(s(T1), e(T1), a, b, inp(s(T1)))")
-                                          (("1"
-                                            (apply-extensionality 7)
-                                            (("1" (grind) nil nil))
-                                            nil)
-                                           ("2"
-                                            (apply-extensionality 1)
-                                            nil
-                                            nil))
+                                        (case-replace
+                                         "T1 = range(s(T1), e(T1), a, b, inp(s(T1)))")
+                                        (("1"
+                                          (apply-extensionality 7)
+                                          (("1" (grind) nil nil))
+                                          nil)
+                                         ("2"
+                                          (apply-extensionality 1)
+                                          nil
                                           nil))
                                         nil))
                                       nil))
@@ -2496,157 +2014,109 @@
            ("6" (skolem 1 ("e1" "e2"))
             (("6" (flatten)
               (("6" (skeep)
-                (("6" (expand "trueToGrammar" -5)
-                  (("6" (expand "trueToGrammar" -6)
-                    (("6" (lift-if)
-                      (("6" (assert)
-                        (("6" (typepred "T1")
-                          (("6" (typepred "T2")
-                            (("6" (expand "astWellformed?" -1)
+                (("6" (assert)
+                  (("6" (expand "trueToGrammar" -5)
+                    (("6" (expand "trueToGrammar" -6)
+                      (("6" (lift-if)
+                        (("6" (assert)
+                          (("6" (typepred "T1")
+                            (("6" (typepred "T2")
                               (("6"
-                                (expand "astWellformed?" -2)
+                                (expand "astWellformed?" -1)
                                 (("6"
-                                  (ground)
+                                  (expand "astWellformed?" -2)
                                   (("6"
-                                    (flatten)
+                                    (ground)
                                     (("6"
-                                      (assert)
+                                      (flatten)
                                       (("6"
-                                        (hide 1 2 3 4 5 6 7 8 9 10)
+                                        (assert)
                                         (("6"
-                                          (hide -25 -26)
+                                          (inst-cp -32 "T1(T1)")
                                           (("6"
-                                            (expand "trueToInput" -25)
+                                            (inst -33 "T1(T2)" "e1")
                                             (("6"
-                                              (expand
-                                               "trueToInput"
-                                               -26)
+                                              (assert)
                                               (("6"
-                                                (flatten)
-                                                (("6"
-                                                  (assert)
-                                                  (("6"
-                                                    (inst-cp
-                                                     -30
-                                                     "T1(T1)")
-                                                    (("6"
-                                                      (inst
-                                                       -31
-                                                       "T1(T2)"
-                                                       "e1")
-                                                      (("6"
-                                                        (assert)
-                                                        (("6"
-                                                          (case-replace
-                                                           "T1 = seq(s(T1), e(T1), T1(T1), T2(T1))")
+                                                (case-replace
+                                                 "T1 = seq(s(T1), e(T1), T1(T1), T2(T1))")
+                                                (("1"
+                                                  (lemma
+                                                   "Wellformed_theorem")
+                                                  (("1"
+                                                    (inst -1 "T1(T1)")
+                                                    (("1"
+                                                      (assert)
+                                                      (("1"
+                                                        (flatten)
+                                                        (("1"
+                                                          (split -36)
                                                           (("1"
-                                                            (lemma
-                                                             "Wellformed_theorem")
+                                                            (split -3)
                                                             (("1"
-                                                              (inst
-                                                               -1
-                                                               "T1(T1)")
+                                                              (assert)
                                                               (("1"
-                                                                (assert)
+                                                                (apply-extensionality
+                                                                 11)
                                                                 (("1"
-                                                                  (flatten)
+                                                                  (apply-extensionality
+                                                                   1)
+                                                                  nil
+                                                                  nil))
+                                                                nil))
+                                                              nil)
+                                                             ("2"
+                                                              (inst
+                                                               -36
+                                                               "T2(T1)")
+                                                              (("1"
+                                                                (inst
+                                                                 -36
+                                                                 "T2(T2)"
+                                                                 "e2")
+                                                                (("1"
+                                                                  (assert)
                                                                   (("1"
                                                                     (split
                                                                      -34)
                                                                     (("1"
-                                                                      (split
-                                                                       -3)
-                                                                      (("1"
-                                                                        (assert)
-                                                                        (("1"
-                                                                          (apply-extensionality
-                                                                           3)
-                                                                          (("1"
-                                                                            (apply-extensionality
-                                                                             1)
-                                                                            (("1"
-                                                                              (expand
-                                                                               "trueToGrammar"
-                                                                               -10)
-                                                                              (("1"
-                                                                                (expand
-                                                                                 "trueToGrammar"
-                                                                                 -7)
-                                                                                (("1"
-                                                                                  (assert)
-                                                                                  nil
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil))
-                                                                          nil))
-                                                                        nil)
-                                                                       ("2"
-                                                                        (inst
-                                                                         -34
-                                                                         "T2(T1)")
-                                                                        (("1"
-                                                                          (inst
-                                                                           -34
-                                                                           "T2(T2)"
-                                                                           "e2")
-                                                                          (("1"
-                                                                            (assert)
-                                                                            (("1"
-                                                                              (split
-                                                                               -32)
-                                                                              (("1"
-                                                                                (apply-extensionality
-                                                                                 3)
-                                                                                nil
-                                                                                nil)
-                                                                               ("2"
-                                                                                (hide
-                                                                                 2
-                                                                                 3
-                                                                                 4
-                                                                                 -)
-                                                                                (("2"
-                                                                                  (grind)
-                                                                                  nil
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil)
-                                                                           ("2"
-                                                                            (assert)
-                                                                            nil
-                                                                            nil))
-                                                                          nil)
-                                                                         ("2"
-                                                                          (assert)
-                                                                          nil
-                                                                          nil))
-                                                                        nil))
+                                                                      (apply-extensionality
+                                                                       13)
+                                                                      nil
                                                                       nil)
                                                                      ("2"
-                                                                      (hide
-                                                                       2
-                                                                       -)
-                                                                      (("2"
-                                                                        (grind)
-                                                                        nil
-                                                                        nil))
+                                                                      (grind)
+                                                                      nil
                                                                       nil))
                                                                     nil))
+                                                                  nil)
+                                                                 ("2"
+                                                                  (assert)
+                                                                  nil
                                                                   nil))
+                                                                nil)
+                                                               ("2"
+                                                                (assert)
+                                                                nil
                                                                 nil))
                                                               nil))
                                                             nil)
                                                            ("2"
-                                                            (apply-extensionality
-                                                             1)
-                                                            nil
+                                                            (hide 2 -)
+                                                            (("2"
+                                                              (grind)
+                                                              nil
+                                                              nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
                                                     nil))
+                                                  nil)
+                                                 ("2"
+                                                  (apply-extensionality
+                                                   1)
+                                                  nil
                                                   nil))
                                                 nil))
                                               nil))
@@ -2686,163 +2156,120 @@
                                     (("7"
                                       (assert)
                                       (("7"
-                                        (hide
-                                         1
-                                         2
-                                         3
-                                         4
-                                         5
-                                         6
-                                         7
-                                         8
-                                         9
-                                         10
-                                         11
-                                         12)
+                                        (inst-cp -24 "T1(T1)")
                                         (("7"
-                                          (hide -17 -18)
+                                          (inst -25 "T1(T2)" "e1")
                                           (("7"
-                                            (expand "trueToInput" -17)
+                                            (assert)
                                             (("7"
-                                              (expand
-                                               "trueToInput"
-                                               -18)
-                                              (("7"
-                                                (flatten)
-                                                (("7"
-                                                  (assert)
-                                                  (("7"
-                                                    (inst-cp
-                                                     -22
-                                                     "T1(T1)")
-                                                    (("7"
-                                                      (inst
-                                                       -23
-                                                       "T1(T2)"
-                                                       "e1")
-                                                      (("7"
-                                                        (assert)
-                                                        (("7"
-                                                          (split -23)
+                                              (split -25)
+                                              (("1"
+                                                (case
+                                                 "T1 = prior(s(T1), e(T1), T1(T1), T2(T1))")
+                                                (("1"
+                                                  (lemma
+                                                   "Wellformed_theorem")
+                                                  (("1"
+                                                    (inst -1 "T1(T1)")
+                                                    (("1"
+                                                      (assert)
+                                                      (("1"
+                                                        (flatten)
+                                                        (("1"
+                                                          (split -2)
                                                           (("1"
-                                                            (case
-                                                             "T1 = prior(s(T1), e(T1), T1(T1), T2(T1))")
+                                                            (assert)
                                                             (("1"
-                                                              (replace
-                                                               -1
-                                                               1
-                                                               LR)
+                                                              (flatten)
                                                               (("1"
-                                                                (lemma
-                                                                 "Wellformed_theorem")
+                                                                (inst
+                                                                 -30
+                                                                 "T2(T1)")
                                                                 (("1"
                                                                   (inst
-                                                                   -1
-                                                                   "T1(T1)")
+                                                                   -30
+                                                                   "T2(T2)"
+                                                                   "e2")
                                                                   (("1"
                                                                     (assert)
                                                                     (("1"
-                                                                      (flatten)
+                                                                      (split
+                                                                       -30)
                                                                       (("1"
-                                                                        (split
-                                                                         -2)
+                                                                        (assert)
                                                                         (("1"
-                                                                          (assert)
+                                                                          (replace
+                                                                           -4
+                                                                           *
+                                                                           LR)
                                                                           (("1"
-                                                                            (flatten)
-                                                                            (("1"
-                                                                              (inst
-                                                                               -28
-                                                                               "T2(T1)")
-                                                                              (("1"
-                                                                                (inst
-                                                                                 -28
-                                                                                 "T2(T2)"
-                                                                                 "e2")
-                                                                                (("1"
-                                                                                  (assert)
-                                                                                  (("1"
-                                                                                    (split
-                                                                                     -28)
-                                                                                    (("1"
-                                                                                      (apply-extensionality
-                                                                                       1)
-                                                                                      nil
-                                                                                      nil)
-                                                                                     ("2"
-                                                                                      (hide
-                                                                                       2
-                                                                                       -)
-                                                                                      (("2"
-                                                                                        (grind)
-                                                                                        nil
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil))
-                                                                          nil)
-                                                                         ("2"
-                                                                          (assert)
-                                                                          (("2"
                                                                             (apply-extensionality
-                                                                             1)
-                                                                            (("1"
-                                                                              (flatten)
-                                                                              (("1"
-                                                                                (assert)
-                                                                                nil
-                                                                                nil))
-                                                                              nil)
-                                                                             ("2"
-                                                                              (flatten)
-                                                                              (("2"
-                                                                                (expand
-                                                                                 "trueToGrammar"
-                                                                                 -10)
-                                                                                (("2"
-                                                                                  (expand
-                                                                                   "trueToGrammar"
-                                                                                   -7)
-                                                                                  (("2"
-                                                                                    (assert)
-                                                                                    (("2"
-                                                                                      (apply-extensionality
-                                                                                       1)
-                                                                                      nil
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
+                                                                             13)
+                                                                            nil
                                                                             nil))
+                                                                          nil))
+                                                                        nil)
+                                                                       ("2"
+                                                                        (hide
+                                                                         2
+                                                                         -)
+                                                                        (("2"
+                                                                          (grind)
+                                                                          nil
                                                                           nil))
                                                                         nil))
                                                                       nil))
                                                                     nil))
                                                                   nil))
                                                                 nil))
-                                                              nil)
-                                                             ("2"
-                                                              (apply-extensionality
-                                                               1)
-                                                              nil
                                                               nil))
                                                             nil)
                                                            ("2"
-                                                            (hide 2 -)
+                                                            (assert)
                                                             (("2"
-                                                              (grind)
-                                                              nil
+                                                              (replaces)
+                                                              (("2"
+                                                                (apply-extensionality
+                                                                 13)
+                                                                (("1"
+                                                                  (flatten)
+                                                                  (("1"
+                                                                    (assert)
+                                                                    nil
+                                                                    nil))
+                                                                  nil)
+                                                                 ("2"
+                                                                  (flatten)
+                                                                  (("2"
+                                                                    (assert)
+                                                                    (("2"
+                                                                      (apply-extensionality
+                                                                       14)
+                                                                      (("2"
+                                                                        (apply-extensionality
+                                                                         1)
+                                                                        nil
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
                                                               nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
                                                     nil))
+                                                  nil)
+                                                 ("2"
+                                                  (apply-extensionality
+                                                   1)
+                                                  nil
                                                   nil))
+                                                nil)
+                                               ("2"
+                                                (hide 2 -)
+                                                (("2" (grind) nil nil))
                                                 nil))
                                               nil))
                                             nil))
@@ -2879,171 +2306,102 @@
                                   (("8"
                                     (ground)
                                     (("8"
-                                      (hide
-                                       1
-                                       2
-                                       3
-                                       4
-                                       5
-                                       6
-                                       7
-                                       8
-                                       9
-                                       10
-                                       11
-                                       12
-                                       13
-                                       14
-                                       -9)
+                                      (flatten)
                                       (("8"
-                                        (flatten)
+                                        (replaces)
                                         (("8"
                                           (assert)
                                           (("8"
-                                            (inst-cp -20 "T0(T1)")
+                                            (inst-cp -22 "T0(T1)")
                                             (("8"
-                                              (inst -21 "T0(T2)" "e")
+                                              (inst -23 "T0(T2)" "e")
                                               (("8"
                                                 (assert)
                                                 (("8"
-                                                  (expand
-                                                   "trueToInput"
-                                                   -17)
-                                                  (("8"
-                                                    (expand
-                                                     "trueToInput"
-                                                     -18)
-                                                    (("8"
-                                                      (flatten)
-                                                      (("8"
+                                                  (split -23)
+                                                  (("1"
+                                                    (lemma
+                                                     "Wellformed_theorem")
+                                                    (("1"
+                                                      (inst
+                                                       -1
+                                                       "T0(T1)")
+                                                      (("1"
                                                         (assert)
-                                                        (("8"
-                                                          (split -23)
+                                                        (("1"
+                                                          (flatten)
                                                           (("1"
-                                                            (lemma
-                                                             "Wellformed_theorem")
+                                                            (case
+                                                             "T1 = star(s(T1), e(T1), T0(T1), Ts(T1))")
                                                             (("1"
-                                                              (inst
-                                                               -1
-                                                               "T0(T1)")
+                                                              (replaces)
                                                               (("1"
-                                                                (assert)
+                                                                (split
+                                                                 -2)
                                                                 (("1"
-                                                                  (flatten)
+                                                                  (assert)
                                                                   (("1"
-                                                                    (case
-                                                                     "T1 = star(s(T1), e(T1), T0(T1), Ts(T1))")
+                                                                    (flatten)
                                                                     (("1"
-                                                                      (replace
-                                                                       -1
-                                                                       1
-                                                                       LR)
+                                                                      (assert)
                                                                       (("1"
-                                                                        (split
-                                                                         -3)
+                                                                        (apply-extensionality
+                                                                         15)
                                                                         (("1"
-                                                                          (assert)
+                                                                          (case
+                                                                           "Ts(T1) = skip(s(Ts(T1)), e(Ts(T1)), star(e))")
                                                                           (("1"
-                                                                            (flatten)
+                                                                            (replace
+                                                                             -1
+                                                                             1
+                                                                             LR)
                                                                             (("1"
-                                                                              (expand
-                                                                               "trueToGrammar"
-                                                                               -7)
-                                                                              (("1"
-                                                                                (assert)
-                                                                                (("1"
-                                                                                  (expand
-                                                                                   "trueToGrammar"
-                                                                                   -10)
-                                                                                  (("1"
-                                                                                    (assert)
-                                                                                    (("1"
-                                                                                      (apply-extensionality
-                                                                                       1)
-                                                                                      (("1"
-                                                                                        (case
-                                                                                         "Ts(T1) = skip(s(Ts(T1)), e(Ts(T1)), star(e))")
-                                                                                        (("1"
-                                                                                          (replace
-                                                                                           -1
-                                                                                           1
-                                                                                           LR)
-                                                                                          (("1"
-                                                                                            (apply-extensionality
-                                                                                             1)
-                                                                                            nil
-                                                                                            nil))
-                                                                                          nil)
-                                                                                         ("2"
-                                                                                          (apply-extensionality
-                                                                                           1)
-                                                                                          nil
-                                                                                          nil))
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
+                                                                              (apply-extensionality
+                                                                               1)
+                                                                              nil
                                                                               nil))
-                                                                            nil))
-                                                                          nil)
-                                                                         ("2"
-                                                                          (assert)
-                                                                          (("2"
-                                                                            (flatten)
-                                                                            (("2"
-                                                                              (inst
-                                                                               -28
-                                                                               "Ts(T1)")
-                                                                              (("2"
-                                                                                (inst
-                                                                                 -28
-                                                                                 "Ts(T2)"
-                                                                                 "star(e)")
-                                                                                (("2"
-                                                                                  (assert)
-                                                                                  (("2"
-                                                                                    (split
-                                                                                     -28)
-                                                                                    (("1"
-                                                                                      (apply-extensionality
-                                                                                       1)
-                                                                                      nil
-                                                                                      nil)
-                                                                                     ("2"
-                                                                                      (hide
-                                                                                       2
-                                                                                       -)
-                                                                                      (("2"
-                                                                                        (grind)
-                                                                                        nil
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
+                                                                            nil)
+                                                                           ("2"
+                                                                            (apply-extensionality
+                                                                             1)
+                                                                            nil
                                                                             nil))
                                                                           nil))
                                                                         nil))
-                                                                      nil)
-                                                                     ("2"
-                                                                      (apply-extensionality
-                                                                       1)
-                                                                      nil
-                                                                      nil)
-                                                                     ("3"
-                                                                      (flatten)
-                                                                      (("3"
-                                                                        (assert)
-                                                                        (("3"
+                                                                      nil))
+                                                                    nil))
+                                                                  nil)
+                                                                 ("2"
+                                                                  (assert)
+                                                                  (("2"
+                                                                    (flatten)
+                                                                    (("2"
+                                                                      (inst
+                                                                       -16
+                                                                       "Ts(T1)")
+                                                                      (("2"
+                                                                        (inst
+                                                                         -16
+                                                                         "Ts(T2)"
+                                                                         "star(e)")
+                                                                        (("2"
                                                                           (assert)
-                                                                          (("3"
-                                                                            (typepred
-                                                                             "Ts(T1)")
-                                                                            (("3"
-                                                                              (assert)
+                                                                          (("2"
+                                                                            (split
+                                                                             -16)
+                                                                            (("1"
+                                                                              (apply-extensionality
+                                                                               15)
                                                                               nil
+                                                                              nil)
+                                                                             ("2"
+                                                                              (hide
+                                                                               2
+                                                                               -)
+                                                                              (("2"
+                                                                                (grind)
+                                                                                nil
+                                                                                nil))
                                                                               nil))
                                                                             nil))
                                                                           nil))
@@ -3052,17 +2410,39 @@
                                                                     nil))
                                                                   nil))
                                                                 nil))
-                                                              nil))
-                                                            nil)
-                                                           ("2"
-                                                            (hide 2 -)
-                                                            (("2"
-                                                              (grind)
+                                                              nil)
+                                                             ("2"
+                                                              (apply-extensionality
+                                                               1)
                                                               nil
+                                                              nil)
+                                                             ("3"
+                                                              (assert)
+                                                              (("3"
+                                                                (flatten)
+                                                                (("3"
+                                                                  (assert)
+                                                                  (("3"
+                                                                    (typepred
+                                                                     "Ts(T1)")
+                                                                    (("3"
+                                                                      (assert)
+                                                                      nil
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
                                                               nil))
                                                             nil))
                                                           nil))
                                                         nil))
+                                                      nil))
+                                                    nil)
+                                                   ("2"
+                                                    (hide 2 -)
+                                                    (("2"
+                                                      (grind)
+                                                      nil
                                                       nil))
                                                     nil))
                                                   nil))
@@ -3104,72 +2484,61 @@
                                     (("9"
                                       (assert)
                                       (("9"
-                                        (hide
-                                         1
-                                         2
-                                         3
-                                         4
-                                         5
-                                         6
-                                         7
-                                         8
-                                         9
-                                         10
-                                         11
-                                         12
-                                         13
-                                         14
-                                         15
-                                         16)
+                                        (label "eq" 17)
                                         (("9"
-                                          (hide -17)
+                                          (hide +)
                                           (("9"
-                                            (expand "trueToInput" -17)
+                                            (reveal "eq")
                                             (("9"
-                                              (expand
-                                               "trueToInput"
-                                               -18)
+                                              (inst-cp -23 "T0(T1)")
                                               (("9"
-                                                (flatten)
+                                                (inst -24 "T0(T2)" "e")
                                                 (("9"
                                                   (assert)
                                                   (("9"
-                                                    (inst-cp
-                                                     -22
-                                                     "T0(T1)")
-                                                    (("9"
-                                                      (inst
-                                                       -23
-                                                       "T0(T2)"
-                                                       "e")
-                                                      (("9"
-                                                        (assert)
-                                                        (("9"
-                                                          (split -23)
+                                                    (split -24)
+                                                    (("1"
+                                                      (case
+                                                       "T1 = plus(s(T1), e(T1), T0(T1), Ts(T1))")
+                                                      (("1"
+                                                        (replace
+                                                         -1
+                                                         1
+                                                         LR)
+                                                        (("1"
+                                                          (lemma
+                                                           "Wellformed_theorem")
                                                           (("1"
-                                                            (case
-                                                             "T1 = plus(s(T1), e(T1), T0(T1), Ts(T1))")
+                                                            (inst
+                                                             -1
+                                                             "T0(T1)")
                                                             (("1"
-                                                              (replace
-                                                               -1
-                                                               1
-                                                               LR)
+                                                              (assert)
                                                               (("1"
-                                                                (lemma
-                                                                 "Wellformed_theorem")
+                                                                (flatten)
                                                                 (("1"
-                                                                  (inst
-                                                                   -1
-                                                                   "T0(T1)")
+                                                                  (split
+                                                                   -2)
                                                                   (("1"
                                                                     (assert)
                                                                     (("1"
-                                                                      (flatten)
+                                                                      (apply-extensionality
+                                                                       1)
                                                                       (("1"
-                                                                        (split
-                                                                         -2)
+                                                                        (flatten)
                                                                         (("1"
                                                                           (assert)
+                                                                          nil
+                                                                          nil))
+                                                                        nil)
+                                                                       ("2"
+                                                                        (case
+                                                                         "Ts(T1) = skip(s(Ts(T1)), e(Ts(T1)), plus(e))")
+                                                                        (("1"
+                                                                          (replace
+                                                                           -1
+                                                                           1
+                                                                           LR)
                                                                           (("1"
                                                                             (apply-extensionality
                                                                              1)
@@ -3181,139 +2550,117 @@
                                                                                 nil))
                                                                               nil)
                                                                              ("2"
-                                                                              (case
-                                                                               "Ts(T1) = skip(s(Ts(T1)), e(Ts(T1)), plus(e))")
-                                                                              (("1"
-                                                                                (replace
-                                                                                 -1
-                                                                                 1
-                                                                                 LR)
-                                                                                (("1"
-                                                                                  (apply-extensionality
-                                                                                   1)
-                                                                                  (("1"
-                                                                                    (flatten)
-                                                                                    (("1"
-                                                                                      (assert)
-                                                                                      nil
-                                                                                      nil))
-                                                                                    nil)
-                                                                                   ("2"
-                                                                                    (expand
-                                                                                     "trueToGrammar"
-                                                                                     -8)
-                                                                                    (("2"
-                                                                                      (flatten)
-                                                                                      (("2"
-                                                                                        (assert)
-                                                                                        nil
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil)
-                                                                               ("2"
-                                                                                (apply-extensionality
-                                                                                 1)
+                                                                              (expand
+                                                                               "trueToGrammar"
+                                                                               -8)
+                                                                              (("2"
+                                                                                (flatten)
                                                                                 (("2"
-                                                                                  (expand
-                                                                                   "trueToGrammar"
-                                                                                   -10)
-                                                                                  (("2"
-                                                                                    (flatten)
-                                                                                    (("2"
-                                                                                      (assert)
-                                                                                      nil
-                                                                                      nil))
-                                                                                    nil))
+                                                                                  (assert)
+                                                                                  nil
                                                                                   nil))
                                                                                 nil))
                                                                               nil))
                                                                             nil))
                                                                           nil)
                                                                          ("2"
-                                                                          (assert)
+                                                                          (apply-extensionality
+                                                                           1)
                                                                           (("2"
-                                                                            (inst
-                                                                             -26
-                                                                             "Ts(T1)")
-                                                                            (("1"
-                                                                              (inst
-                                                                               -26
-                                                                               "Ts(T2)"
-                                                                               "plus(e)")
-                                                                              (("1"
-                                                                                (assert)
-                                                                                (("1"
-                                                                                  (split
-                                                                                   -26)
-                                                                                  (("1"
-                                                                                    (apply-extensionality
-                                                                                     1)
-                                                                                    (("1"
-                                                                                      (flatten)
-                                                                                      (("1"
-                                                                                        (assert)
-                                                                                        nil
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil)
-                                                                                   ("2"
-                                                                                    (hide
-                                                                                     2
-                                                                                     -)
-                                                                                    (("2"
-                                                                                      (grind)
-                                                                                      nil
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil)
-                                                                               ("2"
-                                                                                (flatten)
+                                                                            (flatten)
+                                                                            (("2"
+                                                                              (assert)
+                                                                              (("2"
+                                                                                (apply-extensionality
+                                                                                 1)
                                                                                 nil
                                                                                 nil))
-                                                                              nil)
-                                                                             ("2"
-                                                                              (assert)
-                                                                              nil
                                                                               nil))
                                                                             nil))
                                                                           nil))
                                                                         nil))
                                                                       nil))
-                                                                    nil))
-                                                                  nil))
-                                                                nil))
-                                                              nil)
-                                                             ("2"
-                                                              (apply-extensionality
-                                                               1)
-                                                              nil
-                                                              nil)
-                                                             ("3"
-                                                              (flatten)
-                                                              (("3"
-                                                                (assert)
-                                                                (("3"
-                                                                  (typepred
-                                                                   "Ts(T1)")
-                                                                  (("3"
+                                                                    nil)
+                                                                   ("2"
                                                                     (assert)
-                                                                    nil
+                                                                    (("2"
+                                                                      (inst
+                                                                       -27
+                                                                       "Ts(T1)")
+                                                                      (("1"
+                                                                        (inst
+                                                                         -27
+                                                                         "Ts(T2)"
+                                                                         "plus(e)")
+                                                                        (("1"
+                                                                          (assert)
+                                                                          (("1"
+                                                                            (split
+                                                                             -27)
+                                                                            (("1"
+                                                                              (apply-extensionality
+                                                                               1)
+                                                                              (("1"
+                                                                                (flatten)
+                                                                                (("1"
+                                                                                  (assert)
+                                                                                  nil
+                                                                                  nil))
+                                                                                nil))
+                                                                              nil)
+                                                                             ("2"
+                                                                              (hide
+                                                                               2
+                                                                               -)
+                                                                              (("2"
+                                                                                (grind)
+                                                                                nil
+                                                                                nil))
+                                                                              nil))
+                                                                            nil))
+                                                                          nil)
+                                                                         ("2"
+                                                                          (flatten)
+                                                                          nil
+                                                                          nil))
+                                                                        nil)
+                                                                       ("2"
+                                                                        (assert)
+                                                                        nil
+                                                                        nil))
+                                                                      nil))
                                                                     nil))
                                                                   nil))
                                                                 nil))
                                                               nil))
-                                                            nil)
-                                                           ("2"
-                                                            (hide 2 -)
-                                                            (("2"
-                                                              (grind)
+                                                            nil))
+                                                          nil))
+                                                        nil)
+                                                       ("2"
+                                                        (apply-extensionality
+                                                         1)
+                                                        nil
+                                                        nil)
+                                                       ("3"
+                                                        (flatten)
+                                                        (("3"
+                                                          (assert)
+                                                          (("3"
+                                                            (typepred
+                                                             "Ts(T1)")
+                                                            (("3"
+                                                              (assert)
                                                               nil
                                                               nil))
                                                             nil))
                                                           nil))
+                                                        nil))
+                                                      nil)
+                                                     ("2"
+                                                      (hide 2 -)
+                                                      (("2"
+                                                        (grind)
+                                                        nil
                                                         nil))
                                                       nil))
                                                     nil))
@@ -3392,59 +2739,56 @@
                                                      "trueToInput"
                                                      -14)
                                                     (("10"
-                                                      (assert)
-                                                      (("10"
-                                                        (split -16)
+                                                      (split -16)
+                                                      (("1"
+                                                        (case
+                                                         "T1 = opt(s(T1), e(T1), T0(T1))")
                                                         (("1"
-                                                          (case
-                                                           "T1 = opt(s(T1), e(T1), T0(T1))")
+                                                          (replace
+                                                           -1
+                                                           1
+                                                           LR)
                                                           (("1"
-                                                            (replace
-                                                             -1
-                                                             1
-                                                             LR)
+                                                            (lemma
+                                                             "Wellformed_theorem")
                                                             (("1"
-                                                              (lemma
-                                                               "Wellformed_theorem")
+                                                              (inst
+                                                               -1
+                                                               "T0(T1)")
                                                               (("1"
-                                                                (inst
-                                                                 -1
-                                                                 "T0(T1)")
+                                                                (assert)
                                                                 (("1"
-                                                                  (assert)
+                                                                  (flatten)
                                                                   (("1"
-                                                                    (flatten)
+                                                                    (split
+                                                                     -2)
                                                                     (("1"
-                                                                      (split
-                                                                       -2)
-                                                                      (("1"
-                                                                        (apply-extensionality
-                                                                         1)
-                                                                        nil
-                                                                        nil)
-                                                                       ("2"
-                                                                        (apply-extensionality
-                                                                         1)
-                                                                        nil
-                                                                        nil))
+                                                                      (apply-extensionality
+                                                                       1)
+                                                                      nil
+                                                                      nil)
+                                                                     ("2"
+                                                                      (apply-extensionality
+                                                                       1)
+                                                                      nil
                                                                       nil))
                                                                     nil))
                                                                   nil))
                                                                 nil))
                                                               nil))
-                                                            nil)
-                                                           ("2"
-                                                            (apply-extensionality
-                                                             1)
-                                                            nil
                                                             nil))
                                                           nil)
                                                          ("2"
-                                                          (hide 2 -)
-                                                          (("2"
-                                                            (grind)
-                                                            nil
-                                                            nil))
+                                                          (apply-extensionality
+                                                           1)
+                                                          nil
+                                                          nil))
+                                                        nil)
+                                                       ("2"
+                                                        (hide 2 -)
+                                                        (("2"
+                                                          (grind)
+                                                          nil
                                                           nil))
                                                         nil))
                                                       nil))
@@ -3484,68 +2828,57 @@
                                 (("11"
                                   (ground)
                                   (("11"
-                                    (hide
-                                     1
-                                     2
-                                     3
-                                     4
-                                     5
-                                     6
-                                     7
-                                     8
-                                     9
-                                     10
-                                     11
-                                     12
-                                     13
-                                     14
-                                     15
-                                     16
-                                     17
-                                     18
-                                     19
-                                     20)
+                                    (label "eq" 21)
                                     (("11"
-                                      (hide -7)
+                                      (hide +)
                                       (("11"
-                                        (expand "trueToInput" -7)
+                                        (reveal "eq")
                                         (("11"
-                                          (expand "trueToInput" -8)
+                                          (hide -7)
                                           (("11"
-                                            (flatten)
+                                            (expand "trueToInput" -7)
                                             (("11"
-                                              (inst -14 "T(T1)")
+                                              (expand "trueToInput" -8)
                                               (("11"
-                                                (inst -14 "T(T2)" "e")
+                                                (flatten)
                                                 (("11"
-                                                  (assert)
+                                                  (inst -14 "T(T1)")
                                                   (("11"
-                                                    (split -14)
-                                                    (("1"
-                                                      (case
-                                                       "T1 = notP(s(T1), e(T1), T(T1))")
-                                                      (("1"
-                                                        (replace
-                                                         -1
-                                                         1
-                                                         LR)
+                                                    (inst
+                                                     -14
+                                                     "T(T2)"
+                                                     "e")
+                                                    (("11"
+                                                      (assert)
+                                                      (("11"
+                                                        (split -14)
                                                         (("1"
-                                                          (apply-extensionality
-                                                           1)
-                                                          nil
+                                                          (case
+                                                           "T1 = notP(s(T1), e(T1), T(T1))")
+                                                          (("1"
+                                                            (replace
+                                                             -1
+                                                             1
+                                                             LR)
+                                                            (("1"
+                                                              (apply-extensionality
+                                                               1)
+                                                              nil
+                                                              nil))
+                                                            nil)
+                                                           ("2"
+                                                            (apply-extensionality
+                                                             1)
+                                                            nil
+                                                            nil))
+                                                          nil)
+                                                         ("2"
+                                                          (hide 2 -)
+                                                          (("2"
+                                                            (grind)
+                                                            nil
+                                                            nil))
                                                           nil))
-                                                        nil)
-                                                       ("2"
-                                                        (apply-extensionality
-                                                         1)
-                                                        nil
-                                                        nil))
-                                                      nil)
-                                                     ("2"
-                                                      (hide 2 -)
-                                                      (("2"
-                                                        (grind)
-                                                        nil
                                                         nil))
                                                       nil))
                                                     nil))
@@ -3715,12 +3048,8 @@
     (inp_bound type-eq-decl nil ast_props nil)
     (input type-eq-decl nil ast_props nil)
     (trueToInput def-decl "bool" ast_props nil)
-    (order type-eq-decl nil wf_peg nil)
     (V_N type-eq-decl nil nTpred_order nil)
     (interp type-eq-decl nil wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
-    (strong_WF const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil wf_peg nil)
     (trueToGrammar def-decl "bool" ast_props nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (below type-eq-decl nil pre_ast nil)
@@ -3730,11 +3059,10 @@
     (astMeaningful? const-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
     (pre_ast_ε_extensionality formula-decl nil pre_ast nil)
-    (ε? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (ε adt-constructor-decl "[[below, below] -> (ε?)]" pre_ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (ε adt-constructor-decl "[[below, below] -> (ε?)]" pre_ast nil)
+    (ε? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (TRUE const-decl "bool" booleans nil)
-    (pre_ast_any_extensionality formula-decl nil pre_ast nil)
     (any? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (any adt-constructor-decl "[[below, below, V_T] -> (any?)]" pre_ast
      nil)
@@ -3744,15 +3072,16 @@
     (x shared-adt-accessor-decl
      "[{x: pre_ast | any?(x) OR terminal?(x) OR range?(x)} -> V_T]"
      pre_ast nil)
+    (pre_ast_any_extensionality formula-decl nil pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (pre_ast_terminal_extensionality formula-decl nil pre_ast nil)
-    (int_minus_int_is_int application-judgement "int" integers nil)
-    (/= const-decl "boolean" notequal nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
     (terminal adt-constructor-decl
      "[[below, below, V_T, V_T] -> (terminal?)]" pre_ast nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (/= const-decl "boolean" notequal nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (pre_ast_terminal_extensionality formula-decl nil pre_ast nil)
     (terminal? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (range? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (a shared-adt-accessor-decl
@@ -3760,31 +3089,31 @@
     (terminal adt-constructor-decl "[V_T -> (terminal?)]" peg nil)
     (a shared-adt-accessor-decl
      "[{x: pre_ast | terminal?(x) OR range?(x)} -> V_T]" pre_ast nil)
+    (b adt-accessor-decl "[(range?) -> V_T]" peg nil)
+    (b adt-accessor-decl "[(range?) -> V_T]" pre_ast nil)
+    (range adt-constructor-decl "[[V_T, V_T] -> (range?)]" peg nil)
+    (pre_ast_range_extensionality formula-decl nil pre_ast nil)
+    (in_range const-decl "bool" ast nil)
     (range adt-constructor-decl
            "[[below, below, V_T, V_T, V_T] -> (range?)]" pre_ast nil)
-    (in_range const-decl "bool" ast nil)
-    (pre_ast_range_extensionality formula-decl nil pre_ast nil)
-    (range adt-constructor-decl "[[V_T, V_T] -> (range?)]" peg nil)
-    (b adt-accessor-decl "[(range?) -> V_T]" pre_ast nil)
-    (b adt-accessor-decl "[(range?) -> V_T]" peg nil)
-    (nonTerminal? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (below type-eq-decl nil naturalnumbers nil)
-    (A adt-accessor-decl "[(nonTerminal?) -> below(V_N_b)]" peg nil)
-    (nonTerminal adt-constructor-decl
-     "[below(V_N_b) -> (nonTerminal?)]" peg nil)
-    (nonTerminal? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast
-     nil)
-    (semantic? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (A shared-adt-accessor-decl
      "[{x: pre_ast | nonTerminal?(x) OR semantic?(x)} -> V_N[V_N_b]]"
      pre_ast nil)
+    (semantic? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (nonTerminal? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast
+     nil)
+    (nonTerminal adt-constructor-decl
+     "[below(V_N_b) -> (nonTerminal?)]" peg nil)
+    (A adt-accessor-decl "[(nonTerminal?) -> below(V_N_b)]" peg nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (nonTerminal? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (notP? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (andP? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (T shared-adt-accessor-decl
-     "[{x: pre_ast | nonTerminal?(x) OR notP?(x) OR andP?(x)} ->
-   {T: pre_ast | ¬skip?(T)}]" pre_ast nil)
+     "[{x: pre_ast | nonTerminal?(x) OR notP?(x) OR andP?(x)} -> {T: pre_ast | ¬skip?(T)}]"
+     pre_ast nil)
     (T1 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
     (real_lt_is_strict_total_order name-judgement
@@ -3796,67 +3125,66 @@
     (pre_ast_nonTerminal_extensionality formula-decl nil pre_ast nil)
     (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
-    (T2 shared-adt-accessor-decl
-     "[{x: pre_ast | seq?(x) OR prior?(x)} -> pre_ast]" pre_ast nil)
-    (seq adt-constructor-decl
-     "[[below, below, {T: pre_ast | ¬skip?(T)}, pre_ast] -> (seq?)]"
-     pre_ast nil)
-    (pre_ast_seq_extensionality formula-decl nil pre_ast nil)
-    (pre_ast_skip_extensionality formula-decl nil pre_ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
-    (Wellformed_theorem formula-decl nil ast nil)
     (seq? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (prior? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (T1 shared-adt-accessor-decl
      "[{x: pre_ast | seq?(x) OR prior?(x)} -> {T: pre_ast | ¬skip?(T)}]"
      pre_ast nil)
-    (pre_ast_prior_extensionality formula-decl nil pre_ast nil)
+    (Wellformed_theorem formula-decl nil ast nil)
     (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (pre_ast_skip_extensionality formula-decl nil pre_ast nil)
+    (pre_ast_seq_extensionality formula-decl nil pre_ast nil)
+    (T2 shared-adt-accessor-decl
+     "[{x: pre_ast | seq?(x) OR prior?(x)} -> pre_ast]" pre_ast nil)
+    (seq adt-constructor-decl
+     "[[below, below, {T: pre_ast | ¬skip?(T)}, pre_ast] -> (seq?)]"
+     pre_ast nil)
+    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
+    (pre_ast_prior_extensionality formula-decl nil pre_ast nil)
     (prior adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}, pre_ast] -> (prior?)]"
      pre_ast nil)
     (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
-    (pre_ast_star_extensionality formula-decl nil pre_ast nil)
-    (star adt-constructor-decl "[peg -> (star?)]" peg nil)
-    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (skip adt-constructor-decl
           "[[below, below, peg[V_T, <=, V_N_b]] -> (skip?)]" pre_ast
           nil)
-    (Ts adt-accessor-decl "[d: {x: pre_ast | star?(x) OR plus?(x)} ->
-   {x1: pre_ast |
-      IF star?(d) THEN skip?(x1) OR star?(x1)
-      ELSE skip?(x1) OR plus?(x1) OR fail?(x1)
-      ENDIF}]" pre_ast nil)
+    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (star adt-constructor-decl "[peg -> (star?)]" peg nil)
+    (pre_ast_star_extensionality formula-decl nil pre_ast nil)
+    (Ts adt-accessor-decl
+     "[d: {x: pre_ast | star?(x) OR plus?(x)} -> {x1: pre_ast | IF star?(d) THEN skip?(x1) OR star?(x1) ELSE skip?(x1) OR plus?(x1) OR fail?(x1) ENDIF}]"
+     pre_ast nil)
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (IF const-decl "[boolean, T, T -> T]" if_def nil)
     (star adt-constructor-decl
-     "[[below, below, {T: pre_ast | ¬skip?(T)},
-  {T: pre_ast | skip?(T) OR star?(T)}] ->
-   (star?)]" pre_ast nil)
+     "[[below, below, {T: pre_ast | ¬skip?(T)}, {T: pre_ast | skip?(T) OR star?(T)}] -> (star?)]"
+     pre_ast nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (opt? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (T0 shared-adt-accessor-decl
      "[{x: pre_ast | star?(x) OR plus?(x) OR opt?(x)} -> {T: pre_ast | ¬skip?(T)}]"
      pre_ast nil)
-    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (plus adt-constructor-decl "[peg -> (plus?)]" peg nil)
+    (plus adt-constructor-decl
+     "[[below, below, {T: pre_ast | ¬skip?(T)}, {T: pre_ast | skip?(T) OR plus?(T) OR fail?(T)}] -> (plus?)]"
+     pre_ast nil)
+    (pre_ast_plus_extensionality formula-decl nil pre_ast nil)
+    (peg_plus_extensionality formula-decl nil peg nil)
+    (G adt-accessor-decl "[(skip?) -> peg[V_T, <=, V_N_b]]" pre_ast
+     nil)
     (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
-    (pre_ast_plus_extensionality formula-decl nil pre_ast nil)
-    (plus adt-constructor-decl
-     "[[below, below, {T: pre_ast | ¬skip?(T)},
-  {T: pre_ast | skip?(T) OR plus?(T) OR fail?(T)}] ->
-   (plus?)]" pre_ast nil)
+    (plus adt-constructor-decl "[peg -> (plus?)]" peg nil)
+    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (pre_ast_opt_extensionality formula-decl nil pre_ast nil)
     (opt adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (opt?)]" pre_ast
      nil)
-    (pre_ast_opt_extensionality formula-decl nil pre_ast nil)
     (notP adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (notP?)]" pre_ast
      nil)

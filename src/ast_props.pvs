@@ -22,30 +22,33 @@ ast_props [
     inp_bound : TYPE = upto(bound)
     input : TYPE = [inp_bound -> V_T]
     inp, inp1, inp2: VAR input
-		σ: VAR order
-    % P_exp: VAR WF_nT
+    P_exp: VAR interp
 
-    trueToGrammar(T, G, σ, (P_exp: WF_nT(σ))) : RECURSIVE bool =
+    trueToGrammar(T, G, P_exp) : RECURSIVE bool =
         CASES T OF
             ε(s, e): ε?(G),
             any(s, e, x): any?(G),
             terminal(s, e, x, y): (terminal(x) = G),
             range(s, e, a, b, x): (range(a, b) = G),
-            nonTerminal(s, e, A, T): (nonTerminal(A) = G) ∧ (trueToGrammar(T, P_exp(A), σ, P_exp)),
-            seq(s, e, T1, T2): seq?(G) ∧ (trueToGrammar(T1, e1(G), σ, P_exp) ∧ trueToGrammar(T2, e2(G), σ, P_exp)),
-            prior(s, e, T1, T2): prior?(G) ∧ (trueToGrammar(T1, e1(G), σ, P_exp) ∧ trueToGrammar(T2, e2(G), σ, P_exp)),
-            star(s, e, T0, Ts): star?(G) ∧ (trueToGrammar(T0, e(G), σ, P_exp) ∧ trueToGrammar(Ts, G, σ, P_exp)),
-            plus(s, e, T0, Ts): plus?(G) ∧ (trueToGrammar(T0, e(G), σ, P_exp) ∧ trueToGrammar(Ts, G, σ, P_exp)),
-            opt(s, e, T0): opt?(G) ∧ trueToGrammar(T0, e(G), σ, P_exp),
-            notP(s, e, T): notP?(G) ∧ trueToGrammar(T, e(G), σ, P_exp),
-            andP(s, e, T): andP?(G) ∧ trueToGrammar(T, e(G), σ, P_exp),
+            nonTerminal(s, e, A, T): (nonTerminal(A) = G) ∧ (trueToGrammar(T, P_exp(A), P_exp)),
+            seq(s, e, T1, T2): seq?(G) ∧ (trueToGrammar(T1, e1(G), P_exp) ∧ trueToGrammar(T2, e2(G), P_exp)),
+            prior(s, e, T1, T2): prior?(G) ∧ (trueToGrammar(T1, e1(G), P_exp) ∧ trueToGrammar(T2, e2(G), P_exp)),
+            star(s, e, T0, Ts): star?(G) ∧ (trueToGrammar(T0, e(G), P_exp) ∧ trueToGrammar(Ts, G, P_exp)),
+            plus(s, e, T0, Ts): plus?(G) ∧ (trueToGrammar(T0, e(G), P_exp) ∧ trueToGrammar(Ts, G, P_exp)),
+            opt(s, e, T0): opt?(G) ∧ trueToGrammar(T0, e(G), P_exp),
+            notP(s, e, T): notP?(G) ∧ trueToGrammar(T, e(G), P_exp),
+            andP(s, e, T): andP?(G) ∧ trueToGrammar(T, e(G), P_exp),
             skip(s, e, G_p): (G_p = G)
             ELSE false
         ENDCASES
     MEASURE astMeasure(T)
+		AUTO_REWRITE+ trueToGrammar
 
     % Grammar uniqueness:
-    unique_grammar: LEMMA ∀(T, G1, G2, σ, (P_exp: WF_nT(σ))): (trueToGrammar(T, G1, σ, P_exp) ∧ trueToGrammar(T, G2, σ, P_exp)) ⇒ (G1 = G2)
+    unique_grammar: LEMMA
+      ∀ T, G1, G2, P_exp:
+        (trueToGrammar(T, G1, P_exp) ∧ trueToGrammar(T, G2, P_exp)) ⇒
+         (G1 = G2)
 
     trueToInput(T, inp) : Recursive bool =
         CASES T OF
@@ -65,11 +68,19 @@ ast_props [
             ELSE false
         ENDCASES
     MEASURE astMeasure(T)
+		AUTO_REWRITE+ trueToInput
 
     % Input uniqueness:
-    unique_input: LEMMA ∀((T: ast), inp1, inp2): (trueToInput(T, inp1) ∧ trueToInput(T, inp2)) ⇒ (∀ (i:below(e(T))): (i >= s(T)) ⇒ inp1(i) = inp2(i))
+    unique_input: LEMMA
+      ∀ (T: ast), inp1, inp2:
+        (trueToInput(T, inp1) ∧ trueToInput(T, inp2)) ⇒
+         (∀ (i: below(e(T))): (i >= s(T)) ⇒ inp1(i) = inp2(i))
 
     % Main uniqueness theorem:
-    unique_tree: LEMMA ∀((T1, T2 : ast), inp, G, σ, (P_exp: WF_nT(σ))): (trueToInput(T1, inp) ∧ trueToInput(T2, inp) ∧ trueToGrammar(T1, G, σ, P_exp) ∧ trueToGrammar(T2, G, σ, P_exp) ∧ s(T1) = s(T2)) ⇒ T1 = T2
+    unique_tree: LEMMA
+		  ∀ (T1, T2 : ast), inp, G, P_exp:
+			  trueToInput(T1, inp) ∧ trueToInput(T2, inp) ∧
+				trueToGrammar(T1, G, P_exp) ∧ trueToGrammar(T2, G, P_exp) ∧ s(T1) = s(T2) ⇒
+				T1 = T2
 
 END ast_props

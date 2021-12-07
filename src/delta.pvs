@@ -51,23 +51,41 @@ BEGIN
 
     % Measure of the number of nodes in the grammar tree
     pegMeasure(e : peg) : nat =
-        reduce_nat(0, 0,
-                   λ(a) : 0,
-                   λ(a,b) : 0,
-                   λ(A) : 0,
+        reduce_nat(0, 0, λ(a) : 0, λ(a,b) : 0, λ(A) : 0,
                    sum, sum, inc, inc, inc, inc, inc)(e)
+
+    % Subterm of type definition
+		subterm_of?(G)(e) : bool = subterm(e,G)
+		subterm_of(G) : TYPE = (subterm_of?(G))
 
     % Simple properties over subterms
     subterm_lq: LEMMA ∀ e1, e2 : subterm(e1, e2) ⇒ pegMeasure(e1) <= pegMeasure(e2)
     subterm_eq: LEMMA ∀ e1, e2 : (subterm(e1, e2) ∧ pegMeasure(e1) = pegMeasure(e2)) ⇒ (e1 = e2)
     subterm_transitivity: LEMMA ∀ e, e1, e2 : subterm(e, e1) ∧ subterm(e1, e2) ⇒ subterm(e, e2)
-		subterm_seq : LEMMA ∀ G, e1, e2: subterm(seq(e1,e2), G) ⇒ subterm(e1, G) ∧ subterm(e2, G)
-    subterm_prior : LEMMA ∀ G, e1, e2: subterm(prior(e1,e2), G) ⇒ subterm(e1, G) ∧ subterm(e2, G)
+		subterm_seq  : LEMMA ∀ G, e1, e2: subterm(seq(e1,e2), G)   ⇒ subterm(e1, G) ∧ subterm(e2, G)
+    subterm_prior: LEMMA ∀ G, e1, e2: subterm(prior(e1,e2), G) ⇒ subterm(e1, G) ∧ subterm(e2, G)
     subterm_star : LEMMA ∀ G, e: subterm(star(e), G) ⇒ subterm(e, G)
     subterm_plus : LEMMA ∀ G, e: subterm(plus(e), G) ⇒ subterm(e, G)
-		subterm_opt : LEMMA ∀ G, e: subterm(opt(e), G) ⇒ subterm(e, G)
+		subterm_opt  : LEMMA ∀ G, e: subterm(opt(e), G)  ⇒ subterm(e, G)
 		subterm_notP : LEMMA ∀ G, e: subterm(notP(e), G) ⇒ subterm(e, G)
 		subterm_andP : LEMMA ∀ G, e: subterm(andP(e), G) ⇒ subterm(e, G)
+
+    sub_seq : LEMMA ∀ e, e1, e2 :
+		   subterm(e, seq(e1, e2)) = (e = seq(e1, e2) ∨ subterm(e, e1) ∨ subterm(e, e2))
+    sub_prior : LEMMA ∀ e, e1, e2 :
+		   subterm(e, prior(e1, e2)) = (e = prior(e1, e2) ∨ subterm(e, e1) ∨ subterm(e, e2))
+    sub_star : LEMMA ∀ e, e1 :
+		   subterm(e, star(e1)) = (e = star(e1) ∨ subterm(e, e1))
+    sub_plus : LEMMA ∀ e, e1 :
+		   subterm(e, plus(e1)) = (e = plus(e1) ∨ subterm(e, e1))
+    sub_opt : LEMMA ∀ e, e1 :
+		   subterm(e, opt(e1)) = (e = opt(e1) ∨ subterm(e, e1))
+    sub_notP : LEMMA ∀ e, e1 :
+		   subterm(e, notP(e1)) = (e = notP(e1) ∨ subterm(e, e1))
+    sub_andP : LEMMA ∀ e, e1 :
+		   subterm(e, andP(e1)) = (e = andP(e1) ∨ subterm(e, e1))
+
+    AUTO_REWRITE+ sub_seq, sub_prior, sub_star, sub_plus, sub_opt, sub_notP, sub_andP, subterm_of?
 
 END peg
 
@@ -91,16 +109,14 @@ BEGIN
     A, B, i, j: VAR V_N
     P_exp: VAR interp
     P, P1: VAR nTprop
-    Pf, P0, Ps, WF: VAR nTpred
+    P_f, P_0, P_s: VAR [Δ -> bool]
 		σ, σ_p: VAR order
 
     all_false: nTpred = LAMBDA (A): FALSE
     all_true: nTpred = LAMBDA (A): TRUE
-		;⊥: bool = FALSE
-		;⊤: bool = TRUE
 
     % Recursively computes the grammar properties of a peg object
-    % based on a current set of known properties for non terminals
+    % based on a current set P of known properties for non terminals
     g_props(G, P): RECURSIVE [bool, bool, bool] =
       CASES G
         OF ε: (FALSE, TRUE, FALSE),
@@ -131,6 +147,7 @@ BEGIN
              LET (e_f, e_0, e_s) = g_props(e, P) IN (e_f, e_s ∨ e_0, FALSE)
         ENDCASES
        MEASURE pegMeasure(G)
+    AUTO_REWRITE+ g_props
 
     % g is growing
     g_props_growth: LEMMA ∀ G, P, P1 : (P <= P1) ⇒ (g_props(G, P) <= g_props(G, P1))
@@ -186,63 +203,75 @@ BEGIN
           endif
     measure (3*V_N_b - currentState)
 
+    % We compute the properties of a set of non terminals (nT)
+    nT_properties(P_exp): F(P_exp) =
+        compute_properties(P_exp, (all_false, all_false, all_false), 0)
+    P_fc(P_exp): [Δ -> bool] =
+        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`1
+    P_0c(P_exp): [Δ -> bool] =
+        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`2
+    P_sc(P_exp): [Δ -> bool] =
+        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`3
 
-    strong: bool = true
-    complete: bool = false
-    δ : VAR bool
 
-    g_wf(σ, G, A, (P_0: [Δ -> bool]), δ): RECURSIVE bool =
+
+    structural_wf?(G, (P_0: [Δ -> bool])): RECURSIVE bool =
       CASES G
         OF ε: TRUE,
            any: TRUE,
            terminal(a): TRUE,
            range(a, b): TRUE,
-           nonTerminal(B): δ ⇒ (σ(B) < σ(A)),
-           seq(e1, e2):
-             g_wf(σ, e1, A, P_0, δ) ∧ g_wf(σ, e2, A, P_0, P_0(e1) ∧ δ),
-           prior(e1, e2): g_wf(σ, e1, A, P_0, δ) ∧ g_wf(σ, e2, A, P_0, δ),
-           star(e): g_wf(σ, e, A, P_0, δ) ∧ (¬P_0(e)),
-           plus(e): g_wf(σ, e, A, P_0, δ) ∧ (¬P_0(e)),
-           opt(e): g_wf(σ, e, A, P_0, δ),
-           notP(e): g_wf(σ, e, A, P_0, δ),
-           andP(e): g_wf(σ, e, A, P_0, δ)
+           nonTerminal(B): TRUE,
+           seq(e1, e2): structural_wf?(e1, P_0) ∧ structural_wf?(e2, P_0),
+           prior(e1, e2): structural_wf?(e1, P_0) ∧ structural_wf?(e2, P_0),
+           star(e): structural_wf?(e, P_0) ∧ (¬P_0(e)),
+           plus(e): structural_wf?(e, P_0) ∧ (¬P_0(e)),
+           opt(e) : structural_wf?(e, P_0),
+           notP(e): structural_wf?(e, P_0),
+           andP(e): structural_wf?(e, P_0)
         ENDCASES
-       MEASURE lex2(A, pegMeasure(G))
+       MEASURE pegMeasure(G)
 
+	  structural_WF?(P_exp): bool = ∀ A: structural_wf?(P_exp(A), P_0c(P_exp))
+	  AUTO_REWRITE+ structural_wf?, structural_WF?
 
-    nT_properties(P_exp): F(P_exp) =
-        compute_properties(P_exp, (all_false, all_false, all_false), 0)
-    P_fc?(P_exp): [Δ -> bool] =
-        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`1
-    P_0c?(P_exp): [Δ -> bool] =
-        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`2
-    P_sc?(P_exp): [Δ -> bool] =
-        LAMBDA G: LET nTP = nT_properties(P_exp) IN g_props(G, nTP)`3
+    pattern_wf?(G, A, σ, (P_0: [Δ -> bool])): RECURSIVE bool =
+      CASES G
+        OF ε: TRUE,
+           any: TRUE,
+           terminal(a): TRUE,
+           range(a, b): TRUE,
+           nonTerminal(B): σ(B) < σ(A),
+           seq(e1, e2)  : pattern_wf?(e1, A, σ, P_0) ∧ (P_0(e1) ⇒ pattern_wf?(e2, A, σ, P_0)),
+           prior(e1, e2): pattern_wf?(e1, A, σ, P_0) ∧ pattern_wf?(e2, A, σ, P_0),
+           star(e): pattern_wf?(e, A, σ, P_0),
+           plus(e): pattern_wf?(e, A, σ, P_0),
+           opt(e) : pattern_wf?(e, A, σ, P_0),
+           notP(e): pattern_wf?(e, A, σ, P_0),
+           andP(e): pattern_wf?(e, A, σ, P_0)
+        ENDCASES
+       MEASURE pegMeasure(G)
 
-    strong_WF(σ, P_exp): bool =
-        FORALL A: g_wf(σ, P_exp(A), A, P_0c?(P_exp), strong)
-    complete_WF(σ, P_exp): bool =
-        FORALL A: g_wf(σ, P_exp(A), A, P_0c?(P_exp), complete)
+	  pattern_WF?(σ, P_exp): bool = ∀ A: pattern_wf?(P_exp(A), A, σ, P_0c(P_exp))
+	  AUTO_REWRITE+ pattern_wf? %, pattern_WF?
 
-    complete_WF_no_order: LEMMA ∀ σ, σ_p, P_exp : complete_WF(σ,P_exp) = complete_WF(σ_p, P_exp)
+    % Definition of a well-formed grammar :
+		% - no structural aberrations (structural_WF)
+		% - no pattern loops (pattern_WF)
+    wf_nT?(P_exp): bool =
+		  structural_WF?(P_exp) ∧
+			(∃ σ: pattern_WF?(σ, P_exp))
+    wf_nT : type = (wf_nT?)
+		AUTO_REWRITE+ wf_nT?
 
-    % Definition of a well-formed grammar
-    WF_nT(σ): TYPE = (LAMBDA P_exp : strong_WF(σ, P_exp))
-    strong_is_complete_WF: LEMMA FORALL σ, P_exp: strong_WF(σ, P_exp) IMPLIES complete_WF(σ, P_exp)
-    complete_WF_theorem: THEOREM
-      FORALL σ, (P_exp: WF_nT(σ)), A, G:
-        subterm(G, P_exp(A)) IMPLIES g_wf(σ, G, A, P_0c?(P_exp), FALSE)
-    complete_WF_theorem2: THEOREM
-      FORALL σ, P_exp:
-        complete_WF(σ, P_exp) ⇒
-         (FORALL A, G:
-            subterm(G, P_exp(A)) ⇒ g_wf(σ, G, A, P_0c?(P_exp), FALSE))
+    % Properties of a wellformed grammar
+    wf_nT_subterm : LEMMA
+		  ∀ G, e, P_0: structural_wf?(G, P_0) ∧ subterm(e, G) ⇒ structural_wf?(e, P_0)
 
-    % Example of properties of a wellformed grammar
-    Star_cannot_be_P0: LEMMA
-      FORALL (σ : order, (P_exp: WF_nT(σ)), G, A):
-        subterm(G, P_exp(A)) ∧ star?(G) ⇒ NOT P_0c?(P_exp)(e(G))
-
+    star_cannot_be_P_0: LEMMA
+      ∀ (P_exp: wf_nT), e: subterm(star(e), P_exp(A)) ⇒ ¬ P_0c(P_exp)(e)
+    plus_cannot_be_P_0: LEMMA
+      ∀ (P_exp: wf_nT), e: subterm(plus(e), P_exp(A)) ⇒ ¬ P_0c(P_exp)(e)
 
 END wf_peg
 

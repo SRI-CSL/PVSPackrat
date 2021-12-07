@@ -7,6 +7,7 @@ static_analysis [
     ]:THEORY
 BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
+	IMPORTING more_list_props[V_N]
 	IMPORTING c_topological_sort[V_N] % From nasalib
 	IMPORTING interval_list
 
@@ -14,14 +15,10 @@ BEGIN
 
   A, B, C : VAR V_N
   σ, σ_p: VAR order
-	σ_id : order = LAMBDA (A:V_N): A
 
   P_exp: VAR interp
+	P_0: VAR[Δ -> bool]
   G: VAR Δ
-  δ : VAR bool
-
-  orderly_WF_nT?(P_exp): bool = EXISTS σ: strong_WF(σ, P_exp)
-
 
   every_iff_member[T :TYPE]: LEMMA ∀ (l: list[T], P:PRED[T]): every(P)(l) ⇔ (∀ (x:T): member(x,l) ⇒ P(x))
 
@@ -32,7 +29,8 @@ BEGIN
 
   no_rep_cdr_iff: LEMMA ∀ l, n : no_repetitions?(cons(n,l)) ⇔ no_repetitions?(l) AND NOT member(n,l)
   no_repetitions_add_ls : LEMMA ∀ l, n : no_repetitions?(l) ⇒ no_repetitions?(add_sl(n,l))
-  no_repetitions_union_ls : LEMMA ∀ l1, l2 : no_repetitions?(l1) ∧ no_repetitions?(l2) ⇒ no_repetitions?(union_sl(l1,l2))
+  no_repetitions_union_ls : LEMMA ∀ l1, l2 :
+	    no_repetitions?(l1) ∧ no_repetitions?(l2) ⇒ no_repetitions?(union_sl(l1,l2))
 	V_N_no_add_ls : JUDGEMENT ∀ (l:list[V_N]), A : add_sl(A,l) HAS_TYPE list[V_N]
 	V_N_union_ls : JUDGEMENT ∀ (l1, l2:list[V_N]) : union_sl(l1,l2) HAS_TYPE list[V_N]
 
@@ -40,6 +38,9 @@ BEGIN
 	V_N_no_repetition_subtype : JUDGEMENT (no_repetitions?[V_N]) SUBTYPE_OF list[nat]
 
   idx_V_N_nat : LEMMA ∀(l: list[V_N], (x:V_N|member(x,l))): idx[V_N](l,x) = idx[nat](l,x)
+	no_repetitions_V_N_nat: LEMMA ∀ (l: list[V_N]) :
+	   no_repetitions?[V_N[V_N_b]](l) = no_repetitions?[nat](l)
+	AUTO_REWRITE+ idx_V_N_nat, no_repetitions_V_N_nat
 
 
   % Compute the set of non-terminals that could be used before a character is consumed
@@ -63,38 +64,64 @@ BEGIN
          andP(e): sub_nT(e, P_0)
       ENDCASES
      MEASURE pegMeasure(G)
+  AUTO_REWRITE+ sub_nT
+
+	union_sl_member_or : LEMMA ∀ A, (l1, l2 : node_ls) :
+	   member(A, union_sl(l1, l2)) = (member(A, l1) ∨ member(A, l2))
+
+  AUTO_REWRITE+ union_sl_member_or
 
   sub_nT_and_wellformedness: LEMMA
-    ∀ G, (A: V_N), (P_0: [Δ -> bool]):
-      g_wf(σ, G, A, P_0, strong) ⇔
-       (g_wf(σ, G, A, P_0, complete) ∧
-         (∀ (B: V_N): member(B, sub_nT(G, P_0)) ⇒ σ(B) < σ(A)))
+     ∀ σ, A, P_0, G:
+        pattern_wf?(G, A, σ, P_0) ⇔ (∀ (B: V_N): member(B, sub_nT(G, P_0)) ⇒ σ(B) < σ(A))
 
   % Construction of the digraph
 	nodes(P_exp): node_ls = interval_list(0, V_N_b - 1)
 	adjacents(P_exp)(A): node_ls =
-     sub_nT(P_exp(A), P_0c?(P_exp))
+     sub_nT(P_exp(A), P_0c(P_exp))
   dependency_graph(P_exp): c_digraph[nat] =
       (# data := nodes(P_exp),
          adjs := map(adjacents(P_exp))(nodes(P_exp)) #)
 
+  % Technical rewrites
+	map_adjacents_nth: LEMMA ∀ P_exp, A :
+	   nth(map(adjacents(P_exp))(interval_list(0, V_N_b -1)), A) = sub_nT(P_exp(A), P_0c(P_exp))
+	node_dependency_graph: LEMMA ∀ P_exp, A :
+	   node[V_N](dependency_graph(P_exp))(A) = A
+	data_dependency_graph: LEMMA ∀ P_exp:
+	   data(dependency_graph(P_exp)) = nodes(P_exp)
+  AUTO_REWRITE+ map_adjacents_nth, nodes, vert, size, finseq_appl, verts_in?, edges, digraph_edges, node_dependency_graph
+
   % Some lemmas before the main result
-	strong_WF_edge: LEMMA ∀ P_exp, σ :
-	   strong_WF(σ, P_exp) ⇒
+	pattern_WF_edge: LEMMA ∀ P_exp, σ :
+	   pattern_WF?(σ, P_exp) ⇔
 		 ∀ A, B : (edges(dependency_graph(P_exp))(A, B) ⇒
 		 σ(B) < σ(A))
 
-	strong_WF_path: LEMMA ∀ P_exp, σ :
-	   strong_WF(σ, P_exp) ⇒
+	pattern_WF_path: LEMMA ∀ P_exp, σ :
+	   pattern_WF?(σ, P_exp) ⇒
 		 ∀ (n:nat , w:Walk(dependency_graph(P_exp)), i, j: below(length(w))): i+n+1=j ⇒
 		 σ(w`seq(j)) < σ(w`seq(i))
 
   % Main theorem
   dependency_graph_wf_iff_dag :
 	   THEOREM ∀ P_exp :
-		 orderly_WF_nT?(P_exp) ⇔
-		 (IN?_2(topological_sort[V_N](dependency_graph(P_exp))) ∧ complete_WF(σ_id, P_exp))
+		 wf_nT?(P_exp) ⇔
+		 (IN?_2(topological_sort[V_N](dependency_graph(P_exp))) ∧ structural_WF?(P_exp))
 
+  % Order function :
+	σ(P_exp: wf_nT) : order = (λ A : V_N_b - 1 - idx(OUT_2(topological_sort[V_N](dependency_graph(P_exp)))`2, A))
+	AUTO_REWRITE- σ
+
+  % Equivalent notion of wellformedness for a set of non-terminals:
+	WF_nT?(P_exp) : bool =
+		  structural_WF?(P_exp) ∧
+			pattern_WF?(σ(P_exp), P_exp)
+  WF_nT : type = (WF_nT?)
+	AUTO_REWRITE+ WF_nT?
+
+  WF_wf_nT_equivalent: THEOREM ∀ P_exp : wf_nT?(P_exp) ⇔ WF_nT?(P_exp)
+	WF_wf_nT_subtype : JUDGEMENT WF_nT SUBTYPE_OF wf_nT
 
 
 

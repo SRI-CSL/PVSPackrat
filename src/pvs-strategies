@@ -1,0 +1,18 @@
+(defstep wf-ast ( T )
+	(then
+	  (typepred T)
+    (lemma "Wellformed_theorem")
+    (inst -1 T))
+	"Instantiate the wellformedness theorem on parameter T"
+	"wf-ast ?T")
+
+(defstep g_props ()
+	(then
+    (expand "P_0c")
+    (expand "P_sc")
+    (expand "P_fc")
+		(auto-rewrite! "g_props")
+		(assert)
+		(stop-rewrite "g_props"))
+	"Extend the grammar properties predicates (P_0c, P_sc, P_fc) and assert"
+	"g_props")
