@@ -110,7 +110,7 @@ BEGIN
 		 (IN?_2(topological_sort[V_N](dependency_graph(P_exp))) ∧ structural_WF?(P_exp))
 
   % Order function :
-	σ(P_exp: wf_nT) : order = (λ A : V_N_b - 1 - idx(OUT_2(topological_sort[V_N](dependency_graph(P_exp)))`2, A))
+	σ(P_exp: wf_nT) : order = OUT_2(topological_sort[V_N](dependency_graph(P_exp)))
 	AUTO_REWRITE- σ
 
   % Equivalent notion of wellformedness for a set of non-terminals:
