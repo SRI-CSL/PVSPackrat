@@ -44,11 +44,6 @@ ast_props [
     MEASURE astMeasure(T)
 		AUTO_REWRITE+ trueToGrammar
 
-    % Grammar uniqueness:
-    unique_grammar: LEMMA
-      ∀ T, G1, G2, P_exp:
-        (trueToGrammar(T, G1, P_exp) ∧ trueToGrammar(T, G2, P_exp)) ⇒
-         (G1 = G2)
 
     trueToInput(T, inp) : Recursive bool =
         CASES T OF
@@ -75,6 +70,21 @@ ast_props [
       ∀ (T: ast), inp1, inp2:
         (trueToInput(T, inp1) ∧ trueToInput(T, inp2)) ⇒
          (∀ (i: below(e(T))): (i >= s(T)) ⇒ inp1(i) = inp2(i))
+
+    % Grammar uniqueness:
+    unique_grammar: LEMMA
+      ∀ T, G1, G2, P_exp:
+        (trueToGrammar(T, G1, P_exp) ∧ trueToGrammar(T, G2, P_exp)) ⇒
+         (G1 = G2)
+
+    % Technical lemma
+		T0, Tp, Ts: VAR pre_ast
+		A: VAR V_N
+		a,b,x: VAR V_T
+		S: VAR V_S
+
+		ast_rewrite_ε : Lemma ∀ T: ε?(T) ⇒ T=ε(s(T),e(T))
+		AUTO_REWRITE+ ast_rewrite_ε
 
     % Main uniqueness theorem:
     unique_tree: LEMMA

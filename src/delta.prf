@@ -205,8 +205,7 @@
      "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
-    (sum const-decl "nat" peg nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    nil (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
@@ -330,8 +329,7 @@
     (nonneg_int nonempty-type-eq-decl nil integers nil)
     (< const-decl "bool" reals nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
-    (subterm_lq formula-decl nil peg nil)
-    (sum const-decl "nat" peg nil)
+    (subterm_lq formula-decl nil peg nil) nil
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
@@ -551,7 +549,53 @@
    ((subterm adt-def-decl "boolean" peg nil)) shostak))
  (sub_andP 0
   (sub_andP-1 nil 3847735582 ("" (grind) nil nil)
-   ((subterm adt-def-decl "boolean" peg nil)) shostak)))
+   ((subterm adt-def-decl "boolean" peg nil)) shostak))
+ (pegMeasure_seq 0
+  (pegMeasure_seq-1 nil 3848238058 ("" (grind) nil nil)
+   ((sum_inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil))
+   shostak))
+ (pegMeasure_prior 0
+  (pegMeasure_prior-1 nil 3848238164 ("" (grind) nil nil)
+   ((sum_inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil))
+   shostak))
+ (pegMeasure_star 0
+  (pegMeasure_star-1 nil 3848238168 ("" (grind) nil nil)
+   ((inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil))
+   shostak))
+ (pegMeasure_plus 0
+  (pegMeasure_plus-1 nil 3848238171 ("" (grind) nil nil)
+   ((inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil))
+   shostak))
+ (pegMeasure_opt 0
+  (pegMeasure_opt-1 nil 3848238175 ("" (grind) nil nil)
+   ((inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil))
+   shostak))
+ (pegMeasure_notP 0
+  (pegMeasure_notP-1 nil 3848238178 ("" (grind) nil nil)
+   ((inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil))
+   shostak))
+ (pegMeasure_andP 0
+  (pegMeasure_andP-1 nil 3848238181 ("" (grind) nil nil)
+   ((inc const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+    (pegMeasure const-decl "nat" peg nil))
+   shostak)))
 (wf_peg
  (g_props_TCC1 0
   (g_props_TCC1-1 nil 3784646054 ("" (termination-tcc) nil nil)
@@ -563,15 +607,13 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (pegMeasure const-decl "nat" peg nil))
    nil
    (g_props termination "wf_peg.g_props(wf_peg.e1, wf_peg.P)" "nil")))
  (g_props_TCC2 0
   (g_props_TCC2-1 nil 3784646054 ("" (termination-tcc) nil nil)
-   ((sum const-decl "nat" peg nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+   (nil (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
@@ -593,15 +635,13 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (pegMeasure const-decl "nat" peg nil))
    nil
    (g_props termination "wf_peg.g_props(wf_peg.e1, wf_peg.P)" "nil")))
  (g_props_TCC4 0
   (g_props_TCC4-1 nil 3784646054 ("" (termination-tcc) nil nil)
-   ((sum const-decl "nat" peg nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
+   (nil (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
@@ -2102,8 +2142,7 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (pegMeasure const-decl "nat" peg nil))
    nil
    (structural_wf? termination
@@ -2118,8 +2157,7 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (pegMeasure const-decl "nat" peg nil))
    nil
    (structural_wf? termination
@@ -2157,8 +2195,7 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (surjective? const-decl "bool" functions nil)
     (injective? const-decl "bool" functions nil)
     (pegMeasure const-decl "nat" peg nil))
@@ -2199,8 +2236,7 @@
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[peg -> nat]" peg nil)
-    (sum const-decl "nat" peg nil)
+    (reduce_nat adt-def-decl "[peg -> nat]" peg nil) nil
     (surjective? const-decl "bool" functions nil)
     (injective? const-decl "bool" functions nil)
     (pegMeasure const-decl "nat" peg nil))

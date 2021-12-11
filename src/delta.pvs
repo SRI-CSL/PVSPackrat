@@ -47,12 +47,12 @@ BEGIN
     e, e1, e2, G : VAR peg
 
     inc(i) : nat =  i+1
-    sum(i,j) : nat = i+j+1
+    sum_inc(i,j) : nat = i+j+1
 
     % Measure of the number of nodes in the grammar tree
     pegMeasure(e : peg) : nat =
         reduce_nat(0, 0, λ(a) : 0, λ(a,b) : 0, λ(A) : 0,
-                   sum, sum, inc, inc, inc, inc, inc)(e)
+                   sum_inc, sum_inc, inc, inc, inc, inc, inc)(e)
 
     % Subterm of type definition
 		subterm_of?(G)(e) : bool = subterm(e,G)
@@ -70,6 +70,7 @@ BEGIN
 		subterm_notP : LEMMA ∀ G, e: subterm(notP(e), G) ⇒ subterm(e, G)
 		subterm_andP : LEMMA ∀ G, e: subterm(andP(e), G) ⇒ subterm(e, G)
 
+    % Subterm rewrites
     sub_seq : LEMMA ∀ e, e1, e2 :
 		   subterm(e, seq(e1, e2)) = (e = seq(e1, e2) ∨ subterm(e, e1) ∨ subterm(e, e2))
     sub_prior : LEMMA ∀ e, e1, e2 :
@@ -84,8 +85,17 @@ BEGIN
 		   subterm(e, notP(e1)) = (e = notP(e1) ∨ subterm(e, e1))
     sub_andP : LEMMA ∀ e, e1 :
 		   subterm(e, andP(e1)) = (e = andP(e1) ∨ subterm(e, e1))
-
     AUTO_REWRITE+ sub_seq, sub_prior, sub_star, sub_plus, sub_opt, sub_notP, sub_andP, subterm_of?
+
+    % pegMeasure rewrites
+		pegMeasure_seq: LEMMA ∀ e1, e2 : pegMeasure(seq(e1,e2)) = 1 + pegMeasure(e1) + pegMeasure(e2)
+		pegMeasure_prior: LEMMA ∀ e1, e2 : pegMeasure(prior(e1,e2)) = 1 + pegMeasure(e1) + pegMeasure(e2)
+		pegMeasure_star: LEMMA ∀ e: pegMeasure(star(e)) = 1 + pegMeasure(e)
+		pegMeasure_plus: LEMMA ∀ e: pegMeasure(plus(e)) = 1 + pegMeasure(e)
+		pegMeasure_opt: LEMMA ∀ e: pegMeasure(opt(e)) = 1 + pegMeasure(e)
+		pegMeasure_notP: LEMMA ∀ e: pegMeasure(notP(e)) = 1 + pegMeasure(e)
+		pegMeasure_andP: LEMMA ∀ e: pegMeasure(andP(e)) = 1 + pegMeasure(e)
+		AUTO_REWRITE+ pegMeasure_seq, pegMeasure_prior, pegMeasure_star, pegMeasure_plus, pegMeasure_opt, pegMeasure_notP, pegMeasure_andP
 
 END peg
 

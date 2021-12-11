@@ -1,8 +1,30 @@
 (static_analysis
  (IMP_c_topological_sort_TCC1 0
-  (IMP_c_topological_sort_TCC1-1 nil 3847815911
-   ("" (existence-tcc) nil nil) nil nil
-   (IMP_c_topological_sort existence "" "V_N[V_N_b]")))
+  (IMP_c_topological_sort_TCC1-1 nil 3848133026
+   ("" (inst 1 0) (("" (assert) nil nil)) nil)
+   ((V_N type-eq-decl nil nTpred_order nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (< const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number nonempty-type-decl nil numbers nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil))
+   nil (IMP_c_topological_sort existence "" "V_N[V_N_b]")))
  (V_N_not_empty 0
   (V_N_not_empty-1 nil 3847461586
    ("" (inst 1 0) (("" (grind) nil nil)) nil)
@@ -2034,228 +2056,104 @@
     (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
     (int_minus_int_is_int application-judgement "int" integers nil))
    shostak))
- (pattern_WF_edge 0
-  (pattern_WF_edge-1 nil 3847732287
+ (pattern_WF_topological_ordering_TCC1 0
+  (pattern_WF_topological_ordering_TCC1-1 nil 3848126615
    ("" (skeep*)
-    (("" (expand "restrict")
-      (("" (assert)
-        (("" (expand "dependency_graph")
-          (("" (expand "nodes")
-            (("" (assert)
-              (("" (expand "pattern_WF?")
-                (("" (ground)
-                  (("1" (skeep)
-                    (("1" (inst -1 "A")
-                      (("1" (name-replace "G" "P_exp(A)")
-                        (("1" (generalize "G" "G")
-                          (("1" (induct "G")
-                            (("1" (grind) nil nil)
-                             ("2" (grind) nil nil)
-                             ("3" (grind) nil nil)
-                             ("4" (grind) nil nil)
-                             ("5" (grind) nil nil)
-                             ("6" (skolem 1 ("e1" "e2"))
-                              (("6" (grind) nil nil)) nil)
-                             ("7" (grind) nil nil)
-                             ("8" (grind) nil nil)
-                             ("9" (grind) nil nil)
-                             ("10" (grind) nil nil)
-                             ("11" (grind) nil nil)
-                             ("12" (grind) nil nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil)
-                   ("2" (skeep)
-                    (("2" (inst -1 "A" "_")
-                      (("2" (name-replace "G" "P_exp(A)")
-                        (("2" (generalize "G" "G")
-                          (("2" (induct "G")
-                            (("1" (grind) nil nil)
-                             ("2" (grind) nil nil)
-                             ("3" (grind) nil nil)
-                             ("4" (grind) nil nil)
-                             ("5" (grind) nil nil)
-                             ("6" (skolem 1 ("e1" "e2"))
-                              (("6"
-                                (ground)
-                                (("1"
-                                  (skeep*)
-                                  (("1"
-                                    (inst - B)
-                                    (("1" (assert) nil nil))
-                                    nil))
-                                  nil)
-                                 ("2"
-                                  (skeep*)
-                                  (("2"
-                                    (inst - B)
-                                    (("2"
-                                      (lift-if)
-                                      (("2" (assert) nil nil))
-                                      nil))
-                                    nil))
-                                  nil)
-                                 ("3"
-                                  (skeep*)
-                                  (("3"
-                                    (inst-cp -3 B)
-                                    (("3"
-                                      (inst -3 B!1)
-                                      (("3" (grind) nil nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil)
-                             ("7" (skolem 1 ("e1" "e2"))
-                              (("7"
-                                (ground)
-                                (("1"
-                                  (skeep*)
-                                  (("1"
-                                    (inst - B)
-                                    (("1" (assert) nil nil))
-                                    nil))
-                                  nil)
-                                 ("2"
-                                  (skeep*)
-                                  (("2"
-                                    (inst - B)
-                                    (("2" (assert) nil nil))
-                                    nil))
-                                  nil)
-                                 ("3"
-                                  (skeep*)
-                                  (("3"
-                                    (inst - B)
-                                    (("3" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil)
-                             ("8" (grind) nil nil)
-                             ("9" (grind) nil nil)
-                             ("10" (grind) nil nil)
-                             ("11" (grind) nil nil)
-                             ("12" (grind) nil nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil))
+    (("" (assert)
+      (("" (auto-rewrite "data_dependency_graph")
+        (("" (assert) nil nil)) nil))
       nil))
     nil)
-   ((restrict const-decl "R" restrict nil)
-    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+   ((nodes const-decl "node_ls" static_analysis nil)
+    (data_dependency_graph formula-decl nil static_analysis nil)
+    (interval_list_length formula-decl nil interval_list nil)
+    (size const-decl "nat" c_digraphs_def digraphs)
+    (int_plus_int_is_int application-judgement "int" integers nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
     (int_minus_int_is_int application-judgement "int" integers nil)
-    (interval_list_member formula-decl nil interval_list nil)
-    (interval_list_idx formula-decl nil interval_list nil)
-    (map_adjacents_nth formula-decl nil static_analysis nil)
-    (number nonempty-type-decl nil numbers nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (< const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "posnat" static_analysis nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (sub_nT def-decl "node_ls" static_analysis nil)
-    (node_ls type-eq-decl nil static_analysis nil)
-    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (numfield nonempty-type-eq-decl nil number_fields nil)
-    (<= const-decl "bool" reals nil)
-    (no_repetitions? const-decl "bool" more_list_props structures)
-    (member def-decl "bool" list_props nil)
-    (every adt-def-decl "boolean" list_adt nil)
-    (PRED type-eq-decl nil defined_types nil)
-    (list type-decl nil list_adt nil)
-    (P_0c const-decl "[Δ -> bool]" wf_peg nil)
-    (pattern_wf? def-decl "bool" wf_peg nil)
-    (order type-eq-decl nil wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
-     integers nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
-    (r const-decl "C(P_exp)" wf_peg nil)
-    (array_sum const-decl "upto(3 * V_N_b)" array_sum nil)
-    (nT_properties const-decl "F(P_exp)" wf_peg nil)
-    (union_sl_member_or formula-decl nil static_analysis nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (below type-eq-decl nil naturalnumbers nil)
-    (peg_induction formula-decl nil peg nil)
-    (V_T formal-nonempty-type-decl nil static_analysis nil)
-    (pred type-eq-decl nil defined_types nil)
-    (total_order? const-decl "bool" orders nil)
-    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
-    (peg type-decl nil peg nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (pattern_WF? const-decl "bool" wf_peg nil)
-    (nodes const-decl "node_ls" static_analysis nil)
-    (edges const-decl "bool" c_digraphs_def digraphs)
-    (vert const-decl "bool" c_digraphs_def digraphs)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
-   shostak))
- (pattern_WF_path 0
-  (pattern_WF_path-1 nil 3847738092
-   ("" (skeep)
-    ((""
-      (auto-rewrite "walk?" "finseq_appl" "verts_in?" "edge?"
-                    "diagraph_edges" "edges" "restrict")
-      (("" (stop-rewrite "pattern_WF?")
-        (("" (induct n)
-          (("1" (skeep*)
-            (("1" (typepred "w")
-              (("1" (assert)
-                (("1" (flatten)
-                  (("1" (inst -3 i)
-                    (("1" (use "pattern_WF_edge")
-                      (("1" (grind) nil nil)) nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil)
-           ("2" (skolem 1 "n")
-            (("2" (flatten)
-              (("2" (skeep)
-                (("2" (inst -1 w "i+1" "j")
-                  (("1" (assert)
-                    (("1" (use "pattern_WF_edge")
-                      (("1" (assert)
-                        (("1" (inst -1 "w`seq(i)" "w`seq(i+1)")
-                          (("1" (typepred "w")
-                            (("1" (assert)
+   nil
+   (pattern_WF_topological_ordering subtype
+    "restrict[V_N[V_N_b], digraphs_[V_N[V_N_b], digraph_type[V_N[V_N_b]], c_digraphs_imp[V_N[V_N_b]].digraph_verts, c_digraphs_imp[V_N[V_N_b]].digraph_edges, c_digraphs_imp[V_N[V_N_b]].digraph_size, c_digraphs_imp[V_N[V_N_b]].digraph_make].vert(static_analysis.dependency_graph(static_analysis.P_exp)), V_N[V_N_b]].restrict(static_analysis.σ)"
+    "[digraphs_[V_N[V_N_b], digraph_type[V_N[V_N_b]], c_digraphs_imp[V_N[V_N_b]].digraph_verts, c_digraphs_imp[V_N[V_N_b]].digraph_edges, c_digraphs_imp[V_N[V_N_b]].digraph_size, c_digraphs_imp[V_N[V_N_b]].digraph_make].vert(static_analysis.dependency_graph(static_analysis.P_exp)) -> naturalnumbers.below(c_digraphs_def[V_N[V_N_b]].size(static_analysis.dependency_graph(static_analysis.P_exp)))]")))
+ (pattern_WF_topological_ordering 0
+  (pattern_WF_topological_ordering-1 nil 3848129794
+   ("" (skeep*)
+    (("" (assert)
+      (("" (expand "restrict")
+        (("" (assert)
+          (("" (ground)
+            (("1" (expand "topological_ordering?")
+              (("1" (ground)
+                (("1" (typepred "σ")
+                  (("1" (expand "bijective?")
+                    (("1" (ground)
+                      (("1" (expand "injective?")
+                        (("1" (skeep)
+                          (("1" (inst - x1 x2) (("1" (assert) nil nil))
+                            nil))
+                          nil))
+                        nil)
+                       ("2" (expand "surjective?")
+                        (("2" (skeep)
+                          (("2" (inst - y)
+                            (("1" (skeep)
                               (("1"
-                                (flatten)
+                                (inst 1 x)
                                 (("1"
-                                  (inst -3 "i")
+                                  (assert)
                                   (("1"
-                                    (assert)
+                                    (expand "vert?")
                                     (("1" (assert) nil nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil)
+                             ("2" (assert)
+                              (("2"
+                                (typepred "y")
+                                (("2" (assert) nil nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil)
+                 ("2" (skolem 1 (A B))
+                  (("2" (flatten)
+                    (("2" (assert)
+                      (("2" (expand "edge?")
+                        (("2" (assert)
+                          (("2" (assert)
+                            (("2" (assert)
+                              (("2"
+                                (expand "dependency_graph")
+                                (("2"
+                                  (assert)
+                                  (("2"
+                                    (use "sub_nT_and_wellformedness")
+                                    (("2"
+                                      (expand "pattern_WF?")
+                                      (("2"
+                                        (inst - A)
+                                        (("2"
+                                          (assert)
+                                          (("2"
+                                            (inst - B)
+                                            (("2" (assert) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
                                     nil))
                                   nil))
                                 nil))
@@ -2264,8 +2162,41 @@
                           nil))
                         nil))
                       nil))
-                    nil)
-                   ("2" (assert) nil nil))
+                    nil))
+                  nil))
+                nil))
+              nil)
+             ("2" (expand "pattern_WF?")
+              (("2" (skeep)
+                (("2" (use "sub_nT_and_wellformedness")
+                  (("2" (assert)
+                    (("2" (hide 2)
+                      (("2" (skeep)
+                        (("2" (expand "topological_ordering?")
+                          (("2" (flatten)
+                            (("2" (inst - A B)
+                              (("2"
+                                (assert)
+                                (("2"
+                                  (expand "edge?")
+                                  (("2"
+                                    (assert)
+                                    (("2"
+                                      (assert)
+                                      (("2"
+                                        (expand "dependency_graph")
+                                        (("2" (assert) nil nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
                   nil))
                 nil))
               nil))
@@ -2274,347 +2205,33 @@
         nil))
       nil))
     nil)
-   ((i skolem-const-decl "below(length(w))" static_analysis nil)
-    (w skolem-const-decl
-     "Walk[V_N[V_N_b], digraph_type[V_N[V_N_b]], digraph_verts, digraph_edges, digraph_size, digraph_make](dependency_graph(P_exp))"
-     static_analysis nil)
-    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
-     nil)
-    (TRUE const-decl "bool" booleans nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
-     integers nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
+   ((restrict_of_inj_is_inj application-judgement "(injective?[S, R])"
+     restrict nil)
+    (topological_ordering? const-decl "bool" c_topological_sort
+     digraphs)
     (real_gt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
-    (vert const-decl "bool" c_digraphs_def digraphs)
-    (verts_in? const-decl "bool" walks_ digraphs)
-    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
-     nil)
     (edges const-decl "bool" c_digraphs_def digraphs)
-    (edge? const-decl "bool" digraphs_ digraphs)
-    (int_minus_int_is_int application-judgement "int" integers nil)
-    (idx_V_N_nat formula-decl nil static_analysis nil)
-    (restrict const-decl "R" restrict nil)
-    (nodes const-decl "node_ls" static_analysis nil)
-    (interval_list const-decl "list[nat]" interval_list nil)
+    (map_adjacents_nth formula-decl nil static_analysis nil)
     (pattern_WF? const-decl "bool" wf_peg nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (pattern_WF_edge formula-decl nil static_analysis nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (nat_induction formula-decl nil naturalnumbers nil)
+    (P_0c const-decl "[Δ -> bool]" wf_peg nil)
+    (sub_nT_and_wellformedness formula-decl nil static_analysis nil)
+    (idx_V_N_nat formula-decl nil static_analysis nil)
+    (interval_list_idx formula-decl nil interval_list nil)
+    (edge? const-decl "bool" digraphs_ digraphs)
     (order type-eq-decl nil wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
-    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (numfield nonempty-type-eq-decl nil number_fields nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (below type-eq-decl nil naturalnumbers nil)
-    (Walk type-eq-decl nil walks_ digraphs)
-    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
-    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
-    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
     (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
     (V_T formal-nonempty-type-decl nil static_analysis nil)
-    (walk? const-decl "bool" walks_ digraphs)
-    (prewalk type-eq-decl nil walks_ digraphs)
-    (digraph_make const-decl "[v: (is_finite[T]),
- {e: (is_finite[[T, T]]) |
-    FORALL (x, y: T): e(x, y) IMPLIES v(x) AND v(y)} ->
-   digraph_type]" c_digraphs_imp digraphs)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (is_finite const-decl "bool" finite_sets nil)
-    (set type-eq-decl nil sets nil)
-    (digraph_size const-decl "[digraph_type -> nat]" c_digraphs_imp
-     digraphs)
-    (digraph_edges const-decl "[digraph_type -> [T, T -> bool]]"
-     c_digraphs_imp digraphs)
-    (digraph_verts const-decl "[digraph_type -> [T -> bool]]"
-     c_digraphs_imp digraphs)
-    (digraph_type type-eq-decl nil c_digraphs_imp digraphs)
-    (cdigraph const-decl "bool" c_digraphs_def digraphs)
-    (ComputableDigraph type-eq-decl nil c_digraphs_def digraphs)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (every adt-def-decl "boolean" list_adt nil)
-    (PRED type-eq-decl nil defined_types nil)
-    (list type-decl nil list_adt nil)
-    (finseq type-eq-decl nil finite_sequences nil)
+    (bijective? const-decl "bool" functions nil)
     (V_N type-eq-decl nil nTpred_order nil)
     (V_N_b formal-const-decl "posnat" static_analysis nil)
     (posnat nonempty-type-eq-decl nil integers nil)
     (> const-decl "bool" reals nil)
     (nonneg_int nonempty-type-eq-decl nil integers nil)
     (< const-decl "bool" reals nil)
-    (below type-eq-decl nil nat_types nil)
-    (pred type-eq-decl nil defined_types nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (>= const-decl "bool" reals nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (number nonempty-type-decl nil numbers nil))
-   shostak))
- (dependency_graph_wf_iff_dag 0
-  (dependency_graph_wf_iff_dag-1 nil 3847451200
-   ("" (skeep)
-    (("" (ground)
-      (("1" (flatten)
-        (("1"
-          (typepred
-           "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
-          (("1" (assert)
-            (("1" (hide -1)
-              (("1" (hide 2)
-                (("1" (expand "is_dag")
-                  (("1" (skeep)
-                    (("1" (typepred "w")
-                      (("1" (expand "path?")
-                        (("1" (skeep*)
-                          (("1" (lemma "pattern_WF_path")
-                            (("1" (inst -1 "P_exp" "σ")
-                              (("1"
-                                (assert)
-                                (("1"
-                                  (case "i<j")
-                                  (("1"
-                                    (inst -2 "j-i-1" w i j)
-                                    (("1" (assert) nil nil)
-                                     ("2" (assert) nil nil))
-                                    nil)
-                                   ("2"
-                                    (case "i>j")
-                                    (("1"
-                                      (inst -2 "i-j-1" w j i)
-                                      (("1" (assert) nil nil)
-                                       ("2" (assert) nil nil))
-                                      nil)
-                                     ("2" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("2" (flatten) nil nil)
-       ("3" (ground)
-        (("3"
-          (typepred
-           "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
-          (("3" (assert)
-            (("3"
-              (typepred
-               "OUT_2(topological_sort[V_N[V_N_b]](dependency_graph(P_exp)))")
-              (("3"
-                (name-replace "res"
-                 "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
-                (("3" (name-replace "σ_ts" "OUT_2(res)")
-                  (("3" (inst 1 "σ_ts")
-                    (("1" (expand "pattern_WF?")
-                      (("1" (skolem 1 "A")
-                        (("1" (inst -4 "A")
-                          (("1" (assert)
-                            (("1" (lemma "sub_nT_and_wellformedness")
-                              (("1"
-                                (inst
-                                 -1
-                                 "σ_ts"
-                                 A
-                                 "P_0c(P_exp)"
-                                 "P_exp(A)")
-                                (("1"
-                                  (assert)
-                                  (("1"
-                                    (expand "topological_ordering?")
-                                    (("1"
-                                      (flatten)
-                                      (("1"
-                                        (skeep)
-                                        (("1"
-                                          (inst - A B)
-                                          (("1"
-                                            (assert)
-                                            (("1"
-                                              (expand
-                                               "dependency_graph")
-                                              (("1"
-                                                (expand "edge?")
-                                                (("1"
-                                                  (expand
-                                                   "digraph_edges")
-                                                  (("1"
-                                                    (expand "edges")
-                                                    (("1"
-                                                      (assert)
-                                                      (("1"
-                                                        (assert)
-                                                        nil
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil)
-                                           ("2"
-                                            (assert)
-                                            (("2"
-                                              (expand
-                                               "dependency_graph")
-                                              (("2"
-                                                (expand "nodes")
-                                                (("2"
-                                                  (assert)
-                                                  nil
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil)
-                                           ("3"
-                                            (assert)
-                                            (("3"
-                                              (expand
-                                               "dependency_graph")
-                                              (("3" (assert) nil nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil)
-                     ("2" (assert)
-                      (("2" (expand "topological_ordering?")
-                        (("2" (flatten)
-                          (("2" (assert)
-                            (("2" (ground)
-                              (("1"
-                                (skeep)
-                                (("1"
-                                  (expand "vert?")
-                                  (("1"
-                                    (expand "digraph_verts")
-                                    (("1"
-                                      (expand "vert")
-                                      (("1"
-                                        (assert)
-                                        (("1"
-                                          (expand "dependency_graph")
-                                          (("1" (assert) nil nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("2"
-                                (skeep)
-                                (("2"
-                                  (assert)
-                                  (("2"
-                                    (typepred "σ_ts(x1)")
-                                    (("2"
-                                      (expand "dependency_graph")
-                                      (("2" (assert) nil nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("3"
-                                (expand "bijective?")
-                                (("3"
-                                  (flatten)
-                                  (("3"
-                                    (assert)
-                                    (("3"
-                                      (expand "injective?")
-                                      (("3"
-                                        (expand "surjective?")
-                                        (("3"
-                                          (assert)
-                                          (("3"
-                                            (ground)
-                                            (("1"
-                                              (skeep)
-                                              (("1"
-                                                (inst - x1 x2)
-                                                (("1"
-                                                  (assert)
-                                                  nil
-                                                  nil))
-                                                nil))
-                                              nil)
-                                             ("2"
-                                              (skeep)
-                                              (("2"
-                                                (inst -2 y)
-                                                (("1"
-                                                  (skeep)
-                                                  (("1"
-                                                    (inst 1 x)
-                                                    nil
-                                                    nil))
-                                                  nil)
-                                                 ("2"
-                                                  (expand
-                                                   "dependency_graph")
-                                                  (("2"
-                                                    (assert)
-                                                    nil
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil))
-                                      nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil))
-      nil))
-    nil)
-   ((V_N_b formal-const-decl "posnat" static_analysis nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
     (>= const-decl "bool" reals nil)
     (int nonempty-type-eq-decl nil integers nil)
     (integer_pred const-decl "[rational -> boolean]" integers nil)
@@ -2626,36 +2243,17 @@
     (number_field_pred const-decl "[number -> boolean]" number_fields
      nil)
     (number nonempty-type-decl nil numbers nil)
-    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (V_T formal-nonempty-type-decl nil static_analysis nil)
-    (structural_WF? const-decl "bool" wf_peg nil)
-    (wf_nT? const-decl "bool" wf_peg nil)
-    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
-    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (topological_sort const-decl
-     "{res: [loop(G) + (topological_ordering?(G))] | IN?_2(res) ⇔ is_dag(G)}"
-     c_topological_sort digraphs)
-    (is_dag const-decl "bool" c_topological_sort digraphs)
-    (IFF const-decl "[bool, bool -> bool]" booleans nil)
-    (topological_ordering? const-decl "bool" c_topological_sort
-     digraphs)
-    (below type-eq-decl nil naturalnumbers nil)
-    (size const-decl "nat" c_digraphs_def digraphs)
+    (NOT const-decl "[bool -> bool]" booleans nil)
     (vert type-eq-decl nil digraphs_ digraphs)
+    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
+    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (vert? const-decl "bool" digraphs_ digraphs)
-    (loop type-eq-decl nil c_topological_sort digraphs)
-    (path? const-decl "bool" paths_ digraphs)
-    (Walk type-eq-decl nil walks_ digraphs)
-    (walk? const-decl "bool" walks_ digraphs)
-    (prewalk type-eq-decl nil walks_ digraphs)
     (digraph_make const-decl "[v: (is_finite[T]),
  {e: (is_finite[[T, T]]) |
     FORALL (x, y: T): e(x, y) IMPLIES v(x) AND v(y)} ->
    digraph_type]" c_digraphs_imp digraphs)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
     (is_finite const-decl "bool" finite_sets nil)
     (set type-eq-decl nil sets nil)
     (digraph_size const-decl "[digraph_type -> nat]" c_digraphs_imp
@@ -2671,65 +2269,32 @@
     (every adt-def-decl "boolean" list_adt nil)
     (PRED type-eq-decl nil defined_types nil)
     (list type-decl nil list_adt nil)
-    (finseq type-eq-decl nil finite_sequences nil)
-    (below type-eq-decl nil nat_types nil)
-    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (TRUE const-decl "bool" booleans nil)
-    (order type-eq-decl nil wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
+    (injective? const-decl "bool" functions nil)
+    (interval_list_length formula-decl nil interval_list nil)
     (int_plus_int_is_int application-judgement "int" integers nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (j skolem-const-decl "below(length(w))" static_analysis nil)
-    (i skolem-const-decl "below(length(w))" static_analysis nil)
-    (w skolem-const-decl
-     "Walk[V_N[V_N_b], digraph_type[V_N[V_N_b]], digraph_verts, digraph_edges, digraph_size, digraph_make](dependency_graph(P_exp))"
-     static_analysis nil)
-    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
-     nil)
-    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (numfield nonempty-type-eq-decl nil number_fields nil)
-    (int_minus_int_is_int application-judgement "int" integers nil)
+    (nodes const-decl "node_ls" static_analysis nil)
+    (data_dependency_graph formula-decl nil static_analysis nil)
+    (interval_list_member formula-decl nil interval_list nil)
+    (vert const-decl "bool" c_digraphs_def digraphs)
     (real_ge_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
-     nil)
-    (real_gt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (pattern_WF_path formula-decl nil static_analysis nil)
-    (interval_list_length formula-decl nil interval_list nil)
-    (injective? const-decl "bool" functions nil)
-    (length def-decl "nat" list_props nil)
-    (y skolem-const-decl "V_N[V_N_b]" static_analysis nil)
-    (surjective? const-decl "bool" functions nil)
-    (pattern_WF? const-decl "bool" wf_peg nil)
-    (sub_nT_and_wellformedness formula-decl nil static_analysis nil)
-    (member def-decl "bool" list_props nil)
-    (A skolem-const-decl "V_N[V_N_b]" static_analysis nil)
-    (B skolem-const-decl "V_N[V_N_b]" static_analysis nil)
-    (vert const-decl "bool" c_digraphs_def digraphs)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (nodes const-decl "node_ls" static_analysis nil)
-    (interval_list_member formula-decl nil interval_list nil)
-    (map_adjacents_nth formula-decl nil static_analysis nil)
-    (idx_V_N_nat formula-decl nil static_analysis nil)
-    (interval_list_idx formula-decl nil interval_list nil)
-    (edges const-decl "bool" c_digraphs_def digraphs)
-    (edge? const-decl "bool" digraphs_ digraphs)
-    (P_0c const-decl "[Δ -> bool]" wf_peg nil)
-    (σ_ts skolem-const-decl
-     "(topological_ordering?(dependency_graph(P_exp)))" static_analysis
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (x skolem-const-decl "V_N[V_N_b]" static_analysis nil)
+    (size const-decl "nat" c_digraphs_def digraphs)
+    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
      nil)
-    (= const-decl "[T, T -> boolean]" equalities nil))
+    (below type-eq-decl nil naturalnumbers nil)
+    (y skolem-const-decl "below(size(dependency_graph(P_exp)))"
+     static_analysis nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (surjective? const-decl "bool" functions nil)
+    (restrict const-decl "R" restrict nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (TRUE const-decl "bool" booleans nil))
    shostak))
  (σ_TCC1 0
   (σ_TCC1-1 nil 3847800543
@@ -2774,8 +2339,8 @@
         nil))
       nil))
     nil)
-   ((wf_nT type-eq-decl nil wf_peg nil)
-    (wf_nT? const-decl "bool" wf_peg nil)
+   ((loop_free type-eq-decl nil static_analysis nil)
+    (loop_free? const-decl "bool" static_analysis nil)
     (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
     (total_order? const-decl "bool" orders nil)
@@ -2801,9 +2366,7 @@
     (number nonempty-type-decl nil numbers nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (structural_WF? const-decl "bool" wf_peg nil)
-    (dependency_graph_wf_iff_dag formula-decl nil static_analysis nil))
+    (boolean nonempty-type-decl nil booleans nil))
    nil
    (σ subtype
     "c_topological_sort[V_N[V_N_b]].topological_sort(static_analysis.dependency_graph(static_analysis.P_exp))"
@@ -2885,8 +2448,8 @@
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil)
-    (wf_nT type-eq-decl nil wf_peg nil)
-    (wf_nT? const-decl "bool" wf_peg nil)
+    (loop_free type-eq-decl nil static_analysis nil)
+    (loop_free? const-decl "bool" static_analysis nil)
     (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
     (total_order? const-decl "bool" orders nil)
@@ -2947,119 +2510,196 @@
      nil)
     (number nonempty-type-decl nil numbers nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
-    (int_plus_int_is_int application-judgement "int" integers nil)
-    (interval_list_length formula-decl nil interval_list nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
-    (structural_WF? const-decl "bool" wf_peg nil)
-    (dependency_graph_wf_iff_dag formula-decl nil static_analysis nil)
+    (int_plus_int_is_int application-judgement "int" integers nil)
+    (interval_list_length formula-decl nil interval_list nil)
+    (data_dependency_graph formula-decl nil static_analysis nil)
     (injective? const-decl "bool" functions nil)
     (surjective? const-decl "bool" functions nil)
-    (P_exp skolem-const-decl "wf_nT[V_T, <=, V_N_b]" static_analysis
-     nil)
-    (length def-decl "nat" list_props nil)
-    (y skolem-const-decl "V_N[V_N_b]" static_analysis nil)
     (bijective? const-decl "bool" functions nil))
    nil
    (σ subtype
     "OUT_2(c_topological_sort[V_N[V_N_b]].topological_sort(static_analysis.dependency_graph(static_analysis.P_exp)))"
     "order[V_T, <=, V_N_b]")))
- (WF_nT?_TCC1 0
-  (WF_nT?_TCC1-1 nil 3847815911
-   ("" (expand "wf_nT?")
+ (WF_nT_rewrite 0
+  (WF_nT_rewrite-1 nil 3848133027
+   ("" (skolemty 1 "P_exp")
     (("" (assert)
-      (("" (skeep*) (("" (ground) (("" (postpone) nil nil)) nil)) nil))
+      (("" (expand "WF_nT?")
+        (("" (ground)
+          (("" (use "pattern_WF_topological_ordering")
+            (("" (assert)
+              (("" (hide 2)
+                (("" (expand "restrict")
+                  (("" (expand "σ")
+                    (("" (assert)
+                      ((""
+                        (typepred
+                         " OUT_2(topological_sort[V_N[V_N_b]](dependency_graph(P_exp)))")
+                        (("" (assert)
+                          (("" (expand "topological_ordering?")
+                            (("" (flatten)
+                              ((""
+                                (ground)
+                                ((""
+                                  (expand "bijective?")
+                                  ((""
+                                    (expand "injective?")
+                                    ((""
+                                      (expand "surjective?")
+                                      (("" (propax) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
       nil))
     nil)
-   nil nil
-   (WF_nT? subtype "static_analysis.P_exp" "wf_nT[V_T, <=, V_N_b]")))
- (WF_wf_nT_equivalent 0
-  (WF_wf_nT_equivalent-1 nil 3847815919
+   ((structural_WF? const-decl "bool" wf_peg nil)
+    (V_T formal-nonempty-type-decl nil static_analysis nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (loop_free? const-decl "bool" static_analysis nil)
+    (restrict_of_inj_is_inj application-judgement "(injective?[S, R])"
+     restrict nil)
+    (restrict const-decl "R" restrict nil)
+    (surjective? const-decl "bool" functions nil)
+    (injective? const-decl "bool" functions nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (c_digraph type-eq-decl nil c_digraphs_def digraphs)
+    (list type-decl nil list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (ComputableDigraph type-eq-decl nil c_digraphs_def digraphs)
+    (cdigraph const-decl "bool" c_digraphs_def digraphs)
+    (digraph_type type-eq-decl nil c_digraphs_imp digraphs)
+    (digraph_verts const-decl "[digraph_type -> [T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_edges const-decl "[digraph_type -> [T, T -> bool]]"
+     c_digraphs_imp digraphs)
+    (digraph_size const-decl "[digraph_type -> nat]" c_digraphs_imp
+     digraphs)
+    (set type-eq-decl nil sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (digraph_make const-decl "[v: (is_finite[T]),
+ {e: (is_finite[[T, T]]) |
+    FORALL (x, y: T): e(x, y) IMPLIES v(x) AND v(y)} ->
+   digraph_type]" c_digraphs_imp digraphs)
+    (vert? const-decl "bool" digraphs_ digraphs)
+    (vert type-eq-decl nil digraphs_ digraphs)
+    (size const-decl "nat" c_digraphs_def digraphs)
+    (below type-eq-decl nil naturalnumbers nil)
+    (topological_ordering? const-decl "bool" c_topological_sort
+     digraphs)
+    (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+    (below type-eq-decl nil nat_types nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (prewalk type-eq-decl nil walks_ digraphs)
+    (walk? const-decl "bool" walks_ digraphs)
+    (Walk type-eq-decl nil walks_ digraphs)
+    (path? const-decl "bool" paths_ digraphs)
+    (loop type-eq-decl nil c_topological_sort digraphs)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (is_dag const-decl "bool" c_topological_sort digraphs)
+    (topological_sort const-decl
+     "{res: [loop(G) + (topological_ordering?(G))] | IN?_2(res) ⇔ is_dag(G)}"
+     c_topological_sort digraphs)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil)
+    (V_N type-eq-decl nil nTpred_order nil) (peg type-decl nil peg nil)
+    (interp type-eq-decl nil wf_peg nil)
+    (WF_nT type-eq-decl nil static_analysis nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (loop_free type-eq-decl nil static_analysis nil)
+    (σ const-decl "order" static_analysis nil)
+    (pattern_WF_topological_ordering formula-decl nil static_analysis
+     nil)
+    (WF_nT? const-decl "bool" static_analysis nil))
+   shostak))
+ (dependency_graph_wf_iff_dag 0
+  (dependency_graph_wf_iff_dag-1 nil 3847451200
    ("" (skeep)
-    (("" (split)
-      (("1" (flatten)
-        (("1" (lemma "dependency_graph_wf_iff_dag")
-          (("1" (inst -1 "P_exp")
-            (("1" (assert)
-              (("1" (ground)
-                (("1" (hide -1 -2 -4 -5 -6)
-                  (("1" (lemma "sub_nT_and_wellformedness")
-                    (("1" (expand "pattern_WF?")
-                      (("1" (skeep)
-                        (("1"
-                          (inst - "σ(P_exp)" "A" "P_0c(P_exp)"
-                           "P_exp(A)")
+    (("" (expand "wf_nT?")
+      (("" (expand "WF_nT?")
+        (("" (ground)
+          (("1" (skeep)
+            (("1"
+              (typepred
+               "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
+              (("1" (assert)
+                (("1" (hide -1)
+                  (("1" (use "topological_sort_exists[V_N]")
+                    (("1" (assert)
+                      (("1" (inst 1 "σ!1")
+                        (("1" (use "pattern_WF_topological_ordering")
                           (("1" (assert)
-                            (("1" (hide 2)
-                              (("1"
-                                (skeep)
-                                (("1"
-                                  (typepred
-                                   "topological_sort[V_N[V_N_b]](dependency_graph(P_exp))")
-                                  (("1"
-                                    (assert)
-                                    (("1"
-                                      (expand "σ")
-                                      (("1"
-                                        (typepred
-                                         "OUT_2(topological_sort[V_N[V_N_b]](dependency_graph(P_exp)))")
-                                        (("1"
-                                          (name-replace
-                                           "res"
-                                           "topological_sort[V_N[V_N_b]]
-                           (dependency_graph(P_exp))")
-                                          (("1"
-                                            (name-replace
-                                             "σ_ts"
-                                             "OUT_2(res)")
-                                            (("1"
-                                              (expand
-                                               "topological_ordering?")
-                                              (("1"
-                                                (flatten)
-                                                (("1"
-                                                  (inst - A B)
-                                                  (("1"
-                                                    (assert)
-                                                    (("1"
-                                                      (expand "edge?")
-                                                      (("1"
-                                                        (assert)
-                                                        (("1"
-                                                          (expand
-                                                           "dependency_graph")
-                                                          (("1"
-                                                            (assert)
-                                                            (("1"
-                                                              (assert)
-                                                              nil
-                                                              nil))
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil)
-                                                   ("2"
-                                                    (expand
-                                                     "dependency_graph")
-                                                    (("2"
-                                                      (assert)
-                                                      nil
-                                                      nil))
-                                                    nil)
-                                                   ("3"
-                                                    (expand
-                                                     "dependency_graph")
-                                                    (("3"
-                                                      (assert)
-                                                      nil
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
+                            (("1" (skeep) (("1" (ground) nil nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("2" (inst 1 "σ(P_exp)")
+            (("2" (assert)
+              (("2" (use "pattern_WF_topological_ordering")
+                (("2" (assert)
+                  (("2" (expand "restrict")
+                    (("2" (assert)
+                      (("2"
+                        (typepred
+                         "OUT_2(topological_sort[V_N[V_N_b]](dependency_graph(P_exp)))")
+                        (("2" (expand "σ")
+                          (("2" (assert)
+                            (("2" (expand "topological_ordering?")
+                              (("2"
+                                (flatten)
+                                (("2"
+                                  (assert)
+                                  (("2"
+                                    (expand "bijective?")
+                                    (("2"
+                                      (expand "injective?")
+                                      (("2"
+                                        (expand "surjective?")
+                                        (("2" (ground) nil nil))
                                         nil))
                                       nil))
                                     nil))
@@ -3076,22 +2716,35 @@
               nil))
             nil))
           nil))
-        nil)
-       ("2" (ground)
-        (("2" (ground) (("2" (inst 1 "σ(P_exp)") nil nil)) nil)) nil))
+        nil))
       nil))
     nil)
-   ((dependency_graph_wf_iff_dag formula-decl nil static_analysis nil)
-    (WF_nT? const-decl "bool" static_analysis nil)
-    (wf_nT? const-decl "bool" wf_peg nil)
+   ((wf_nT? const-decl "bool" wf_peg nil)
+    (V_N_b formal-const-decl "posnat" static_analysis nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (V_T formal-nonempty-type-decl nil static_analysis nil)
     (structural_WF? const-decl "bool" wf_peg nil)
-    (pattern_WF? const-decl "bool" wf_peg nil)
-    (bijective? const-decl "bool" functions nil)
-    (order type-eq-decl nil wf_peg nil)
-    (wf_nT type-eq-decl nil wf_peg nil)
-    (σ const-decl "order" static_analysis nil)
-    (P_0c const-decl "[Δ -> bool]" wf_peg nil)
+    (loop_free? const-decl "bool" static_analysis nil)
     (dependency_graph const-decl "c_digraph[nat]" static_analysis nil)
+    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (topological_sort const-decl
      "{res: [loop(G) + (topological_ordering?(G))] | IN?_2(res) ⇔ is_dag(G)}"
      c_topological_sort digraphs)
@@ -3130,64 +2783,44 @@
     (finseq type-eq-decl nil finite_sequences nil)
     (below type-eq-decl nil nat_types nil)
     (c_digraph type-eq-decl nil c_digraphs_def digraphs)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (member def-decl "bool" list_props nil)
-    (A skolem-const-decl "V_N[V_N_b]" static_analysis nil)
-    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
-     nil)
-    (B skolem-const-decl "V_N[V_N_b]" static_analysis nil)
-    (vert const-decl "bool" c_digraphs_def digraphs)
-    (edge? const-decl "bool" digraphs_ digraphs)
-    (interval_list_idx formula-decl nil interval_list nil)
-    (idx_V_N_nat formula-decl nil static_analysis nil)
-    (map_adjacents_nth formula-decl nil static_analysis nil)
-    (interval_list_member formula-decl nil interval_list nil)
-    (nodes const-decl "node_ls" static_analysis nil)
-    (int_minus_int_is_int application-judgement "int" integers nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (real_ge_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (edges const-decl "bool" c_digraphs_def digraphs)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (sub_nT_and_wellformedness formula-decl nil static_analysis nil)
-    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
-    (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (V_T formal-nonempty-type-decl nil static_analysis nil)
     (V_N type-eq-decl nil nTpred_order nil)
-    (V_N_b formal-const-decl "posnat" static_analysis nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
     (< const-decl "bool" reals nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (>= const-decl "bool" reals nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (pattern_WF_topological_ordering formula-decl nil static_analysis
      nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (number nonempty-type-decl nil numbers nil))
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (σ!1 skolem-const-decl "order[V_T, <=, V_N_b]" static_analysis nil)
+    (P_exp skolem-const-decl "interp[V_T, <=, V_N_b]" static_analysis
+     nil)
+    (interval_list_length formula-decl nil interval_list nil)
+    (data_dependency_graph formula-decl nil static_analysis nil)
+    (nodes const-decl "node_ls" static_analysis nil)
+    (restrict const-decl "R" restrict nil)
+    (bijective? const-decl "bool" functions nil)
+    (order type-eq-decl nil wf_peg nil)
+    (restrict_of_inj_is_inj application-judgement "(injective?[S, R])"
+     restrict nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (topological_sort_exists formula-decl nil c_topological_sort
+     digraphs)
+    (injective? const-decl "bool" functions nil)
+    (surjective? const-decl "bool" functions nil)
+    (σ const-decl "order" static_analysis nil)
+    (loop_free type-eq-decl nil static_analysis nil)
+    (WF_nT? const-decl "bool" static_analysis nil))
    shostak))
- (WF_wf_nT_subtype 0
-  (WF_wf_nT_subtype-1 nil 3848058817
-   ("" (skolem-typepred)
-    (("" (use "WF_wf_nT_equivalent") (("" (assert) nil nil)) nil)) nil)
-   ((WF_wf_nT_equivalent formula-decl nil static_analysis nil)
-    (structural_WF? const-decl "bool" wf_peg nil)
-    (wf_nT? const-decl "bool" wf_peg nil)
-    (WF_nT type-eq-decl nil static_analysis nil)
+ (WF_nT_wf_nT_subtype 0
+  (WF_nT_wf_nT_subtype-1 nil 3848142350
+   ("" (skeep)
+    (("" (typepred "x")
+      (("" (use "dependency_graph_wf_iff_dag") (("" (assert) nil nil))
+        nil))
+      nil))
+    nil)
+   ((WF_nT type-eq-decl nil static_analysis nil)
     (WF_nT? const-decl "bool" static_analysis nil)
     (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
     (<= formal-const-decl "(total_order?[V_T])" static_analysis nil)
@@ -3214,8 +2847,11 @@
     (number nonempty-type-decl nil numbers nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
-    (boolean nonempty-type-decl nil booleans nil))
+    (boolean nonempty-type-decl nil booleans nil)
+    (wf_nT? const-decl "bool" wf_peg nil)
+    (structural_WF? const-decl "bool" wf_peg nil)
+    (dependency_graph_wf_iff_dag formula-decl nil static_analysis nil))
    nil
-   (WF_wf_nT_subtype subtype "static_analysis.x"
+   (WF_nT_wf_nT_subtype subtype "static_analysis.x"
     "wf_nT[V_T, <=, V_N_b]"))))
 

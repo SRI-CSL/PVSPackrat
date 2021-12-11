@@ -789,154 +789,6 @@
    (trueToGrammar termination
     "ast_props.trueToGrammar(ast_props.T, peg[ast_props.V_T, ast_props.<=, ast_props.V_N_b].e(ast_props.G), ast_props.P_exp)"
     "nil")))
- (unique_grammar 0
-  (unique_grammar-1 nil 3785505087
-   ("" (skolem 1 ("_" "_" "_" "P_exp"))
-    (("" (induct "T")
-      (("1" (grind) nil nil) ("2" (grind) nil nil)
-       ("3" (grind) nil nil) ("4" (grind) nil nil)
-       ("5" (grind) nil nil) ("6" (grind) nil nil)
-       ("7" (grind) nil nil) ("8" (grind) nil nil)
-       ("9" (skeep*)
-        (("9" (assert)
-          (("9" (flatten)
-            (("9" (inst -1 "e1(G1)" "e1(G2)")
-              (("9" (inst -2 "e2(G1)" "e2(G2)")
-                (("9" (assert) (("9" (decompose-equality 1) nil nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("10" (skeep*)
-        (("10" (assert)
-          (("10" (flatten)
-            (("10" (inst -1 "e1(G1)" "e1(G2)")
-              (("10" (inst -2 "e2(G1)" "e2(G2)")
-                (("10" (assert) (("10" (decompose-equality 1) nil nil))
-                  nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("11" (skeep*)
-        (("11" (assert)
-          (("11" (flatten)
-            (("11" (inst -1 "e(G1)" "e(G2)")
-              (("11" (assert) (("11" (decompose-equality 1) nil nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("12" (skeep*)
-        (("12" (assert)
-          (("12" (flatten)
-            (("12" (inst -1 "e(G1)" "e(G2)")
-              (("12" (assert) (("12" (decompose-equality 1) nil nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("13" (skeep*)
-        (("13" (assert)
-          (("13" (flatten)
-            (("13" (inst -1 "e(G1)" "e(G2)")
-              (("13" (assert) (("13" (decompose-equality 1) nil nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("14" (skeep*)
-        (("14" (assert)
-          (("14" (flatten)
-            (("14" (inst -1 "e(G1)" "e(G2)")
-              (("14" (assert) (("14" (decompose-equality 1) nil nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil)
-       ("15" (skeep*)
-        (("15" (assert)
-          (("15" (flatten)
-            (("15" (inst -1 "e(G1)" "e(G2)")
-              (("15" (assert) (("15" (decompose-equality 1) nil nil))
-                nil))
-              nil))
-            nil))
-          nil))
-        nil))
-      nil))
-    nil)
-   ((pre_ast type-decl nil pre_ast nil) (peg type-decl nil peg nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (interp type-eq-decl nil wf_peg nil)
-    (trueToGrammar def-decl "bool" ast_props nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (V_S formal-type-decl nil ast_props nil)
-    (bound formal-const-decl "nat" ast_props nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (V_N_b formal-const-decl "posnat" ast_props nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (> const-decl "bool" reals nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number nonempty-type-decl nil numbers nil)
-    (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (V_T formal-nonempty-type-decl nil ast_props nil)
-    (pre_ast_induction formula-decl nil pre_ast nil)
-    (below type-eq-decl nil pre_ast nil)
-    (<= const-decl "bool" reals nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (e1 shared-adt-accessor-decl
-     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
-    (prior? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (peg_seq_extensionality formula-decl nil peg nil)
-    (e2 shared-adt-accessor-decl
-     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
-    (TRUE const-decl "bool" booleans nil)
-    (peg_prior_extensionality formula-decl nil peg nil)
-    (e shared-adt-accessor-decl
-     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} -> peg]"
-     peg nil)
-    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
-    (peg_star_extensionality formula-decl nil peg nil)
-    (peg_plus_extensionality formula-decl nil peg nil)
-    (peg_opt_extensionality formula-decl nil peg nil)
-    (peg_notP_extensionality formula-decl nil peg nil)
-    (peg_andP_extensionality formula-decl nil peg nil))
-   shostak))
  (trueToInput_TCC1 0
   (trueToInput_TCC4-1 nil 3785531120 ("" (termination-tcc) nil nil)
    ((NOT const-decl "[bool -> bool]" booleans nil)
@@ -1648,8 +1500,6 @@
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (below type-eq-decl nil pre_ast nil)
     (< const-decl "bool" reals nil)
-    (inp2 skolem-const-decl "input" ast_props nil)
-    (inp1 skolem-const-decl "input" ast_props nil)
     (trueToInput def-decl "bool" ast_props nil)
     (input type-eq-decl nil ast_props nil)
     (inp_bound type-eq-decl nil ast_props nil)
@@ -1703,36 +1553,1525 @@
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (V_N type-eq-decl nil nTpred_order nil)
     (Wellformed_theorem formula-decl nil ast nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (T1 skolem-const-decl
-     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
-     ast_props nil)
-    (T1 skolem-const-decl
-     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
-     ast_props nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (T0 skolem-const-decl
-     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
-     ast_props nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (T0 skolem-const-decl
-     "{T: pre_ast[V_T, <=, V_N_b, bound, V_S] | ¬skip?[V_T, <=, V_N_b, bound, V_S](T)}"
-     ast_props nil)
-    (i skolem-const-decl "below(e)" ast_props nil)
-    (e skolem-const-decl "below[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil))
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil))
+   shostak))
+ (unique_grammar 0
+  (unique_grammar-1 nil 3785505087
+   ("" (skolem 1 ("_" "_" "_" "P_exp"))
+    (("" (induct "T")
+      (("1" (grind) nil nil) ("2" (grind) nil nil)
+       ("3" (grind) nil nil) ("4" (grind) nil nil)
+       ("5" (grind) nil nil) ("6" (grind) nil nil)
+       ("7" (grind) nil nil) ("8" (grind) nil nil)
+       ("9" (skeep*)
+        (("9" (assert)
+          (("9" (flatten)
+            (("9" (inst -1 "e1(G1)" "e1(G2)")
+              (("9" (inst -2 "e2(G1)" "e2(G2)")
+                (("9" (assert) (("9" (decompose-equality 1) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("10" (skeep*)
+        (("10" (assert)
+          (("10" (flatten)
+            (("10" (inst -1 "e1(G1)" "e1(G2)")
+              (("10" (inst -2 "e2(G1)" "e2(G2)")
+                (("10" (assert) (("10" (decompose-equality 1) nil nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("11" (skeep*)
+        (("11" (assert)
+          (("11" (flatten)
+            (("11" (inst -1 "e(G1)" "e(G2)")
+              (("11" (assert) (("11" (decompose-equality 1) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("12" (skeep*)
+        (("12" (assert)
+          (("12" (flatten)
+            (("12" (inst -1 "e(G1)" "e(G2)")
+              (("12" (assert) (("12" (decompose-equality 1) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("13" (skeep*)
+        (("13" (assert)
+          (("13" (flatten)
+            (("13" (inst -1 "e(G1)" "e(G2)")
+              (("13" (assert) (("13" (decompose-equality 1) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("14" (skeep*)
+        (("14" (assert)
+          (("14" (flatten)
+            (("14" (inst -1 "e(G1)" "e(G2)")
+              (("14" (assert) (("14" (decompose-equality 1) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil)
+       ("15" (skeep*)
+        (("15" (assert)
+          (("15" (flatten)
+            (("15" (inst -1 "e(G1)" "e(G2)")
+              (("15" (assert) (("15" (decompose-equality 1) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((pre_ast type-decl nil pre_ast nil) (peg type-decl nil peg nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (< const-decl "bool" reals nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (interp type-eq-decl nil wf_peg nil)
+    (trueToGrammar def-decl "bool" ast_props nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (V_S formal-type-decl nil ast_props nil)
+    (bound formal-const-decl "nat" ast_props nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (V_T formal-nonempty-type-decl nil ast_props nil)
+    (pre_ast_induction formula-decl nil pre_ast nil)
+    (below type-eq-decl nil pre_ast nil)
+    (<= const-decl "bool" reals nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (e1 shared-adt-accessor-decl
+     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
+    (prior? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (seq? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (peg_seq_extensionality formula-decl nil peg nil)
+    (e2 shared-adt-accessor-decl
+     "[{x: peg | seq?(x) OR prior?(x)} -> peg]" peg nil)
+    (TRUE const-decl "bool" booleans nil)
+    (peg_prior_extensionality formula-decl nil peg nil)
+    (e shared-adt-accessor-decl
+     "[{x: peg |      star?(x) OR plus?(x) OR opt?(x) OR notP?(x) OR andP?(x)} ->
+   peg]" peg nil)
+    (andP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (notP? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (opt? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (peg_star_extensionality formula-decl nil peg nil)
+    (peg_plus_extensionality formula-decl nil peg nil)
+    (peg_opt_extensionality formula-decl nil peg nil)
+    (peg_notP_extensionality formula-decl nil peg nil)
+    (peg_andP_extensionality formula-decl nil peg nil))
+   shostak))
+ (ast_rewrite_ε 0
+  (ast_rewrite_ε-1 nil 3848150451
+   ("" (induct "T")
+    (("1" (skeep*) nil nil) ("2" (skeep*) nil nil)
+     ("3" (skeep*) nil nil) ("4" (skeep*) nil nil)
+     ("5" (skeep*) nil nil) ("6" (skeep*) nil nil)
+     ("7" (skeep*) nil nil) ("8" (skeep*) nil nil)
+     ("9" (skeep*) nil nil) ("10" (skeep*) nil nil)
+     ("11" (skeep*) nil nil) ("12" (skeep*) nil nil)
+     ("13" (skeep*) nil nil) ("14" (skeep*) nil nil)
+     ("15" (skeep*) nil nil))
+    nil)
+   ((pre_ast type-decl nil pre_ast nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (ε? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (<= const-decl "bool" reals nil)
+    (below type-eq-decl nil pre_ast nil)
+    (ε adt-constructor-decl "[[below, below] -> (ε?)]" pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (V_S formal-type-decl nil ast_props nil)
+    (bound formal-const-decl "nat" ast_props nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (V_T formal-nonempty-type-decl nil ast_props nil)
+    (pre_ast_induction formula-decl nil pre_ast nil))
    shostak))
  (unique_tree 0
+  (unique_tree-3 "Try with rewrite" 3848207299
+   ("" (skolem 1 ("_" "_" "inp" "_" "P_exp"))
+    (("" (measure-induct+ "astMeasure(T1)" "T1")
+      (("" (name-replace "T1" "x!1")
+        (("" (induct "G")
+          (("1" (hide -)
+            (("1" (skeep)
+              (("1" (expand "trueToGrammar")
+                (("1" (lift-if)
+                  (("1" (assert)
+                    (("1" (typepred "T1")
+                      (("1" (typepred "T2")
+                        (("1" (ground)
+                          (("1" (lift-if)
+                            (("1" (assert)
+                              (("1"
+                                (ground)
+                                (("1"
+                                  (use "pre_ast_ε_eta" (ε?_var T1))
+                                  (("1"
+                                    (use "pre_ast_ε_eta" (ε?_var T2))
+                                    (("1" (assert) nil nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("2" (hide -)
+            (("2" (skeep*)
+              (("2" (expand "trueToGrammar")
+                (("2" (lift-if)
+                  (("2" (assert)
+                    (("2" (typepred "T1")
+                      (("2" (typepred "T2")
+                        (("2" (ground)
+                          (("2" (lift-if)
+                            (("2" (assert)
+                              (("2"
+                                (use "pre_ast_any_eta" (any?_var T1))
+                                (("2"
+                                  (use "pre_ast_any_eta" (any?_var T2))
+                                  (("2"
+                                    (assert)
+                                    (("2" (ground) nil nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("3" (hide -)
+            (("3" (skolem 1 "a")
+              (("3" (skeep)
+                (("3" (typepred "T1")
+                  (("3" (typepred "T2")
+                    (("3" (expand "trueToGrammar")
+                      (("3" (lift-if)
+                        (("3" (assert)
+                          (("3" (ground)
+                            (("3" (lift-if)
+                              (("3"
+                                (assert)
+                                (("3"
+                                  (use
+                                   "pre_ast_terminal_eta"
+                                   (terminal?_var T1))
+                                  (("3"
+                                    (use
+                                     "pre_ast_terminal_eta"
+                                     (terminal?_var T2))
+                                    (("3"
+                                      (assert)
+                                      (("3"
+                                        (replace -1 * RL)
+                                        (("3"
+                                          (replace -2 * RL)
+                                          (("3"
+                                            (assert)
+                                            (("3"
+                                              (decompose-equality -)
+                                              (("3"
+                                                (decompose-equality -)
+                                                (("3"
+                                                  (decompose-equality
+                                                   -)
+                                                  (("3"
+                                                    (decompose-equality
+                                                     -)
+                                                    (("3"
+                                                      (ground)
+                                                      nil
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("4" (skolem 1 ("a" "b"))
+            (("4" (hide -)
+              (("4" (skeep)
+                (("4" (typepred "T1")
+                  (("4" (typepred "T2")
+                    (("4" (expand "trueToGrammar")
+                      (("4" (lift-if)
+                        (("4" (assert)
+                          (("4" (ground)
+                            (("4" (lift-if)
+                              (("4"
+                                (assert)
+                                (("4"
+                                  (decompose-equality -)
+                                  (("4"
+                                    (decompose-equality -)
+                                    (("4"
+                                      (use
+                                       "pre_ast_range_eta"
+                                       (range?_var T1))
+                                      (("4"
+                                        (use
+                                         "pre_ast_range_eta"
+                                         (range?_var T2))
+                                        (("4" (ground) nil nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("5" (skolem 1 "A")
+            (("5" (skeep)
+              (("5" (typepred "T1")
+                (("5" (typepred "T2")
+                  (("5" (expand "trueToGrammar" -5)
+                    (("5" (expand "trueToGrammar" -6)
+                      (("5" (lift-if)
+                        (("5" (assert)
+                          (("5" (ground)
+                            (("5" (decompose-equality -)
+                              (("5"
+                                (decompose-equality -)
+                                (("5"
+                                  (use
+                                   "pre_ast_nonTerminal_eta"
+                                   (nonTerminal?_var T1))
+                                  (("5"
+                                    (use
+                                     "pre_ast_nonTerminal_eta"
+                                     (nonTerminal?_var T2))
+                                    (("5"
+                                      (inst -18 "T(T1)")
+                                      (("5"
+                                        (inst -18 "T(T2)" "P_exp(A)")
+                                        (("5"
+                                          (assert)
+                                          (("5"
+                                            (hide -)
+                                            (("5" (grind) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("6" (skolem 1 ("e1" "e2"))
+            (("6" (flatten)
+              (("6" (hide -1 -2)
+                (("6" (skeep)
+                  (("6" (expand "trueToGrammar" -3)
+                    (("6" (expand "trueToGrammar" -4)
+                      (("6" (lift-if)
+                        (("6" (assert)
+                          (("6" (typepred "T1")
+                            (("6" (typepred "T2")
+                              (("6"
+                                (ground)
+                                (("6"
+                                  (label "eq" 11)
+                                  (("6"
+                                    (hide +)
+                                    (("6"
+                                      (reveal "eq")
+                                      (("6"
+                                        (flatten)
+                                        (("6"
+                                          (inst-cp -30 "T1(T1)")
+                                          (("6"
+                                            (inst -31 "T1(T2)" "e1")
+                                            (("6"
+                                              (assert)
+                                              (("6"
+                                                (wf-ast "T1(T1)")
+                                                (("6"
+                                                  (assert)
+                                                  (("6"
+                                                    (flatten)
+                                                    (("6"
+                                                      (use
+                                                       "pre_ast_seq_eta"
+                                                       (seq?_var T1))
+                                                      (("6"
+                                                        (use
+                                                         "pre_ast_seq_eta"
+                                                         (seq?_var T2))
+                                                        (("6"
+                                                          (split -35)
+                                                          (("1"
+                                                            (replace
+                                                             -1
+                                                             *
+                                                             LR)
+                                                            (("1"
+                                                              (assert)
+                                                              (("1"
+                                                                (split
+                                                                 -5)
+                                                                (("1"
+                                                                  (assert)
+                                                                  (("1"
+                                                                    (assert)
+                                                                    (("1"
+                                                                      (use
+                                                                       "pre_ast_skip_eta"
+                                                                       (skip?_var
+                                                                        "T2(T2)"))
+                                                                      (("1"
+                                                                        (use
+                                                                         "pre_ast_skip_eta"
+                                                                         (skip?_var
+                                                                          "T2(T1)"))
+                                                                        (("1"
+                                                                          (assert)
+                                                                          nil
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil)
+                                                                 ("2"
+                                                                  (assert)
+                                                                  (("2"
+                                                                    (assert)
+                                                                    (("2"
+                                                                      (inst
+                                                                       -33
+                                                                       "T2(T1)")
+                                                                      (("2"
+                                                                        (inst
+                                                                         -33
+                                                                         "T2(T2)"
+                                                                         e2)
+                                                                        (("2"
+                                                                          (assert)
+                                                                          (("2"
+                                                                            (hide
+                                                                             -)
+                                                                            (("2"
+                                                                              (grind)
+                                                                              nil
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil)
+                                                           ("2"
+                                                            (hide -)
+                                                            (("2"
+                                                              (grind)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("7" (skolem 1 ("e1" "e2"))
+            (("7" (flatten)
+              (("7" (hide -1 -2)
+                (("7" (skeep)
+                  (("7" (typepred "T1")
+                    (("7" (typepred "T2")
+                      (("7" (expand "trueToGrammar" -5)
+                        (("7" (expand "trueToGrammar" -6)
+                          (("7" (lift-if)
+                            (("7" (assert)
+                              (("7"
+                                (ground)
+                                (("7"
+                                  (label "eq" 13)
+                                  (("7"
+                                    (hide +)
+                                    (("7"
+                                      (reveal "eq")
+                                      (("7"
+                                        (flatten)
+                                        (("7"
+                                          (use
+                                           "pre_ast_prior_eta"
+                                           (prior?_var T1))
+                                          (("7"
+                                            (use
+                                             "pre_ast_prior_eta"
+                                             (prior?_var T2))
+                                            (("7"
+                                              (inst-cp -24 "T1(T1)")
+                                              (("7"
+                                                (inst -25 "T1(T2)" e1)
+                                                (("7"
+                                                  (assert)
+                                                  (("7"
+                                                    (split -25)
+                                                    (("1"
+                                                      (replace -1 * LR)
+                                                      (("1"
+                                                        (wf-ast
+                                                         "T1(T2)")
+                                                        (("1"
+                                                          (assert)
+                                                          (("1"
+                                                            (flatten)
+                                                            (("1"
+                                                              (split
+                                                               -2)
+                                                              (("1"
+                                                                (assert)
+                                                                (("1"
+                                                                  (flatten)
+                                                                  (("1"
+                                                                    (assert)
+                                                                    (("1"
+                                                                      (inst
+                                                                       -
+                                                                       "T2(T1)")
+                                                                      (("1"
+                                                                        (inst
+                                                                         -
+                                                                         "T2(T2)"
+                                                                         e2)
+                                                                        (("1"
+                                                                          (assert)
+                                                                          (("1"
+                                                                            (hide
+                                                                             -)
+                                                                            (("1"
+                                                                              (grind)
+                                                                              nil
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil)
+                                                               ("2"
+                                                                (assert)
+                                                                (("2"
+                                                                  (flatten)
+                                                                  (("2"
+                                                                    (assert)
+                                                                    (("2"
+                                                                      (use
+                                                                       "pre_ast_skip_eta"
+                                                                       (skip?_var
+                                                                        "T2(T1)"))
+                                                                      (("2"
+                                                                        (use
+                                                                         "pre_ast_skip_eta"
+                                                                         (skip?_var
+                                                                          "T2(T2)"))
+                                                                        (("2"
+                                                                          (assert)
+                                                                          nil
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil)
+                                                     ("2"
+                                                      (hide -)
+                                                      (("2"
+                                                        (grind)
+                                                        nil
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("8" (skolem 1 "e")
+            (("8" (flatten)
+              (("8" (hide -1)
+                (("8" (skeep)
+                  (("8" (expand "trueToGrammar" -3)
+                    (("8" (expand "trueToGrammar" -4)
+                      (("8" (lift-if)
+                        (("8" (assert)
+                          (("8" (typepred "T1")
+                            (("8" (typepred "T2")
+                              (("8"
+                                (ground)
+                                (("8"
+                                  (label "eq" 15)
+                                  (("8"
+                                    (hide +)
+                                    (("8"
+                                      (reveal "eq")
+                                      (("8"
+                                        (flatten)
+                                        (("8"
+                                          (replaces)
+                                          (("8"
+                                            (assert)
+                                            (("8"
+                                              (inst-cp - "T0(T1)")
+                                              (("8"
+                                                (inst -22 "T0(T2)" "e")
+                                                (("8"
+                                                  (assert)
+                                                  (("8"
+                                                    (split -22)
+                                                    (("1"
+                                                      (replace -1 * LR)
+                                                      (("1"
+                                                        (wf-ast
+                                                         "T0(T2)")
+                                                        (("1"
+                                                          (assert)
+                                                          (("1"
+                                                            (flatten)
+                                                            (("1"
+                                                              (use
+                                                               "pre_ast_star_eta"
+                                                               (star?_var
+                                                                T1))
+                                                              (("1"
+                                                                (use
+                                                                 "pre_ast_star_eta"
+                                                                 (star?_var
+                                                                  T2))
+                                                                (("1"
+                                                                  (assert)
+                                                                  (("1"
+                                                                    (split
+                                                                     -4)
+                                                                    (("1"
+                                                                      (use
+                                                                       "pre_ast_skip_eta"
+                                                                       (skip?_var
+                                                                        "Ts(T1)"))
+                                                                      (("1"
+                                                                        (use
+                                                                         "pre_ast_skip_eta"
+                                                                         (skip?_var
+                                                                          "Ts(T2)"))
+                                                                        (("1"
+                                                                          (assert)
+                                                                          (("1"
+                                                                            (ground)
+                                                                            nil
+                                                                            nil))
+                                                                          nil)
+                                                                         ("2"
+                                                                          (assert)
+                                                                          nil
+                                                                          nil))
+                                                                        nil)
+                                                                       ("2"
+                                                                        (assert)
+                                                                        nil
+                                                                        nil))
+                                                                      nil)
+                                                                     ("2"
+                                                                      (assert)
+                                                                      (("2"
+                                                                        (flatten)
+                                                                        (("2"
+                                                                          (assert)
+                                                                          (("2"
+                                                                            (inst
+                                                                             -
+                                                                             "Ts(T1)")
+                                                                            (("2"
+                                                                              (inst
+                                                                               -
+                                                                               "Ts(T2)"
+                                                                               "star(e)")
+                                                                              (("2"
+                                                                                (assert)
+                                                                                (("2"
+                                                                                  (hide
+                                                                                   -)
+                                                                                  (("2"
+                                                                                    (grind)
+                                                                                    nil
+                                                                                    nil))
+                                                                                  nil))
+                                                                                nil))
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil)
+                                                     ("2"
+                                                      (hide -)
+                                                      (("2"
+                                                        (grind)
+                                                        nil
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("9" (skolem 1 "e")
+            (("9" (flatten)
+              (("9" (hide -1)
+                (("9" (skeep)
+                  (("9" (expand "trueToGrammar" -3)
+                    (("9" (expand "trueToGrammar" -4)
+                      (("9" (lift-if)
+                        (("9" (assert)
+                          (("9" (typepred "T1")
+                            (("9" (typepred "T2")
+                              (("9"
+                                (ground)
+                                (("9"
+                                  (label "eq" 17)
+                                  (("9"
+                                    (hide +)
+                                    (("9"
+                                      (reveal "eq")
+                                      (("9"
+                                        (flatten)
+                                        (("9"
+                                          (assert)
+                                          (("9"
+                                            (use
+                                             "pre_ast_plus_eta"
+                                             (plus?_var T1))
+                                            (("9"
+                                              (use
+                                               "pre_ast_plus_eta"
+                                               (plus?_var T2))
+                                              (("9"
+                                                (inst-cp -24 "T0(T1)")
+                                                (("9"
+                                                  (inst-cp
+                                                   -25
+                                                   "T0(T2)"
+                                                   e)
+                                                  (("9"
+                                                    (assert)
+                                                    (("9"
+                                                      (split -26)
+                                                      (("1"
+                                                        (replace
+                                                         -1
+                                                         *
+                                                         LR)
+                                                        (("1"
+                                                          (wf-ast
+                                                           "T0(T1)")
+                                                          (("1"
+                                                            (assert)
+                                                            (("1"
+                                                              (flatten)
+                                                              (("1"
+                                                                (split
+                                                                 -2)
+                                                                (("1"
+                                                                  (use
+                                                                   "pre_ast_skip_eta"
+                                                                   (skip?_var
+                                                                    "Ts(T1)"))
+                                                                  (("1"
+                                                                    (use
+                                                                     "pre_ast_skip_eta"
+                                                                     (skip?_var
+                                                                      "Ts(T2)"))
+                                                                    (("1"
+                                                                      (assert)
+                                                                      (("1"
+                                                                        (ground)
+                                                                        nil
+                                                                        nil))
+                                                                      nil)
+                                                                     ("2"
+                                                                      (assert)
+                                                                      nil
+                                                                      nil))
+                                                                    nil)
+                                                                   ("2"
+                                                                    (ground)
+                                                                    nil
+                                                                    nil))
+                                                                  nil)
+                                                                 ("2"
+                                                                  (assert)
+                                                                  (("2"
+                                                                    (flatten)
+                                                                    (("2"
+                                                                      (assert)
+                                                                      (("2"
+                                                                        (inst
+                                                                         -29
+                                                                         "Ts(T1)")
+                                                                        (("2"
+                                                                          (inst
+                                                                           -29
+                                                                           "Ts(T2)"
+                                                                           "plus(e)")
+                                                                          (("2"
+                                                                            (assert)
+                                                                            (("2"
+                                                                              (hide
+                                                                               -1)
+                                                                              (("2"
+                                                                                (grind)
+                                                                                nil
+                                                                                nil))
+                                                                              nil))
+                                                                            nil))
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil)
+                                                       ("2"
+                                                        (hide -)
+                                                        (("2"
+                                                          (grind)
+                                                          nil
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("10" (skolem 1 "e")
+            (("10" (flatten)
+              (("10" (hide -1)
+                (("10" (skeep)
+                  (("10" (expand "trueToGrammar" -3)
+                    (("10" (expand "trueToGrammar" -4)
+                      (("10" (lift-if)
+                        (("10" (assert)
+                          (("10" (typepred "T1")
+                            (("10" (typepred "T2")
+                              (("10"
+                                (ground)
+                                (("10"
+                                  (label "eq" 19)
+                                  (("10"
+                                    (hide +)
+                                    (("10"
+                                      (reveal "eq")
+                                      (("10"
+                                        (flatten)
+                                        (("10"
+                                          (assert)
+                                          (("10"
+                                            (use
+                                             "pre_ast_opt_eta"
+                                             (opt?_var T1))
+                                            (("10"
+                                              (use
+                                               "pre_ast_opt_eta"
+                                               (opt?_var T2))
+                                              (("10"
+                                                (swap-rel -1 -2)
+                                                (("10"
+                                                  (replace -1 * LR)
+                                                  (("10"
+                                                    (replace -2 * LR)
+                                                    (("10"
+                                                      (assert)
+                                                      (("10"
+                                                        (inst
+                                                         -18
+                                                         "T0(T1)")
+                                                        (("10"
+                                                          (inst
+                                                           -18
+                                                           "T0(T2)"
+                                                           "e")
+                                                          (("10"
+                                                            (assert)
+                                                            (("10"
+                                                              (split
+                                                               -18)
+                                                              (("1"
+                                                                (wf-ast
+                                                                 T1)
+                                                                (("1"
+                                                                  (assert)
+                                                                  (("1"
+                                                                    (flatten)
+                                                                    (("1"
+                                                                      (lift-if)
+                                                                      (("1"
+                                                                        (assert)
+                                                                        (("1"
+                                                                          (ground)
+                                                                          nil
+                                                                          nil))
+                                                                        nil))
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil)
+                                                               ("2"
+                                                                (hide
+                                                                 -1)
+                                                                (("2"
+                                                                  (grind)
+                                                                  nil
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("11" (skolem 1 "e")
+            (("11" (flatten)
+              (("11" (hide -1)
+                (("11" (skeep)
+                  (("11" (expand "trueToGrammar" -3)
+                    (("11" (expand "trueToGrammar" -4)
+                      (("11" (lift-if)
+                        (("11" (assert)
+                          (("11" (typepred "T1")
+                            (("11" (typepred "T2")
+                              (("11"
+                                (ground)
+                                (("11"
+                                  (label "eq" 21)
+                                  (("11"
+                                    (hide +)
+                                    (("11"
+                                      (reveal "eq")
+                                      (("11"
+                                        (flatten)
+                                        (("11"
+                                          (assert)
+                                          (("11"
+                                            (use
+                                             "pre_ast_notP_eta"
+                                             (notP?_var T1))
+                                            (("11"
+                                              (use
+                                               "pre_ast_notP_eta"
+                                               (notP?_var T2))
+                                              (("11"
+                                                (swap-rel -1 -2)
+                                                (("11"
+                                                  (replace -1 * LR)
+                                                  (("11"
+                                                    (replace -2 * LR)
+                                                    (("11"
+                                                      (inst
+                                                       -16
+                                                       "T(T1)")
+                                                      (("11"
+                                                        (inst
+                                                         -16
+                                                         "T(T2)"
+                                                         "e")
+                                                        (("11"
+                                                          (assert)
+                                                          (("11"
+                                                            (wf-ast T1)
+                                                            (("11"
+                                                              (assert)
+                                                              (("11"
+                                                                (lift-if)
+                                                                (("11"
+                                                                  (assert)
+                                                                  (("11"
+                                                                    (ground)
+                                                                    (("1"
+                                                                      (grind)
+                                                                      nil
+                                                                      nil)
+                                                                     ("2"
+                                                                      (grind)
+                                                                      nil
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("12" (skolem 1 "e")
+            (("12" (flatten)
+              (("12" (hide -1)
+                (("12" (skeep)
+                  (("12" (expand "trueToGrammar" -3)
+                    (("12" (expand "trueToGrammar" -4)
+                      (("12" (lift-if)
+                        (("12" (assert)
+                          (("12" (typepred "T1")
+                            (("12" (typepred "T2")
+                              (("12"
+                                (ground)
+                                (("12"
+                                  (label "eq" 23)
+                                  (("12"
+                                    (hide +)
+                                    (("12"
+                                      (reveal "eq")
+                                      (("12"
+                                        (flatten)
+                                        (("12"
+                                          (assert)
+                                          (("12"
+                                            (use
+                                             "pre_ast_andP_eta"
+                                             (andP?_var T1))
+                                            (("12"
+                                              (use
+                                               "pre_ast_andP_eta"
+                                               (andP?_var T2))
+                                              (("12"
+                                                (swap-rel -1 -2)
+                                                (("12"
+                                                  (replace -1 * LR)
+                                                  (("12"
+                                                    (replace -2 * LR)
+                                                    (("12"
+                                                      (inst
+                                                       -16
+                                                       "T(T1)")
+                                                      (("12"
+                                                        (inst
+                                                         -16
+                                                         "T(T2)"
+                                                         "e")
+                                                        (("12"
+                                                          (assert)
+                                                          (("12"
+                                                            (wf-ast T1)
+                                                            (("12"
+                                                              (assert)
+                                                              (("12"
+                                                                (assert)
+                                                                (("12"
+                                                                  (ground)
+                                                                  (("1"
+                                                                    (hide
+                                                                     -)
+                                                                    (("1"
+                                                                      (grind)
+                                                                      nil
+                                                                      nil))
+                                                                    nil)
+                                                                   ("2"
+                                                                    (hide
+                                                                     -)
+                                                                    (("2"
+                                                                      (grind)
+                                                                      nil
+                                                                      nil))
+                                                                    nil))
+                                                                  nil))
+                                                                nil))
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((well_founded? const-decl "bool" orders nil)
+    (measure_induction formula-decl nil measure_induction nil)
+    (V_T formal-nonempty-type-decl nil ast_props nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" ast_props nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (> const-decl "bool" reals nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "posnat" ast_props nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (bound formal-const-decl "nat" ast_props nil)
+    (V_S formal-type-decl nil ast_props nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (ast type-eq-decl nil ast nil)
+    (naturalnumber type-eq-decl nil naturalnumbers nil)
+    (astMeasure const-decl "nat" pre_ast nil)
+    (< const-decl "bool" reals nil)
+    (wf_nat formula-decl nil naturalnumbers nil)
+    (peg type-decl nil peg nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (<= const-decl "bool" reals nil)
+    (inp_bound type-eq-decl nil ast_props nil)
+    (input type-eq-decl nil ast_props nil)
+    (trueToInput def-decl "bool" ast_props nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (interp type-eq-decl nil wf_peg nil)
+    (trueToGrammar def-decl "bool" ast_props nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (below type-eq-decl nil pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (peg_induction formula-decl nil peg nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (astMeaningful? const-decl "bool" ast nil)
+    (astType? def-decl "astType" ast nil)
+    (ε? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (pre_ast_ε_eta formula-decl nil pre_ast nil)
+    (TRUE const-decl "bool" booleans nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (pre_ast_any_eta formula-decl nil pre_ast nil)
+    (any? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (terminal? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (pre_ast_terminal_eta formula-decl nil pre_ast nil)
+    (x shared-adt-accessor-decl
+     "[{x: pre_ast | any?(x) OR terminal?(x) OR range?(x)} -> V_T]"
+     pre_ast nil)
+    (a shared-adt-accessor-decl
+     "[{x: pre_ast | terminal?(x) OR range?(x)} -> V_T]" pre_ast nil)
+    (range? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (terminal adt-constructor-decl
+     "[[below, below, V_T, V_T] -> (terminal?)]" pre_ast nil)
+    (terminal adt-constructor-decl "[V_T -> (terminal?)]" peg nil)
+    (a shared-adt-accessor-decl
+     "[{x: peg | terminal?(x) OR range?(x)} -> V_T]" peg nil)
+    (range? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (terminal? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (b adt-accessor-decl "[(range?) -> V_T]" peg nil)
+    (b adt-accessor-decl "[(range?) -> V_T]" pre_ast nil)
+    (range adt-constructor-decl "[[V_T, V_T] -> (range?)]" peg nil)
+    (pre_ast_range_eta formula-decl nil pre_ast nil)
+    (A shared-adt-accessor-decl
+     "[{x: pre_ast | nonTerminal?(x) OR semantic?(x)} -> V_N[V_N_b]]"
+     pre_ast nil)
+    (semantic? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (nonTerminal? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast
+     nil)
+    (nonTerminal adt-constructor-decl
+     "[below(V_N_b) -> (nonTerminal?)]" peg nil)
+    (A adt-accessor-decl "[(nonTerminal?) -> below(V_N_b)]" peg nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (nonTerminal? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (pre_ast_nonTerminal_eta formula-decl nil pre_ast nil)
+    (notP? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (andP? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (T shared-adt-accessor-decl
+     "[{x: pre_ast | nonTerminal?(x) OR notP?(x) OR andP?(x)} ->
+   {T: pre_ast | ¬skip?(T)}]" pre_ast nil)
+    (T1 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
+    (seq? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (prior? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (T1 shared-adt-accessor-decl
+     "[{x: pre_ast | seq?(x) OR prior?(x)} -> {T: pre_ast | ¬skip?(T)}]"
+     pre_ast nil)
+    (pre_ast_seq_eta formula-decl nil pre_ast nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (T2 shared-adt-accessor-decl
+     "[{x: pre_ast | seq?(x) OR prior?(x)} -> pre_ast]" pre_ast nil)
+    (pre_ast_skip_eta formula-decl nil pre_ast nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
+    (pre_ast_prior_eta formula-decl nil pre_ast nil)
+    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
+     nil)
+    (T0 shared-adt-accessor-decl
+     "[{x: pre_ast | star?(x) OR plus?(x) OR opt?(x)} -> {T: pre_ast | ¬skip?(T)}]"
+     pre_ast nil)
+    (opt? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (pre_ast_star_eta formula-decl nil pre_ast nil)
+    (star adt-constructor-decl "[peg -> (star?)]" peg nil)
+    (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (Ts adt-accessor-decl "[d: {x: pre_ast | star?(x) OR plus?(x)} ->
+   {x1: pre_ast |
+      IF star?(d) THEN skip?(x1) OR star?(x1)
+      ELSE skip?(x1) OR plus?(x1) OR fail?(x1)
+      ENDIF}]" pre_ast nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IF const-decl "[boolean, T, T -> T]" if_def nil)
+    (plus adt-constructor-decl "[peg -> (plus?)]" peg nil)
+    (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
+    (pre_ast_plus_eta formula-decl nil pre_ast nil)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (opt adt-constructor-decl
+     "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (opt?)]" pre_ast
+     nil)
+    (pre_ast_opt_eta formula-decl nil pre_ast nil)
+    (notP adt-constructor-decl
+     "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (notP?)]" pre_ast
+     nil)
+    (pre_ast_notP_eta formula-decl nil pre_ast nil)
+    (andP adt-constructor-decl
+     "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (andP?)]" pre_ast
+     nil)
+    (pre_ast_andP_eta formula-decl nil pre_ast nil))
+   nil)
+  (unique_tree-2 "Try with rewrite" 3848205901
+   ("" (skolem 1 ("_" "_" "inp" "_" "P_exp"))
+    (("" (measure-induct+ "astMeasure(T1)" "T1")
+      (("" (name-replace "T1" "x!1")
+        (("" (induct "G")
+          (("1" (hide -)
+            (("1" (skeep)
+              (("1" (grind)
+                (("1" (wf-ast T1)
+                  (("1" (wf-ast T2)
+                    (("1" (assert)
+                      (("1" (flatten)
+                        (("1" (expand "trueToGrammar")
+                          (("1" (lift-if)
+                            (("1" (assert)
+                              (("1"
+                                (expand "astWellformed?")
+                                (("1"
+                                  (ground)
+                                  (("1"
+                                    (lift-if)
+                                    (("1" (assert) nil nil))
+                                    nil)
+                                   ("2"
+                                    (lift-if)
+                                    (("2" (assert) nil nil))
+                                    nil)
+                                   ("3"
+                                    (lift-if)
+                                    (("3" (assert) nil nil))
+                                    nil)
+                                   ("4"
+                                    (lift-if)
+                                    (("4"
+                                      (assert)
+                                      (("4"
+                                        (ground)
+                                        (("4"
+                                          (lemma
+                                           "ast_rewrite_ε"
+                                           (T T1))
+                                          (("4"
+                                            (lemma
+                                             "ast_rewrite_ε"
+                                             (T T2))
+                                            (("4" (assert) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil)
+           ("2" (postpone) nil nil) ("3" (postpone) nil nil)
+           ("4" (postpone) nil nil) ("5" (postpone) nil nil)
+           ("6" (postpone) nil nil) ("7" (postpone) nil nil)
+           ("8" (postpone) nil nil) ("9" (postpone) nil nil)
+           ("10" (postpone) nil nil) ("11" (postpone) nil nil)
+           ("12" (postpone) nil nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   nil shostak)
   (unique_tree-1 nil 3785562763
    ("" (skolem 1 ("_" "_" "inp" "_" "P_exp"))
     (("" (measure-induct+ "astMeasure(T1)" "T1")
@@ -3112,10 +4451,8 @@
     (¬ const-decl "[bool -> bool]" booleans nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (T shared-adt-accessor-decl
-     "[{x: pre_ast | nonTerminal?(x) OR notP?(x) OR andP?(x)} -> {T: pre_ast | ¬skip?(T)}]"
-     pre_ast nil)
-    (T1 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
+     "[{x: pre_ast | nonTerminal?(x) OR notP?(x) OR andP?(x)} ->
+   {T: pre_ast | ¬skip?(T)}]" pre_ast nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
@@ -3123,16 +4460,12 @@
      "[[below, below, V_N[V_N_b], {T: pre_ast | ¬skip?(T)}] -> (nonTerminal?)]"
      pre_ast nil)
     (pre_ast_nonTerminal_extensionality formula-decl nil pre_ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (seq? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (prior? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (T1 shared-adt-accessor-decl
      "[{x: pre_ast | seq?(x) OR prior?(x)} -> {T: pre_ast | ¬skip?(T)}]"
      pre_ast nil)
     (Wellformed_theorem formula-decl nil ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
     (pre_ast_skip_extensionality formula-decl nil pre_ast nil)
@@ -3142,28 +4475,27 @@
     (seq adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}, pre_ast] -> (seq?)]"
      pre_ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (pre_ast_prior_extensionality formula-decl nil pre_ast nil)
     (prior adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}, pre_ast] -> (prior?)]"
      pre_ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (skip adt-constructor-decl
           "[[below, below, peg[V_T, <=, V_N_b]] -> (skip?)]" pre_ast
           nil)
     (star? adt-recognizer-decl "[peg -> boolean]" peg nil)
     (star adt-constructor-decl "[peg -> (star?)]" peg nil)
     (pre_ast_star_extensionality formula-decl nil pre_ast nil)
-    (Ts adt-accessor-decl
-     "[d: {x: pre_ast | star?(x) OR plus?(x)} -> {x1: pre_ast | IF star?(d) THEN skip?(x1) OR star?(x1) ELSE skip?(x1) OR plus?(x1) OR fail?(x1) ENDIF}]"
-     pre_ast nil)
+    (Ts adt-accessor-decl "[d: {x: pre_ast | star?(x) OR plus?(x)} ->
+   {x1: pre_ast |
+      IF star?(d) THEN skip?(x1) OR star?(x1)
+      ELSE skip?(x1) OR plus?(x1) OR fail?(x1)
+      ENDIF}]" pre_ast nil)
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (IF const-decl "[boolean, T, T -> T]" if_def nil)
     (star adt-constructor-decl
-     "[[below, below, {T: pre_ast | ¬skip?(T)}, {T: pre_ast | skip?(T) OR star?(T)}] -> (star?)]"
-     pre_ast nil)
+     "[[below, below, {T: pre_ast | ¬skip?(T)},
+  {T: pre_ast | skip?(T) OR star?(T)}] ->
+   (star?)]" pre_ast nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (opt? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
@@ -3171,13 +4503,12 @@
      "[{x: pre_ast | star?(x) OR plus?(x) OR opt?(x)} -> {T: pre_ast | ¬skip?(T)}]"
      pre_ast nil)
     (plus adt-constructor-decl
-     "[[below, below, {T: pre_ast | ¬skip?(T)}, {T: pre_ast | skip?(T) OR plus?(T) OR fail?(T)}] -> (plus?)]"
-     pre_ast nil)
+     "[[below, below, {T: pre_ast | ¬skip?(T)},
+  {T: pre_ast | skip?(T) OR plus?(T) OR fail?(T)}] ->
+   (plus?)]" pre_ast nil)
     (pre_ast_plus_extensionality formula-decl nil pre_ast nil)
     (peg_plus_extensionality formula-decl nil peg nil)
     (G adt-accessor-decl "[(skip?) -> peg[V_T, <=, V_N_b]]" pre_ast
-     nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
      nil)
     (plus adt-constructor-decl "[peg -> (plus?)]" peg nil)
     (plus? adt-recognizer-decl "[peg -> boolean]" peg nil)
@@ -3189,13 +4520,9 @@
      "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (notP?)]" pre_ast
      nil)
     (pre_ast_notP_extensionality formula-decl nil pre_ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil)
     (andP adt-constructor-decl
      "[[below, below, {T: pre_ast | ¬skip?(T)}] -> (andP?)]" pre_ast
      nil)
-    (pre_ast_andP_extensionality formula-decl nil pre_ast nil)
-    (T2 skolem-const-decl "ast[V_T, <=, V_N_b, bound, V_S]" ast_props
-     nil))
+    (pre_ast_andP_extensionality formula-decl nil pre_ast nil))
    shostak)))
 

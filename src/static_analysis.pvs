@@ -7,7 +7,7 @@ static_analysis [
     ]:THEORY
 BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
-	IMPORTING more_list_props[V_N]
+	IMPORTING more_list_props[V_N] % From nasalib
 	IMPORTING c_topological_sort[V_N] % From nasalib
 	IMPORTING interval_list
 
@@ -59,7 +59,7 @@ BEGIN
          prior(e1, e2): union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0)),
          star(e): sub_nT(e, P_0),
          plus(e): sub_nT(e, P_0),
-         opt(e): sub_nT(e, P_0),
+         opt(e) : sub_nT(e, P_0),
          notP(e): sub_nT(e, P_0),
          andP(e): sub_nT(e, P_0)
       ENDCASES
@@ -68,8 +68,8 @@ BEGIN
 
 	union_sl_member_or : LEMMA ∀ A, (l1, l2 : node_ls) :
 	   member(A, union_sl(l1, l2)) = (member(A, l1) ∨ member(A, l2))
-
   AUTO_REWRITE+ union_sl_member_or
+
 
   sub_nT_and_wellformedness: LEMMA
      ∀ σ, A, P_0, G:
@@ -90,39 +90,33 @@ BEGIN
 	   node[V_N](dependency_graph(P_exp))(A) = A
 	data_dependency_graph: LEMMA ∀ P_exp:
 	   data(dependency_graph(P_exp)) = nodes(P_exp)
-  AUTO_REWRITE+ map_adjacents_nth, nodes, vert, size, finseq_appl, verts_in?, edges, digraph_edges, node_dependency_graph
+  AUTO_REWRITE+ map_adjacents_nth, nodes, vert, size, finseq_appl, verts_in?, edges, digraph_edges, node_dependency_graph, data_dependency_graph
 
-  % Some lemmas before the main result
-	pattern_WF_edge: LEMMA ∀ P_exp, σ :
-	   pattern_WF?(σ, P_exp) ⇔
-		 ∀ A, B : (edges(dependency_graph(P_exp))(A, B) ⇒
-		 σ(B) < σ(A))
+  % A permutation satisfying pattern_WF is a topological ordering of the dependency_graph
+	pattern_WF_topological_ordering : THEOREM ∀ P_exp, σ:
+	   pattern_WF?(σ, P_exp) ⇔ topological_ordering?[V_N](dependency_graph(P_exp))(σ)
 
-	pattern_WF_path: LEMMA ∀ P_exp, σ :
-	   pattern_WF?(σ, P_exp) ⇒
-		 ∀ (n:nat , w:Walk(dependency_graph(P_exp)), i, j: below(length(w))): i+n+1=j ⇒
-		 σ(w`seq(j)) < σ(w`seq(i))
-
-  % Main theorem
-  dependency_graph_wf_iff_dag :
-	   THEOREM ∀ P_exp :
-		 wf_nT?(P_exp) ⇔
-		 (IN?_2(topological_sort[V_N](dependency_graph(P_exp))) ∧ structural_WF?(P_exp))
+  loop_free?(P_exp) : bool = IN?_2(topological_sort[V_N](dependency_graph(P_exp)))
+	loop_free : TYPE = (loop_free?)
+	AUTO_REWRITE+ loop_free?
 
   % Order function :
-	σ(P_exp: wf_nT) : order = OUT_2(topological_sort[V_N](dependency_graph(P_exp)))
+	σ(P_exp: loop_free) : order = OUT_2(topological_sort[V_N](dependency_graph(P_exp)))
 	AUTO_REWRITE- σ
 
   % Equivalent notion of wellformedness for a set of non-terminals:
 	WF_nT?(P_exp) : bool =
-		  structural_WF?(P_exp) ∧
-			pattern_WF?(σ(P_exp), P_exp)
+		  structural_WF?(P_exp) ∧ loop_free?(P_exp)
   WF_nT : type = (WF_nT?)
-	AUTO_REWRITE+ WF_nT?
+	WF_nT_rewrite : LEMMA ∀ (P_exp: WF_nT):  WF_nT?(P_exp) = structural_WF?(P_exp) ∧ pattern_WF?(σ(P_exp), P_exp)
+	AUTO_REWRITE+ WF_nT_rewrite
 
-  WF_wf_nT_equivalent: THEOREM ∀ P_exp : wf_nT?(P_exp) ⇔ WF_nT?(P_exp)
-	WF_wf_nT_subtype : JUDGEMENT WF_nT SUBTYPE_OF wf_nT
+  % Main theorem
+  dependency_graph_wf_iff_dag :
+	   THEOREM ∀ P_exp :
+		 wf_nT?(P_exp) ⇔ WF_nT?(P_exp)
 
+  WF_nT_wf_nT_subtype: JUDGEMENT WF_nT SUBTYPE_OF wf_nT
 
 
 END static_analysis

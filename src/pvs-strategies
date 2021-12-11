@@ -16,3 +16,8 @@
 		(stop-rewrite "g_props"))
 	"Extend the grammar properties predicates (P_0c, P_sc, P_fc) and assert"
 	"g_props")
+
+(defstep skolemty (fnum constants)
+	(skolem fnum constants :skolem-typepreds? t)
+	"Skolem with explicit names and type-predicates"
+	"skolemty")
