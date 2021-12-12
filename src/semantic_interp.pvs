@@ -21,12 +21,19 @@ semantic_interp [
   IMPORTING ast[V_T, <=, V_N_b, bound, V_S]
   semantic_interp : TYPE = [V_N, semanticTree -> V_S]
   valuedTree?(T : pre_ast) : bool = semantic?(T) ∨ fail?(T)
+	T: VAR ast
+	P_inp: VAR semantic_interp
 
   % Function that transforms a tree into its semantic interpretation, recursively
   s_inp(P_inp: semantic_interp, T: pre_ast): RECURSIVE
         {T_p: semanticTree |
-           ((skip?(T) ⇔ skip?(T_p)) ∧ (star?(T) ⇔ star?(T_p)) ∧ ((astType?(T) = failure) ⇔ fail?(T_p)) ∧ ((plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))))) ∧
-            (s(T_p) = s(T)) ∧ (e(T_p) = e(T)) ∧ (astWellformed?(T) ⇒ (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))} =
+            (skip?(T) ⇔ skip?(T_p)) ∧
+					  (star?(T) ⇔ star?(T_p)) ∧
+					  (astType?(T) = failure ⇔ fail?(T_p)) ∧
+					  (plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))) ∧
+            (s(T_p) = s(T)) ∧
+						(e(T_p) = e(T)) ∧
+						(astWellformed?(T) ⇒ (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))} =
     IF (astType?(T) = failure) THEN fail(s(T), e(T))
     ELSE CASES T
            OF ε(s, e): T,
@@ -49,10 +56,10 @@ semantic_interp [
 
 
   % Usefull lemmas about semantic interpretation : it maintains most properties
-  semantic_interp_bounds  : LEMMA ∀ (T : ast, P_inp : semantic_interp) : (s(T) = s(s_inp(P_inp, T))) ∧ (e(T) = e(s_inp(P_inp, T)))
-  semantic_interp_type    : LEMMA ∀ (T : ast, P_inp : semantic_interp) : astType?(T) = astType?(s_inp(P_inp, T))
-  semantic_interp_theorem : LEMMA ∀ (T : ast, P_inp : semantic_interp) : astWellformed?(s_inp(P_inp, T))
-  semantic_interp_props   : LEMMA ∀ (T : ast, P_inp : semantic_interp) : (s(T) = s(s_inp(P_inp, T))) ∧ (e(T) = e(s_inp(P_inp, T))) ∧ (astType?(T) = astType?(s_inp(P_inp, T))) ∧ astWellformed?(s_inp(P_inp, T))
+  semantic_interp_bounds  : LEMMA ∀ T, P_inp : (s(T) = s(s_inp(P_inp, T))) ∧ (e(T) = e(s_inp(P_inp, T)))
+  semantic_interp_type    : LEMMA ∀ T, P_inp : astType?(T) = astType?(s_inp(P_inp, T))
+  semantic_interp_theorem : LEMMA ∀ T, P_inp : astWellformed?(s_inp(P_inp, T))
+  semantic_interp_props   : LEMMA ∀ T, P_inp : (s(T) = s(s_inp(P_inp, T))) ∧ (e(T) = e(s_inp(P_inp, T))) ∧ (astType?(T) = astType?(s_inp(P_inp, T))) ∧ astWellformed?(s_inp(P_inp, T))
 
   semppCompact(T : pre_ast, G : Δ) : pre_ast = IF (astType?(T) = failure) THEN fail(s(T), e(T)) ELSE T ENDIF
 

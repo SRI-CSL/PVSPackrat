@@ -9,14 +9,9 @@
         nil))
       nil))
     nil)
-   ((Wellformed_theorem formula-decl nil ast nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
+   ((astType? def-decl "astType" ast nil)
     (astWellformed? def-decl "bool" ast nil)
-    (astType? def-decl "astType" ast nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree_fail formula-decl nil pre_ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
@@ -40,16 +35,20 @@
     (nonneg_int nonempty-type-eq-decl nil integers nil)
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
-    (V_S formal-type-decl nil semantic_interp nil))
+    (V_S formal-type-decl nil semantic_interp nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC2 0
   (s_inp_TCC2-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
-   ((semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
@@ -73,19 +72,19 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC3 0
   (s_inp_TCC3-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
-   ((nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
@@ -109,6 +108,8 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (boolean nonempty-type-decl nil booleans nil)
@@ -116,14 +117,12 @@
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC4 0
   (s_inp_TCC4-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
-   ((nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
@@ -147,23 +146,26 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
+    (/= const-decl "boolean" notequal nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC5 0
   (s_inp_TCC5-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
-   ((nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
-    (in_range const-decl "bool" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
@@ -186,14 +188,17 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
+    (in_range const-decl "bool" ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC6 0
   (s_inp_TCC6-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -246,24 +251,13 @@
    ("" (skeep*)
     (("" (replace -1 * LR)
       (("" (assert)
-        (("" (split 2)
-          (("1" (grind) nil nil)
-           ("2" (flatten)
-            (("2" (expand "astWellformed?")
-              (("2" (flatten)
-                (("2" (expand "astMeaningful?")
-                  (("2" (assert)
-                    (("2" (expand "astType?")
-                      (("2" (lemma "Wellformed_theorem")
-                        (("2" (inst -1 "T1")
-                          (("2" (assert)
-                            (("2" (flatten) (("2" (assert) nil nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
+        (("" (flatten)
+          (("" (assert)
+            (("" (lift-if)
+              (("" (assert)
+                (("" (wf-ast T1)
+                  (("" (assert)
+                    (("" (flatten) (("" (assert) nil nil)) nil)) nil))
                   nil))
                 nil))
               nil))
@@ -272,46 +266,45 @@
         nil))
       nil))
     nil)
-   ((astType? def-decl "astType" ast nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
-    (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (pred type-eq-decl nil defined_types nil)
-    (total_order? const-decl "bool" orders nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
-    (number nonempty-type-decl nil numbers nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (> const-decl "bool" reals nil)
-    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (bound formal-const-decl "posnat" semantic_interp nil)
-    (V_S formal-type-decl nil semantic_interp nil)
-    (astWellformed? def-decl "bool" ast nil)
-    (astMeaningful? const-decl "bool" ast nil)
+   ((¬ const-decl "[bool -> bool]" booleans nil)
     (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
     (pre_ast type-decl nil pre_ast nil)
+    (Wellformed_theorem formula-decl nil ast nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (Wellformed_theorem formula-decl nil ast nil)
+    (V_S formal-type-decl nil semantic_interp nil)
+    (bound formal-const-decl "posnat" semantic_interp nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
+    (> const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (V_T formal-nonempty-type-decl nil semantic_interp nil)
+    (astType? def-decl "astType" ast nil)
+    (semanticTree_semantic formula-decl nil pre_ast nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semantic(semantic_interp.s, semantic_interp.e, semantic_interp.A, semantic_interp.P_inp(semantic_interp.A, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T)))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC8 0
   (s_inp_TCC8-1 nil 3774421781
    ("" (skeep)
@@ -322,8 +315,9 @@
     nil)
    ((real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (astMeaningful? const-decl "bool" ast nil)
+    (semanticTree_semantic formula-decl nil pre_ast nil)
     (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (boolean nonempty-type-decl nil booleans nil)
@@ -351,7 +345,7 @@
     (V_S formal-type-decl nil semantic_interp nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC9 0
   (s_inp_TCC9-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -450,6 +444,8 @@
     (pred type-eq-decl nil defined_types nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (Wellformed_theorem formula-decl nil ast nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (astType? def-decl "astType" ast nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
     (semanticTree? const-decl "bool" pre_ast nil)
     (< const-decl "bool" reals nil)
@@ -474,8 +470,6 @@
     (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
-    (astType? def-decl "astType" ast nil)
-    (astWellformed? def-decl "bool" ast nil)
     (pre_ast type-decl nil pre_ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
@@ -534,166 +528,117 @@
    ("" (skeep*)
     (("" (replace -1 * LR)
       (("" (assert)
-        (("" (typepred "v(P_inp, T1)")
-          (("1" (typepred "v(P_inp, T2)")
-            (("1" (assert)
-              (("1" (split 3)
-                (("1" (expand "semanticTree?")
-                  (("1" (skeep)
-                    (("1" (inst - "T_p")
-                      (("1" (inst - "T_p")
+        (("" (lift-if)
+          (("" (assert)
+            (("" (typepred "v(P_inp, T1)" "v(P_inp, T2)")
+              (("1" (assert)
+                (("1" (lift-if)
+                  (("1" (assert)
+                    (("1" (split 3)
+                      (("1" (flatten)
                         (("1" (assert)
-                          (("1" (expand "subterm" -1)
-                            (("1" (propax) nil nil)) nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil)
-                 ("2" (expand "astWellformed?" 1)
-                  (("2" (flatten)
-                    (("2" (assert)
-                      (("2" (flatten)
-                        (("2" (assert)
-                          (("2" (split 1)
-                            (("1" (flatten) (("1" (assert) nil nil))
-                              nil)
-                             ("2" (flatten) (("2" (assert) nil nil))
-                              nil)
-                             ("3" (flatten) (("3" (assert) nil nil))
-                              nil)
-                             ("4" (flatten) (("4" (assert) nil nil))
-                              nil)
-                             ("5" (flatten)
-                              (("5"
-                                (assert)
+                          (("1" (assert)
+                            (("1" (split 2)
+                              (("1" (assert) nil nil)
+                               ("2" (assert) nil nil)
+                               ("3" (flatten) nil nil)
+                               ("4"
+                                (flatten)
+                                (("4" (assert) nil nil))
+                                nil)
+                               ("5"
+                                (lift-if)
                                 (("5"
                                   (assert)
                                   (("5"
-                                    (expand "astType?" 4)
+                                    (flatten)
                                     (("5"
-                                      (lift-if 4)
-                                      (("5"
-                                        (split 4)
-                                        (("1" (propax) nil nil)
-                                         ("2"
-                                          (assert)
-                                          (("2"
-                                            (assert)
-                                            (("2"
-                                              (lemma
-                                               "Wellformed_theorem")
-                                              (("2"
-                                                (inst -1 "T1")
-                                                (("2"
-                                                  (assert)
-                                                  nil
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil))
+                                      (split 1)
+                                      (("1" (propax) nil nil)
+                                       ("2" (assert) nil nil))
                                       nil))
                                     nil))
                                   nil))
                                 nil))
-                              nil)
-                             ("6" (expand "astType?" 1)
-                              (("6"
-                                (lift-if 1)
-                                (("6"
-                                  (split 1)
-                                  (("1"
+                              nil))
+                            nil))
+                          nil))
+                        nil)
+                       ("2" (flatten)
+                        (("2" (split 2)
+                          (("1" (split 3)
+                            (("1" (propax) nil nil)
+                             ("2" (flatten)
+                              (("2"
+                                (split 2)
+                                (("1" (propax) nil nil)
+                                 ("2" (propax) nil nil))
+                                nil))
+                              nil))
+                            nil)
+                           ("2" (flatten)
+                            (("2" (assert)
+                              (("2"
+                                (flatten)
+                                (("2"
+                                  (split 4)
+                                  (("1" (propax) nil nil)
+                                   ("2" (assert) nil nil)
+                                   ("3"
                                     (flatten)
-                                    (("1"
-                                      (lift-if 1)
-                                      (("1"
-                                        (split 1)
-                                        (("1" (propax) nil nil)
-                                         ("2"
-                                          (flatten)
-                                          (("2" (assert) nil nil))
+                                    (("3" (assert) nil nil))
+                                    nil)
+                                   ("4" (assert) nil nil)
+                                   ("5"
+                                    (assert)
+                                    (("5"
+                                      (split 9)
+                                      (("1" (propax) nil nil)
+                                       ("2"
+                                        (flatten)
+                                        (("2" (assert) nil nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("6"
+                                    (split 9)
+                                    (("1" (propax) nil nil)
+                                     ("2"
+                                      (assert)
+                                      (("2"
+                                        (flatten)
+                                        (("2"
+                                          (assert)
+                                          (("2"
+                                            (assert)
+                                            (("2"
+                                              (wf-ast T1)
+                                              (("2" (assert) nil nil))
+                                              nil))
+                                            nil))
                                           nil))
                                         nil))
                                       nil))
                                     nil)
-                                   ("2"
-                                    (flatten)
-                                    (("2"
-                                      (split 2)
-                                      (("1"
-                                        (flatten)
+                                   ("7"
+                                    (lift-if)
+                                    (("7"
+                                      (assert)
+                                      (("7"
+                                        (split 1)
                                         (("1"
-                                          (lift-if 1)
-                                          (("1"
-                                            (split 1)
-                                            (("1"
-                                              (flatten)
-                                              (("1" (assert) nil nil))
-                                              nil)
-                                             ("2"
-                                              (flatten)
-                                              (("2"
-                                                (assert)
-                                                (("2"
-                                                  (split 2)
-                                                  (("1"
-                                                    (propax)
-                                                    nil
-                                                    nil)
-                                                   ("2"
-                                                    (flatten)
-                                                    (("2"
-                                                      (assert)
-                                                      (("2"
-                                                        (flatten)
-                                                        (("2"
-                                                          (assert)
-                                                          nil
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
-                                            nil))
-                                          nil))
-                                        nil)
-                                       ("2"
-                                        (flatten)
-                                        (("2"
-                                          (lift-if 3)
+                                          (flatten)
+                                          (("1" (assert) nil nil))
+                                          nil)
+                                         ("2"
+                                          (flatten)
                                           (("2"
-                                            (split 3)
+                                            (split 2)
                                             (("1"
                                               (flatten)
                                               (("1" (assert) nil nil))
                                               nil)
-                                             ("2"
-                                              (flatten)
-                                              (("2"
-                                                (assert)
-                                                (("2"
-                                                  (assert)
-                                                  (("2"
-                                                    (split 2)
-                                                    (("1"
-                                                      (flatten)
-                                                      (("1"
-                                                        (assert)
-                                                        nil
-                                                        nil))
-                                                      nil)
-                                                     ("2"
-                                                      (propax)
-                                                      nil
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil))
-                                              nil))
+                                             ("2" (propax) nil nil))
                                             nil))
                                           nil))
                                         nil))
@@ -708,19 +653,16 @@
                       nil))
                     nil))
                   nil))
-                nil))
-              nil)
-             ("2" (replace -12 * LR)
-              (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
-            nil)
-           ("2" (replace -1 * LR)
-            (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
+                nil)
+               ("2" (hide 2 3) (("2" (grind) nil nil)) nil)
+               ("3" (hide 2 3) (("3" (grind) nil nil)) nil))
+              nil))
+            nil))
           nil))
         nil))
       nil))
     nil)
    ((¬ const-decl "[bool -> bool]" booleans nil)
-    (astWellformed? def-decl "bool" ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (below type-eq-decl nil pre_ast nil)
@@ -731,7 +673,6 @@
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (failure adt-constructor-decl "(failure?)" ast nil)
     (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (astType? def-decl "astType" ast nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (astType type-decl nil ast nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
@@ -745,6 +686,18 @@
     (< const-decl "bool" reals nil)
     (semanticTree? const-decl "bool" pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (semanticTree_seq formula-decl nil pre_ast nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (V_S formal-type-decl nil semantic_interp nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (posnat nonempty-type-eq-decl nil integers nil)
@@ -767,23 +720,15 @@
     (total_order? const-decl "bool" orders nil)
     (pred type-eq-decl nil defined_types nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+    (astType? def-decl "astType" ast nil)
+    (astWellformed? def-decl "bool" ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].seq(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T1), semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T2))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC13 0
   (s_inp_TCC13-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -949,47 +894,34 @@
  (s_inp_TCC16 0
   (s_inp_TCC16-1 nil 3774421781
    ("" (skeep*)
-    (("" (assert)
-      (("" (typepred ("v(P_inp, T1)" "v(P_inp, T2)"))
-        (("1" (replace -23 * LR)
-          (("1" (assert)
-            (("1" (assert)
-              (("1" (split 3)
-                (("1" (expand "semanticTree?")
-                  (("1" (skeep)
-                    (("1" (inst - "T_p")
-                      (("1" (inst - "T_p")
-                        (("1" (expand "subterm" -1)
-                          (("1" (assert) (("1" (assert) nil nil)) nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil)
-                 ("2" (expand "astWellformed?" 1)
-                  (("2" (flatten)
+    (("" (replace -1 * LR)
+      (("" (assert)
+        (("" (lift-if)
+          (("" (assert)
+            (("" (typepred ("v(P_inp, T1)" "v(P_inp, T2)"))
+              (("1" (assert)
+                (("1" (split 3)
+                  (("1" (lift-if) (("1" (assert) nil nil)) nil)
+                   ("2" (flatten)
                     (("2" (assert)
-                      (("2" (replace -27 * LR)
+                      (("2" (flatten)
                         (("2" (split 1)
-                          (("1" (assert) nil nil)
-                           ("2" (flatten)
-                            (("2" (assert)
+                          (("1" (propax) nil nil)
+                           ("2" (assert)
+                            (("2" (wf-ast "v(P_inp, T1)")
                               (("2"
-                                (expand "astType?" 3)
+                                (assert)
                                 (("2"
-                                  (lift-if 3)
+                                  (flatten)
                                   (("2"
-                                    (lemma "Wellformed_theorem")
+                                    (assert)
                                     (("2"
-                                      (inst -1 "T1")
+                                      (wf-ast "v(P_inp, T2)")
                                       (("2"
                                         (assert)
                                         (("2"
-                                          (assert)
-                                          (("2"
-                                            (flatten)
-                                            (("2" (assert) nil nil))
-                                            nil))
+                                          (flatten)
+                                          (("2" (assert) nil nil))
                                           nil))
                                         nil))
                                       nil))
@@ -998,22 +930,31 @@
                                 nil))
                               nil))
                             nil)
-                           ("3" (flatten)
-                            (("3" (assert)
+                           ("3" (assert)
+                            (("3" (wf-ast "v(P_inp, T1)")
                               (("3"
-                                (flatten)
-                                (("3" (assert) nil nil))
+                                (assert)
+                                (("3"
+                                  (flatten)
+                                  (("3"
+                                    (assert)
+                                    (("3"
+                                      (flatten)
+                                      (("3" (assert) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
                                 nil))
                               nil))
                             nil)
-                           ("4" (flatten)
-                            (("4" (assert)
+                           ("4" (assert)
+                            (("4" (lift-if)
                               (("4"
-                                (lemma "Wellformed_theorem")
+                                (assert)
                                 (("4"
-                                  (inst -1 "T1")
+                                  (wf-ast "v(P_inp, T1)")
                                   (("4"
-                                    (assert)
+                                    (wf-ast "v(P_inp, T2)")
                                     (("4"
                                       (assert)
                                       (("4"
@@ -1021,101 +962,55 @@
                                         (("4"
                                           (assert)
                                           (("4"
-                                            (expand "astType?" 1)
+                                            (lift-if)
                                             (("4"
-                                              (lift-if 1)
+                                              (lift-if)
                                               (("4"
-                                                (split -6)
-                                                (("1"
-                                                  (assert)
+                                                (assert)
+                                                (("4"
+                                                  (split 1)
                                                   (("1"
                                                     (flatten)
                                                     (("1"
-                                                      (assert)
+                                                      (split 1)
                                                       (("1"
+                                                        (propax)
+                                                        nil
+                                                        nil)
+                                                       ("2"
                                                         (flatten)
-                                                        (("1"
+                                                        (("2"
                                                           (assert)
-                                                          (("1"
-                                                            (lemma
-                                                             "Wellformed_theorem")
-                                                            (("1"
-                                                              (inst
-                                                               -1
-                                                               "T1")
-                                                              (("1"
-                                                                (assert)
-                                                                (("1"
-                                                                  (lemma
-                                                                   "Wellformed_theorem")
-                                                                  (("1"
-                                                                    (inst
-                                                                     -1
-                                                                     "T2")
-                                                                    (("1"
-                                                                      (assert)
-                                                                      (("1"
-                                                                        (flatten)
-                                                                        (("1"
-                                                                          (assert)
-                                                                          (("1"
-                                                                            (split
-                                                                             1)
-                                                                            (("1"
-                                                                              (flatten)
-                                                                              (("1"
-                                                                                (lift-if
-                                                                                 1)
-                                                                                (("1"
-                                                                                  (split
-                                                                                   1)
-                                                                                  (("1"
-                                                                                    (propax)
-                                                                                    nil
-                                                                                    nil)
-                                                                                   ("2"
-                                                                                    (flatten)
-                                                                                    (("2"
-                                                                                      (assert)
-                                                                                      (("2"
-                                                                                        (flatten)
-                                                                                        (("2"
-                                                                                          (assert)
-                                                                                          nil
-                                                                                          nil))
-                                                                                        nil))
-                                                                                      nil))
-                                                                                    nil))
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil)
-                                                                             ("2"
-                                                                              (flatten)
-                                                                              (("2"
-                                                                                (assert)
-                                                                                (("2"
-                                                                                  (assert)
-                                                                                  nil
-                                                                                  nil))
-                                                                                nil))
-                                                                              nil))
-                                                                            nil))
-                                                                          nil))
-                                                                        nil))
-                                                                      nil))
-                                                                    nil))
-                                                                  nil))
-                                                                nil))
+                                                          (("2"
+                                                            (flatten)
+                                                            (("2"
+                                                              (assert)
+                                                              nil
+                                                              nil))
+                                                            nil))
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil)
+                                                   ("2"
+                                                    (flatten)
+                                                    (("2"
+                                                      (assert)
+                                                      (("2"
+                                                        (flatten)
+                                                        (("2"
+                                                          (assert)
+                                                          (("2"
+                                                            (flatten)
+                                                            (("2"
+                                                              (assert)
+                                                              nil
                                                               nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
                                                     nil))
-                                                  nil)
-                                                 ("2"
-                                                  (assert)
-                                                  nil
                                                   nil))
                                                 nil))
                                               nil))
@@ -1133,84 +1028,87 @@
                       nil))
                     nil))
                   nil))
+                nil)
+               ("2" (assert)
+                (("2" (replace -1 * LR)
+                  (("2" (hide 2 3) (("2" (grind) nil nil)) nil)) nil))
+                nil)
+               ("3" (hide 2 3)
+                (("3" (replace -1 * LR) (("3" (grind) nil nil)) nil))
                 nil))
               nil))
             nil))
-          nil)
-         ("2" (hide 2 3)
-          (("2" (replace -1 * LR) (("2" (grind) nil nil)) nil)) nil)
-         ("3" (hide 2 3)
-          (("3" (replace -1 * LR) (("3" (grind) nil nil)) nil)) nil))
+          nil))
         nil))
       nil))
     nil)
-   ((reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+   ((¬ const-decl "[bool -> bool]" booleans nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (below type-eq-decl nil pre_ast nil)
+    (<= const-decl "bool" reals nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (failure adt-constructor-decl "(failure?)" ast nil)
+    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (astType type-decl nil ast nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (astMeasure const-decl "nat" pre_ast nil)
+    (semantic_interp type-eq-decl nil semantic_interp nil)
+    (semanticTree type-eq-decl nil pre_ast nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (semanticTree_prior formula-decl nil pre_ast nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (pred type-eq-decl nil defined_types nil)
-    (total_order? const-decl "bool" orders nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
-    (number nonempty-type-decl nil numbers nil)
+    (V_S formal-type-decl nil semantic_interp nil)
+    (bound formal-const-decl "posnat" semantic_interp nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
+    (> const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
     (number_field_pred const-decl "[number -> boolean]" number_fields
      nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (> const-decl "bool" reals nil)
-    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (bound formal-const-decl "posnat" semantic_interp nil)
-    (V_S formal-type-decl nil semantic_interp nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (semanticTree type-eq-decl nil pre_ast nil)
-    (semantic_interp type-eq-decl nil semantic_interp nil)
-    (astMeasure const-decl "nat" pre_ast nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (IFF const-decl "[bool, bool -> bool]" booleans nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (astType type-decl nil ast nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (astType? def-decl "astType" ast nil)
-    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (failure adt-constructor-decl "(failure?)" ast nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (<= const-decl "bool" reals nil)
-    (below type-eq-decl nil pre_ast nil)
-    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (astWellformed? def-decl "bool" ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].prior(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T1), semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T2))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC17 0
   (s_inp_TCC17-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -1435,114 +1333,84 @@
  (s_inp_TCC21 0
   (s_inp_TCC21-1 nil 3774421781
    ("" (skeep*)
-    (("" (assert)
-      (("" (typepred ("v(P_inp, T0)" "v(P_inp, Ts)"))
-        (("1" (split 2)
-          (("1" (expand "semanticTree?")
-            (("1" (skeep)
-              (("1" (inst - "T_p")
-                (("1" (inst - "T_p")
-                  (("1" (expand "subterm" -1)
-                    (("1" (assert) (("1" (assert) nil nil)) nil)) nil))
-                  nil))
-                nil))
-              nil))
-            nil)
-           ("2" (assert)
-            (("2" (assert)
-              (("2" (replace -22 * LR) (("2" (assert) nil nil)) nil))
-              nil))
-            nil)
-           ("3" (replace -23 * LR) (("3" (assert) nil nil)) nil)
-           ("4" (expand "astWellformed?" 1)
-            (("4" (replace -23 * LR)
-              (("4" (assert)
-                (("4" (flatten)
-                  (("4" (assert)
-                    (("4" (flatten)
-                      (("4" (assert)
-                        (("4" (split 1)
-                          (("1" (flatten)
-                            (("1" (assert)
-                              (("1"
-                                (flatten)
-                                (("1" (assert) nil nil))
-                                nil))
-                              nil))
-                            nil)
+    (("" (replace -1 * LR)
+      (("" (wf-ast "v(P_inp, T0)")
+        (("1" (wf-ast "v(P_inp, Ts)")
+          (("1" (assert)
+            (("1" (assert)
+              (("1" (split 3)
+                (("1" (assert)
+                  (("1" (rewrite "semanticTree_star") nil nil)) nil)
+                 ("2" (propax) nil nil)
+                 ("3" (flatten)
+                  (("3" (assert)
+                    (("3" (flatten)
+                      (("3" (lift-if)
+                        (("3" (split 1)
+                          (("1" (propax) nil nil)
                            ("2" (flatten)
                             (("2" (assert)
                               (("2"
-                                (flatten)
-                                (("2" (assert) nil nil))
+                                (assert)
+                                (("2"
+                                  (flatten)
+                                  (("2" (assert) nil nil))
+                                  nil))
                                 nil))
                               nil))
                             nil)
-                           ("3" (assert)
-                            (("3" (expand "astType?" 1)
+                           ("3" (flatten)
+                            (("3" (assert)
                               (("3"
-                                (lemma "Wellformed_theorem")
-                                (("3"
-                                  (inst -1 "T0")
-                                  (("3"
+                                (flatten)
+                                (("3" (assert) nil nil))
+                                nil))
+                              nil))
+                            nil)
+                           ("4" (lift-if)
+                            (("4" (assert)
+                              (("4"
+                                (split 1)
+                                (("1" (propax) nil nil)
+                                 ("2"
+                                  (flatten)
+                                  (("2"
                                     (assert)
-                                    (("3"
-                                      (flatten)
-                                      (("3"
-                                        (split -2)
-                                        (("1" (assert) nil nil)
-                                         ("2"
+                                    (("2"
+                                      (split 2)
+                                      (("1"
+                                        (flatten)
+                                        (("1"
                                           (assert)
-                                          (("2"
-                                            (lift-if 1)
-                                            (("2"
-                                              (lift-if 1)
-                                              (("2"
+                                          (("1"
+                                            (lift-if)
+                                            (("1"
+                                              (assert)
+                                              (("1"
                                                 (split 1)
-                                                (("1"
-                                                  (assert)
-                                                  (("1"
-                                                    (flatten)
-                                                    (("1"
-                                                      (assert)
-                                                      (("1"
-                                                        (split 1)
-                                                        (("1"
-                                                          (propax)
-                                                          nil
-                                                          nil)
-                                                         ("2"
-                                                          (assert)
-                                                          nil
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil)
+                                                (("1" (propax) nil nil)
                                                  ("2"
                                                   (assert)
                                                   (("2"
                                                     (flatten)
-                                                    (("2"
-                                                      (lift-if 2)
-                                                      (("2"
-                                                        (assert)
-                                                        (("2"
-                                                          (split 2)
-                                                          (("1"
-                                                            (assert)
-                                                            nil
-                                                            nil)
-                                                           ("2"
-                                                            (propax)
-                                                            nil
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil))
+                                                    nil
                                                     nil))
                                                   nil))
                                                 nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil)
+                                       ("2"
+                                        (assert)
+                                        (("2"
+                                          (flatten)
+                                          (("2"
+                                            (lift-if)
+                                            (("2"
+                                              (split 2)
+                                              (("1" (assert) nil nil)
+                                               ("2" (propax) nil nil))
                                               nil))
                                             nil))
                                           nil))
@@ -1560,82 +1428,84 @@
                   nil))
                 nil))
               nil))
+            nil)
+           ("2" (hide 2 3)
+            (("2" (replace -14 * LR)
+              (("2" (hide -) (("2" (grind) nil nil)) nil)) nil))
             nil))
           nil)
-         ("2" (replace -1 * LR)
-          (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil)
-         ("3" (replace -1 * LR)
-          (("3" (hide - 2 3) (("3" (grind) nil nil)) nil)) nil))
+         ("2" (replace -2 * LR)
+          (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
         nil))
       nil))
     nil)
-   ((reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+   ((real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (semanticTree_star formula-decl nil pre_ast nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
     (Wellformed_theorem formula-decl nil ast nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (pred type-eq-decl nil defined_types nil)
-    (total_order? const-decl "bool" orders nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
-    (number nonempty-type-decl nil numbers nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (below type-eq-decl nil pre_ast nil)
+    (<= const-decl "bool" reals nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (failure adt-constructor-decl "(failure?)" ast nil)
+    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
+    (astType? def-decl "astType" ast nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (astType type-decl nil ast nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (astMeasure const-decl "nat" pre_ast nil)
+    (semantic_interp type-eq-decl nil semantic_interp nil)
+    (semanticTree type-eq-decl nil pre_ast nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (V_S formal-type-decl nil semantic_interp nil)
+    (bound formal-const-decl "posnat" semantic_interp nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
+    (> const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
     (number_field_pred const-decl "[number -> boolean]" number_fields
      nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (>= const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (> const-decl "bool" reals nil)
-    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (bound formal-const-decl "posnat" semantic_interp nil)
-    (V_S formal-type-decl nil semantic_interp nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (< const-decl "bool" reals nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (semanticTree type-eq-decl nil pre_ast nil)
-    (semantic_interp type-eq-decl nil semantic_interp nil)
-    (astMeasure const-decl "nat" pre_ast nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (IFF const-decl "[bool, bool -> bool]" booleans nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (astType type-decl nil ast nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (astType? def-decl "astType" ast nil)
-    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (failure adt-constructor-decl "(failure?)" ast nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (<= const-decl "bool" reals nil)
-    (below type-eq-decl nil pre_ast nil)
-    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (astWellformed? def-decl "bool" ast nil)
-    (¬ const-decl "[bool -> bool]" booleans nil)
+    (number nonempty-type-decl nil numbers nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
+    (total_order? const-decl "bool" orders nil)
+    (pred type-eq-decl nil defined_types nil)
+    (V_T formal-nonempty-type-decl nil semantic_interp nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T0), semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.Ts))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC22 0
   (s_inp_TCC22-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -1808,7 +1678,8 @@
         nil))
       nil))
     nil)
-   ((subterm adt-def-decl "boolean" pre_ast nil)
+   ((real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
     (OR const-decl "[bool, bool -> bool]" booleans nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
@@ -1868,9 +1739,9 @@
   (s_inp_TCC26-1 nil 3774421781
    ("" (skeep*)
     (("" (replace -1 * LR)
-      (("" (assert)
-        (("" (typepred ("v(P_inp, T0)" "v(P_inp, Ts)"))
-          (("1" (split 2)
+      (("" (typepred ("v(P_inp, T0)" "v(P_inp, Ts)"))
+        (("1" (assert)
+          (("1" (split 3)
             (("1" (expand "semanticTree?")
               (("1" (skeep)
                 (("1" (inst - "T_p")
@@ -1885,153 +1756,92 @@
                   nil))
                 nil))
               nil)
-             ("2" (expand "astWellformed?" 1)
-              (("2" (flatten)
-                (("2" (assert)
-                  (("2" (flatten)
-                    (("2" (lemma "Wellformed_theorem")
-                      (("2" (inst -1 "v(P_inp, T0)")
-                        (("2" (assert)
-                          (("2" (flatten)
-                            (("2" (split 1)
-                              (("1"
+             ("2" (propax) nil nil)
+             ("3" (assert)
+              (("3" (flatten)
+                (("3" (assert)
+                  (("3" (lemma "Wellformed_theorem")
+                    (("3" (inst -1 "v(P_inp, T0)")
+                      (("3" (flatten)
+                        (("3" (split 1)
+                          (("1" (propax) nil nil)
+                           ("2" (flatten)
+                            (("2" (assert)
+                              (("2"
                                 (flatten)
-                                (("1"
-                                  (assert)
-                                  (("1"
-                                    (flatten)
-                                    (("1" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("2"
+                                (("2" (assert) nil nil))
+                                nil))
+                              nil))
+                            nil)
+                           ("3" (flatten) (("3" (assert) nil nil)) nil)
+                           ("4" (lift-if)
+                            (("4" (assert)
+                              (("4"
                                 (flatten)
-                                (("2"
+                                (("4"
                                   (assert)
-                                  (("2"
-                                    (flatten)
-                                    (("2" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil)
-                               ("3"
-                                (expand "astType?" 1)
-                                (("3"
-                                  (assert)
-                                  (("3"
-                                    (split -2)
-                                    (("1" (assert) nil nil)
+                                  (("4"
+                                    (split 1)
+                                    (("1" (propax) nil nil)
                                      ("2"
-                                      (assert)
+                                      (flatten)
                                       (("2"
-                                        (lift-if 1)
+                                        (assert)
                                         (("2"
-                                          (lift-if 1)
+                                          (flatten)
                                           (("2"
-                                            (lift-if 1)
-                                            (("2"
-                                              (split 1)
+                                            (split 2)
+                                            (("1"
+                                              (assert)
                                               (("1"
-                                                (assert)
+                                                (flatten)
                                                 (("1"
-                                                  (flatten)
+                                                  (assert)
+                                                  nil
+                                                  nil))
+                                                nil))
+                                              nil)
+                                             ("2"
+                                              (flatten)
+                                              (("2"
+                                                (split 2)
+                                                (("1"
+                                                  (assert)
                                                   (("1"
-                                                    (assert)
+                                                    (flatten)
                                                     (("1"
-                                                      (split 1)
-                                                      (("1"
-                                                        (propax)
-                                                        nil
-                                                        nil)
-                                                       ("2"
-                                                        (flatten)
-                                                        (("2"
-                                                          (split)
-                                                          (("1"
-                                                            (propax)
-                                                            nil
-                                                            nil)
-                                                           ("2"
-                                                            (assert)
-                                                            nil
-                                                            nil))
-                                                          nil))
-                                                        nil))
+                                                      (assert)
+                                                      nil
                                                       nil))
                                                     nil))
-                                                  nil))
-                                                nil)
-                                               ("2"
-                                                (flatten)
-                                                (("2"
-                                                  (split)
-                                                  (("1"
-                                                    (split)
-                                                    (("1"
-                                                      (split)
-                                                      (("1"
-                                                        (propax)
-                                                        nil
-                                                        nil)
-                                                       ("2"
-                                                        (flatten)
+                                                  nil)
+                                                 ("2"
+                                                  (flatten)
+                                                  (("2"
+                                                    (assert)
+                                                    (("2"
+                                                      (lift-if)
+                                                      (("2"
+                                                        (assert)
                                                         (("2"
-                                                          (split 1)
+                                                          (split 2)
                                                           (("1"
-                                                            (propax)
-                                                            nil
+                                                            (assert)
+                                                            (("1"
+                                                              (assert)
+                                                              nil
+                                                              nil))
                                                             nil)
                                                            ("2"
                                                             (flatten)
                                                             (("2"
-                                                              (split 2)
-                                                              (("1"
-                                                                (propax)
-                                                                nil
-                                                                nil)
-                                                               ("2"
-                                                                (flatten)
-                                                                (("2"
-                                                                  (assert)
-                                                                  nil
-                                                                  nil))
-                                                                nil))
-                                                              nil))
-                                                            nil))
-                                                          nil))
-                                                        nil))
-                                                      nil)
-                                                     ("2"
-                                                      (flatten)
-                                                      (("2"
-                                                        (split 1)
-                                                        (("1"
-                                                          (propax)
-                                                          nil
-                                                          nil)
-                                                         ("2"
-                                                          (flatten)
-                                                          (("2"
-                                                            (assert)
-                                                            (("2"
-                                                              (split 2)
-                                                              (("1"
-                                                                (propax)
-                                                                nil
-                                                                nil)
-                                                               ("2"
-                                                                (assert)
-                                                                nil
-                                                                nil))
+                                                              (assert)
+                                                              nil
                                                               nil))
                                                             nil))
                                                           nil))
                                                         nil))
                                                       nil))
-                                                    nil)
-                                                   ("2"
-                                                    (ground)
-                                                    nil
                                                     nil))
                                                   nil))
                                                 nil))
@@ -2052,82 +1862,82 @@
                   nil))
                 nil))
               nil))
-            nil)
-           ("2" (replace -1 * LR)
-            (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil)
-           ("3" (replace -1 * LR)
-            (("3" (hide - 2 3) (("3" (grind) nil nil)) nil)) nil))
-          nil))
+            nil))
+          nil)
+         ("2" (hide 2 3) (("2" (grind) nil nil)) nil)
+         ("3" (hide 2 3) (("3" (grind) nil nil)) nil))
         nil))
       nil))
     nil)
-   ((¬ const-decl "[bool -> bool]" booleans nil)
-    (astWellformed? def-decl "bool" ast nil)
-    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (below type-eq-decl nil pre_ast nil)
-    (<= const-decl "bool" reals nil)
-    (OR const-decl "[bool, bool -> bool]" booleans nil)
-    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (failure adt-constructor-decl "(failure?)" ast nil)
-    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (astType? def-decl "astType" ast nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (astType type-decl nil ast nil)
-    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (IFF const-decl "[bool, bool -> bool]" booleans nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (astMeasure const-decl "nat" pre_ast nil)
-    (semantic_interp type-eq-decl nil semantic_interp nil)
-    (semanticTree type-eq-decl nil pre_ast nil)
-    (V_N type-eq-decl nil nTpred_order nil)
-    (< const-decl "bool" reals nil)
-    (semanticTree? const-decl "bool" pre_ast nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (V_S formal-type-decl nil semantic_interp nil)
-    (bound formal-const-decl "posnat" semantic_interp nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
-    (> const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (>= const-decl "bool" reals nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number nonempty-type-decl nil numbers nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (V_T formal-nonempty-type-decl nil semantic_interp nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (> const-decl "bool" reals nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (bound formal-const-decl "posnat" semantic_interp nil)
+    (V_S formal-type-decl nil semantic_interp nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
+    (< const-decl "bool" reals nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (semanticTree type-eq-decl nil pre_ast nil)
+    (semantic_interp type-eq-decl nil semantic_interp nil)
+    (astMeasure const-decl "nat" pre_ast nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (IFF const-decl "[bool, bool -> bool]" booleans nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (astType type-decl nil ast nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (astType? def-decl "astType" ast nil)
+    (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
+    (failure adt-constructor-decl "(failure?)" ast nil)
+    (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (plus? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (OR const-decl "[bool, bool -> bool]" booleans nil)
+    (<= const-decl "bool" reals nil)
+    (below type-eq-decl nil pre_ast nil)
+    (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
+    (astWellformed? def-decl "bool" ast nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T0), semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.Ts))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC27 0
   (s_inp_TCC27-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((/= const-decl "boolean" notequal nil)
@@ -2244,62 +2054,30 @@
     (("" (replace -1 * LR)
       (("" (assert)
         (("" (typepred "v(P_inp, T0)")
-          (("1" (split 2)
-            (("1" (expand "semanticTree?")
-              (("1" (skeep)
-                (("1" (inst - "T_p")
-                  (("1" (expand "subterm" -1) (("1" (assert) nil nil))
-                    nil))
-                  nil))
-                nil))
-              nil)
-             ("2" (expand "astWellformed?" 1)
-              (("2" (flatten)
-                (("2" (lemma "Wellformed_theorem")
-                  (("2" (inst - "T0")
-                    (("2" (assert)
-                      (("2" (flatten)
-                        (("2" (split 1)
-                          (("1" (propax) nil nil)
-                           ("2" (assert)
-                            (("2" (flatten) (("2" (assert) nil nil))
-                              nil))
-                            nil)
-                           ("3" (flatten) (("3" (assert) nil nil)) nil)
-                           ("4" (expand "astType?" 1)
-                            (("4" (assert)
-                              (("4"
-                                (lift-if 1)
-                                (("4"
-                                  (split 1)
-                                  (("1"
-                                    (flatten)
-                                    (("1" (assert) nil nil))
-                                    nil)
-                                   ("2"
-                                    (flatten)
-                                    (("2" (assert) nil nil))
-                                    nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
+          (("1" (assert)
+            (("1" (lift-if)
+              (("1" (assert)
+                (("1" (wf-ast T0)
+                  (("1" (ground)
+                    (("1" (lift-if)
+                      (("1" (assert) (("1" (ground) nil nil)) nil))
+                      nil)
+                     ("2" (lift-if) (("2" (ground) nil nil)) nil)
+                     ("3" (lift-if) (("3" (ground) nil nil)) nil)
+                     ("4" (lift-if) (("4" (ground) nil nil)) nil)
+                     ("5" (lift-if) (("5" (ground) nil nil)) nil))
                     nil))
                   nil))
                 nil))
               nil))
             nil)
-           ("2" (replace -1 * LR)
-            (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
+           ("2" (lift-if)
+            (("2" (hide 2 3) (("2" (grind) nil nil)) nil)) nil))
           nil))
         nil))
       nil))
     nil)
    ((¬ const-decl "[bool -> bool]" booleans nil)
-    (astWellformed? def-decl "bool" ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (below type-eq-decl nil pre_ast nil)
@@ -2310,7 +2088,6 @@
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (failure adt-constructor-decl "(failure?)" ast nil)
     (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (astType? def-decl "astType" ast nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (astType type-decl nil ast nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
@@ -2324,6 +2101,18 @@
     (< const-decl "bool" reals nil)
     (semanticTree? const-decl "bool" pre_ast nil)
     (pre_ast type-decl nil pre_ast nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (semanticTree_opt formula-decl nil pre_ast nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
     (V_S formal-type-decl nil semantic_interp nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (posnat nonempty-type-eq-decl nil integers nil)
@@ -2346,25 +2135,15 @@
     (total_order? const-decl "bool" orders nil)
     (pred type-eq-decl nil defined_types nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+    (astType? def-decl "astType" ast nil)
+    (astWellformed? def-decl "bool" ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].opt(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T0))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC30 0
   (s_inp_TCC30-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -2478,28 +2257,31 @@
   (s_inp_TCC32-1 nil 3774421781
    ("" (skeep*)
     (("" (assert)
-      (("" (replace -1 * LR)
-        (("" (typepred "v(P_inp, T1)")
-          (("1" (split 2)
-            (("1" (expand "semanticTree?")
-              (("1" (skeep)
-                (("1" (inst - "T_p")
-                  (("1" (expand "subterm" -1) (("1" (assert) nil nil))
-                    nil))
-                  nil))
-                nil))
-              nil)
-             ("2" (assert) nil nil) ("3" (assert) nil nil)
-             ("4" (expand "astWellformed?" 1)
-              (("4" (flatten)
-                (("4" (assert)
-                  (("4" (lemma "Wellformed_theorem")
-                    (("4" (inst -1 "T1")
-                      (("4" (assert)
-                        (("4" (flatten)
-                          (("4" (assert)
-                            (("4" (expand "astType?" 1)
-                              (("4" (ground) nil nil)) nil))
+      (("" (assert)
+        (("" (lift-if)
+          (("" (assert)
+            (("" (split 1)
+              (("1" (propax) nil nil)
+               ("2" (assert)
+                (("2" (replace -1 * LR)
+                  (("2" (assert)
+                    (("2" (wf-ast T1)
+                      (("2" (wf-ast T)
+                        (("2" (typepred "v(P_inp, T1)")
+                          (("1" (assert)
+                            (("1" (assert)
+                              (("1"
+                                (lift-if)
+                                (("1"
+                                  (assert)
+                                  (("1" (ground) nil nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil)
+                           ("2" (replace -3 * LR)
+                            (("2" (hide - 2 3 4)
+                              (("2" (grind) nil nil)) nil))
                             nil))
                           nil))
                         nil))
@@ -2508,15 +2290,39 @@
                   nil))
                 nil))
               nil))
-            nil)
-           ("2" (replace -1 * LR)
-            (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
+            nil))
           nil))
         nil))
       nil))
     nil)
-   ((¬ const-decl "[bool -> bool]" booleans nil)
-    (astWellformed? def-decl "bool" ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astType? def-decl "astType" ast nil)
+    (V_T formal-nonempty-type-decl nil semantic_interp nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (> const-decl "bool" reals nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
+    (nonneg_int nonempty-type-eq-decl nil integers nil)
+    (posnat nonempty-type-eq-decl nil integers nil)
+    (bound formal-const-decl "posnat" semantic_interp nil)
+    (V_S formal-type-decl nil semantic_interp nil)
+    (pre_ast type-decl nil pre_ast nil)
+    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
+    (¬ const-decl "[bool -> bool]" booleans nil)
+    (Wellformed_theorem formula-decl nil ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (below type-eq-decl nil pre_ast nil)
@@ -2527,11 +2333,9 @@
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (failure adt-constructor-decl "(failure?)" ast nil)
     (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
-    (astType? def-decl "astType" ast nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
     (astType type-decl nil ast nil)
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
-    (skip? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (IFF const-decl "[bool, bool -> bool]" booleans nil)
     (AND const-decl "[bool, bool -> bool]" booleans nil)
     (astMeasure const-decl "nat" pre_ast nil)
@@ -2540,36 +2344,12 @@
     (V_N type-eq-decl nil nTpred_order nil)
     (< const-decl "bool" reals nil)
     (semanticTree? const-decl "bool" pre_ast nil)
-    (pre_ast type-decl nil pre_ast nil)
-    (V_S formal-type-decl nil semantic_interp nil)
-    (bound formal-const-decl "posnat" semantic_interp nil)
-    (posnat nonempty-type-eq-decl nil integers nil)
-    (nonneg_int nonempty-type-eq-decl nil integers nil)
-    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_interp nil)
-    (> const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (>= const-decl "bool" reals nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number nonempty-type-decl nil numbers nil)
-    (<= formal-const-decl "(total_order?[V_T])" semantic_interp nil)
-    (total_order? const-decl "bool" orders nil)
-    (pred type-eq-decl nil defined_types nil)
-    (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (NOT const-decl "[bool -> bool]" booleans nil)
     (real_lt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree_notP formula-decl nil pre_ast nil)
     (nnint_plus_posint_is_posint application-judgement "posint"
      integers nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
@@ -2581,7 +2361,7 @@
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].notP(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC33 0
   (s_inp_TCC33-1 nil 3774421781 ("" (termination-tcc) nil nil)
    ((astType? def-decl "astType" ast nil)
@@ -2698,58 +2478,18 @@
       (("" (replace -1 * LR)
         (("" (assert)
           (("" (typepred "v(P_inp, T1)")
-            (("1" (split 2)
-              (("1" (expand "semanticTree?")
-                (("1" (skeep)
-                  (("1" (inst - "T_p")
-                    (("1" (expand "subterm" -1)
-                      (("1" (assert) nil nil)) nil))
-                    nil))
-                  nil))
-                nil)
-               ("2" (expand "astWellformed?" 1)
-                (("2" (flatten)
-                  (("2" (assert)
-                    (("2" (lemma "Wellformed_theorem")
-                      (("2" (inst -1 "T1")
-                        (("2" (assert)
-                          (("2" (assert)
-                            (("2" (flatten)
-                              (("2"
-                                (assert)
-                                (("2"
-                                  (expand "astType?" 1)
-                                  (("2" (propax) nil nil))
-                                  nil))
-                                nil))
-                              nil))
-                            nil))
-                          nil))
-                        nil))
-                      nil))
-                    nil))
-                  nil))
-                nil))
+            (("1" (assert)
+              (("1" (wf-ast T1)
+                (("1" (flatten) (("1" (assert) nil nil)) nil)) nil))
               nil)
-             ("2" (replace -1 * LR)
-              (("2" (hide - 2 3) (("2" (grind) nil nil)) nil)) nil))
+             ("2" (hide 2 3) (("2" (grind) nil nil)) nil))
             nil))
           nil))
         nil))
       nil))
     nil)
-   ((reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
-    (posint_plus_nnint_is_posint application-judgement "posint"
-     integers nil)
-    (nnint_plus_posint_is_posint application-judgement "posint"
-     integers nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
-    (Wellformed_theorem formula-decl nil ast nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
+   ((astWellformed? def-decl "bool" ast nil)
+    (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
     (total_order? const-decl "bool" orders nil)
@@ -2772,6 +2512,18 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (reduce_nat adt-def-decl "[pre_ast -> nat]" pre_ast nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (semanticTree_andP formula-decl nil pre_ast nil)
+    (Wellformed_theorem formula-decl nil ast nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
     (pre_ast type-decl nil pre_ast nil)
     (semanticTree? const-decl "bool" pre_ast nil)
     (< const-decl "bool" reals nil)
@@ -2785,7 +2537,6 @@
     (star? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
     (astType type-decl nil ast nil)
     (= const-decl "[T, T -> boolean]" equalities nil)
-    (astType? def-decl "astType" ast nil)
     (failure? adt-recognizer-decl "[astType -> boolean]" ast nil)
     (failure adt-constructor-decl "(failure?)" ast nil)
     (fail? adt-recognizer-decl "[pre_ast -> boolean]" pre_ast nil)
@@ -2796,7 +2547,6 @@
     (below type-eq-decl nil pre_ast nil)
     (s shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
     (e shared-adt-accessor-decl "[pre_ast -> below]" pre_ast nil)
-    (astWellformed? def-decl "bool" ast nil)
     (¬ const-decl "[bool -> bool]" booleans nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
@@ -2804,12 +2554,11 @@
    nil
    (s_inp subtype
     "pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].andP(semantic_interp.s, semantic_interp.e, semantic_interp.s_inp(semantic_interp.P_inp, semantic_interp.T))"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC36 0
   (s_inp_TCC36-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
-   ((semanticTree? const-decl "bool" pre_ast nil)
-    (subterm adt-def-decl "boolean" pre_ast nil)
+   ((astWellformed? def-decl "bool" ast nil)
     (astType? def-decl "astType" ast nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil)
     (pred type-eq-decl nil defined_types nil)
@@ -2833,12 +2582,14 @@
     (posnat nonempty-type-eq-decl nil integers nil)
     (bound formal-const-decl "posnat" semantic_interp nil)
     (V_S formal-type-decl nil semantic_interp nil)
+    (subterm adt-def-decl "boolean" pre_ast nil)
+    (semanticTree? const-decl "bool" pre_ast nil)
     (boolean nonempty-type-decl nil booleans nil)
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    nil
    (s_inp subtype "semantic_interp.T"
-    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree | booleans.∧((booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))), booleans.∧((booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))), booleans.∧((booleans.⇔((ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))), ((booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p)))))))))), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)), booleans.∧((pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)), (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T)))))))))}")))
+    "{T_p: pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].semanticTree |    (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].skip?(T_p))) ∧ (booleans.⇔(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(semantic_interp.T), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].star?(T_p))) ∧ (booleans.⇔(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].failure, pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))) ∧ (booleans.⇒(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(semantic_interp.T), (booleans.∨(pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].plus?(T_p), pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].fail?(T_p))))) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].s(semantic_interp.T)) ∧ (pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(T_p) = pre_ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].e(semantic_interp.T)) ∧ (booleans.⇒(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(semantic_interp.T), (booleans.∧(ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astWellformed?(T_p), (ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(T_p) = ast[semantic_interp.V_T, semantic_interp.<=, semantic_interp.V_N_b, semantic_interp.bound, semantic_interp.V_S].astType?(semantic_interp.T))))))}")))
  (s_inp_TCC37 0
   (s_inp_TCC37-1 nil 3774421781
    ("" (skeep*) (("" (assert) (("" (grind) nil nil)) nil)) nil)
@@ -2894,14 +2645,11 @@
     nil)
    ((ast type-eq-decl nil ast nil)
     (s_inp def-decl "{T_p: semanticTree |
-   ((skip?(T) ⇔ skip?(T_p)) ∧
-     (star?(T) ⇔ star?(T_p)) ∧
-      ((astType?(T) = failure) ⇔ fail?(T_p)) ∧
-       ((plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p)))))
-    ∧
-    (s(T_p) = s(T)) ∧
-     (e(T_p) = e(T)) ∧
-      (astWellformed?(T) ⇒
+      (skip?(T) ⇔ skip?(T_p)) ∧ (star?(T) ⇔ star?(T_p))
+    ∧ (astType?(T) = failure ⇔ fail?(T_p))
+    ∧ (plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))) ∧ (s(T_p) = s(T))
+    ∧ (e(T_p) = e(T))
+    ∧ (astWellformed?(T) ⇒
         (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))}"
      semantic_interp nil)
     (astWellformed? def-decl "bool" ast nil)
@@ -2961,14 +2709,11 @@
     nil)
    ((ast type-eq-decl nil ast nil)
     (s_inp def-decl "{T_p: semanticTree |
-   ((skip?(T) ⇔ skip?(T_p)) ∧
-     (star?(T) ⇔ star?(T_p)) ∧
-      ((astType?(T) = failure) ⇔ fail?(T_p)) ∧
-       ((plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p)))))
-    ∧
-    (s(T_p) = s(T)) ∧
-     (e(T_p) = e(T)) ∧
-      (astWellformed?(T) ⇒
+      (skip?(T) ⇔ skip?(T_p)) ∧ (star?(T) ⇔ star?(T_p))
+    ∧ (astType?(T) = failure ⇔ fail?(T_p))
+    ∧ (plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))) ∧ (s(T_p) = s(T))
+    ∧ (e(T_p) = e(T))
+    ∧ (astWellformed?(T) ⇒
         (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))}"
      semantic_interp nil)
     (astWellformed? def-decl "bool" ast nil)
@@ -3028,14 +2773,11 @@
     nil)
    ((ast type-eq-decl nil ast nil)
     (s_inp def-decl "{T_p: semanticTree |
-   ((skip?(T) ⇔ skip?(T_p)) ∧
-     (star?(T) ⇔ star?(T_p)) ∧
-      ((astType?(T) = failure) ⇔ fail?(T_p)) ∧
-       ((plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p)))))
-    ∧
-    (s(T_p) = s(T)) ∧
-     (e(T_p) = e(T)) ∧
-      (astWellformed?(T) ⇒
+      (skip?(T) ⇔ skip?(T_p)) ∧ (star?(T) ⇔ star?(T_p))
+    ∧ (astType?(T) = failure ⇔ fail?(T_p))
+    ∧ (plus?(T) ⇒ (plus?(T_p) ∨ fail?(T_p))) ∧ (s(T_p) = s(T))
+    ∧ (e(T_p) = e(T))
+    ∧ (astWellformed?(T) ⇒
         (astWellformed?(T_p) ∧ (astType?(T_p) = astType?(T))))}"
      semantic_interp nil)
     (astWellformed? def-decl "bool" ast nil)
@@ -3143,3 +2885,4 @@
     (boolean nonempty-type-decl nil booleans nil)
     (V_T formal-nonempty-type-decl nil semantic_interp nil))
    shostak)))
+

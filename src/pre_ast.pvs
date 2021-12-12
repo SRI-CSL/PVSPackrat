@@ -44,7 +44,8 @@ pre_ast [
       andP(s, e: below, T: {T: pre_ast | ¬skip?(T)}): andP?
     END pre_ast
 
-  T, T_p: VAR pre_ast
+  T, T_p, T2: VAR pre_ast
+	T_ns : VAR {T: pre_ast | ¬skip?(T)}
 
   semanticTree?(T) : bool = ∀ T_p : subterm(T_p, T) ⇒ ¬nonTerminal?(T_p)
   semanticTree : TYPE = (semanticTree?)
@@ -68,5 +69,29 @@ pre_ast [
                  (LAMBDA (s, e, i): i + 2), (LAMBDA (s, e, i): i + 1),
                  (LAMBDA (s, e, i): i + 2))
                 (T)
+
+  % Technical rewrites
+	semanticTree_skip: LEMMA ∀ s, e, G: semanticTree?(skip(s,e,G)) = TRUE
+	semanticTree_fail: LEMMA ∀ s, e: semanticTree?(fail(s,e)) = TRUE
+	semanticTree_ε: LEMMA ∀ s, e: semanticTree?(ε(s,e)) = TRUE
+	semanticTree_any: LEMMA ∀ s, e, x: semanticTree?(any(s,e,x)) = TRUE
+	semanticTree_terminal: LEMMA ∀ s, e, a, x: semanticTree?(terminal(s,e,a,x)) = TRUE
+	semanticTree_range: LEMMA ∀ s, e, a, b, x: semanticTree?(range(s,e,a,b,x)) = TRUE
+	semanticTree_nonTerminal: LEMMA ∀ s, e, A, T_ns: semanticTree?(nonTerminal(s,e,A,T_ns)) = FALSE
+	semanticTree_semantic: LEMMA ∀ s, e, A, S: semanticTree?(semantic(s,e,A,S)) = TRUE
+	semanticTree_seq: LEMMA ∀ s, e, T_ns, T2: semanticTree?(seq(s,e,T_ns,T2)) = (semanticTree?(T_ns) ∧ semanticTree?(T2))
+	semanticTree_prior: LEMMA ∀ s, e, T_ns, T2: semanticTree?(prior(s,e,T_ns,T2)) = (semanticTree?(T_ns) ∧ semanticTree?(T2))
+	semanticTree_star: LEMMA ∀ s, e, T_ns, (Ts: {T:pre_ast | skip?(T) OR star?(T)}): semanticTree?(star(s,e,T_ns,Ts)) = (semanticTree?(T_ns) ∧ semanticTree?(Ts))
+	semanticTree_plus: LEMMA ∀ s, e, T_ns, (Ts: {T:pre_ast | skip?(T) OR plus?(T)}): semanticTree?(plus(s,e,T_ns,Ts)) = (semanticTree?(T_ns) ∧ semanticTree?(Ts))
+	semanticTree_opt: LEMMA ∀ s, e, T_ns: semanticTree?(opt(s,e,T_ns)) = semanticTree?(T_ns)
+	semanticTree_notP: LEMMA ∀ s, e, T_ns: semanticTree?(notP(s,e,T_ns)) = semanticTree?(T_ns)
+	semanticTree_andP: LEMMA ∀ s, e, T_ns: semanticTree?(andP(s,e,T_ns)) = semanticTree?(T_ns)
+
+  AUTO_REWRITE+ semanticTree_skip, semanticTree_fail, semanticTree_ε,
+                semanticTree_any, semanticTree_terminal,
+                semanticTree_range, semanticTree_nonTerminal,
+                semanticTree_semantic, semanticTree_seq,
+                semanticTree_prior, semanticTree_star, semanticTree_plus,
+                semanticTree_opt, semanticTree_notP, semanticTree_andP
 
 END pre_ast

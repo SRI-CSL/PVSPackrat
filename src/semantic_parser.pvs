@@ -29,29 +29,27 @@ semantic_parser [
   equalTo(T: pre_ast) : TYPE = {t: pre_ast | t = T}
 
   % Type to store results of partial parsing. Maintains equivalence with reference parser
-  results(P_exp : WF_nT,
-          P_inp : semantic_interp,
-  	      inp   : input) : TYPE =
-  	   	  { res : [[V_N, inp_bound] -> saved_result] |
-		    FORALL (A : V_N, s : upto(bound)) :
-		       LET T_p = parsing(P_exp, A, P_exp(A), inp, s, s) IN
-  		       known?(res(A,s)) ⇒
-		       ((astType?(T_p) = failure
-		          ∧ status(res(A,s)) = failure
-		          ∧ T(res(A,s)) = fail(s(T_p), e(T_p)))
-		       ∨(astType?(T_p) = success
-		          ∧ status(res(A,s)) = success
-			  ∧ T(res(A,s)) = semantic(s(T_p), e(T_p), A, P_inp(A, s_inp(P_inp, T_p))))
-		  )}
+  results(P_exp: WF_nT, P_inp: semantic_interp, inp: input): TYPE =
+        {res: [[V_N, inp_bound] -> saved_result] |
+           FORALL (A: V_N, s: upto(bound)):
+             LET T_p = parsing(P_exp, A, P_exp(A), inp, s, s) IN
+               known?(res(A, s)) ⇒
+                ((astType?(T_p) = status(res(A, s)) = failure ∧
+                   T(res(A, s)) = fail(s(T_p), e(T_p)))
+                  ∨
+                  (astType?(T_p) = status(res(A, s)) = success ∧
+                    T(res(A, s)) =
+                     semantic(s(T_p), e(T_p), A,
+                              P_inp(A, s_inp(P_inp, T_p)))))}
 
   % Semantic packrat parser - equivalent with reference parser modulo semantic interpretation
   sempp(P_exp : WF_nT,
   	    P_inp : semantic_interp,
   	    A     : below(V_N_b),                   % Current non Terminal
-            G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
-            inp   : input,                          % Input array
-  	    s     : upto(bound),                      % Starting index
-  	    s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)},
+        G     : subterm_of(P_exp(A)),           % Grammar node
+        inp   : input,                          % Input array
+  	    s     : inp_bound,                      % Starting index
+  	    s_T   : {k : upto(s) | (k=s) ⇒ pattern_wf?(G, A, σ(P_exp), P_0c(P_exp))},
   	    res   : results(P_exp, P_inp, inp)) :
       % Recursively computes the tree result and the set of partial results memoizied
       RECURSIVE [
@@ -139,6 +137,6 @@ semantic_parser [
 		      else (failure, fail(s, s), res)
 		      endif
     ENDCASES
-    MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
+    MEASURE lex4(bound - s_T, bound - s,  σ(P_exp)(A), pegMeasure(G))
 
 END semantic_parser
