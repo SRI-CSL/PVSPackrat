@@ -21,3 +21,30 @@
 	(skolem fnum constants :skolem-typepreds? t)
 	"Skolem with explicit names and type-predicates"
 	"skolemty")
+
+(defstep name-rewrite (name expr)
+	(then (name name expr)
+				(auto-rewrite -1))
+	"name-rewrite ?name ?expr"
+	"Names and adds an auto-rewrite")
+
+(defstep name-rewrite! (name expr)
+	(then (name name expr)
+				(auto-rewrite! -1))
+	"name-rewrite! ?name ?expr"
+	"Names and adds an auto-rewrite!")
+
+(defstep flassert ()
+	(repeat (then (assert) (flatten)))
+	"flassert"
+	"Repeat assert and flatten")
+
+(defstep ground+ ()
+	(then (repeat (lift-if +)) (repeat (split +)))
+	"ground+"
+	"Grounding the formulas in +")
+
+(defstep liftassert+ ()
+	(repeat (then (assert) (lift-if +)))
+	"liftassert+"
+	"Lifting and asserting formulas in +")

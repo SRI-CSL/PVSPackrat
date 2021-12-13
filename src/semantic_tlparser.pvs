@@ -22,12 +22,12 @@ semantic_tlparser [
   T, T0, T1, T2, T_B, Ts : VAR pre_ast
 
   sem_result(P_inp : semantic_interp,
-	     P_exp : WF_nT,
+	       P_exp : WF_nT,
   	     A     : below(V_N_b),                   % Current non Terminal
-             G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
-             inp   : input,                          % Input array
-  	     s     : upto(bound),                      % Starting index
-  	     s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}) : TYPE =
+         G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
+         inp   : input,                          % Input array
+  	     s     : upto(bound),                    % Starting index
+  	     s_T   : {k : upto(s) | (k=s) ⇒ pattern_wf?(G, A, σ(P_exp), P_0c(P_exp))}) : TYPE =
 	     { T: pre_ast | T = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))}
 
 
@@ -35,18 +35,15 @@ semantic_tlparser [
   semtlpp(P_exp : WF_nT,
   	    P_inp : semantic_interp,
   	    A     : below(V_N_b),                   % Current non Terminal
-            G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
-            inp   : input,                          % Input array
-  	    s     : upto(bound),                      % Starting index
-  	    s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)},
+        G     : {e : Δ | subterm(e, P_exp(A))}, % Grammar node
+        inp   : input,                          % Input array
+  	    s     : upto(bound),                    % Starting index
+  	    s_T   : {k : upto(s) | (k=s) ⇒ pattern_wf?(G, A, σ(P_exp), P_0c(P_exp))},
   	    res   : results(P_exp, P_inp, inp),
-	    cont  : [
-	             [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
-                      sem_result(P_inp, P_exp, A, G, inp, s, s_T),
-		      results(P_exp, P_inp, inp)]
-		     ->
-		     [astType, pre_ast, results(P_exp, P_inp, inp)]
-		    ]):
+	      cont  : [
+	               [astTypeOf(parsing(P_exp, A, G, inp, s, s_T)),
+                  sem_result(P_inp, P_exp, A, G, inp, s, s_T),
+		              results(P_exp, P_inp, inp)] -> [astType, pre_ast, results(P_exp, P_inp, inp)]]):
       RECURSIVE {x : [astType, pre_ast, results(P_exp, P_inp, inp)] | x = cont(sempp(P_exp, P_inp, A, G, inp, s, s_T, res))} =
           CASES G OF
               ε: cont(success, ε(s,s), res),
@@ -167,7 +164,7 @@ semantic_tlparser [
 		     else cont(failure, fail(s, s), res)
 		     endif))
     ENDCASES
-    MEASURE lex4(bound - s_T, bound - s,  A, pegMeasure(G))
+    MEASURE lex4(bound - s_T, bound - s,  σ(P_exp)(A), pegMeasure(G))
 
 
     semantic_tlparser_correct :
@@ -178,7 +175,7 @@ semantic_tlparser [
            (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
            (inp   : input),                          % Input array
   	   (s     : upto(bound)),                      % Starting index
-  	   (s_T   : {k : upto(s) | (k=s) ⇒ g_wf(G, A, P_0c?(P_exp), strong)}),
+  	   (s_T   : {k : upto(s) | (k=s) ⇒ pattern_wf?(G, A, σ(P_exp), P_0c(P_exp))}),
   	   (res   : results(P_exp, P_inp, inp)) :
 		    semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res,
 		    % Identity continuation
