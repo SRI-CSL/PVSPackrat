@@ -1,4 +1,15 @@
-
+% ————————————————————————————–
+% static_analysis.pvs
+%  |– static_analysis THEORY
+%     This theory aims at finding an order for the non-terminals
+%     to ensure that there are no loops. For each non-terminal,
+%     we compute the set of non-terminals that could be reached
+%     before a character is consumed, which generated a directed
+%     graph. A satisfying order is a topological ordering of this
+%     dependency_graph. We finally show that a grammar P_exp
+%     admits an order iff the topological sort of its dependency
+%     graph succeeds.
+% ————————————————————————————–
 
 static_analysis [
     V_T   : TYPE+,
@@ -7,7 +18,7 @@ static_analysis [
     ]:THEORY
 BEGIN
   IMPORTING wf_peg[V_T, <=, V_N_b]
-	IMPORTING more_list_props[V_N] % From nasalib
+	IMPORTING more_list_props[V_N]    % From nasalib
 	IMPORTING c_topological_sort[V_N] % From nasalib
 	IMPORTING interval_list
 
@@ -15,24 +26,25 @@ BEGIN
 
   A, B, C : VAR V_N
   σ, σ_p: VAR order
-
   P_exp: VAR interp
 	P_0: VAR[Δ -> bool]
   G: VAR Δ
-
-  every_iff_member[T :TYPE]: LEMMA ∀ (l: list[T], P:PRED[T]): every(P)(l) ⇔ (∀ (x:T): member(x,l) ⇒ P(x))
-
   l, l1, l2 : VAR list[nat]
-	n,m : VAR nat
-  node_ls : TYPE = {l : list[nat] | (no_repetitions?(l)) ∧ (∀ n : member(n,l) ⇒ 0 <= n <= V_N_b - 1)}
-	node_ls_list_V_N : JUDGEMENT node_ls SUBTYPE_OF list[V_N]
+	n, m : VAR nat
 
+  % We use sets as list (from nasalib), with some additional typing conditions built-in
+  every_iff_member[T :TYPE]: LEMMA ∀ (l: list[T], P:PRED[T]): every(P)(l) ⇔ (∀ (x:T): member(x,l) ⇒ P(x))
+	node_ls : TYPE = {l : list[nat] | (no_repetitions?(l)) ∧ (∀ n : member(n,l) ⇒ 0 <= n <= V_N_b - 1)}
+  node_ls_list_V_N : JUDGEMENT node_ls SUBTYPE_OF list[V_N]
+
+
+  % Technical rewrites and subtyping judgements
   no_rep_cdr_iff: LEMMA ∀ l, n : no_repetitions?(cons(n,l)) ⇔ no_repetitions?(l) AND NOT member(n,l)
   no_repetitions_add_ls : LEMMA ∀ l, n : no_repetitions?(l) ⇒ no_repetitions?(add_sl(n,l))
   no_repetitions_union_ls : LEMMA ∀ l1, l2 :
 	    no_repetitions?(l1) ∧ no_repetitions?(l2) ⇒ no_repetitions?(union_sl(l1,l2))
-	V_N_no_add_ls : JUDGEMENT ∀ (l:list[V_N]), A : add_sl(A,l) HAS_TYPE list[V_N]
-	V_N_union_ls : JUDGEMENT ∀ (l1, l2:list[V_N]) : union_sl(l1,l2) HAS_TYPE list[V_N]
+	V_N_no_add_ls : JUDGEMENT ∀ (l:list[V_N]), A   : add_sl(A,l)     HAS_TYPE list[V_N]
+	V_N_union_ls  : JUDGEMENT ∀ (l1, l2:list[V_N]) : union_sl(l1,l2) HAS_TYPE list[V_N]
 
 	V_N_list_subtype_nat_list : JUDGEMENT list[V_N] SUBTYPE_OF list[nat]
 	V_N_no_repetition_subtype : JUDGEMENT (no_repetitions?[V_N]) SUBTYPE_OF list[nat]
@@ -41,7 +53,12 @@ BEGIN
 	no_repetitions_V_N_nat: LEMMA ∀ (l: list[V_N]) :
 	   no_repetitions?[V_N[V_N_b]](l) = no_repetitions?[nat](l)
 	AUTO_REWRITE+ idx_V_N_nat, no_repetitions_V_N_nat
+	union_sl_member_or : LEMMA ∀ A, (l1, l2 : node_ls) :
+	   member(A, union_sl(l1, l2)) = (member(A, l1) ∨ member(A, l2))
+  AUTO_REWRITE+ union_sl_member_or
 
+
+  % ## Building the dependency graph
 
   % Compute the set of non-terminals that could be used before a character is consumed
 	% (all those non-terminals are supposed to have a lower index in a wellforming order σ)
@@ -52,10 +69,7 @@ BEGIN
          terminal(a): null,
          range(a, b): null,
          nonTerminal(B): cons(B, null),
-         seq(e1, e2):
-           IF (P_0(e1)) THEN union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0))
-           ELSE sub_nT(e1, P_0)
-           ENDIF,
+         seq(e1, e2): IF (P_0(e1)) THEN union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0)) ELSE sub_nT(e1, P_0) ENDIF,
          prior(e1, e2): union_sl(sub_nT(e1, P_0), sub_nT(e2, P_0)),
          star(e): sub_nT(e, P_0),
          plus(e): sub_nT(e, P_0),
@@ -66,11 +80,8 @@ BEGIN
      MEASURE pegMeasure(G)
   AUTO_REWRITE+ sub_nT
 
-	union_sl_member_or : LEMMA ∀ A, (l1, l2 : node_ls) :
-	   member(A, union_sl(l1, l2)) = (member(A, l1) ∨ member(A, l2))
-  AUTO_REWRITE+ union_sl_member_or
-
-
+  % Key lemma :
+	% If an order is smaller on all the non-terminals that A depends on, then P_exp(A) is pattern-wellformed
   sub_nT_and_wellformedness: LEMMA
      ∀ σ, A, P_0, G:
         pattern_wf?(G, A, σ, P_0) ⇔ (∀ (B: V_N): member(B, sub_nT(G, P_0)) ⇒ σ(B) < σ(A))
@@ -79,6 +90,7 @@ BEGIN
 	nodes(P_exp): node_ls = interval_list(0, V_N_b - 1)
 	adjacents(P_exp)(A): node_ls =
      sub_nT(P_exp(A), P_0c(P_exp))
+
   dependency_graph(P_exp): c_digraph[nat] =
       (# data := nodes(P_exp),
          adjs := map(adjacents(P_exp))(nodes(P_exp)) #)
@@ -91,14 +103,15 @@ BEGIN
 	data_dependency_graph: LEMMA ∀ P_exp:
 	   data(dependency_graph(P_exp)) = nodes(P_exp)
   AUTO_REWRITE+ map_adjacents_nth, nodes, vert, size, finseq_appl, verts_in?, edges, digraph_edges, node_dependency_graph, data_dependency_graph
+  loop_free?(P_exp) : bool = IN?_2(topological_sort[V_N](dependency_graph(P_exp)))
+	loop_free : TYPE = (loop_free?)
+	AUTO_REWRITE+ loop_free?
+
+  % ## Results
 
   % A permutation satisfying pattern_WF is a topological ordering of the dependency_graph
 	pattern_WF_topological_ordering : THEOREM ∀ P_exp, σ:
 	   pattern_WF?(σ, P_exp) ⇔ topological_ordering?[V_N](dependency_graph(P_exp))(σ)
-
-  loop_free?(P_exp) : bool = IN?_2(topological_sort[V_N](dependency_graph(P_exp)))
-	loop_free : TYPE = (loop_free?)
-	AUTO_REWRITE+ loop_free?
 
   % Order function :
 	σ(P_exp: loop_free) : order = OUT_2(topological_sort[V_N](dependency_graph(P_exp)))
@@ -113,8 +126,7 @@ BEGIN
 
   % Main theorem
   dependency_graph_wf_iff_dag :
-	   THEOREM ∀ P_exp :
-		 wf_nT?(P_exp) ⇔ WF_nT?(P_exp)
+	   THEOREM ∀ P_exp : wf_nT?(P_exp) ⇔ WF_nT?(P_exp)
 
   WF_nT_wf_nT_subtype: JUDGEMENT WF_nT SUBTYPE_OF wf_nT
 
