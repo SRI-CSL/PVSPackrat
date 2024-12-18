@@ -26,7 +26,7 @@ parser_props [
                      (A : V_N),
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(ε, A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(ε, A, σ(P_exp), P_0c(P_exp))})) :
         subterm(ε, P_exp(A)) ⇒ 
         LET T = parsing(P_exp, A, ε, inp, s, s_T) IN 
             (astType?(T) = ⊤ ∧ e(T) = s)
@@ -36,7 +36,7 @@ parser_props [
                      (A : V_N),
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(any, A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(any, A, σ(P_exp), P_0c(P_exp))})) :
         subterm(any, P_exp(A)) ⇒
         LET T = parsing(P_exp, A, any, inp, s, s_T) IN 
             ((s = bound) ⇒ astType?(T) = ⊥) ∧
@@ -48,7 +48,7 @@ parser_props [
                      (a : V_T), 
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(terminal(a), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(terminal(a), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(terminal(a), P_exp(A)) ⇒
         LET T = parsing(P_exp, A, terminal(a), inp, s, s_T) IN 
             ((s = bound) ⇒ astType?(T) = ⊥) ∧
@@ -60,7 +60,7 @@ parser_props [
                      (A,B : V_N),  
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(nonTerminal(B), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(nonTerminal(B), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(nonTerminal(B), P_exp(A)) ⇒
         LET T = parsing(P_exp, A, nonTerminal(B), inp, s, s_T) IN 
         LET T_B = parsing(P_exp, B, P_exp(B),       inp, s, s) IN
@@ -72,7 +72,7 @@ parser_props [
                      (e1,e2 : {G : Δ | subterm(G, P_exp(A))}),
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(seq(e1,e2), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(seq(e1,e2), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(seq(e1,e2), P_exp(A)) ⇒
         LET T1 = parsing(P_exp, A, e1,         inp, s,     s_T) IN 
         LET T  = parsing(P_exp, A, seq(e1,e2), inp, s,     s_T) IN 
@@ -87,7 +87,7 @@ parser_props [
                      (e1,e2 : {G : Δ | subterm(G, P_exp(A))}),
                      (inp : input), 
                      (s : upto(bound)), 
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(prior(e1,e2), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(prior(e1,e2), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(prior(e1, e2), P_exp(A)) ⇒
         LET T1 = parsing(P_exp, A, e1,           inp, s, s_T) IN 
         LET T2 = parsing(P_exp, A, e2,           inp, s, s_T) IN 
@@ -101,7 +101,7 @@ parser_props [
                      (e : {G : Δ | subterm(G, P_exp(A))}),
                      (inp : input),
                      (s : upto(bound)),
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(star(e), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(star(e), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(star(e), P_exp(A)) ⇒
         LET T0 = parsing(P_exp, A, e,       inp, s,     s_T) IN 
         LET Ts = parsing(P_exp, A, star(e), inp, e(T0), s_T) IN 
@@ -115,7 +115,7 @@ parser_props [
                      (e : {G : Δ | subterm(G, P_exp(A))}),
                      (inp : input),
                      (s : upto(bound)),
-                     (s_T: {k : upto(s) | (k=s) ⇒ g_wf(notP(e), A, P_0c?(P_exp), strong)})) :
+                     (s_T: {k : upto(s) | (k=s) ⇒ pattern_wf?(notP(e), A, σ(P_exp), P_0c(P_exp))})) :
         subterm(notP(e), P_exp(A)) ⇒
         LET T_n = parsing(P_exp, A, e,       inp, s, s_T) IN 
         LET T   = parsing(P_exp, A, notP(e), inp, s, s_T) IN

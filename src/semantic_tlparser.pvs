@@ -172,9 +172,9 @@ semantic_tlparser [
         ∀  (P_exp : WF_nT),
   	   (P_inp : semantic_interp),
   	   (A     : below(V_N_b)),                   % Current non Terminal
-           (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
-           (inp   : input),                          % Input array
-  	   (s     : upto(bound)),                      % Starting index
+       (G     : {e : Δ | subterm(e, P_exp(A))}), % Grammar node
+       (inp   : input),                          % Input array
+  	   (s     : upto(bound)),                    % Starting index
   	   (s_T   : {k : upto(s) | (k=s) ⇒ pattern_wf?(G, A, σ(P_exp), P_0c(P_exp))}),
   	   (res   : results(P_exp, P_inp, inp)) :
 		    semtlpp(P_exp, P_inp, A, G, inp, s, s_T, res,
@@ -184,5 +184,31 @@ semantic_tlparser [
 		      results(P_exp, P_inp, inp)])
 		     : (x`1, x`2, x`3)))`2 = s_inp(P_inp, parsing(P_exp, A, G, inp, s, s_T))
 
-
 END semantic_tlparser
+
+
+semantic_tlparser_in [
+      V_T   : TYPE+,
+      <=    : (total_order?[V_T]),
+      V_N_b : {k : nat | k > 0},
+      bound : posnat,
+      V_S   : TYPE
+      ]: THEORY
+  BEGIN
+  IMPORTING semantic_tlparser[V_T, <=, V_N_b, bound, V_S]
+
+
+     semtlpp_in (P_exp : WF_nT)
+  	   (P_inp : semantic_interp)
+  	   (A     : below(V_N_b))                 
+       (inp   : input): ast
+			 =
+			 let s = 0 in
+			 let s_T = 0 in
+			 let G = P_exp(A) in
+			 let res = semtlpp(P_exp, P_inp, A, G, inp, s, s_T, (λ (A : V_N, i : inp_bound) : unknown),
+		    (λ (x : [astTypeOf(parsing(P_exp, A, P_exp(A), inp, s, s_T)), sem_result(P_inp, P_exp, A, G, inp, s, s_T), results(P_exp, P_inp, inp)]) : (x`1, x`2, x`3)))  in
+				res`2
+
+
+END semantic_tlparser_in

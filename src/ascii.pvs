@@ -12,8 +12,19 @@ arith_expr : THEORY BEGIN
     div(a, b: arith_expr): div?
     incorrect: incorrect?
   END arith_expr
+
+  a,b : VAR arith_expr
+	i, j : VAR nat
+  arith_expr_measure: [arith_expr -> nat] =
+     reduce_nat((λ (n:int) : 0),
+		 (λ (i, j) : i + j),
+		 (λ (i, j) : i + j),
+		 (λ (i, j) : i + j),
+		 (λ (i, j) : i + j), 0)
+
   V_S : TYPE = arith_expr
-  IMPORTING semantic_parser[V_T, <=, V_N_b, 100, V_S]
+  IMPORTING semantic_tlparser_in[V_T, <=, V_N_b, 100, V_S]
+	IMPORTING options
 
   ascii_to_integer(chr : below(256)): int =
     COND
@@ -78,7 +89,17 @@ arith_expr : THEORY BEGIN
   MEASURE astMeasure(t)
 
 
-
+  eval(a: arith_expr) : RECURSIVE option[int] =
+	CASES a OF
+    v(n): Some(n),
+    add(a, b): map2(+)(eval(a), eval(b)),
+    sub(a, b): map2(-)(eval(a), eval(b)),
+    mult(a, b: arith_expr): map2(*)(eval(a), eval(b)),
+    div(a, b: arith_expr): map2(/)(eval(a), bind(eval(b))(λ i : IF i = 0 THEN None ELSE Some(i) ENDIF)),
+    incorrect: None
+  ENDCASES
+	MEASURE arith_expr_measure
+	
 END arith_expr
 
 
@@ -164,32 +185,20 @@ test_ascii : THEORY BEGIN
       A = 6 -> choose_prior(T),
       ELSE  -> v(-1)
     ENDCOND
+	
+  parser_semantic: [input -> ast] =
+      LAMBDA (inp: input):
+        (semtlpp_in(P_exp)(P_inp)(entry_v)(inp))
+										
+  parser_ref: [input -> ast] = LAMBDA (inp: input): parsing(P_exp, entry_v, P_exp(entry_v), inp, 0, 0)
+  res_sem(inp: input): V_S = S(parser_semantic(inp))
 
-  parser_semantic : [input -> ast] = λ(inp : input) : (sempp(P_exp, P_inp, entry_v, P_exp(entry_v), inp, 0, 0, (λ(A : V_N, s : inp_bound) : unknown))`1)
-  parser_ref :      [input -> ast] = λ(inp : input) : parsing(P_exp, entry_v, P_exp(entry_v), inp, 0, 0)
-  res_sem(inp: input) : V_S = S(parser_semantic(inp))
+  inp1(x: below(1000)): V_T = COND x = 0 -> 49, ELSE -> 0 ENDCOND
 
+  inp2(x: below(1000)): V_T = COND x = 0 -> 49, x = 1 -> 43, x = 2 -> 50, ELSE -> 0 ENDCOND
 
-  inp1(x : below(1000)) : V_T = COND
-    x = 0 -> 49,
-    ELSE -> 0
-  ENDCOND
-
-  inp2(x : below(1000)) : V_T = COND
-    x = 0 -> 49,
-    x = 1 -> 43,
-    x = 2 -> 50,
-    ELSE -> 0
-  ENDCOND
-
-  inp3(x : below(1000)) : V_T = COND
-    x = 0 -> 49,
-    x = 1 -> 43,
-    x = 2 -> 50,
-    x = 3 -> 42,
-    x = 4 -> 53,
-    ELSE -> 0
-  ENDCOND
+  inp3(x: below(1000)): V_T =
+      COND x = 0 -> 49, x = 1 -> 43, x = 2 -> 50, x = 3 -> 42, x = 4 -> 53, ELSE -> 0 ENDCOND
 
 % "1+2+3+4+5+6+7-8"
 inp4 : input = LAMBDA (x: below(1000)) : COND x = 0 -> 49, x = 1 -> 43, x = 2 -> 50, x = 3 -> 43, x = 4 -> 51, x = 5 -> 43, x = 6 -> 52, x = 7 -> 43, x = 8 -> 53, x = 9 -> 43, x = 10 -> 54, x = 11 -> 43, x = 12 -> 55, x = 13 -> 45, x = 14 -> 56, ELSE -> 0 ENDCOND

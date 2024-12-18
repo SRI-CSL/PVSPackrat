@@ -13072,4 +13072,106 @@
     (bool nonempty-type-eq-decl nil booleans nil)
     (TRUE const-decl "bool" booleans nil))
    shostak)))
+(semantic_tlparser_in
+ (semtlpp_in_TCC1 0
+  (semtlpp_in_TCC1-1 nil 3922785924
+   ("" (assert)
+    (("" (skeep*)
+      (("" (ground)
+        (("" (replace - * RL)
+          (("" (replace -3 * RL)
+            (("" (expand "subterm") (("" (propax) nil nil)) nil)) nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((TRUE const-decl "bool" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (subterm adt-def-decl "boolean" peg nil))
+   nil
+   (semtlpp_in subtype "semantic_tlparser_in.G"
+    "{e: wf_peg[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b].Δ | peg[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b].subterm(e, semantic_tlparser_in.P_exp(semantic_tlparser_in.A))}")))
+ (semtlpp_in_TCC2 0
+  (semtlpp_in_TCC2-1 nil 3922785924
+   ("" (assert) (("" (skeep*) (("" (assert) nil nil)) nil)) nil)
+   ((TRUE const-decl "bool" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil))
+   nil
+   (semtlpp_in subtype "semantic_tlparser_in.s"
+    "naturalnumbers.upto(semantic_tlparser_in.bound)")))
+ (semtlpp_in_TCC3 0
+  (semtlpp_in_TCC3-1 nil 3922785924
+   ("" (skeep*)
+    (("" (use "WF_nT_rewrite")
+      (("" (flatten)
+        (("" (expand "pattern_WF?")
+          (("" (assert)
+            (("" (inst? -) (("" (inst? -) (("" (assert) nil nil)) nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((WF_nT_rewrite formula-decl nil static_analysis nil)
+    (V_T formal-nonempty-type-decl nil semantic_tlparser_in nil)
+    (pred type-eq-decl nil defined_types nil)
+    (total_order? const-decl "bool" orders nil)
+    (<= formal-const-decl "(total_order?[V_T])" semantic_tlparser_in
+        nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (> const-decl "bool" reals nil)
+    (V_N_b formal-const-decl "{k: nat | k > 0}" semantic_tlparser_in
+     nil)
+    (WF_nT type-eq-decl nil static_analysis nil)
+    (WF_nT? const-decl "bool" static_analysis nil)
+    (interp type-eq-decl nil wf_peg nil) (peg type-decl nil peg nil)
+    (V_N type-eq-decl nil nTpred_order nil)
+    (< const-decl "bool" reals nil)
+    (pattern_WF? const-decl "bool" wf_peg nil)
+    (below type-eq-decl nil naturalnumbers nil)
+    (structural_WF? const-decl "bool" wf_peg nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (TRUE const-decl "bool" booleans nil))
+   nil
+   (semtlpp_in subtype "semantic_tlparser_in.s_T"
+    "{k: naturalnumbers.upto(semantic_tlparser_in.s) | booleans.IMPLIES((k = semantic_tlparser_in.s), wf_peg[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b].pattern_wf?(semantic_tlparser_in.G, semantic_tlparser_in.A, static_analysis[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b].σ(semantic_tlparser_in.P_exp), wf_peg[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b].P_0c(semantic_tlparser_in.P_exp)))}")))
+ (semtlpp_in_TCC4 0
+  (semtlpp_in_TCC4-1 nil 3922785924
+   ("" (skeep*) (("" (assert) nil nil)) nil)
+   ((boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (TRUE const-decl "bool" booleans nil))
+   nil
+   (semtlpp_in subtype
+    "(LAMBDA (A: nTpred_order[semantic_tlparser_in.V_N_b].V_N, i: ast_props[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].inp_bound): semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].unknown)"
+    "semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].results(semantic_tlparser_in.P_exp, semantic_tlparser_in.P_inp, semantic_tlparser_in.inp)")))
+ (semtlpp_in_TCC5 0
+  (semtlpp_in_TCC5-1 nil 3922785924
+   ("" (skeep*) (("" (assert) (("" (ground) nil nil)) nil)) nil)
+   ((boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (TRUE const-decl "bool" booleans nil))
+   nil
+   (semtlpp_in subtype
+    "(LAMBDA (x: [semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].astTypeOf(peg_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].parsing(semantic_tlparser_in.P_exp, semantic_tlparser_in.A, semantic_tlparser_in.P_exp(semantic_tlparser_in.A), semantic_tlparser_in.inp, semantic_tlparser_in.s, semantic_tlparser_in.s_T)), semantic_tlparser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].sem_result(semantic_tlparser_in.P_inp, semantic_tlparser_in.P_exp, semantic_tlparser_in.A, semantic_tlparser_in.G, semantic_tlparser_in.inp, semantic_tlparser_in.s, semantic_tlparser_in.s_T), semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].results(semantic_tlparser_in.P_exp, semantic_tlparser_in.P_inp, semantic_tlparser_in.inp)]): (x`1, x`2, x`3))"
+    "[[semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].astTypeOf(peg_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].parsing(semantic_tlparser_in.P_exp, semantic_tlparser_in.A, semantic_tlparser_in.G, semantic_tlparser_in.inp, semantic_tlparser_in.s, semantic_tlparser_in.s_T)), semantic_tlparser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].sem_result(semantic_tlparser_in.P_inp, semantic_tlparser_in.P_exp, semantic_tlparser_in.A, semantic_tlparser_in.G, semantic_tlparser_in.inp, semantic_tlparser_in.s, semantic_tlparser_in.s_T), semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].results(semantic_tlparser_in.P_exp, semantic_tlparser_in.P_inp, semantic_tlparser_in.inp)] -> [ast[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].astType, pre_ast[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].pre_ast, semantic_parser[semantic_tlparser_in.V_T, semantic_tlparser_in.<=, semantic_tlparser_in.V_N_b, semantic_tlparser_in.bound, semantic_tlparser_in.V_S].results(semantic_tlparser_in.P_exp, semantic_tlparser_in.P_inp, semantic_tlparser_in.inp)]]"))))
 
