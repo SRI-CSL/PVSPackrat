@@ -1,26 +1,50 @@
 # PEG parser generator
 
-This readme aims at giving a detailed look on how this peg parser works, assuming that the reader already knows about PEG grammars and general parsing.
+## Overview
 
-## nT_pred_order.pvs
+This repository contains explores verified PEG parsing in PVS. It contains two main parts: static analysis of grammars (to ensure termination) and several variants of parser generators (memoization, semantic interpretation, tail-recursive), all shown equivalent to each other. A third part dedicated to applications and examples is still in-progress. This repository is linked to this [CPP2020 paper](https://dl.acm.org/doi/10.1145/3372885.3373836)
+
+### 1. Static analysis 
+
+Peg grammars are unambiguous by default. However, they might not be complete, i.e. terminating on all inputs. A simple subset of complete grammars is *wellformed* grammars. The `wf_peg` theory (in `delta.pvs`) presents an implementation of a wellformedness check with the associated properties. The `static_analysis` theory (in `static_analysis.pvs`) refines the wellformedness check to allow a reordering of grammar nodes based on a topological ordering.
+
+### 2. Parser generators
+
+Several parser generators are defined, all shown equivalent:
+
+* `parsing` is a straightforward, reference implementation (in `parser.pvs`)
+* `packrat_parser` is a *memoized* version of the reference parser (in `packrat_parser.pvs`)
+* `sempp` is a memoized parser with *semantic actions* (in `semantic_parser.pvs`)
+* `sempp_tl` is a memoized *tail-recursive* parser with semantic actions (in `semantic_tlparser.pvs`)
+
+### 3. Applications - in-progress
+
+* A small *arithmetic expressions* parser is defined in `ascii.pvs`. The semantic actions compute the result of the expression.
+* A small *json* parser is defined in `json.pvs`.
+
+Both applications have a `correct_grammar` theorem to show that they are wellformed
+
+## Detailed description
+
+#### nT_pred_order.pvs
 *Technical definitions used for predicate manipulations*
 
 Here are defined a boolean triple `nTinst` (short for *non-terminal properties instance*) to represent the grammar properties (can fail, can succeed without consuming something, can succeed consuming something) of a given grammar node. To store the properties of all the non-terminal interpretations, we use the `nTprop` object. We define an order on both, and the usual properties : transitivity and reflexivity, plus a distributivity of the order on `nTprop` over instances of `nTinst`.
 
-## array_sum.pvs
+#### array_sum.pvs
 *Technical definitions used for counting the number of times a predicate is satisfied in a `nTprop` object*
 
 The `aux` function is just a tail-recursive function that iterates over the array. Two main results are shown : the aux function is growing (for the nonTerminal ordering) and injective.
 
-## delta.pvs
+#### delta.pvs
 *Main file for peg grammar definition, properties computation and wellformedness*
 
-### `peg THEORY`
+##### `peg THEORY`
 This theory is parameterized by the type of the terminals, their ordering, and the number of nonterminals
 The `peg` datatype is made of constructors that directly represent the possible patterns of a peg grammar.
 The `pegMeasure` is a simple `reduce_nat`. Three results are shown : the measure is growing and injective regarding the *subterm* relationship, and the *subterm* relationship is transitive.
 
-### `wf_peg THEORY`
+##### `wf_peg THEORY`
 This theory is parameterized by the same parameters as `peg`.
 This theory aims at expressing what a wellformed grammar is, based on properties calculation.
 The `grammar_props` function recursively computes the properties of a grammar node based on the *already-known* properties of the non-terminals (given as an argument). Then we can compute all accessible new properties, adding them as we go over all the non terminals with the `recompute_nonTerminals_properties` function. The fix point of accessible properties is obtained with the `compute_properties` function, that calls the previous one over and over again until no new properties are found. The obtained set of properties, of type `fix_point` is *coherent* (not contradicted by iteself) and *maximal* (recomputing properties based on it cannot lead to new ones).
@@ -32,24 +56,24 @@ Two types of wellformedness are defined :
 
 The `grammar_wellformedness` function works for both kinds by switching the last argument. A *wellformed set of non terminals* (`WF_nT`) is defined.
 
-## pre_ast.pvs
+#### pre_ast.pvs
 *Definition of an abstract syntax tree (ast) structure*
 The datatype `pre_ast` aims at capturing all parsing paths possible. A few structural conditions are already included in the constructors (for example, the leftmost branch correspond to a path that the parser has to explore, and thus cannot contain any skip node).
 
-## ast.pvs
+#### ast.pvs
 *Main file for ast properties : definition of a meaningful and a wellformed ast*
 
 The `astType` captures the fact that a tree is either a coherent proof of success or failure, or is incoherent (undefined). The check is done by the recursive `astType?` function. A `astMeaningful` tree is a tree that is either of type `success` or `failure`.
 
 The `astWellformed?` function recursively checks that the tree correspond to a valid proof of parse. Two results are shown : a wellformed tree is also meaningful, and a wellformed tree starting at `s` and ending at `e` as to verify `s <= e`.
 
-## lex3.pvs
+#### lex3.pvs
 *Technical definition of triple lexical ordering*
 
-## lex4.pvs
+#### lex4.pvs
 *Technical definition of quadruple lexical ordering*
 
-## parser.pvs
+#### parser.pvs
 *Main file for the reference parser generator definition*
 
 The argument of the parser are the following :
@@ -81,6 +105,20 @@ The parsing termination is proved using a quadruple lexicographic order :
 
 Most of the proof work is done in the tccs.
 
-## packrat_parser.pvs
+#### packrat_parser.pvs
 *Definition of a parser generator that uses memoization*
-  The packrat_parser theory has a similar parser with a result that is a table mapping each start index and nonterminal to an AST that matches the one returned by the reference parser parsing, and an updated table.
+
+The packrat_parser theory has a similar parser with a result that is a table mapping each start index and nonterminal to an AST that matches the one returned by the reference parser parsing, and an updated table.
+
+#### semantic_interp.pvs
+*Definition of the semantic interpretation of result tree*
+
+#### semantic_parser.pvs
+*Definition of a packrat parser with semantic interpretation built-in*
+
+#### semantic_tlparser.pvs
+*Tail-recursive version, written with continuations*
+The proof trick is to have the continuation applied to the result of the parser being equal to the result of the reference parser 
+
+#### static_analysis.pvs
+*Wellformedness up-to reordering of non-terminal nodes*
